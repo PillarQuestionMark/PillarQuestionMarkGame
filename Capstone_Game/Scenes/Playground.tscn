@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://dgw6sfwqiwerc"]
+
+[ext_resource type="PackedScene" uid="uid://dy7nus18mjxp2" path="res://Components/CollidablePlane.tscn" id="2_11frw"]
+[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Components/Player.tscn" id="2_n32rs"]
+[ext_resource type="PackedScene" uid="uid://i7tklpfklnlo" path="res://Components/CollidableCube.tscn" id="2_xdgee"]
+[ext_resource type="PackedScene" uid="uid://lr2cbod4qdx" path="res://Components/ThirdPersonCamera.tscn" id="3_y86nc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_lwivm"]
+sky_material = SubResource("ProceduralSkyMaterial_2hx8a")
+
+[sub_resource type="Environment" id="Environment_fvsiw"]
+background_mode = 2
+sky = SubResource("Sky_lwivm")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Playground" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fvsiw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 5, 5, 5)
+shadow_enabled = true
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="CollidablePlane" parent="Geometry" instance=ExtResource("2_11frw")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)
+
+[node name="CollidableCube" parent="Geometry" instance=ExtResource("2_xdgee")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 3, 4.43104, 2, 0)
+
+[node name="CollidableCube2" parent="Geometry" instance=ExtResource("2_xdgee")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 15.3594, 4, 0)
+skeleton = NodePath("../CollidableCube")
+
+[node name="CollidableCube3" parent="Geometry" instance=ExtResource("2_xdgee")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, -6, 0.5, 0)
+
+[node name="CollidableCube4" parent="Geometry" instance=ExtResource("2_xdgee")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 15.701, 5, 9.062)
+skeleton = NodePath("../CollidableCube")
+
+[node name="CollidableCube5" parent="Geometry" instance=ExtResource("2_xdgee")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, -4.37, 5, 9.062)
+skeleton = NodePath("../CollidableCube")
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_n32rs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9451, 2, 0)
+gravity = -75.0
+deceleration = 0.4
+speed = 23.0
+jumpStrength = 25.0
+camera = NodePath("ThirdPersonCamera")
+
+[node name="ThirdPersonCamera" parent="Player" instance=ExtResource("3_y86nc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)

@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://dgw6sfwqiwerc"]
+
+[ext_resource type="Material" uid="uid://b4e8fh4ol8kgw" path="res://Materials/GroundMaterial.tres" id="2_lcgq6"]
+[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Components/Player.tscn" id="2_n32rs"]
+[ext_resource type="PackedScene" uid="uid://bey47nxaqcbhr" path="res://Components/ThirdPersonCamera.tscn" id="3_y86nc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_lwivm"]
+sky_material = SubResource("ProceduralSkyMaterial_2hx8a")
+
+[sub_resource type="Environment" id="Environment_fvsiw"]
+background_mode = 2
+sky = SubResource("Sky_lwivm")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ao60h"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1i14y"]
+
+[node name="Playground" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fvsiw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 5, 5, 5)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+material_override = ExtResource("2_lcgq6")
+mesh = SubResource("PlaneMesh_ao60h")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_1i14y")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0318022, 1, -1.76258)
+
+[node name="Player" parent="." instance=ExtResource("2_n32rs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0318022, 1, -1.76258)
+gravity = -75.0
+jumpStrength = 20.0
+
+[node name="ThirdPersonCamera" parent="Player" instance=ExtResource("3_y86nc")]
+followDistance = 5.0
+viewAngle = 30.0
