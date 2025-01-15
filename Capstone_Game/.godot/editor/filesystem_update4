@@ -1,0 +1,4 @@
+res://Scenes/Playground.tscn
+res://Components/ThirdPersonCamera.tscn
+res://Scenes/screens/photo_splash_screen.tscn
+res://Scenes/screens/photo_splash_screen.gd
