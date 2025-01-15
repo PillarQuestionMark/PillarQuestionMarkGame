@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bi3jsbux6tgru"]
 
-[ext_resource type="Texture2D" uid="uid://ecktwehqcl2q" path="res://Assets/MainMenuBackground.jpg" id="1_r7sos"]
+[ext_resource type="Texture2D" uid="uid://ecktwehqcl2q" path="res://Assets/Textures/MainMenuBackground.jpg" id="1_r7sos"]
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="2_0odg0"]
 
 [sub_resource type="SystemFont" id="SystemFont_mq8j5"]

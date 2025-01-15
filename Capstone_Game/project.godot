@@ -13,7 +13,9 @@ config_version=5
 config/name="CSE5902_Game"
 run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/image="res://Assets/Textures/SplashScreenGodotLogo.png"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=4000
 
 [dotnet]
 
