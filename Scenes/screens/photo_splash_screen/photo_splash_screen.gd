@@ -8,12 +8,10 @@ extends CanvasLayer
 	$%Photo5,
 	$%Photo6,
 	$%Photo7,
-	$%Photo8,
 ]
 
 var names := [
 	"SEVEN",
-	"KYRIE",
 	"TEDDY",
 	"DAWN",
 	"ALEX",
