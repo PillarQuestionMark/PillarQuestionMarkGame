@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dy7nus18mjxp2" path="res://Components/CollidablePlane.tscn" id="2_11frw"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Components/Player.tscn" id="2_n32rs"]
 [ext_resource type="PackedScene" uid="uid://i7tklpfklnlo" path="res://Components/CollidableCube.tscn" id="2_xdgee"]
-[ext_resource type="PackedScene" uid="uid://lr2cbod4qdx" path="res://Components/ThirdPersonCamera.tscn" id="3_y86nc"]
+[ext_resource type="PackedScene" uid="uid://lr2cbod4qdx" path="res://Components/FollowCamera.tscn" id="3_y86nc"]
 [ext_resource type="Script" path="res://Scripts/PlayerBehavior/Player.cs" id="4_kvl68"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
@@ -58,3 +58,4 @@ camera = NodePath("ThirdPersonCamera")
 
 [node name="ThirdPersonCamera" parent="Player" instance=ExtResource("3_y86nc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+mouse_sensitivity = 0.05
