@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://yy53in46kswg"]
 
 [ext_resource type="Script" path="res://Scenes/screens/photo_splash_screen/photo_splash_screen.gd" id="1_6y58m"]
-[ext_resource type="Texture2D" uid="uid://bhytpdfeak08a" path="res://IMG_6630_halftone.jpg" id="2_klajs"]
-[ext_resource type="Texture2D" uid="uid://d07hyrxad6lec" path="res://photo2.png" id="3_80f4q"]
+[ext_resource type="Texture2D" uid="uid://bhytpdfeak08a" path="res://Scenes/screens/photo_splash_screen/background.jpg" id="2_klajs"]
+[ext_resource type="Texture2D" uid="uid://d07hyrxad6lec" path="res://Scenes/screens/photo_splash_screen/photo2.png" id="3_80f4q"]
 [ext_resource type="PackedScene" uid="uid://c08beqib1fswh" path="res://Scenes/screens/photo_splash_screen/photo_splash_screen_photo.tscn" id="3_npw6f"]
-[ext_resource type="Texture2D" uid="uid://dbfve83aaryxs" path="res://photo3.png" id="4_8v0bh"]
-[ext_resource type="Texture2D" uid="uid://bp8eiv15o05dj" path="res://photo4.png" id="5_wcjt3"]
+[ext_resource type="Texture2D" uid="uid://dbfve83aaryxs" path="res://Scenes/screens/photo_splash_screen/photo3.png" id="4_8v0bh"]
+[ext_resource type="Texture2D" uid="uid://bp8eiv15o05dj" path="res://Scenes/screens/photo_splash_screen/photo4.png" id="5_wcjt3"]
 
 [sub_resource type="Animation" id="Animation_oxico"]
 length = 0.001

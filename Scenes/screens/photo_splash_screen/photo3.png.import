@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhytpdfeak08a"
-path="res://.godot/imported/IMG_6630_halftone.jpg-067ea9661a484f3d989cdc315fcfe138.ctex"
+uid="uid://dbfve83aaryxs"
+path="res://.godot/imported/photo3.png-903cf33766a2e7fe38d76783e65f5cd7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://IMG_6630_halftone.jpg"
-dest_files=["res://.godot/imported/IMG_6630_halftone.jpg-067ea9661a484f3d989cdc315fcfe138.ctex"]
+source_file="res://Scenes/screens/photo_splash_screen/photo3.png"
+dest_files=["res://.godot/imported/photo3.png-903cf33766a2e7fe38d76783e65f5cd7.ctex"]
 
 [params]
 

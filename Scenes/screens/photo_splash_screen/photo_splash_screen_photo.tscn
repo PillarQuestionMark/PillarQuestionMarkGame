@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c08beqib1fswh"]
 
 [ext_resource type="Script" path="res://Scenes/screens/photo_splash_screen/photo_splash_screen_photo.gd" id="1_1148q"]
-[ext_resource type="Texture2D" uid="uid://cq8dk06og7488" path="res://photo1.png" id="1_w0otc"]
+[ext_resource type="Texture2D" uid="uid://cq8dk06og7488" path="res://Scenes/screens/photo_splash_screen/photo1.png" id="1_w0otc"]
 
 [sub_resource type="Animation" id="Animation_7d6ps"]
 length = 0.001
