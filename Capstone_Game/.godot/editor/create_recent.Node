@@ -1,9 +1,10 @@
+AnimationPlayer
+AnimationTree
 TextureRect
 CenterContainer
 Label
 Control
 HBoxContainer
 Sprite2D
-AnimationPlayer
 AspectRatioContainer
 CanvasLayer

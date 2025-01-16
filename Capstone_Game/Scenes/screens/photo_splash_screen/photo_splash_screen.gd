@@ -1,10 +1,14 @@
 extends CanvasLayer
 
-@onready var photos: Array[Sprite2D] = [
+@onready var photos: Array[TextureRect] = [
 	$%Photo1,
 	$%Photo2,
 	$%Photo3,
 	$%Photo4,
+	$%Photo5,
+	$%Photo6,
+	$%Photo7,
+	$%Photo8,
 ]
 
 var names := [
@@ -18,7 +22,6 @@ var names := [
 	"LUKE",
 ]
 
-@onready var animator: AnimationPlayer = $%AnimationPlayer
 @onready var nametag: Label = $%Nametag
 
 const PHOTO_GAP := 64.0
@@ -28,21 +31,26 @@ const PHOTO_HEIGHT := 512
 func _ready() -> void:
 	_update_nametag_fontsize()
 	
-	animator.play("splash")
+	for p in photos:
+		p.animate()
+	
+	$AnimationPlayer.play("splash")
 	# TODO: play some sound
 
 var name_idx := 0.0
 func _process(delta: float) -> void:
-	# choose which name to display based on how far the animation has played
-	var completion := animator.current_animation_position / animator.current_animation_length
-	var step := floori(completion * names.size())
-	step = clampi(step, 0, 7)
-	nametag.text = names[step]
+	_update_nametag_fontsize() # TODO: instead of doing this every frame, do it only when the text changes or the screen/viewport is resized
 	
-	#name_idx += delta * 52
-	#nametag.text = names[floori(name_idx) % names.size()]
+	# set photo size
+	for p in photos:
+		p.size.x = get_viewport().size.x / photos.size()
+		p.size.y = p.size.x * 3
 	
-	_update_nametag_fontsize()
+	# arrange the photos
+	for i in photos.size():
+		var p := photos[i]
+		p.origin.x = p.size.x * (i + 0.5)
+		p.origin.y = get_viewport().size.y / 2
 
 ## make nametag's font big enough to cover screen
 func _update_nametag_fontsize() -> void:

@@ -1,0 +1,161 @@
+[gd_scene load_steps=10 format=3 uid="uid://yy53in46kswg"]
+
+[ext_resource type="Script" path="res://Scenes/screens/photo_splash_screen/photo_splash_screen.gd" id="1_6y58m"]
+[ext_resource type="Texture2D" uid="uid://bhytpdfeak08a" path="res://IMG_6630_halftone.jpg" id="2_klajs"]
+[ext_resource type="Texture2D" uid="uid://d07hyrxad6lec" path="res://photo2.png" id="3_80f4q"]
+[ext_resource type="PackedScene" uid="uid://c08beqib1fswh" path="res://Scenes/screens/photo_splash_screen/photo_splash_screen_photo.tscn" id="3_npw6f"]
+[ext_resource type="Texture2D" uid="uid://dbfve83aaryxs" path="res://photo3.png" id="4_8v0bh"]
+[ext_resource type="Texture2D" uid="uid://bp8eiv15o05dj" path="res://photo4.png" id="5_wcjt3"]
+
+[sub_resource type="Animation" id="Animation_ytw8f"]
+resource_name = "splash"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/Nametag:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["A GAME BY", "SEVEN", "KYRIE", "TEDDY", "DAWN", "ALEX", "SAM", "CAROLINE", "LUKE", ""]
+}
+
+[sub_resource type="Animation" id="Animation_oxico"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/Nametag:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["NAME"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_alnq7"]
+_data = {
+"RESET": SubResource("Animation_oxico"),
+"splash": SubResource("Animation_ytw8f")
+}
+
+[node name="PhotoSplashScreen" type="CanvasLayer"]
+script = ExtResource("1_6y58m")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.25792, 0.2449, 0.31, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_klajs")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Photo1" parent="." instance=ExtResource("3_npw6f")]
+unique_name_in_owner = true
+modulate = Color(1, 0.09, 0.363, 1)
+offset_left = -159.0
+offset_top = 294.0
+offset_right = 97.0
+offset_bottom = 806.0
+
+[node name="Photo2" parent="." instance=ExtResource("3_npw6f")]
+unique_name_in_owner = true
+modulate = Color(0.09, 1, 0.560167, 1)
+offset_left = 141.0
+offset_top = 293.0
+offset_right = 397.0
+offset_bottom = 805.0
+texture = ExtResource("3_80f4q")
+animation = "slide_from_below"
+
+[node name="Photo3" parent="." instance=ExtResource("3_npw6f")]
+unique_name_in_owner = true
+modulate = Color(1, 0.704833, 0.23, 1)
+offset_left = 425.0
+offset_top = 293.0
+offset_right = 681.0
+offset_bottom = 805.0
+texture = ExtResource("4_8v0bh")
+
+[node name="Photo4" parent="." instance=ExtResource("3_npw6f")]
+unique_name_in_owner = true
+modulate = Color(0.44, 0.496, 1, 1)
+offset_left = 701.0
+offset_top = 300.0
+offset_right = 957.0
+offset_bottom = 812.0
+texture = ExtResource("5_wcjt3")
+animation = "slide_from_below"
+
+[node name="Photo5" parent="." instance=ExtResource("3_npw6f")]
+unique_name_in_owner = true
+modulate = Color(1, 0.46, 0.856, 1)
+offset_left = 1005.0
+offset_top = 297.0
+offset_right = 1261.0
+offset_bottom = 809.0
+
+[node name="Photo6" parent="." instance=ExtResource("3_npw6f")]
+unique_name_in_owner = true
+modulate = Color(0.8448, 0.9, 0.486, 1)
+offset_left = 1288.0
+offset_top = 299.0
+offset_right = 1544.0
+offset_bottom = 811.0
+texture = ExtResource("3_80f4q")
+animation = "slide_from_below"
+
+[node name="Photo7" parent="." instance=ExtResource("3_npw6f")]
+unique_name_in_owner = true
+modulate = Color(1, 0.3795, 0.27, 1)
+offset_left = 1572.0
+offset_top = 292.0
+offset_right = 1828.0
+offset_bottom = 804.0
+texture = ExtResource("4_8v0bh")
+
+[node name="Photo8" parent="." instance=ExtResource("3_npw6f")]
+unique_name_in_owner = true
+modulate = Color(0.678, 0.31, 1, 1)
+offset_left = 1854.0
+offset_top = 293.0
+offset_right = 2110.0
+offset_bottom = 805.0
+texture = ExtResource("5_wcjt3")
+animation = "slide_from_below"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -205.0
+offset_top = -17.0
+offset_right = 205.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Nametag" type="Label" parent="CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 1200
+text = "NAME"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_alnq7")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
