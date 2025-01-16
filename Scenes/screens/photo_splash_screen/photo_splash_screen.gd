@@ -62,4 +62,4 @@ func _update_nametag_fontsize() -> void:
 	nametag.add_theme_font_size_override("font_size", fontsize)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	get_tree().change_scene_to_file("res://Scenes/Playground.tscn")
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
