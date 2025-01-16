@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://i7tklpfklnlo" path="res://Components/CollidableCube.tscn" id="2_xdgee"]
 [ext_resource type="PackedScene" uid="uid://lr2cbod4qdx" path="res://Components/FollowCamera.tscn" id="3_y86nc"]
 [ext_resource type="Script" path="res://Scripts/PlayerBehavior/Player.cs" id="4_kvl68"]
-[ext_resource type="PackedScene" uid="uid://cq8gdpvcwx4gi" path="res://Scenes/audio_manager.tscn" id="6_wt3vt"]
+[ext_resource type="PackedScene" path="res://Scenes/audio_manager.tscn" id="6_wt3vt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
