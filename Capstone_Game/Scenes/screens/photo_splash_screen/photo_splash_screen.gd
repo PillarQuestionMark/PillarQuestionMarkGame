@@ -35,13 +35,14 @@ func _ready() -> void:
 		p.animate()
 	
 	$AnimationPlayer.play("splash")
+	
 	# TODO: play some sound
 
 var name_idx := 0.0
 func _process(delta: float) -> void:
 	_update_nametag_fontsize() # TODO: instead of doing this every frame, do it only when the text changes or the screen/viewport is resized
 	
-	# set photo size
+	# set photo size (distribute available space, and keep a 1:3 aspect ratio)
 	for p in photos:
 		p.size.x = get_viewport().size.x / photos.size()
 		p.size.y = p.size.x * 3
