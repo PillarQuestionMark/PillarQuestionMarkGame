@@ -1,0 +1,10 @@
+extends CanvasLayer
+
+@onready var main: Control = $Main
+
+func _on_start_button_pressed():
+	get_tree().change_scene_to_file("res://Scenes/Playground.tscn")
+
+
+func _on_quit_button_pressed():
+	get_tree().quit()

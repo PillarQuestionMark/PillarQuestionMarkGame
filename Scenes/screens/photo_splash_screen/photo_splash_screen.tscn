@@ -7,6 +7,21 @@
 [ext_resource type="Texture2D" uid="uid://dbfve83aaryxs" path="res://photo3.png" id="4_8v0bh"]
 [ext_resource type="Texture2D" uid="uid://bp8eiv15o05dj" path="res://photo4.png" id="5_wcjt3"]
 
+[sub_resource type="Animation" id="Animation_oxico"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/Nametag:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["NAME"]
+}
+
 [sub_resource type="Animation" id="Animation_ytw8f"]
 resource_name = "splash"
 length = 3.0
@@ -22,21 +37,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": ["A GAME BY", "SEVEN", "KYRIE", "TEDDY", "DAWN", "ALEX", "SAM", "CAROLINE", "LUKE", ""]
-}
-
-[sub_resource type="Animation" id="Animation_oxico"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CenterContainer/Nametag:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["NAME"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_alnq7"]
