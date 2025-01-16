@@ -1,4 +1,4 @@
-extends Node3D
+extends SpringArm3D
 
 #Settings.
 @export_group("Settings")
@@ -12,15 +12,23 @@ extends Node3D
 @export var max_pitch : float = 60
 #min pitch in degrees.
 @export var min_pitch : float = -60
+#Camera settings.
+@export_subgroup("Camera settings")
+#Camera distance.
+@export var camera_distance : float = 8.0
 
+
+enum States {THIRD_BACK, THIRD_FRONT, FIRST}
+
+var state : States = States.THIRD_BACK
 
 const sensitivity_scale : float = 0.1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
-
+	spring_length = camera_distance
+ 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#This should be moved to UI probably
@@ -29,6 +37,13 @@ func _process(delta):
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else :
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if Input.is_action_just_pressed("switch_camera"):
+		if state == States.THIRD_BACK:
+			spring_length = 0.0
+			state = States.FIRST
+		elif state == States.FIRST:
+			spring_length = camera_distance
+			state = States.THIRD_BACK
 
 func _unhandled_input(event):
 	#Actual Camera controls

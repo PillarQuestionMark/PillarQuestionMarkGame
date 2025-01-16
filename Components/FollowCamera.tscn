@@ -1,13 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://lr2cbod4qdx"]
 
-[ext_resource type="Script" path="res://Scripts/ThirdPersonCamera.gd" id="1_0brel"]
+[ext_resource type="Script" path="res://Scripts/FollowCamera.gd" id="1_0brel"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1av36"]
 
-[node name="ThirdPersonCamera" type="SpringArm3D"]
+[node name="FollowCamera" type="SpringArm3D"]
 shape = SubResource("SphereShape3D_1av36")
 spring_length = 8.0
 script = ExtResource("1_0brel")
-mouse_sensitivity = 0.1
 
 [node name="Camera3D" type="Camera3D" parent="."]
