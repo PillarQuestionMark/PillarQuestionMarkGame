@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections.Generic;
 
 public class DoubleJumpState : State
 {
@@ -13,15 +14,11 @@ public class DoubleJumpState : State
 
     public override void Enter()
     {
-        GD.Print("Entering Double Jump State");
-        velocity = target.Velocity;
-        velocity.Y = JumpImpulse;
-        target.Velocity = velocity;
+        DoubleJump();
     }
 
     public override void Exit()
     {
-        GD.Print("Exiting Double Jump State");
     }
 
     public override void Update(double delta)
@@ -29,5 +26,15 @@ public class DoubleJumpState : State
         velocity = target.Velocity;
         velocity.Y += gravity * (float)delta;
         target.Velocity = velocity;
+    }
+
+    private void DoubleJump()
+    {
+        velocity = target.Velocity;
+        velocity.Y = JumpImpulse;
+        target.Velocity = velocity;
+
+        var eventData = new Dictionary<string, object>();
+        EventManager.Instance.Dispatch("DoubleJump", eventData);
     }
 }

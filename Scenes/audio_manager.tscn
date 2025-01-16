@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq8gdpvcwx4gi"]
+
+[ext_resource type="Script" path="res://Scripts/Audio/AudioManager.cs" id="1_lksf2"]
+[ext_resource type="AudioStream" uid="uid://c6ichm6woikfd" path="res://Assets/Audio/Sound Effects/jumpsfx.wav" id="2_tm7wp"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_lksf2")
+
+[node name="SoundEffects" type="Node" parent="."]
+
+[node name="JumpSFX" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("2_tm7wp")
+volume_db = -15.0
+
+[node name="DoubleJumpSFX" type="AudioStreamPlayer" parent="SoundEffects"]
+stream = ExtResource("2_tm7wp")
+volume_db = -15.0
+pitch_scale = 1.1

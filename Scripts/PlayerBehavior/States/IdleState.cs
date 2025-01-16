@@ -12,13 +12,11 @@ public class IdleState : State
 
     public override void Enter()
     {
-        GD.Print("Entering Idle State");
         velocity = target.Velocity;
     }
 
     public override void Exit()
     {
-        GD.Print("Exiting Idle State");
     }
 
     public override void Update(double delta)

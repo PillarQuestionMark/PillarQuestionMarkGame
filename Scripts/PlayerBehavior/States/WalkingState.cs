@@ -18,13 +18,11 @@ public class WalkingState : State
 
     public override void Enter()
     {
-        GD.Print("Entering Walking State");
         velocity = target.Velocity;
     }
 
     public override void Exit()
     {
-        GD.Print("Exiting Walking State");
     }
 
     public override void Update(double delta)

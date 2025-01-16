@@ -12,13 +12,11 @@ public class FallingState : State
 
     public override void Enter()
     {
-        GD.Print("Entering Falling State");
         velocity = target.Velocity;
     }
 
     public override void Exit()
     {
-        GD.Print("Exiting Falling State");
     }
 
     public override void Update(double delta)
