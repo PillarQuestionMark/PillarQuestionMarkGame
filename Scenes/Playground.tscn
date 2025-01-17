@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgw6sfwqiwerc"]
+[gd_scene load_steps=8 format=3 uid="uid://dgw6sfwqiwerc"]
 
-[ext_resource type="PackedScene" uid="uid://dy7nus18mjxp2" path="res://Components/CollidablePlane.tscn" id="2_11frw"]
-[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Components/Player.tscn" id="2_n32rs"]
-[ext_resource type="PackedScene" uid="uid://i7tklpfklnlo" path="res://Components/CollidableCube.tscn" id="2_xdgee"]
-[ext_resource type="PackedScene" uid="uid://lr2cbod4qdx" path="res://Components/ThirdPersonCamera.tscn" id="3_y86nc"]
-[ext_resource type="Script" path="res://Scripts/PlayerBehavior/Player.cs" id="4_kvl68"]
+[ext_resource type="PackedScene" uid="uid://dy7nus18mjxp2" path="res://Entities/CollidablePlane.tscn" id="2_11frw"]
+[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_n32rs"]
+[ext_resource type="PackedScene" uid="uid://i7tklpfklnlo" path="res://Entities/CollidableCube.tscn" id="2_xdgee"]
+[ext_resource type="PackedScene" uid="uid://lr2cbod4qdx" path="res://Entities/ThirdPersonCamera.tscn" id="3_y86nc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -51,10 +50,9 @@ skeleton = NodePath("../CollidableCube")
 transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, -4.37, 5, 9.062)
 skeleton = NodePath("../CollidableCube")
 
-[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_n32rs")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20, 1, 0)
-script = ExtResource("4_kvl68")
-camera = NodePath("ThirdPersonCamera")
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_n32rs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1, 0)
+Camera = NodePath("ThirdPersonCamera")
 
 [node name="ThirdPersonCamera" parent="Player" instance=ExtResource("3_y86nc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
