@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://blwac0ue08jac"]
+
+[ext_resource type="PackedScene" uid="uid://i7tklpfklnlo" path="res://Components/CollidableCube.tscn" id="1_5d060"]
+[ext_resource type="Script" path="res://Scripts/Interactable/move_platform.gd" id="2_6p4k3"]
+[ext_resource type="Script" path="res://Scripts/Interactable/interactable.gd" id="3_gky3l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ypfr"]
+albedo_color = Color(0.654902, 0.443137, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r38vi"]
+
+[node name="MovingPlatform" type="Node"]
+
+[node name="MovingPlatform2" parent="." instance=ExtResource("1_5d060")]
+transform = Transform3D(4, 0, 0, 0, 0.5, 0, 0, 0, 4, 17, 0.226, -22)
+skeleton = NodePath("../../CollidableCube")
+script = ExtResource("2_6p4k3")
+button_up_path = NodePath("../ButtonUp2")
+button_down_path = NodePath("../ButtonDown2")
+
+[node name="Pillar3" parent="." instance=ExtResource("1_5d060")]
+transform = Transform3D(0.75, 0, 0, 0, 2.25, 0, 0, 0, 0.75, 20, 1.12509, -20.4943)
+skeleton = NodePath("../../CollidableCube")
+
+[node name="ButtonUp2" parent="." groups=["interactables"] instance=ExtResource("1_5d060")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 19.7811, 1.75, -20.5)
+material_override = SubResource("StandardMaterial3D_8ypfr")
+skeleton = NodePath("../../CollidableCube")
+script = ExtResource("3_gky3l")
+interact_duration = 1.0
+interact_id = "move_pillar_up"
+
+[node name="UpperPlatform2" parent="." instance=ExtResource("1_5d060")]
+transform = Transform3D(4, 0, 0, 0, 0.5, 0, 0, 0, 4, 21, 10.25, -22)
+skeleton = NodePath("../../CollidableCube")
+
+[node name="Pillar4" parent="." instance=ExtResource("1_5d060")]
+transform = Transform3D(0.75, 0, 0, 0, 2.25, 0, 0, 0, 0.75, 20, 11.6171, -20.5)
+skeleton = NodePath("../../CollidableCube")
+
+[node name="ButtonDown2" parent="." groups=["interactables"] instance=ExtResource("1_5d060")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 19.7504, 12.2779, -20.5441)
+material_override = SubResource("StandardMaterial3D_8ypfr")
+mesh = SubResource("BoxMesh_r38vi")
+skeleton = NodePath("../../CollidableCube")
+script = ExtResource("3_gky3l")
+interact_duration = 1.0
+interact_id = "move_pillar_down"

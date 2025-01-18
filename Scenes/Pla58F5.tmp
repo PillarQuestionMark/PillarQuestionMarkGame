@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dgw6sfwqiwerc"]
+[gd_scene load_steps=14 format=3 uid="uid://dgw6sfwqiwerc"]
 
 [ext_resource type="PackedScene" uid="uid://dy7nus18mjxp2" path="res://Components/CollidablePlane.tscn" id="2_11frw"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Components/Player.tscn" id="2_n32rs"]
 [ext_resource type="PackedScene" uid="uid://i7tklpfklnlo" path="res://Components/CollidableCube.tscn" id="2_xdgee"]
-[ext_resource type="PackedScene" uid="uid://blwac0ue08jac" path="res://Components/moving_platform.tscn" id="3_0ycbo"]
+[ext_resource type="Script" path="res://Scripts/Interactable/move_platform.gd" id="3_4v0lr"]
+[ext_resource type="Script" path="res://Scripts/Interactable/interactable.gd" id="3_qwcmc"]
 [ext_resource type="PackedScene" uid="uid://lr2cbod4qdx" path="res://Components/FollowCamera.tscn" id="3_y86nc"]
 [ext_resource type="Script" path="res://Scripts/PlayerBehavior/Player.cs" id="4_kvl68"]
 [ext_resource type="PackedScene" uid="uid://cq8gdpvcwx4gi" path="res://Scenes/audio_manager.tscn" id="6_wt3vt"]
@@ -20,6 +21,11 @@ background_mode = 2
 sky = SubResource("Sky_lwivm")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fttma"]
+albedo_color = Color(0.654902, 0.443137, 1, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ac5cp"]
 
 [node name="Playground" type="Node3D"]
 
@@ -53,7 +59,22 @@ skeleton = NodePath("../CollidableCube")
 transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, -4.37, 5, 9.062)
 skeleton = NodePath("../CollidableCube")
 
-[node name="MovingPlatform" parent="Geometry" instance=ExtResource("3_0ycbo")]
+[node name="MovingPlatform" parent="Geometry" instance=ExtResource("2_xdgee")]
+transform = Transform3D(4, 0, 0, 0, 0.5, 0, 0, 0, 4, 17.0337, 0.22618, -22.0132)
+skeleton = NodePath("../CollidableCube")
+script = ExtResource("3_4v0lr")
+
+[node name="Pillar" parent="Geometry" instance=ExtResource("2_xdgee")]
+transform = Transform3D(0.75, 0, 0, 0, 2.25, 0, 0, 0, 0.75, 20, 1.12509, -20.4943)
+skeleton = NodePath("../CollidableCube")
+
+[node name="Button" parent="Geometry" instance=ExtResource("2_xdgee")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 19.75, 1.75, -20.5)
+material_override = SubResource("StandardMaterial3D_fttma")
+mesh = SubResource("ArrayMesh_ac5cp")
+skeleton = NodePath("../CollidableCube")
+script = ExtResource("3_qwcmc")
+interact_id = "button_to_move_pillar"
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_n32rs")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20, 1, 0)
