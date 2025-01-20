@@ -7,10 +7,12 @@ const WALKING = "Walking"
 const JUMPING = "Jumping"
 const DOUBLE_JUMPING = "DoubleJumping"
 const FALLING = "Falling"
+const DASHING = "Dashing"
+const WALL_SLIDING = "WallSliding"
+const SLAMMING = "Slamming"
 
 #Gotta change once the player has a better defined type
 var player : Player
-
 
 func _ready() -> void:
 	await owner.ready

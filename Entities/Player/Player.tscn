@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://de4v1dwr7hpx1"]
+[gd_scene load_steps=15 format=3 uid="uid://de4v1dwr7hpx1"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_3tqia"]
 [ext_resource type="Material" uid="uid://8qkamyy8vfgf" path="res://Assets/Materials/PlayerMaterial.tres" id="1_thbri"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" path="res://Entities/Player/Sprinting.gd" id="7_nctku"]
 [ext_resource type="Script" path="res://Entities/Player/Falling.gd" id="8_ouea2"]
 [ext_resource type="Script" path="res://Entities/Player/Idle.gd" id="9_4escj"]
+[ext_resource type="Script" path="res://Entities/Player/Dashing.gd" id="10_fvywu"]
+[ext_resource type="Script" path="res://Entities/Player/WallSliding.gd" id="11_j1x64"]
+[ext_resource type="Script" path="res://Entities/Player/Slamming.gd" id="12_c7jxc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wjjvi"]
 
@@ -29,6 +32,9 @@ shape = SubResource("ConvexPolygonShape3D_7rqnj")
 script = ExtResource("3_6ta2n")
 initial_state = NodePath("Idle")
 
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("9_4escj")
+
 [node name="Jumping" type="Node" parent="StateMachine"]
 script = ExtResource("4_co1vt")
 
@@ -44,5 +50,11 @@ script = ExtResource("7_nctku")
 [node name="Falling" type="Node" parent="StateMachine"]
 script = ExtResource("8_ouea2")
 
-[node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("9_4escj")
+[node name="Dashing" type="Node" parent="StateMachine"]
+script = ExtResource("10_fvywu")
+
+[node name="WallSliding" type="Node" parent="StateMachine"]
+script = ExtResource("11_j1x64")
+
+[node name="Slamming" type="Node" parent="StateMachine"]
+script = ExtResource("12_c7jxc")

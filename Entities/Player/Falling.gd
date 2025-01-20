@@ -12,23 +12,25 @@ func update(_delta: float) -> void:
 
 ## Called by the state machine on the engine's physics update tick.
 func physics_update(_delta: float) -> void:
+	#Transition states
 	if(canDoubleJump and Input.is_action_just_pressed("jump")):
 		finished.emit(DOUBLE_JUMPING)
 	elif(player.is_on_floor()):
-		if (player.move_direction != Vector3.ZERO):
+		if (player.get_move_direction() != Vector3.ZERO):
 			if(Input.is_action_pressed("sprint")):
 				finished.emit(SPRINTING)
 			else:
 				finished.emit(WALKING)
 		else:
 			finished.emit(IDLE)
-		
+	#Still here, so do movement
+	player.apply_gravity(_delta)
+	player.apply_speed_and_drag(player.Air_Speed, player.Air_Drag)
+	player.move_and_slide()
 
 ## Called by the state machine upon changing the active state. The `data` parameter
 ## is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(previous_state_path: String, data := {}) -> void:
-	player.speed = player.Air_Speed
-	player.drag = player.Air_Drag
 	canDoubleJump = data["canDoubleJump"]
 
 ## Called by the state machine before changing the active state. Use this function
