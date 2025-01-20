@@ -22,6 +22,7 @@ func physics_update(_delta: float) -> void:
 	#Still here, so do movement
 	player.apply_gravity(_delta)
 	player.apply_speed_and_drag(player.Walk_Speed, player.Ground_Drag)
+	player.rotate_player(player.get_move_direction(), _delta)
 	player.move_and_slide()
 
 ## Called by the state machine upon changing the active state. The `data` parameter

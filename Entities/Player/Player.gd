@@ -7,6 +7,8 @@ class_name Player extends CharacterBody3D
 @export_range(0.0, 1.0, 0.01) var Ground_Drag : float = 0.4
 @export_range(0.0, 1.0, 0.01) var Air_Drag : float = 0.04
 @export_range(-100.0, 0.0, 0.5) var Gravity : float = -50.0
+@export_range(0.0, 100) var Rotation_Speed : float = 10.0
+@export_range(0.0, 5) var Rotation_Flux : float = 2.0
 @export var Camera : Node3D
 
 # Called when the node enters the scene tree for the first time.
@@ -31,3 +33,16 @@ func apply_speed_and_drag(speed : float, drag : float):
 
 func apply_gravity(delta : float, gravity : float = Gravity):
 	velocity.y += gravity * delta
+	
+func get_pivot() -> Node3D:
+	return $Pivot
+	
+func rotate_player(direction : Vector3, delta : float) -> void:
+	## character faces direction you are moving (if moving)
+	if (direction != Vector3.ZERO):
+		## probably a better way to do this, but PIVOT (this is kind of like,,, a reference)
+		var pivotChild : Node3D = get_pivot()
+		var temp = Node3D.new() ## temp to use for smoothing
+		temp.look_at_from_position(position, position + direction, Vector3.UP)
+		## gradually rotate rather than snap to angle
+		pivotChild.rotation.y = lerp_angle(pivotChild.rotation.y, temp.rotation.y, Rotation_Speed * delta)
