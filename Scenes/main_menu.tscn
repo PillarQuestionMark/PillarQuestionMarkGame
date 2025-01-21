@@ -57,13 +57,13 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 42
-text = "Start"
+text = "Start (A)"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 42
-text = "Quit"
+text = "Quit (B)"
 
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="CanvasLayer" method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="CanvasLayer" method="_on_quit_button_pressed"]

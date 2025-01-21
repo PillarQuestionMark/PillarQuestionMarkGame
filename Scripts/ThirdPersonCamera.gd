@@ -6,6 +6,8 @@ extends Node3D
 @export_subgroup("Mouse settings")
 #mouse sensitivity.
 @export_range(0.0, 1.0, 0.01) var mouse_sensitivity: float = 0.01
+#controller sensitivity.
+@export_range(0.0, 5.0, 0.1) var controller_sensitivity: float = 1
 #pitch clamp settings.
 @export_subgroup("Clamp settings")
 #max pitch in degrees.
@@ -23,6 +25,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var controller = Input.get_vector("camera_left", "camera_right", "camera_up", "camera_down")
+	var input : Vector2 = controller * controller_sensitivity * sensitivity_scale
+	rotation.x -= input.y
+	rotation.x = clamp(rotation.x, deg_to_rad(min_pitch), deg_to_rad(max_pitch))
+	rotation.y -= input.x
+	
 	#This should be moved to UI probably
 	if Input.is_action_just_pressed("ui_cancel"):
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
