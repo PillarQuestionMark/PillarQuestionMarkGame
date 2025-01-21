@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://c08beqib1fswh"]
+
+[ext_resource type="Script" path="res://Scenes/screens/photo_splash_screen/photo_splash_screen_photo.gd" id="1_1148q"]
+[ext_resource type="Texture2D" uid="uid://cq8dk06og7488" path="res://Scenes/screens/photo_splash_screen/photo1.png" id="1_w0otc"]
+
+[sub_resource type="Animation" id="Animation_7d6ps"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_31xks"]
+resource_name = "slide_from_above"
+length = 3.0
+step = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-2000, 0, 0, 0, 1000, 0, -1.5, -100, 1.5, 100, 2000, 0, -1000, 0, 0),
+"times": PackedFloat32Array(0, 1.5, 3)
+}
+
+[sub_resource type="Animation" id="Animation_ln363"]
+resource_name = "slide_from_below"
+length = 3.0
+step = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(2000, 0, 0, 0, -1000, 0, -1.5, 100, 1.5, -100, -2000, 0, 1000, 0, 0),
+"times": PackedFloat32Array(0, 1.5, 3)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ai4od"]
+_data = {
+"RESET": SubResource("Animation_7d6ps"),
+"slide_from_above": SubResource("Animation_31xks"),
+"slide_from_below": SubResource("Animation_ln363")
+}
+
+[node name="PhotoSplashScreenPhoto" type="TextureRect"]
+offset_right = 256.0
+offset_bottom = 512.0
+texture = ExtResource("1_w0otc")
+expand_mode = 1
+stretch_mode = 6
+script = ExtResource("1_1148q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ai4od")
+}
