@@ -1,6 +1,4 @@
-extends CanvasLayer
-
-@onready var main: Control = $Main
+extends Node
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -13,7 +11,6 @@ func _process(delta : float) -> void:
 
 func _on_start_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Playground.tscn")
-
 
 func _on_quit_button_pressed():
 	get_tree().quit()

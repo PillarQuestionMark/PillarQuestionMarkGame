@@ -1,0 +1,32 @@
+[gd_scene load_steps=9 format=3 uid="uid://de4v1dwr7hpx1"]
+
+[ext_resource type="Script" path="res://Scripts/movement.gd" id="1_xtrg0"]
+[ext_resource type="Material" uid="uid://1ddv7fifegy7" path="res://player/material_head.tres" id="3_r5ofx"]
+[ext_resource type="ArrayMesh" uid="uid://r21fu3qtohga" path="res://player/feo.obj" id="3_ve47o"]
+[ext_resource type="Material" uid="uid://d1hwpmu8cx3fc" path="res://player/material_leg.tres" id="4_b17aq"]
+[ext_resource type="Material" uid="uid://dvkqvq4cytdp4" path="res://player/material_body.tres" id="5_ocja3"]
+[ext_resource type="Material" uid="uid://cie52pam3snu7" path="res://player/material_scarf.tres" id="6_gue62"]
+[ext_resource type="Material" uid="uid://b581oewwfjj7g" path="res://player/material_hand.tres" id="7_f8qc5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qkqh5"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_xtrg0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+mesh = ExtResource("3_ve47o")
+surface_material_override/0 = ExtResource("3_r5ofx")
+surface_material_override/1 = ExtResource("4_b17aq")
+surface_material_override/2 = ExtResource("4_b17aq")
+surface_material_override/3 = ExtResource("5_ocja3")
+surface_material_override/4 = ExtResource("5_ocja3")
+surface_material_override/5 = ExtResource("6_gue62")
+surface_material_override/6 = ExtResource("6_gue62")
+surface_material_override/7 = ExtResource("6_gue62")
+surface_material_override/8 = ExtResource("7_f8qc5")
+surface_material_override/9 = ExtResource("7_f8qc5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_qkqh5")
