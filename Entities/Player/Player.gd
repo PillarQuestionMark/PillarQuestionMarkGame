@@ -12,10 +12,20 @@ class_name Player extends CharacterBody3D
 @export_range(0.0, 2.0, 0.05) var Dash_Length : float = 0.1
 @export_range(0.0, 100, 1) var Dash_Speed : float = 50
 @export_range(0.0, 100, 1) var Slam_Gravity_Factor : float = 20
+@export_range(0.0, 100, 1) var Slide_Gravity_Factor : float = 10
+@export_range(0.0, 100, 1) var Wall_Kick : float = 20
 @export var Camera : Node3D
 
 var can_dash : bool = true
 var dash_unlocked : bool = true
+
+var can_wall_slide : bool = true
+var wall_slide_unlocked : bool = true
+
+var can_double_jump : bool = true
+var double_jump_unlocked : bool = true
+
+var slam_unlocked : bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -64,3 +74,9 @@ func end_dash() -> void:
 func restore_dash() -> void:
 	print("altrive")
 	can_dash = dash_unlocked
+	
+## Since the ground states are spread out, this code is repeated multiple times. Safer to be in one place
+func touched_ground() -> void:
+	can_wall_slide = wall_slide_unlocked
+	can_double_jump = double_jump_unlocked
+	

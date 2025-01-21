@@ -50,6 +50,14 @@ skeleton = NodePath("../CollidableCube")
 transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, -4.37, 5, 9.062)
 skeleton = NodePath("../CollidableCube")
 
+[node name="CollidableCube6" parent="Geometry" instance=ExtResource("2_xdgee")]
+transform = Transform3D(4, 0, 0, 0, -4.37114e-08, -16, 0, 1, -6.99382e-07, -4, 5, 16)
+skeleton = NodePath("../CollidableCube")
+
+[node name="CollidableCube7" parent="Geometry" instance=ExtResource("2_xdgee")]
+transform = Transform3D(4, 0, 0, 0, -4.37114e-08, -16, 0, 1, -6.99382e-07, -4, 5, 22)
+skeleton = NodePath("../CollidableCube")
+
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_n32rs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1, 0)
 Camera = NodePath("ThirdPersonCamera")

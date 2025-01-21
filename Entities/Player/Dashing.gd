@@ -34,7 +34,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	player.can_dash = false
 	
 	## adds a timer to keep track of the dash duration
-	var dash_timer = Timer.new()
+	dash_timer = Timer.new()
 	player.add_child(dash_timer)
 	dash_timer.wait_time = player.Dash_Length
 	dash_timer.one_shot = true

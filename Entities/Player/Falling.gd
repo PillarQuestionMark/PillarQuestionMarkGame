@@ -15,6 +15,8 @@ func physics_update(_delta: float) -> void:
 	#Transition states
 	if(canDoubleJump and Input.is_action_just_pressed("jump")):
 		finished.emit(DOUBLE_JUMPING)
+	elif(player.can_wall_slide && player.velocity.y < 0 && player.is_on_wall_only()):
+		finished.emit(WALL_SLIDING)
 	elif(Input.is_action_pressed("dash") && player.can_dash):
 		finished.emit(DASHING)
 	elif (Input.is_action_pressed("slam")):
