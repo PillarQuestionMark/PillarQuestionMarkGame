@@ -45,12 +45,16 @@ func enter(previous_state_path: String, data := {}) -> void:
 	slide_timer.start()
 	
 	player.can_wall_slide = false
+	
+	player.wall_slide_particles.emitting = true
 
 ## Called by the state machine before changing the active state. Use this function
 ## to clean up the state.
 func exit() -> void:
 	if (slide_timer != null):
 		slide_timer.queue_free()
+	
+	player.wall_slide_particles.emitting = false
 	
 func _end_slide() -> void:
 	finished.emit(FALLING, {"canDoubleJump" : false})

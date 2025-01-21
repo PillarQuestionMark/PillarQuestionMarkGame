@@ -28,6 +28,7 @@ var double_jump_unlocked : bool = true
 var slam_unlocked : bool = true
 
 @onready var jump_sound: AudioStreamPlayer = %AudioStreamPlayer
+@onready var wall_slide_particles: GPUParticles3D = %WallSlideParticles
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
