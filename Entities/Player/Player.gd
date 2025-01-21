@@ -9,7 +9,12 @@ class_name Player extends CharacterBody3D
 @export_range(-100.0, 0.0, 0.5) var Gravity : float = -50.0
 @export_range(0.0, 100) var Rotation_Speed : float = 10.0
 @export_range(0.0, 5) var Rotation_Flux : float = 2.0
+@export_range(0.0, 2.0, 0.05) var Dash_Length : float = 0.1
+@export_range(0.0, 100, 1) var Dash_Speed : float = 50
 @export var Camera : Node3D
+
+var can_dash : bool = true
+var dash_unlocked : bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -50,3 +55,11 @@ func rotate_player(direction : Vector3, delta : float) -> void:
 		temp.look_at_from_position(position, position + direction, Vector3.UP)
 		## gradually rotate rather than snap to angle
 		pivotChild.rotation.y = lerp_angle(pivotChild.rotation.y, temp.rotation.y, Rotation_Speed * delta)
+		
+## I tried to make dash cooldown handled at the dash state, but it would not work
+func end_dash() -> void:
+	$DashCooldown.start()
+	
+func restore_dash() -> void:
+	print("altrive")
+	can_dash = dash_unlocked

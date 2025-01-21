@@ -67,8 +67,3 @@ script = ExtResource("11_j1x64")
 
 [node name="Slamming" type="Node" parent="StateMachine"]
 script = ExtResource("12_c7jxc")
-
-[node name="DashCooldown" type="Timer" parent="."]
-one_shot = true
-
-[connection signal="timeout" from="DashCooldown" to="." method="restore_dash"]

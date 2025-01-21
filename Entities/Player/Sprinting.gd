@@ -15,6 +15,8 @@ func physics_update(_delta: float) -> void:
 		finished.emit(FALLING, {"canDoubleJump" : true})
 	elif(Input.is_action_just_pressed("jump")):
 		finished.emit(JUMPING)
+	elif(Input.is_action_pressed("dash") && player.can_dash):
+		finished.emit(DASHING)
 	elif(player.get_move_direction() == Vector3.ZERO):
 		finished.emit(IDLE)
 	elif(!Input.is_action_pressed("sprint")):
