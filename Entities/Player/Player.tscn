@@ -1,0 +1,118 @@
+[gd_scene load_steps=25 format=3 uid="uid://de4v1dwr7hpx1"]
+
+[ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_3tqia"]
+[ext_resource type="Script" path="res://Scripts/PlayerBehavior/StateMachines/StateMachine.gd" id="3_6ta2n"]
+[ext_resource type="Material" uid="uid://1ddv7fifegy7" path="res://player/material_head.tres" id="3_u05m2"]
+[ext_resource type="ArrayMesh" uid="uid://r21fu3qtohga" path="res://player/feo.obj" id="3_vgho5"]
+[ext_resource type="Material" uid="uid://d1hwpmu8cx3fc" path="res://player/material_leg.tres" id="4_3t3rr"]
+[ext_resource type="Script" path="res://Entities/Player/Jumping.gd" id="4_co1vt"]
+[ext_resource type="Material" uid="uid://dvkqvq4cytdp4" path="res://player/material_body.tres" id="5_wv7w7"]
+[ext_resource type="Script" path="res://Entities/Player/DoubleJumping.gd" id="5_y7164"]
+[ext_resource type="Script" path="res://Entities/Player/Walking.gd" id="6_fnbi7"]
+[ext_resource type="Material" uid="uid://cie52pam3snu7" path="res://player/material_scarf.tres" id="6_oli5n"]
+[ext_resource type="Material" uid="uid://b581oewwfjj7g" path="res://player/material_hand.tres" id="7_2tgxx"]
+[ext_resource type="Script" path="res://Entities/Player/Sprinting.gd" id="7_nctku"]
+[ext_resource type="Script" path="res://Entities/Player/Falling.gd" id="8_ouea2"]
+[ext_resource type="Script" path="res://Entities/Player/Idle.gd" id="9_4escj"]
+[ext_resource type="Script" path="res://Entities/Player/Dashing.gd" id="10_fvywu"]
+[ext_resource type="Script" path="res://Entities/Player/WallSliding.gd" id="11_j1x64"]
+[ext_resource type="Script" path="res://Entities/Player/Slamming.gd" id="12_c7jxc"]
+[ext_resource type="AudioStream" uid="uid://c6ichm6woikfd" path="res://Assets/Audio/Sound Effects/jumpsfx.wav" id="18_6b8vf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n3dnl"]
+height = 2.4
+
+[sub_resource type="Curve" id="Curve_xn4ut"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.230769), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gfjck"]
+curve = SubResource("Curve_xn4ut")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lxvkg"]
+direction = Vector3(1, 0.5, 0)
+spread = 180.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, -5, 0)
+scale_min = 0.1
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_gfjck")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_56dw8"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_dl5kc"]
+material = SubResource("StandardMaterial3D_56dw8")
+radial_segments = 8
+rings = 4
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_3tqia")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = ExtResource("3_vgho5")
+surface_material_override/0 = ExtResource("3_u05m2")
+surface_material_override/1 = ExtResource("4_3t3rr")
+surface_material_override/2 = ExtResource("4_3t3rr")
+surface_material_override/3 = ExtResource("5_wv7w7")
+surface_material_override/4 = ExtResource("5_wv7w7")
+surface_material_override/5 = ExtResource("6_oli5n")
+surface_material_override/6 = ExtResource("6_oli5n")
+surface_material_override/7 = ExtResource("6_oli5n")
+surface_material_override/8 = ExtResource("7_2tgxx")
+surface_material_override/9 = ExtResource("7_2tgxx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+shape = SubResource("CapsuleShape3D_n3dnl")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_6ta2n")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("9_4escj")
+
+[node name="Jumping" type="Node" parent="StateMachine"]
+script = ExtResource("4_co1vt")
+
+[node name="DoubleJumping" type="Node" parent="StateMachine"]
+script = ExtResource("5_y7164")
+
+[node name="Walking" type="Node" parent="StateMachine"]
+script = ExtResource("6_fnbi7")
+
+[node name="Sprinting" type="Node" parent="StateMachine"]
+script = ExtResource("7_nctku")
+
+[node name="Falling" type="Node" parent="StateMachine"]
+script = ExtResource("8_ouea2")
+
+[node name="Dashing" type="Node" parent="StateMachine"]
+script = ExtResource("10_fvywu")
+
+[node name="WallSliding" type="Node" parent="StateMachine"]
+script = ExtResource("11_j1x64")
+
+[node name="Slamming" type="Node" parent="StateMachine"]
+script = ExtResource("12_c7jxc")
+
+[node name="DashCooldown" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("18_6b8vf")
+max_polyphony = 16
+
+[node name="WallSlideParticles" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_lxvkg")
+draw_pass_1 = SubResource("SphereMesh_dl5kc")
+
+[connection signal="timeout" from="DashCooldown" to="." method="restore_dash"]

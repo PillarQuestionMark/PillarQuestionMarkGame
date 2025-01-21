@@ -45,6 +45,7 @@ ambient_light_energy = 0.5
 bg_color = Color(0.101961, 0.121569, 0.180392, 0.588235)
 
 [node name="MainMenu" type="Node"]
+script = ExtResource("2_0odg0")
 
 [node name="Background" type="Node3D" parent="."]
 
@@ -204,7 +205,6 @@ transform = Transform3D(0.870142, -0.416313, 0.263697, -0.359381, -0.169938, 0.9
 shadow_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("2_0odg0")
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
 anchors_preset = -1
@@ -230,21 +230,25 @@ alignment = 1
 
 [node name="Title" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "cse 5912 game"
+text = "CSE 5912 Game"
 horizontal_alignment = 1
 
 [node name="StartButton" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "start"
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 42
+text = "Start (A)"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "quit"
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 42
+text = "Quit (B)"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_g6uco")
 autoplay = true
 bus = &"Music"
 
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="CanvasLayer" method="_on_start_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="CanvasLayer" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
