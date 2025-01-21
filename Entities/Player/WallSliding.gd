@@ -21,7 +21,11 @@ func physics_update(_delta: float) -> void:
 		player.velocity = player.get_wall_normal() * player.Wall_Kick
 		finished.emit(JUMPING, {"canDoubleJump" = false})
 		player.can_wall_slide = true
-		player.get_pivot().look_at_from_position(player.position, player.position + player.get_wall_normal(), Vector3.UP)
+		var normal = player.get_wall_normal()
+		normal.y = 0 ## helps avoid strange rotations on edge cases
+		## for some reason, this sometimes gets an error otherwise...
+		if (player.position != player.position + normal):
+			player.get_pivot().look_at_from_position(player.position, player.position + normal, Vector3.UP)
 	elif (Input.is_action_pressed("slam") && player.slam_unlocked):
 		finished.emit(SLAMMING)
 		
