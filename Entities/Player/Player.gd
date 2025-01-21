@@ -11,6 +11,7 @@ class_name Player extends CharacterBody3D
 @export_range(0.0, 5) var Rotation_Flux : float = 2.0
 @export_range(0.0, 2.0, 0.05) var Dash_Length : float = 0.1
 @export_range(0.0, 100, 1) var Dash_Speed : float = 50
+@export_range(0.0, 100, 1) var Slam_Gravity_Factor : float = 20
 @export var Camera : Node3D
 
 var can_dash : bool = true

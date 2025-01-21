@@ -9,13 +9,19 @@ func update(_delta: float) -> void:
 	pass
 
 ## Called by the state machine on the engine's physics update tick.
-func physics_update(_delta: float) -> void:
-	pass
+func physics_update(_delta: float) -> void:	
+	if (Input.is_action_pressed("dash") && player.can_dash):
+		finished.emit(DASHING)
+	elif (player.is_on_floor()):
+		finished.emit(IDLE)
+	
+	player.apply_gravity(_delta * player.Slam_Gravity_Factor)
+	player.move_and_slide()
 
 ## Called by the state machine upon changing the active state. The `data` parameter
 ## is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(previous_state_path: String, data := {}) -> void:
-	pass
+	player.velocity = Vector3.ZERO
 
 ## Called by the state machine before changing the active state. Use this function
 ## to clean up the state.
