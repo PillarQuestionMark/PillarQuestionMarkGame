@@ -16,7 +16,7 @@ func _ready():
 	assert(Camera != null, "The Player Node requires a Camera of type Node3D to find its bearings")
 	
 func _process(delta : float) -> void:
-	if (Input.is_action_pressed("menu")):
+	if (Input.is_action_just_pressed("menu")):
 		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 func get_move_direction() -> Vector3:
