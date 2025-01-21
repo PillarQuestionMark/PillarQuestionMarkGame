@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_n32rs"]
 [ext_resource type="PackedScene" uid="uid://i7tklpfklnlo" path="res://Entities/CollidableCube.tscn" id="2_xdgee"]
 [ext_resource type="PackedScene" uid="uid://blwac0ue08jac" path="res://Components/moving_platform.tscn" id="3_0ycbo"]
-[ext_resource type="PackedScene" uid="uid://lr2cbod4qdx" path="res://Components/FollowCamera.tscn" id="3_y86nc"]
+[ext_resource type="PackedScene" uid="uid://lr2cbod4qdx" path="res://Entities/ThirdPersonCamera.tscn" id="3_y86nc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
