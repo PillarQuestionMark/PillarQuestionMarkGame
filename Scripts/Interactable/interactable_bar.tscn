@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://ee5dhk5n4nt8"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y7yat"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_axobu"]
+cull_mode = 2
+albedo_color = Color(0.67451, 0.596078, 0.611765, 0.505882)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41ekw"]
+cull_mode = 2
+albedo_color = Color(0.911257, 0.761767, 0.983424, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Background" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, -4.37114e-08, -0.3, 0, 1, -1.31134e-08, 0.155843, -0.318372, 0)
+mesh = SubResource("PlaneMesh_y7yat")
+skeleton = NodePath("../ForegroundFront")
+surface_material_override/0 = SubResource("StandardMaterial3D_axobu")
+
+[node name="ForegroundFront" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, -4.37114e-08, -0.3, 0, 1, -1.31134e-08, 0.155843, -0.318372, 0.01)
+mesh = SubResource("PlaneMesh_y7yat")
+surface_material_override/0 = SubResource("StandardMaterial3D_41ekw")
+
+[node name="ForegroundBack" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, -4.37114e-08, -0.3, 0, 1, -1.31134e-08, 0.155843, -0.318372, -0.01)
+mesh = SubResource("PlaneMesh_y7yat")
+skeleton = NodePath("../ForegroundFront")
+surface_material_override/0 = SubResource("StandardMaterial3D_41ekw")
