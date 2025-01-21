@@ -27,6 +27,8 @@ var double_jump_unlocked : bool = true
 
 var slam_unlocked : bool = true
 
+@onready var jump_sound: AudioStreamPlayer = %AudioStreamPlayer
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(Camera != null, "The Player Node requires a Camera of type Node3D to find its bearings")
