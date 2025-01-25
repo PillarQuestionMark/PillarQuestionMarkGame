@@ -4,12 +4,14 @@ extends Node
 @export var interact_action = "interact"
 @export var interact_id = ""
 @export var max_interaction_distance = 5.0
+@export var display_bar = false
+@export var node_path = ""
 
 var timer = null
 var is_holding = false
 var interacting_node = null
 
-@onready var player_node = get_tree().get_root().get_node("Playground/Player")
+@onready var player_node = get_tree().get_root().get_node(node_path)
 @export var progress_bar_scene: PackedScene = preload("res://Scripts/Interactable/interactable_bar.tscn")
 var progress_bar: Node3D = null
 
@@ -46,7 +48,8 @@ func _process(delta):
 	if not closest_interactable:
 		progress_bar.set("visible", false)
 		return	
-	progress_bar.set("visible", true) 
+	if display_bar:
+		progress_bar.set("visible", true)
 	var background = progress_bar.get_node("Background") as MeshInstance3D
 	var foregroundf = progress_bar.get_node("ForegroundFront") as MeshInstance3D
 	var foregroundb = progress_bar.get_node("ForegroundBack") as MeshInstance3D
