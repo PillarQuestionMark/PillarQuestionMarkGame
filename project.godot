@@ -23,6 +23,10 @@ EventBus="*res://Autoload/event_bus.gd"
 
 project/assembly_name="CSE5902_Game"
 
+[global_group]
+
+interactable=""
+
 [input]
 
 move_left={
