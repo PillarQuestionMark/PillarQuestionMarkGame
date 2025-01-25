@@ -48,11 +48,8 @@ use_collision = true
 mesh = SubResource("PlaneMesh_06lha")
 metadata/_edit_lock_ = true
 
-[node name="MovingPlatform" parent="Geometry" instance=ExtResource("3_0ycbo")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.1511, 0, 4.38102)
-
 [node name="CSGBox3D" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.519527, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000432968, 0.519525, -0.0630999)
 use_collision = true
 size = Vector3(4, 1, 4)
 material = SubResource("StandardMaterial3D_x3ejr")
@@ -382,6 +379,9 @@ material = SubResource("StandardMaterial3D_x3ejr")
 [node name="OmniLight3D" type="OmniLight3D" parent="Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.15425, 12.3541, 4.10903)
 omni_range = 20.0
+
+[node name="MovingPlatform" parent="Geometry" instance=ExtResource("3_0ycbo")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.2497, 0, 3.97385)
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_n32rs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21929, 0.633381, 32.5046)
