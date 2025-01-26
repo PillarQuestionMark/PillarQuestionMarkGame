@@ -15,20 +15,12 @@ var data = {
 }
 
 ## reads the save file values into the data dictionary
-func load_data() -> void:
-	##DirAccess.make_dir_absolute("user://saves/")
-	
+func load_data() -> void:	
 	var json = JSON.new() ## created for better error messages
-	print("save file path: " + _file)
-	print(FileAccess.file_exists(_file))
-	var file = FileAccess.open(_file, FileAccess.WRITE_READ) ## open the save file
-	print(FileAccess.file_exists(_file))
-	var save = file.get_as_text() ## get the dictionary from the save file
-	print("save:")
-	print(save)
+	var file = FileAccess.open(_file, FileAccess.READ) ## open the save file
+	var save = file.get_line() ## get the dictionary from the save file
 	var error = json.parse(save)
 	if error == OK:
-		print("om")
 		data = json.data
 	else:
 		print("ERROR: ", json.get_error_message(), " at line ", json.get_error_line())
@@ -43,9 +35,9 @@ func save_data() -> void:
 	for saving in save_objects:
 		saving.save()
 	
-	var save = JSON.stringify(data, "/t") ## turn the data into JSON
+	var save = JSON.stringify(data) ## turn the data into JSON
 	var file = FileAccess.open(_file, FileAccess.WRITE) ## open the save file, should overwrite
-	file.store_string(save) ## write the JSON data
+	file.store_line(save) ## write the JSON data
 	file.close() ## close the file
 		
 ## used when loading the game to signify which file we are playing on
