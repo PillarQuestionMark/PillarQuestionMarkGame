@@ -1,4 +1,9 @@
 ## moves its parent between its initial position and an offset position.
+##
+## why do we move the parent instead of moving ourselves (and thus our
+## children)? it's because AnimatableBody3D (moving platforms, etc.) will
+## cause jitter when interacting with the player, unless they are moved
+## directly.
 extends Node3D
 
 @export var trigger := ""
