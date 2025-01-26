@@ -36,6 +36,7 @@ func _ready():
 	
 func _process(delta : float) -> void:
 	if (Input.is_action_just_pressed("menu")):
+		PlayerData.save_data()
 		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 func get_move_direction() -> Vector3:
@@ -83,3 +84,9 @@ func touched_ground() -> void:
 	can_wall_slide = wall_slide_unlocked
 	can_double_jump = double_jump_unlocked
 	
+## called when saving the game, saves important player data
+func save() -> void:
+	PlayerData.data["current_scene"] = get_tree().current_scene.scene_file_path
+	PlayerData.data["player_position"] = [position.x, position.y, position.z]
+	var pivot = get_pivot()
+	PlayerData.data["player_rotation"] = [pivot.rotation.x, pivot.rotation.y, pivot.rotation.z]

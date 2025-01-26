@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://dgw6sfwqiwerc"]
+[gd_scene load_steps=11 format=3 uid="uid://dgw6sfwqiwerc"]
 
+[ext_resource type="Script" path="res://Scenes/playground.gd" id="1_yxky3"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_n32rs"]
 [ext_resource type="PackedScene" uid="uid://blwac0ue08jac" path="res://Components/moving_platform.tscn" id="3_0ycbo"]
 [ext_resource type="PackedScene" uid="uid://lr2cbod4qdx" path="res://Entities/ThirdPersonCamera.tscn" id="3_y86nc"]
@@ -33,6 +34,7 @@ size = Vector2(10000, 10000)
 albedo_color = Color(0.898039, 0.937255, 0.937255, 1)
 
 [node name="Playground" type="Node3D"]
+script = ExtResource("1_yxky3")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fvsiw")
@@ -383,11 +385,11 @@ omni_range = 20.0
 [node name="MovingPlatform" parent="Geometry" instance=ExtResource("3_0ycbo")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.2497, 0, 3.97385)
 
-[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_n32rs")]
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") groups=["save"] instance=ExtResource("2_n32rs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21929, 0.633381, 32.5046)
 Camera = NodePath("ThirdPersonCamera")
 
-[node name="ThirdPersonCamera" parent="Player" instance=ExtResource("3_y86nc")]
+[node name="ThirdPersonCamera" parent="Player" groups=["save"] instance=ExtResource("3_y86nc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 mouse_sensitivity = 0.05
 
