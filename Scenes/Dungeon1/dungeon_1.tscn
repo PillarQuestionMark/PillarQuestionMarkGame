@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://b85t02nj7v1lw"]
 
-[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="1_bjyov"]
-[ext_resource type="PackedScene" uid="uid://lr2cbod4qdx" path="res://Entities/ThirdPersonCamera.tscn" id="2_lxq2y"]
-[ext_resource type="Script" path="res://Scripts/dungeon_01/toggle_gate.gd" id="3_kwlkx"]
-[ext_resource type="Script" path="res://Scripts/Interactable/interactable.gd" id="3_pkqo1"]
+[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="1_8h1he"]
+[ext_resource type="PackedScene" uid="uid://lr2cbod4qdx" path="res://Entities/ThirdPersonCamera.tscn" id="2_6g76t"]
+[ext_resource type="Script" path="res://Scripts/dungeon_01/toggle_gate.gd" id="3_3fh1g"]
+[ext_resource type="Script" path="res://Scripts/Interactable/interactable.gd" id="4_w1t0e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -31,11 +31,11 @@ albedo_color = Color(0.0784314, 0.709804, 0.862745, 1)
 
 [node name="Dungeon1" type="Node3D"]
 
-[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("1_bjyov")]
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("1_8h1he")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08444, 0, 1.95063)
 Camera = NodePath("ThirdPersonCamera")
 
-[node name="ThirdPersonCamera" parent="Player" instance=ExtResource("2_lxq2y")]
+[node name="ThirdPersonCamera" parent="Player" instance=ExtResource("2_6g76t")]
 mouse_sensitivity = 0.05
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -78,7 +78,7 @@ use_collision = true
 
 [node name="Gate" type="Node3D" parent="Geometry/Gates"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 0, -0.1)
-script = ExtResource("3_kwlkx")
+script = ExtResource("3_3fh1g")
 switch_path = NodePath("../../Switches/Switch")
 move_duration = 1.0
 move_distance = -5.0
@@ -100,7 +100,7 @@ material = SubResource("StandardMaterial3D_4tr3y")
 
 [node name="Gate2" type="Node3D" parent="Geometry/Gates"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, -2.5, 2.1)
-script = ExtResource("3_kwlkx")
+script = ExtResource("3_3fh1g")
 switch_path = NodePath("../../Switches/Switch")
 move_duration = 1.0
 move_distance = 5.0
@@ -127,7 +127,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 transform = Transform3D(1, 0.00032995, -0.000710159, -0.000330919, 0.999999, -0.00138109, 0.000709703, 0.00138132, 0.999999, 3, 0.25, 4.5)
 radius = 0.05
 height = 0.75
-script = ExtResource("3_pkqo1")
+script = ExtResource("4_w1t0e")
 interact_duration = 0.1
 interact_id = "toggle_gates"
 node_path = "Dungeon1/Player"

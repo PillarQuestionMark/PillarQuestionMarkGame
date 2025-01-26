@@ -399,7 +399,8 @@ node_path = "Playground/Player"
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.041518, 6.55103)
 
 [node name="TriggerBox" parent="Dungeon1Entrance" index="2"]
-dungeon_path = "res://Scenes/Dungeon1/dungeon_1.tscn"
+player_node_path = "Playground/Player"
+dungeon_path = "res://Scenes/Dungeon1/dungeon_1_entrance.tscn"
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_n32rs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21929, 0.633381, 32.5046)

@@ -388,18 +388,18 @@ omni_range = 20.0
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.2497, 0, 3.97385)
 
 [node name="ButtonUp" parent="Geometry/MovingPlatform" index="2"]
-interact_id = "move_platform_up"
+display_bar = true
 node_path = "Playground/Player"
 
 [node name="ButtonDown" parent="Geometry/MovingPlatform" index="5"]
-interact_id = "move_platform_down"
+display_bar = true
 node_path = "Playground/Player"
 
 [node name="Dungeon1Entrance" parent="." instance=ExtResource("2_tk8wj")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.041518, 6.55103)
 
 [node name="TriggerBox" parent="Dungeon1Entrance" index="2"]
-dungeon_path = "res://Scenes/Dungeon1/dungeon_1.tscn"
+player_node_path = "Playground/Player"
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_n32rs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21929, 0.633381, 32.5046)
