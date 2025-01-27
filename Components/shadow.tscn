@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cij0oovbuoki5"]
+
+[ext_resource type="Script" path="res://Components/shadow.gd" id="1_7ogcb"]
+
+[sub_resource type="Gradient" id="Gradient_2shvk"]
+offsets = PackedFloat32Array(0.632184, 0.701149)
+colors = PackedColorArray(0, 0, 0, 0.784314, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8r8io"]
+gradient = SubResource("Gradient_2shvk")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Shadow" type="Node3D"]
+script = ExtResource("1_7ogcb")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -100, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+axis = 1
+texture = SubResource("GradientTexture2D_8r8io")
