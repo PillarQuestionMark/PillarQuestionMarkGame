@@ -118,5 +118,6 @@ draw_pass_1 = SubResource("SphereMesh_dl5kc")
 
 [node name="Shadow" parent="." instance=ExtResource("19_5nhyd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+radius = 1.0
 
 [connection signal="timeout" from="DashCooldown" to="." method="restore_dash"]

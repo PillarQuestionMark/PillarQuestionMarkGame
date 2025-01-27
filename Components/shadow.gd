@@ -1,6 +1,6 @@
 extends Node3D
 
-var radius := 1
+@export var radius := 0.5
 
 @onready var ray: RayCast3D = $RayCast3D
 @onready var shadow: Sprite3D = $Sprite3D
