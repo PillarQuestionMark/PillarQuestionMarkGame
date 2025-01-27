@@ -30,11 +30,14 @@ var slam_unlocked : bool = true
 @onready var jump_sound: AudioStreamPlayer = %AudioStreamPlayer
 @onready var wall_slide_particles: GPUParticles3D = %WallSlideParticles
 
+var playtime = 0 ## could probably happen somewhere else, but player is always available.
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(Camera != null, "The Player Node requires a Camera of type Node3D to find its bearings")
 	
 func _process(delta : float) -> void:
+	playtime += delta
 	if (Input.is_action_just_pressed("menu")):
 		PlayerData.save_data()
 		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
@@ -90,3 +93,4 @@ func save() -> void:
 	PlayerData.data["player_position"] = [position.x, position.y, position.z]
 	var pivot = get_pivot()
 	PlayerData.data["player_rotation"] = [pivot.rotation.x, pivot.rotation.y, pivot.rotation.z]
+	PlayerData.data["playtime"] += playtime
