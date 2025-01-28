@@ -1,11 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://dgw6sfwqiwerc"]
+[gd_scene load_steps=24 format=3 uid="uid://dgw6sfwqiwerc"]
 
 [ext_resource type="PackedScene" uid="uid://ud6x3emfmcnt" path="res://Components/trigger_animation.tscn" id="1_l8skm"]
 [ext_resource type="PackedScene" uid="uid://bw4ak8fk223nn" path="res://Components/mover.tscn" id="2_18dog"]
 [ext_resource type="PackedScene" uid="uid://bciwk8ba8ksvr" path="res://Components/lever.tscn" id="2_aubau"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_n32rs"]
-[ext_resource type="PackedScene" uid="uid://b5g6hmix8dyq4" path="res://Scenes/Dungeon1/dungeon_1_entrance.tscn" id="2_tk8wj"]
 [ext_resource type="PackedScene" uid="uid://lr2cbod4qdx" path="res://Entities/ThirdPersonCamera.tscn" id="3_y86nc"]
+[ext_resource type="PackedScene" uid="uid://b5g6hmix8dyq4" path="res://Scenes/Dungeon1/dungeon_1_entrance.tscn" id="4_2nsoj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -839,6 +839,12 @@ shape = SubResource("BoxShape3D_d3kti")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 trigger = "platform"
 
+[node name="Dungeon1Entrance" parent="Geometry" instance=ExtResource("4_2nsoj")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0.5, 0.1, 6.6)
+
+[node name="TriggerBox" parent="Geometry/Dungeon1Entrance" index="2"]
+dungeon_path = "res://Scenes/Dungeon1/dungeon_1.tscn"
+
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_n32rs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21929, 0.633381, 32.5046)
 Camera = NodePath("ThirdPersonCamera")
@@ -849,5 +855,4 @@ mouse_sensitivity = 0.05
 
 [node name="Interactables" type="Node" parent="."]
 
-[editable path="Geometry/MovingPlatform"]
-[editable path="Dungeon1Entrance"]
+[editable path="Geometry/Dungeon1Entrance"]
