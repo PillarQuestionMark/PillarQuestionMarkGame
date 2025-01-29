@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://ch0xma4bou77p"]
+
+[ext_resource type="Script" path="res://Entities/Flame/flame.gd" id="1_f7ahf"]
+[ext_resource type="Material" uid="uid://4brk0ort0js" path="res://Entities/Flame/material_flame.tres" id="2_0onig"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_40345"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_e5ya6"]
+material = ExtResource("2_0onig")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_rracl"]
+material = ExtResource("2_0onig")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereMesh" id="SphereMesh_eongx"]
+material = ExtResource("2_0onig")
+radius = 0.05
+height = 0.1
+
+[node name="Flame" type="Area3D"]
+script = ExtResource("1_f7ahf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_40345")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_e5ya6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0582469, 0.4, 0)
+mesh = SubResource("SphereMesh_rracl")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0734031, 0.621199, 0)
+mesh = SubResource("SphereMesh_eongx")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.882353, 0.658824, 0.270588, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
