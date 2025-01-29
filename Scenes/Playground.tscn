@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dgw6sfwqiwerc"]
+[gd_scene load_steps=12 format=3 uid="uid://dgw6sfwqiwerc"]
 
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_n32rs"]
 [ext_resource type="PackedScene" uid="uid://blwac0ue08jac" path="res://Components/moving_platform.tscn" id="3_0ycbo"]
 [ext_resource type="PackedScene" uid="uid://lr2cbod4qdx" path="res://Entities/ThirdPersonCamera.tscn" id="3_y86nc"]
 [ext_resource type="PackedScene" uid="uid://ch0xma4bou77p" path="res://Entities/Flame/flame.tscn" id="4_4gtea"]
+[ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="4_cslhv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -402,3 +403,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51791, 42.173, -21.7444)
 
 [node name="Flame3" parent="." instance=ExtResource("4_4gtea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.919, 21.9953, 17.9254)
+
+[node name="GameplayUI" parent="." instance=ExtResource("4_cslhv")]
