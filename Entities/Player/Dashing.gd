@@ -42,14 +42,12 @@ func enter(previous_state_path: String, data := {}) -> void:
 	dash_timer.start()
 	
 	print("pikmin 5")
-	
 
 ## Called by the state machine before changing the active state. Use this function
 ## to clean up the state.
 func exit() -> void:
 	if (dash_timer != null):
 		dash_timer.queue_free()
-	player.end_dash()
-	
+
 func _finish_dash() -> void:
 	finished.emit(FALLING, {"canDoubleJump" : player.can_double_jump})

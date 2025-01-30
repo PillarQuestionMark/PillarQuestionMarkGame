@@ -59,7 +59,7 @@ func apply_gravity(delta : float, gravity : float = Gravity):
 	
 func get_pivot() -> Node3D:
 	return $Pivot
-	
+
 func rotate_player(direction : Vector3, delta : float) -> void:
 	## character faces direction you are moving (if moving)
 	if (direction != Vector3.ZERO):
@@ -69,17 +69,8 @@ func rotate_player(direction : Vector3, delta : float) -> void:
 		temp.look_at_from_position(position, position + direction, Vector3.UP)
 		## gradually rotate rather than snap to angle
 		pivotChild.rotation.y = lerp_angle(pivotChild.rotation.y, temp.rotation.y, Rotation_Speed * delta)
-		
-## I tried to make dash cooldown handled at the dash state, but it would not work
-func end_dash() -> void:
-	$DashCooldown.start()
-	
-func restore_dash() -> void:
-	print("altrive")
-	can_dash = dash_unlocked
-	
+
 ## Since the ground states are spread out, this code is repeated multiple times. Safer to be in one place
 func touched_ground() -> void:
 	can_wall_slide = wall_slide_unlocked
 	can_double_jump = double_jump_unlocked
-	

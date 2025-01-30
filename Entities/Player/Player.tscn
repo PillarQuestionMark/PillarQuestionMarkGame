@@ -100,9 +100,6 @@ script = ExtResource("11_j1x64")
 [node name="Slamming" type="Node" parent="StateMachine"]
 script = ExtResource("12_c7jxc")
 
-[node name="DashCooldown" type="Timer" parent="."]
-one_shot = true
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("18_6b8vf")
@@ -114,5 +111,3 @@ emitting = false
 amount = 16
 process_material = SubResource("ParticleProcessMaterial_lxvkg")
 draw_pass_1 = SubResource("SphereMesh_dl5kc")
-
-[connection signal="timeout" from="DashCooldown" to="." method="restore_dash"]

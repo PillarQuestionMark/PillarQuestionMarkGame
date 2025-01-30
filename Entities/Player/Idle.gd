@@ -13,6 +13,9 @@ func physics_update(_delta: float) -> void:
 	## friction, otherwise stores momentum until next jump
 	player.velocity *= Vector3(0.8, 1, 0.8)
 	
+	# only reset dash once player is on ground
+	player.can_dash = player.dash_unlocked
+	
 	#Transition States
 	if(!player.is_on_floor()):
 		finished.emit(FALLING, {"canDoubleJump" : true})
