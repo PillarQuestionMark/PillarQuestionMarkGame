@@ -1,4 +1,6 @@
-## from https://gamedevartisan.com/tutorials/godot-fundamentals/input-remapping
+## based off of:
+## - https://gamedevartisan.com/tutorials/godot-fundamentals/input-remapping
+## - https://www.youtube.com/watch?v=ZDPM45cHHlI
 extends Button
 class_name InteractRemapper
 
