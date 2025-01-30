@@ -15,11 +15,12 @@ func physics_update(_delta: float) -> void:
 	print("erm")
 	
 	if (!player.is_on_wall_only()):
-		_end_slide()
+		finished.emit(FALLING)
 		
 	if (Input.is_action_just_pressed("jump") and player.jumps_left > 0):
 		player.jumps_left -= 1
-		player.velocity = player.get_wall_normal() * player.Wall_Kick
+		player.velocity = player.velocity/2 + player.get_wall_normal() * player.Wall_Kick
+		#player.velocity += player.get_wall_normal() * player.Wall_Kick # fun mode
 		finished.emit(JUMPING)
 		player.can_wall_slide = true
 		var normal = player.get_wall_normal()
@@ -31,22 +32,13 @@ func physics_update(_delta: float) -> void:
 		finished.emit(SLAMMING)
 		
 	player.apply_gravity(_delta / player.Slide_Gravity_Factor)
-	player.apply_speed_and_drag(player.Air_Speed, player.Air_Drag)
+	player.apply_speed_and_drag(player.Air_Speed, 0)
 	player.move_and_slide()
 
 ## Called by the state machine upon changing the active state. The `data` parameter
 ## is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(previous_state_path: String, data := {}) -> void:
-	## adds a timer to keep track of the dash duration
-	slide_timer = Timer.new()
-	player.add_child(slide_timer)
-	slide_timer.wait_time = 1
-	slide_timer.one_shot = true
-	slide_timer.timeout.connect(_end_slide)
-	slide_timer.start()
-	
 	player.can_wall_slide = false
-	
 	player.wall_slide_particles.emitting = true
 
 ## Called by the state machine before changing the active state. Use this function
@@ -56,6 +48,3 @@ func exit() -> void:
 		slide_timer.queue_free()
 	
 	player.wall_slide_particles.emitting = false
-	
-func _end_slide() -> void:
-	finished.emit(FALLING)
