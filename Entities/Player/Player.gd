@@ -37,6 +37,10 @@ func _ready():
 func _process(delta : float) -> void:
 	if (Input.is_action_just_pressed("menu")):
 		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+	
+	# only reset dash once player is on ground
+	if is_on_floor():
+		can_dash = dash_unlocked
 
 func get_move_direction() -> Vector3:
 	#Determines the movement direction based on the cameras rotation

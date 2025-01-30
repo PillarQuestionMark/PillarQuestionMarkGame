@@ -17,9 +17,9 @@ func physics_update(_delta: float) -> void:
 		finished.emit(DOUBLE_JUMPING)
 	elif(player.can_wall_slide && player.velocity.y < 0 && player.is_on_wall_only()):
 		finished.emit(WALL_SLIDING)
-	elif(Input.is_action_pressed("dash") && player.can_dash):
+	elif(Input.is_action_just_pressed("dash") && player.can_dash):
 		finished.emit(DASHING)
-	elif (Input.is_action_pressed("slam")):
+	elif (Input.is_action_just_pressed("slam")):
 		finished.emit(SLAMMING)
 	elif(player.is_on_floor()):
 		if (player.get_move_direction() != Vector3.ZERO):

@@ -17,7 +17,7 @@ func physics_update(_delta: float) -> void:
 	if (!player.is_on_wall_only()):
 		_end_slide()
 		
-	if (Input.is_action_pressed("jump")):
+	if (Input.is_action_just_pressed("jump")):
 		player.velocity = player.get_wall_normal() * player.Wall_Kick
 		finished.emit(JUMPING, {"canDoubleJump" = false})
 		player.can_wall_slide = true
@@ -26,7 +26,7 @@ func physics_update(_delta: float) -> void:
 		## for some reason, this sometimes gets an error otherwise...
 		if (player.position != player.position + normal):
 			player.get_pivot().look_at_from_position(player.position, player.position + normal, Vector3.UP)
-	elif (Input.is_action_pressed("slam") && player.slam_unlocked):
+	elif (Input.is_action_just_pressed("slam") && player.slam_unlocked):
 		finished.emit(SLAMMING)
 		
 	player.apply_gravity(_delta / player.Slide_Gravity_Factor)
