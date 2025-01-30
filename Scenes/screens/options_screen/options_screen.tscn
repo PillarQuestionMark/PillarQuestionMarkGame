@@ -1,0 +1,120 @@
+[gd_scene load_steps=3 format=3 uid="uid://808oubkb73yd"]
+
+[ext_resource type="Script" path="res://Scenes/screens/options_screen/options_screen.gd" id="1_w2hik"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7pe0"]
+bg_color = Color(0, 0, 0, 0.784314)
+
+[node name="OptionsScreen" type="CanvasLayer"]
+script = ExtResource("1_w2hik")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c7pe0")
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Options" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "options"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 64
+columns = 2
+
+[node name="Volume" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "volume"
+
+[node name="VolumeSlider" type="HSlider" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_vertical = 4
+value = 50.0
+scrollable = false
+
+[node name="MusicVolume" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "music volume"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_vertical = 4
+value = 50.0
+scrollable = false
+
+[node name="EffectsVolume" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "effects volume"
+
+[node name="EffectsVolumeSlider" type="HSlider" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_vertical = 4
+value = 50.0
+scrollable = false
+
+[node name="Interact" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "interact"
+
+[node name="InteractKey" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "f"
+
+[node name="Jump" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "jump"
+
+[node name="JumpKey" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "space"
+
+[node name="Dash" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "dash"
+
+[node name="DashKey" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "right mouse"
+
+[node name="Smash" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "smash"
+
+[node name="SmashKey" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "e"
+
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Cancel" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "cancel"
+
+[node name="Apply" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "apply"
+
+[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/Apply" to="." method="_on_apply_pressed"]

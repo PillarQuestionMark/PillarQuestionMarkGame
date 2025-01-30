@@ -19,7 +19,13 @@ func _on_resume_pressed() -> void:
 
 
 func _on_options_pressed() -> void:
-	pass # TODO: options menu
+	const OPTIONS_SCREEN := preload("res://Scenes/screens/options_screen/options_screen.tscn")
+	var s := OPTIONS_SCREEN.instantiate()
+	get_tree().root.add_child(s)
+	
+	# hide current screen and restore it when the options screen goes away
+	visible = false
+	s.tree_exited.connect(func(): visible = true)
 
 
 func _on_quit_pressed() -> void:
