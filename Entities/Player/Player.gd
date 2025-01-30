@@ -22,7 +22,7 @@ var dash_unlocked : bool = true
 var can_wall_slide : bool = true
 var wall_slide_unlocked : bool = true
 
-var can_double_jump : bool = true
+var jumps_left : int = 2 # how many jumps left
 var double_jump_unlocked : bool = true
 
 var slam_unlocked : bool = true
@@ -37,10 +37,6 @@ func _ready():
 func _process(delta : float) -> void:
 	if (Input.is_action_just_pressed("menu")):
 		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
-	
-	# only reset dash once player is on ground
-	if is_on_floor():
-		can_dash = dash_unlocked
 
 func get_move_direction() -> Vector3:
 	#Determines the movement direction based on the cameras rotation
@@ -77,4 +73,7 @@ func rotate_player(direction : Vector3, delta : float) -> void:
 ## Since the ground states are spread out, this code is repeated multiple times. Safer to be in one place
 func touched_ground() -> void:
 	can_wall_slide = wall_slide_unlocked
-	can_double_jump = double_jump_unlocked
+	can_dash = dash_unlocked
+	jumps_left = 1
+	if double_jump_unlocked:
+		jumps_left = 2

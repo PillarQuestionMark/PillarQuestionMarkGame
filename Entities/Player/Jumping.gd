@@ -17,7 +17,7 @@ func physics_update(_delta: float) -> void:
 func enter(previous_state_path: String, data := {}) -> void:
 	player.jump_sound.play()
 	player.velocity.y = player.Jump_Impulse
-	finished.emit(FALLING, {"canDoubleJump" : true})
+	finished.emit(FALLING)
 
 ## Called by the state machine before changing the active state. Use this function
 ## to clean up the state.

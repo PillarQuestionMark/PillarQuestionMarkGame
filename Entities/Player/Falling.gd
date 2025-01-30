@@ -13,8 +13,9 @@ func update(_delta: float) -> void:
 ## Called by the state machine on the engine's physics update tick.
 func physics_update(_delta: float) -> void:
 	#Transition states
-	if(canDoubleJump and Input.is_action_just_pressed("jump")):
-		finished.emit(DOUBLE_JUMPING)
+	if(Input.is_action_just_pressed("jump") and player.jumps_left > 0):
+		player.jumps_left -= 1
+		finished.emit(JUMPING)
 	elif(player.can_wall_slide && player.velocity.y < 0 && player.is_on_wall_only()):
 		finished.emit(WALL_SLIDING)
 	elif(Input.is_action_just_pressed("dash") && player.can_dash):
@@ -38,7 +39,7 @@ func physics_update(_delta: float) -> void:
 ## Called by the state machine upon changing the active state. The `data` parameter
 ## is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(previous_state_path: String, data := {}) -> void:
-	canDoubleJump = data["canDoubleJump"]
+	pass
 
 ## Called by the state machine before changing the active state. Use this function
 ## to clean up the state.

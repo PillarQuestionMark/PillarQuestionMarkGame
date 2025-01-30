@@ -17,9 +17,10 @@ func physics_update(_delta: float) -> void:
 	if (!player.is_on_wall_only()):
 		_end_slide()
 		
-	if (Input.is_action_just_pressed("jump")):
+	if (Input.is_action_just_pressed("jump") and player.jumps_left > 0):
+		player.jumps_left -= 1
 		player.velocity = player.get_wall_normal() * player.Wall_Kick
-		finished.emit(JUMPING, {"canDoubleJump" = false})
+		finished.emit(JUMPING)
 		player.can_wall_slide = true
 		var normal = player.get_wall_normal()
 		normal.y = 0 ## helps avoid strange rotations on edge cases
@@ -57,4 +58,4 @@ func exit() -> void:
 	player.wall_slide_particles.emitting = false
 	
 func _end_slide() -> void:
-	finished.emit(FALLING, {"canDoubleJump" : false})
+	finished.emit(FALLING)

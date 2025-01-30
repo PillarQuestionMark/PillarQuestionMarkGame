@@ -15,8 +15,9 @@ func update(_delta: float) -> void:
 func physics_update(_delta: float) -> void:
 	player.velocity = _direction * player.Dash_Speed
 		
-	if (Input.is_action_just_pressed("jump") && (player.is_on_floor() || player.can_double_jump)):
-		finished.emit(JUMPING, {"canDoubleJump" : player.can_double_jump})
+	if (Input.is_action_just_pressed("jump") and player.jumps_left > 0):
+		player.jumps_left -= 1
+		finished.emit(JUMPING)
 	elif (Input.is_action_just_pressed("slam")):
 		finished.emit(SLAMMING)
 		
@@ -50,4 +51,4 @@ func exit() -> void:
 		dash_timer.queue_free()
 
 func _finish_dash() -> void:
-	finished.emit(FALLING, {"canDoubleJump" : player.can_double_jump})
+	finished.emit(FALLING)
