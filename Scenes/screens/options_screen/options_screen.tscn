@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://808oubkb73yd"]
+[gd_scene load_steps=4 format=3 uid="uid://808oubkb73yd"]
 
 [ext_resource type="Script" path="res://Scenes/screens/options_screen/options_screen.gd" id="1_w2hik"]
+[ext_resource type="PackedScene" uid="uid://c2o86fyr33pn0" path="res://Scenes/screens/options_screen/input_remapper.tscn" id="2_bv78l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7pe0"]
 bg_color = Color(0, 0, 0, 0.784314)
@@ -69,37 +70,52 @@ size_flags_vertical = 4
 value = 50.0
 scrollable = false
 
+[node name="ControlScheme" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "control scheme"
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "keyboard + mouse"
+popup/item_1/text = "controller"
+popup/item_1/id = 1
+
 [node name="Interact" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "interact"
 
-[node name="InteractKey" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+[node name="InteractRemapper" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer" instance=ExtResource("2_bv78l")]
+unique_name_in_owner = true
 layout_mode = 2
-text = "f"
 
 [node name="Jump" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "jump"
 
-[node name="JumpKey" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+[node name="JumpRemapper" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer" instance=ExtResource("2_bv78l")]
+unique_name_in_owner = true
 layout_mode = 2
-text = "space"
+action = "jump"
 
 [node name="Dash" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "dash"
 
-[node name="DashKey" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+[node name="DashRemapper" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer" instance=ExtResource("2_bv78l")]
+unique_name_in_owner = true
 layout_mode = 2
-text = "right mouse"
+action = "dash"
 
-[node name="Smash" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+[node name="Slam" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-text = "smash"
+text = "slam"
 
-[node name="SmashKey" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+[node name="SlamRemapper" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer" instance=ExtResource("2_bv78l")]
+unique_name_in_owner = true
 layout_mode = 2
-text = "e"
+action = "slam"
 
 [node name="HSeparator2" type="HSeparator" parent="PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -116,5 +132,6 @@ text = "cancel"
 layout_mode = 2
 text = "apply"
 
+[connection signal="item_selected" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
 [connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/Apply" to="." method="_on_apply_pressed"]
