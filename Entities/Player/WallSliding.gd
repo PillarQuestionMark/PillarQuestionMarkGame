@@ -16,6 +16,9 @@ func physics_update(_delta: float) -> void:
 	
 	if (!player.is_on_wall_only()):
 		finished.emit(FALLING)
+	
+	if (player.get_move_direction().is_equal_approx(Vector3.ZERO)):
+		finished.emit(FALLING)
 		
 	if (Input.is_action_just_pressed("jump") and player.jumps_left > 0):
 		player.jumps_left -= 1
