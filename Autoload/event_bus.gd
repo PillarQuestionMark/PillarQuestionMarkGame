@@ -1,3 +1,4 @@
 extends Node
 
-signal example_event(example_parameter: int)
+## interactables/interactors with the same trigger name affect each other
+signal trigger(name: String)
