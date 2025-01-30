@@ -1,48 +1,45 @@
-[gd_scene load_steps=6 format=3 uid="uid://blwac0ue08jac"]
+[gd_scene load_steps=5 format=3 uid="uid://blwac0ue08jac"]
 
-[ext_resource type="PackedScene" uid="uid://i7tklpfklnlo" path="res://Entities/CollidableCube.tscn" id="1_5d060"]
 [ext_resource type="Script" path="res://Scripts/Interactable/move_platform.gd" id="2_6p4k3"]
 [ext_resource type="Script" path="res://Scripts/Interactable/interactable.gd" id="3_gky3l"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ypfr"]
-albedo_color = Color(0.654902, 0.443137, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jfepn"]
+albedo_color = Color(0.523121, 0.1911, 0.544582, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_r38vi"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q0l7a"]
+albedo_color = Color(0.521569, 0.192157, 0.545098, 1)
 
 [node name="MovingPlatform" type="Node3D"]
 
-[node name="MovingPlatform2" parent="." instance=ExtResource("1_5d060")]
-transform = Transform3D(4, 0, 0, 0, 0.5, 0, 0, 0, 4, 0.00300598, 0.226004, -0.229134)
-skeleton = NodePath("../../CollidableCube")
+[node name="MovingPlatform" type="CSGBox3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 0.5, 0, 0, 0, 4, 0, 0.225, -0.225)
+use_collision = true
 script = ExtResource("2_6p4k3")
-button_up_path = NodePath("../ButtonUp2")
-button_down_path = NodePath("../ButtonDown2")
+button_up_path = NodePath("../ButtonUp")
+button_down_path = NodePath("../ButtonDown")
 
-[node name="Pillar3" parent="." instance=ExtResource("1_5d060")]
-transform = Transform3D(0.75, 0, 0, 0, 2.25, 0, 0, 0, 0.75, 3.00301, 1.12509, 1.27657)
-skeleton = NodePath("../../CollidableCube")
+[node name="Pillar" type="CSGBox3D" parent="."]
+transform = Transform3D(0.75, 0, 0, 0, 2.25, 0, 0, 0, 0.75, 3, 1.125, 1.25)
+use_collision = true
 
-[node name="ButtonUp2" parent="." groups=["interactables"] instance=ExtResource("1_5d060")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.78411, 1.75, 1.27087)
-material_override = SubResource("StandardMaterial3D_8ypfr")
-skeleton = NodePath("../../CollidableCube")
+[node name="ButtonUp" type="CSGBox3D" parent="." groups=["interactables"]]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.73921, 1.75, 1.25328)
+use_collision = true
+material = SubResource("StandardMaterial3D_jfepn")
 script = ExtResource("3_gky3l")
-interact_duration = 1.0
 interact_id = "move_pillar_up"
 
-[node name="UpperPlatform2" parent="." instance=ExtResource("1_5d060")]
-transform = Transform3D(4, 0, 0, 0, 0.5, 0, 0, 0, 4, 4.00301, 10.25, -0.229134)
-skeleton = NodePath("../../CollidableCube")
+[node name="UpperPlatform" type="CSGBox3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 0.5, 0, 0, 0, 4, 4, 10.225, -0.225)
+use_collision = true
 
-[node name="Pillar4" parent="." instance=ExtResource("1_5d060")]
-transform = Transform3D(0.75, 0, 0, 0, 2.25, 0, 0, 0, 0.75, 3.00301, 11.6171, 1.27087)
-skeleton = NodePath("../../CollidableCube")
+[node name="Pillar3" type="CSGBox3D" parent="."]
+transform = Transform3D(0.75, 0, 0, 0, 2.25, 0, 0, 0, 0.75, 3, 11.5, 1.3)
+use_collision = true
 
-[node name="ButtonDown2" parent="." groups=["interactables"] instance=ExtResource("1_5d060")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.75341, 12.2779, 1.22677)
-material_override = SubResource("StandardMaterial3D_8ypfr")
-mesh = SubResource("BoxMesh_r38vi")
-skeleton = NodePath("../../CollidableCube")
+[node name="ButtonDown" type="CSGBox3D" parent="." groups=["interactables"]]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.75, 12.125, 1.3)
+use_collision = true
+material = SubResource("StandardMaterial3D_q0l7a")
 script = ExtResource("3_gky3l")
-interact_duration = 1.0
 interact_id = "move_pillar_down"
