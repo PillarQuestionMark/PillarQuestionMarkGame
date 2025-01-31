@@ -7,6 +7,8 @@ var _file
 var _file_name = "user://saves//save"
 var _file_ending = ".pillar"
 
+var start_time
+
 ## dictionary of data (default values to be overwritten)
 var data = {
 	"playtime" = 0.0, ## playtime for the save file
@@ -46,13 +48,19 @@ func load_data() -> void:
 		print("ERROR: ", json.get_error_message(), " at line ", json.get_error_line())
 	
 	get_tree().change_scene_to_file(data["current_scene"]) ## load the scene
+	
+	start_time = Time.get_unix_time_from_system()
 
 ## writes the current data dictionary into the save file
 func save_data() -> void:
+	## THIS BELOW MAY NOT BE NEEDED ANYMORE
 	## tell the player, and any other saving objects, to save their data
 	var save_objects = get_tree().get_nodes_in_group("save")
 	for saving in save_objects:
 		saving.save()
+		
+	## get playtime
+	data["playtime"] += Time.get_unix_time_from_system() - start_time
 	
 	var save = JSON.stringify(data, "\t") ## turn the data into JSON
 	var file = FileAccess.open(_file, FileAccess.WRITE) ## open the save file, should overwrite

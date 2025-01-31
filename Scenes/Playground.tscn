@@ -391,7 +391,7 @@ omni_range = 20.0
 [node name="MovingPlatform" parent="Geometry" instance=ExtResource("3_0ycbo")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.2497, 0, 3.97385)
 
-[node name="Player" parent="." node_paths=PackedStringArray("Camera") groups=["save"] instance=ExtResource("2_n32rs")]
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_n32rs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21929, 0.633381, 32.5046)
 Camera = NodePath("ThirdPersonCamera")
 
