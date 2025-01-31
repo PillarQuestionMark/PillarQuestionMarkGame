@@ -61,7 +61,3 @@ func _unhandled_input(event):
 	rotation.x -= input.y
 	rotation.x = clamp(rotation.x, deg_to_rad(min_pitch), deg_to_rad(max_pitch))
 	rotation.y -= input.x
-	
-## called when saving the game, saves important player data
-func save() -> void:
-	PlayerData.data["camera_rotation"] = [rotation.x, rotation.y, rotation.z]

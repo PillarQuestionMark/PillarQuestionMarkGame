@@ -32,6 +32,7 @@ import/blender/enabled=false
 
 interactables="Group for all nodes which use the interactables script."
 save=""
+checkpoint=""
 
 [input]
 

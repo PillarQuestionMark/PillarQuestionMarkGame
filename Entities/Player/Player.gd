@@ -89,8 +89,4 @@ func touched_ground() -> void:
 	
 ## called when saving the game, saves important player data
 func save() -> void:
-	PlayerData.data["current_scene"] = get_tree().current_scene.scene_file_path
-	PlayerData.data["player_position"] = [position.x, position.y, position.z]
-	var pivot = get_pivot()
-	PlayerData.data["player_rotation"] = [pivot.rotation.x, pivot.rotation.y, pivot.rotation.z]
 	PlayerData.data["playtime"] += playtime
