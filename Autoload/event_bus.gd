@@ -8,3 +8,4 @@ signal trigger(name: String)
 ## (press interact key to go to next page).
 ## see dialogue_screen.gd for more info on the format.
 signal dialogue(dialogue: Array[String])
+signal dialogue_finished

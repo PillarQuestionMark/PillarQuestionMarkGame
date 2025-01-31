@@ -16,6 +16,10 @@ script = ExtResource("1_nxm6f")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.051)
+pixel_size = 0.001
+billboard = 1
+no_depth_test = true
+fixed_size = true
 text = "?"
 
 [node name="Interactable" parent="." instance=ExtResource("1_hul6d")]

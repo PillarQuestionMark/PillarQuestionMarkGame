@@ -839,7 +839,11 @@ trigger = "platform"
 
 [node name="Sign" parent="Geometry" instance=ExtResource("4_65tc4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2.28318, 21)
-dialogue = Array[String](["welcome to the castle!!"])
+dialogue = Array[String](["welcome to the castle!", "interact with the lever to open the door.", "bbcode supports [color=red][shake rate=20.0 level=5 connected=1]cool effects[/shake][/color]!"])
+
+[node name="Sign2" parent="Geometry" instance=ExtResource("4_65tc4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18, 2.28318, 4.226)
+dialogue = Array[String](["try jumping off moving platforms!"])
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_n32rs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21929, 0.633381, 32.5046)

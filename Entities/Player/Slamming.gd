@@ -14,6 +14,8 @@ func physics_update(_delta: float) -> void:
 		finished.emit(DASHING)
 	elif (player.is_on_floor()):
 		finished.emit(IDLE)
+	elif (Input.is_action_just_pressed("interact")):
+		player.try_interact()
 	
 	player.apply_gravity(_delta * player.Slam_Gravity_Factor)
 	player.move_and_slide()
