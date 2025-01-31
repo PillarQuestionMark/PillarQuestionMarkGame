@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dgw6sfwqiwerc"]
+[gd_scene load_steps=13 format=3 uid="uid://dgw6sfwqiwerc"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_yxky3"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_n32rs"]
@@ -33,6 +33,9 @@ size = Vector2(10000, 10000)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3ejr"]
 albedo_color = Color(0.898039, 0.937255, 0.937255, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dc2v7"]
+size = Vector3(8.30118, 4.58887, 9.11023)
 
 [node name="Playground" type="Node3D"]
 script = ExtResource("1_yxky3")
@@ -400,7 +403,22 @@ mouse_sensitivity = 0.05
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.6, 32)
 script = ExtResource("5_jro8v")
 
+[node name="Area3D" type="Area3D" parent="Checkpoint 1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint 1/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.191971, 1.79443, 0.545349)
+shape = SubResource("BoxShape3D_dc2v7")
+
 [node name="Checkpoint 2" type="Node3D" parent="." groups=["checkpoint"]]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 41, -32.166)
 script = ExtResource("5_jro8v")
 id = 1
+
+[node name="Area3D" type="Area3D" parent="Checkpoint 2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint 2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.191971, 1.79443, 0.545349)
+shape = SubResource("BoxShape3D_dc2v7")
+
+[connection signal="body_entered" from="Checkpoint 1/Area3D" to="Checkpoint 1" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Checkpoint 2/Area3D" to="Checkpoint 2" method="_on_area_3d_body_entered"]
