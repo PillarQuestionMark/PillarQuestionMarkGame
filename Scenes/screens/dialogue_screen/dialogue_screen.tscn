@@ -40,6 +40,7 @@ layout_mode = 2
 text = "name"
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Dialogue" type="RichTextLabel" parent="MarginContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]

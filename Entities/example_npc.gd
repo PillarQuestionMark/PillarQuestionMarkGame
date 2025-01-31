@@ -1,9 +1,8 @@
-extends CSGBox3D
+extends StaticBody3D
 
-## dialogue text.
-## see dialogue_screen.gd for more info on the format.
+
 @export_multiline var dialogue: Array[String] = [
-	"you: fascinating..."
+	"you: ..."
 ]
 
 

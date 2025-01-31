@@ -6,7 +6,7 @@ class_name DialogueScreen
 ## prefixing a page's text with "speakernamegoeshere: " sets the speaker's name
 ## for that page of dialogue.
 ## if no speaker name is provided, the speaker for the previous page is used.
-@export var dialogue: Array[String] = [
+@export_multiline var dialogue: Array[String] = [
 	"the voice in your head: hello?", # the speaker's name is the part before ": "
 	"hi. yeah. it's me, the voice in your head.", # if no speaker, we assume it's the same one as before
 	"look. whatever you're thinking, it's a [color=red][shake rate=20.0 level=5 connected=1]bad idea[/shake][/color].", # rich text labels support bbcode! see https://docs.godotengine.org/en/stable/tutorials/ui/bbcode_in_richtextlabel.html
@@ -16,6 +16,7 @@ class_name DialogueScreen
 var page_idx := 0
 
 @onready var name_label := %Name
+@onready var hseparator := %HSeparator
 @onready var dialogue_label := %Dialogue
 @onready var interact_label := %InteractToContinue
 
@@ -27,6 +28,10 @@ func _ready() -> void:
 	name_label.text = ""
 	dialogue_label.text = ""
 	interact_label.text = "[f] to continue"
+	
+	# only show the name if the dialogue explicitly sets a speaker name.
+	name_label.visible = false
+	hseparator.visible = false
 	
 	# wait at least 1 full _process() frame to make sure the interact
 	# keypress used to start the dialogue screen doesn't immediately get
@@ -51,6 +56,10 @@ func _show_page(idx: int) -> void:
 	if colon_idx != -1:
 		name_label.text = data.substr(0, colon_idx)
 		dialogue_label.text = data.substr(colon_idx + 2) # ": " is 2 characters
+		
+		# only show the name if the dialogue explicitly sets a speaker name.
+		name_label.visible = true
+		hseparator.visible = true
 	else: # by default, keep the last speaker name
 		dialogue_label.text = data
 	
