@@ -38,7 +38,6 @@ func _process(delta):
 	rotation.x -= input.y
 	rotation.x = clamp(rotation.x, deg_to_rad(min_pitch), deg_to_rad(max_pitch))
 	rotation.y -= input.x
-	
 	#This should be moved to UI probably
 	if Input.is_action_just_pressed("ui_cancel"):
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
