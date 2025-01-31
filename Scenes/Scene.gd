@@ -15,3 +15,8 @@ func _load_data() -> void:
 	for checkpoint in get_tree().get_nodes_in_group("checkpoint"):
 		if checkpoint.id == PlayerData.data["checkpoint"]:
 			checkpoint.set_player($Player)
+			
+	## delete the flames that have already been collected
+	for flame in get_tree().get_nodes_in_group("flames"):
+		if PlayerData.data["collected_flames"].has(flame.id):
+			flame.queue_free()

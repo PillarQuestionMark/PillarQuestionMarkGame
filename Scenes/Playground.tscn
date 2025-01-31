@@ -1,12 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://dgw6sfwqiwerc"]
+[gd_scene load_steps=15 format=3 uid="uid://dgw6sfwqiwerc"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_yxky3"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_n32rs"]
 [ext_resource type="PackedScene" uid="uid://blwac0ue08jac" path="res://Components/moving_platform.tscn" id="3_0ycbo"]
 [ext_resource type="PackedScene" uid="uid://lr2cbod4qdx" path="res://Entities/ThirdPersonCamera.tscn" id="3_y86nc"]
-[ext_resource type="Script" path="res://Scripts/checkpoint.gd" id="5_jro8v"]
 [ext_resource type="PackedScene" uid="uid://ch0xma4bou77p" path="res://Entities/Flame/flame.tscn" id="4_4gtea"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="4_cslhv"]
+[ext_resource type="Script" path="res://Scripts/checkpoint.gd" id="5_jro8v"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -422,21 +422,24 @@ id = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.191971, 1.79443, 0.545349)
 shape = SubResource("BoxShape3D_dc2v7")
 
-[connection signal="body_entered" from="Checkpoint 1/Area3D" to="Checkpoint 1" method="_on_area_3d_body_entered"]
-[connection signal="body_entered" from="Checkpoint 2/Area3D" to="Checkpoint 2" method="_on_area_3d_body_entered"]
-[node name="Flame" parent="." instance=ExtResource("4_4gtea")]
+[node name="Flame" parent="." groups=["flames"] instance=ExtResource("4_4gtea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51791, 25.3908, -108.287)
 flame_name = "Aqueduct"
 color = Color(0, 0.788936, 0.893223, 1)
 
-[node name="Flame2" parent="." instance=ExtResource("4_4gtea")]
+[node name="Flame2" parent="." groups=["flames"] instance=ExtResource("4_4gtea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51791, 42.173, -21.7444)
+id = 1.0
 flame_name = "Cubes"
 color = Color(0.837957, 0.616061, 0.83013, 1)
 
-[node name="Flame3" parent="." instance=ExtResource("4_4gtea")]
+[node name="Flame3" parent="." groups=["flames"] instance=ExtResource("4_4gtea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.919, 21.9953, 17.9254)
+id = 2.0
 flame_name = "Castle Walls"
 color = Color(0.505449, 0.802076, 0, 1)
 
 [node name="GameplayUI" parent="." instance=ExtResource("4_cslhv")]
+
+[connection signal="body_entered" from="Checkpoint 1/Area3D" to="Checkpoint 1" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Checkpoint 2/Area3D" to="Checkpoint 2" method="_on_area_3d_body_entered"]
