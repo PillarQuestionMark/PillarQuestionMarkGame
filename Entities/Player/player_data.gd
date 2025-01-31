@@ -10,8 +10,7 @@ var _file_ending = ".pillar"
 ## dictionary of data (default values to be overwritten)
 var data = {
 	"playtime" = 0.0, ## playtime for the save file
-	"flame_count" = 0, ## how many flames total
-	"collected_flames" = [], ## id of all collected flames
+	"collected_flames" = [], ## id of all collected flames, get size() for total
 	"collected_fragments" = [], ## id of collected fragments from dungeons (final prize)
 	"open_dungeons" = [], ## id of dungeons opened already
 	"current_scene" = "res://Scenes/Playground.tscn", ## scene the player is in (or moving to)
@@ -25,7 +24,7 @@ var data = {
 
 ## reads the save file values into the data dictionary
 func load_data() -> void:
-	##_write_default() ## used for writing the default file
+	## _write_default() ## used for writing the default file (DO NOT UNCOMMENT UNLESS YOU KNOW WHAT THIS DOES)
 	var save
 	var json = JSON.new() ## created for better error messages
 	if (FileAccess.file_exists(_file)):

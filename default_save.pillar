@@ -5,9 +5,8 @@
 	"current_scene": "res://Scenes/Playground.tscn",
 	"dash_unlocked": false,
 	"double_jump_unlocked": false,
-	"flame_count": 0,
 	"open_dungeons": [],
-	"playtime": 5.08593799999999,
+	"playtime": 0,
 	"slam_unlocked": false,
 	"sprint_unlocked": false,
 	"wall_slide_unlocked": false
