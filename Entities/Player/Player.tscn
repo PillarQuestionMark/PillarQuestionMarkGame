@@ -18,7 +18,11 @@
 [ext_resource type="Script" path="res://Entities/Player/WallSliding.gd" id="11_j1x64"]
 [ext_resource type="Script" path="res://Entities/Player/Slamming.gd" id="12_c7jxc"]
 [ext_resource type="AudioStream" uid="uid://c6ichm6woikfd" path="res://Assets/Audio/Sound Effects/jumpsfx.wav" id="18_6b8vf"]
+
 [ext_resource type="Script" path="res://Entities/Player/Dialogue.gd" id="18_b8em8"]
+
+[ext_resource type="PackedScene" uid="uid://cij0oovbuoki5" path="res://Components/shadow.tscn" id="19_5nhyd"]
+
 [ext_resource type="PackedScene" uid="uid://dmhwfbc05xhsb" path="res://Components/interactor.tscn" id="19_dm15w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n3dnl"]
@@ -130,5 +134,9 @@ unique_name_in_owner = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_ajont")
+
+[node name="Shadow" parent="." instance=ExtResource("19_5nhyd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+radius = 1.0
 
 [connection signal="timeout" from="DashCooldown" to="." method="restore_dash"]
