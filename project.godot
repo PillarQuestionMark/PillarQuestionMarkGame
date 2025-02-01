@@ -18,14 +18,22 @@ config/icon="res://icon.svg"
 [autoload]
 
 EventBus="*res://Autoload/event_bus.gd"
+PlayerData="*res://Entities/Player/player_data.gd"
 
 [dotnet]
 
 project/assembly_name="CSE5902_Game"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [global_group]
 
-interactable=""
+interactables="Group for all nodes which use the interactables script."
+save=""
+checkpoint=""
+flames="flames"
 
 [input]
 

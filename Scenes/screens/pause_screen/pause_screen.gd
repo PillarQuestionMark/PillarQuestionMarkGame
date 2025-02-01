@@ -29,4 +29,6 @@ func _on_options_pressed() -> void:
 
 
 func _on_quit_pressed() -> void:
-	get_tree().quit() # TODO: save
+	PlayerData.save_data()
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+	queue_free()
