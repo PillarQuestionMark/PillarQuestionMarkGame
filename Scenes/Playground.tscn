@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bciwk8ba8ksvr" path="res://Components/lever.tscn" id="2_aubau"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_n32rs"]
 [ext_resource type="PackedScene" uid="uid://lr2cbod4qdx" path="res://Entities/ThirdPersonCamera.tscn" id="3_y86nc"]
+[ext_resource type="PackedScene" uid="uid://ch0xma4bou77p" path="res://Entities/Flame/flame.tscn" id="4_4gtea"]
 [ext_resource type="PackedScene" uid="uid://cdwnjdsfrrav5" path="res://Components/sign.tscn" id="4_65tc4"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="4_cslhv"]
 [ext_resource type="PackedScene" uid="uid://b5qmrt8ec1cjv" path="res://Entities/example_npc.tscn" id="8_ynql4"]
@@ -855,6 +856,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 mouse_sensitivity = 0.05
 
 [node name="Interactables" type="Node" parent="."]
+
+[node name="Flame" parent="." instance=ExtResource("4_4gtea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51791, 25.3908, -108.287)
+flame_name = "Aqueduct"
+color = Color(0, 0.788936, 0.893223, 1)
+
+[node name="Flame2" parent="." instance=ExtResource("4_4gtea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51791, 42.173, -21.7444)
+flame_name = "Cubes"
+color = Color(0.837957, 0.616061, 0.83013, 1)
+
+[node name="Flame3" parent="." instance=ExtResource("4_4gtea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.919, 21.9953, 17.9254)
+flame_name = "Castle Walls"
+color = Color(0.505449, 0.802076, 0, 1)
 
 [node name="GameplayUI" parent="." instance=ExtResource("4_cslhv")]
 
