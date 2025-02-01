@@ -35,11 +35,8 @@ var slam_unlocked : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(Camera != null, "The Player Node requires a Camera of type Node3D to find its bearings")
-	
-func _process(delta : float) -> void:
-	if (Input.is_action_just_pressed("menu")):
-		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
-	
+
+func _process(delta : float) -> void:	
 	# rn we can interact in any state
 	if (Input.is_action_just_pressed("interact")):
 		interactor.try_interact()
