@@ -1,6 +1,6 @@
 extends Node
 
-var _file_name = "user://saves//save"
+var _file_name = "user://save"
 var _file_ending = ".pillar"
 
 var FileContainer
@@ -11,7 +11,7 @@ func _ready() -> void:
 	FileContainer.get_node("File1").grab_focus()
 	
 	for file in [1, 2, 3]:
-		_read_file("user://saves//save" + String.num_int64(file) + ".pillar", file)
+		_read_file(_file_name + String.num_int64(file) + _file_ending, file)
 	
 ## used to read the save files for menu information
 func _read_file(filePath : String, number : int):
@@ -74,4 +74,4 @@ func _on_file_delete(file : int) -> void:
 	if (FileAccess.file_exists(deleting)):
 		OS.move_to_trash(ProjectSettings.globalize_path(deleting)) 
 	## DirAccess.remove_absolute(deleting) this will PERMANENTLY delete the file
-	_read_file("user://saves//save" + String.num_int64(file) + ".pillar", file)
+	_read_file(_file_name + String.num_int64(file) + _file_ending, file)

@@ -4,7 +4,7 @@ extends Node
 ## based on documentation from Godot on JSON and FileAccess
 
 var _file
-var _file_name = "user://saves//save"
+var _file_name = "user://save"
 var _file_ending = ".pillar"
 
 var start_time
