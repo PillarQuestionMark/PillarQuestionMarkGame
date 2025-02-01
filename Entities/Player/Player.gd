@@ -30,9 +30,16 @@ var slam_unlocked : bool = true
 @onready var jump_sound: AudioStreamPlayer = %AudioStreamPlayer
 @onready var wall_slide_particles: GPUParticles3D = %WallSlideParticles
 
+@onready var interactor: Interactor = %Interactor
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(Camera != null, "The Player Node requires a Camera of type Node3D to find its bearings")
+
+func _process(delta : float) -> void:	
+	# rn we can interact in any state
+	if (Input.is_action_just_pressed("interact")):
+		interactor.try_interact()
 
 func get_move_direction() -> Vector3:
 	#Determines the movement direction based on the cameras rotation
