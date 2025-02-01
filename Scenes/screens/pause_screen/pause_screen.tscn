@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/screens/pause_screen/pause_screen.gd" id="1_llse8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7aq4"]
-bg_color = Color(0, 0, 0, 0.196078)
+bg_color = Color(0, 0, 0, 0.784314)
 
 [node name="PauseScreen" type="CanvasLayer"]
 process_mode = 3

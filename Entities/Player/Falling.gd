@@ -29,6 +29,8 @@ func physics_update(_delta: float) -> void:
 				finished.emit(WALKING)
 		else:
 			finished.emit(IDLE)
+	elif (Input.is_action_just_pressed("interact")):
+		player.try_interact()
 	#Still here, so do movement
 	player.apply_gravity(_delta)
 	player.apply_speed_and_drag(player.Air_Speed, player.Air_Drag)
