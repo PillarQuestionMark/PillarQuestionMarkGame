@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://de4v1dwr7hpx1"]
+[gd_scene load_steps=29 format=3 uid="uid://de4v1dwr7hpx1"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_3tqia"]
 [ext_resource type="Script" path="res://Scripts/PlayerBehavior/StateMachines/StateMachine.gd" id="3_6ta2n"]
@@ -18,11 +18,8 @@
 [ext_resource type="Script" path="res://Entities/Player/WallSliding.gd" id="11_j1x64"]
 [ext_resource type="Script" path="res://Entities/Player/Slamming.gd" id="12_c7jxc"]
 [ext_resource type="AudioStream" uid="uid://c6ichm6woikfd" path="res://Assets/Audio/Sound Effects/jumpsfx.wav" id="18_6b8vf"]
-
 [ext_resource type="Script" path="res://Entities/Player/Dialogue.gd" id="18_b8em8"]
-
 [ext_resource type="PackedScene" uid="uid://cij0oovbuoki5" path="res://Components/shadow.tscn" id="19_5nhyd"]
-
 [ext_resource type="PackedScene" uid="uid://dmhwfbc05xhsb" path="res://Components/interactor.tscn" id="19_dm15w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n3dnl"]

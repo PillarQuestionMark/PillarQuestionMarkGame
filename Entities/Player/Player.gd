@@ -54,11 +54,6 @@ func _ready():
 		$StateMachine.state.finished.emit("Idle")
 	)
 
-func _process(delta : float) -> void:	
-	# rn we can interact in any state
-	if (Input.is_action_just_pressed("interact")):
-		interactor.try_interact()
-
 func get_move_direction() -> Vector3:
 	#Determines the movement direction based on the cameras rotation
 	var input := Vector2.ZERO
