@@ -25,7 +25,7 @@ project/assembly_name="CSE5902_Game"
 
 [global_group]
 
-interactables="Group for all nodes which use the interactables script."
+interactable=""
 
 [input]
 
