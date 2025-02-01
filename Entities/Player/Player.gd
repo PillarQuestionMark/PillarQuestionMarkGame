@@ -35,11 +35,24 @@ var slam_unlocked : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(Camera != null, "The Player Node requires a Camera of type Node3D to find its bearings")
-
-func _process(delta : float) -> void:	
-	# rn we can interact in any state
-	if (Input.is_action_just_pressed("interact")):
-		interactor.try_interact()
+	
+	EventBus.dialogue.connect(func(dialogue: Array[String]):
+		$StateMachine.state.finished.emit("Dialogue")
+	)
+	EventBus.dialogue_finished.connect(func():
+		# wait at least 1 full _process() frame to make sure the interact
+		# keypress used to finish the dialogue screen doesn't immediately get
+		# read by player idle state code again.
+		# otherwise, dialogue interactables can get immediately interacted with
+		# again, showing the entire dialogue again.
+		# see also: dialogue_screen.gd
+		await get_tree().process_frame
+		await get_tree().process_frame
+		# simply changing out of the Dialogue state after waiting is enough.
+		# we don't need to stop _process() from doing anything because the
+		# player can't interact while in the Dialogue state.
+		$StateMachine.state.finished.emit("Idle")
+	)
 
 func get_move_direction() -> Vector3:
 	#Determines the movement direction based on the cameras rotation
@@ -85,4 +98,6 @@ func restore_dash() -> void:
 func touched_ground() -> void:
 	can_wall_slide = wall_slide_unlocked
 	can_double_jump = double_jump_unlocked
-	
+
+func try_interact() -> void:
+	interactor.try_interact()

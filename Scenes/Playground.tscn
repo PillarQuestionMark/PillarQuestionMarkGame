@@ -1,11 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://dgw6sfwqiwerc"]
+[gd_scene load_steps=26 format=3 uid="uid://dgw6sfwqiwerc"]
 
 [ext_resource type="PackedScene" uid="uid://ud6x3emfmcnt" path="res://Components/trigger_animation.tscn" id="1_l8skm"]
 [ext_resource type="PackedScene" uid="uid://bw4ak8fk223nn" path="res://Components/mover.tscn" id="2_18dog"]
 [ext_resource type="PackedScene" uid="uid://bciwk8ba8ksvr" path="res://Components/lever.tscn" id="2_aubau"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_n32rs"]
 [ext_resource type="PackedScene" uid="uid://lr2cbod4qdx" path="res://Entities/ThirdPersonCamera.tscn" id="3_y86nc"]
+[ext_resource type="PackedScene" uid="uid://cdwnjdsfrrav5" path="res://Components/sign.tscn" id="4_65tc4"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="4_cslhv"]
+[ext_resource type="PackedScene" uid="uid://b5qmrt8ec1cjv" path="res://Entities/example_npc.tscn" id="8_ynql4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -836,6 +838,14 @@ shape = SubResource("BoxShape3D_d3kti")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 trigger = "platform"
 
+[node name="Sign" parent="Geometry" instance=ExtResource("4_65tc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2.28318, 21)
+dialogue = Array[String](["welcome to the castle!", "interact with the lever to open the door.", "bbcode supports [color=red][shake rate=20.0 level=5 connected=1]cool effects[/shake][/color]!"])
+
+[node name="Sign2" parent="Geometry" instance=ExtResource("4_65tc4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18, 2.28318, 4.226)
+dialogue = Array[String](["try jumping off moving platforms!"])
+
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_n32rs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21929, 0.633381, 32.5046)
 Camera = NodePath("ThirdPersonCamera")
@@ -847,3 +857,7 @@ mouse_sensitivity = 0.05
 [node name="Interactables" type="Node" parent="."]
 
 [node name="GameplayUI" parent="." instance=ExtResource("4_cslhv")]
+
+[node name="ExampleNPC" parent="." instance=ExtResource("8_ynql4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17, 21, 1)
+dialogue = Array[String](["stranger: the lawn is looking extra green today!", "you: ...", "stranger: don't wander too far! you'll fall off the edge."])
