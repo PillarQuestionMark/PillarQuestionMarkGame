@@ -22,6 +22,12 @@
 [ext_resource type="PackedScene" uid="uid://cij0oovbuoki5" path="res://Components/shadow.tscn" id="19_5nhyd"]
 [ext_resource type="PackedScene" uid="uid://dmhwfbc05xhsb" path="res://Components/interactor.tscn" id="19_dm15w"]
 
+[sub_resource type="Curve" id="Curve_e4jrd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n3dnl"]
 height = 2.4
 
@@ -54,7 +60,10 @@ height = 3.0
 radius = 2.0
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_3tqia")
+Transparency_Curve = SubResource("Curve_e4jrd")
 
 [node name="Pivot" type="Node3D" parent="."]
 

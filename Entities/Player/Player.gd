@@ -1,5 +1,5 @@
 class_name Player extends CharacterBody3D
-
+@export_group("Movement")
 @export_range(0.0, 100.0, 0.1) var Jump_Impulse : float = 25.0
 @export_range(0.0, 100.0, 0.1) var Air_Speed : float = 10.0
 @export_range(0.0, 100.0, 0.1) var Walk_Speed : float = 10.0
@@ -14,7 +14,9 @@ class_name Player extends CharacterBody3D
 @export_range(0.0, 100, 1) var Slam_Gravity_Factor : float = 20
 @export_range(0.0, 100, 1) var Slide_Gravity_Factor : float = 10
 @export_range(0.0, 100, 1) var Wall_Kick : float = 20
-@export var Camera : Node3D
+@export_group("Camera")
+@export var Transparency_Curve : Curve
+@export var Camera : SpringArm3D
 
 var can_dash : bool = true
 var dash_unlocked : bool = true
@@ -29,13 +31,13 @@ var slam_unlocked : bool = true
 
 @onready var jump_sound: AudioStreamPlayer = %AudioStreamPlayer
 @onready var wall_slide_particles: GPUParticles3D = %WallSlideParticles
+@onready var mesh : MeshInstance3D = $Pivot/MeshInstance3D
 
 @onready var interactor: Interactor = %Interactor
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(Camera != null, "The Player Node requires a Camera of type Node3D to find its bearings")
-	
 	EventBus.dialogue.connect(func(dialogue: Array[String]):
 		$StateMachine.state.finished.emit("Dialogue")
 	)
@@ -53,6 +55,10 @@ func _ready():
 		# player can't interact while in the Dialogue state.
 		$StateMachine.state.finished.emit("Idle")
 	)
+
+func _process(delta : float) -> void:
+	mesh.transparency = Transparency_Curve.sample(Camera.get_hit_length() / Camera.spring_length)
+
 
 func get_move_direction() -> Vector3:
 	#Determines the movement direction based on the cameras rotation
