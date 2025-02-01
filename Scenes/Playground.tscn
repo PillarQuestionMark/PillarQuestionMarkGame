@@ -1,17 +1,17 @@
-[gd_scene load_steps=30 format=3 uid="uid://dgw6sfwqiwerc"]
+[gd_scene load_steps=29 format=3 uid="uid://dgw6sfwqiwerc"]
 
 [ext_resource type="PackedScene" uid="uid://ud6x3emfmcnt" path="res://Components/trigger_animation.tscn" id="1_l8skm"]
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_yxky3"]
+[ext_resource type="PackedScene" uid="uid://dy7nus18mjxp2" path="res://Entities/CollidablePlane.tscn" id="2_4dbmp"]
 [ext_resource type="PackedScene" uid="uid://bw4ak8fk223nn" path="res://Components/mover.tscn" id="2_18dog"]
 [ext_resource type="PackedScene" uid="uid://bciwk8ba8ksvr" path="res://Components/lever.tscn" id="2_aubau"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_n32rs"]
+[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="3_y86nc"]
 [ext_resource type="PackedScene" uid="uid://ch0xma4bou77p" path="res://Entities/Flame/flame.tscn" id="4_4gtea"]
 [ext_resource type="PackedScene" uid="uid://cdwnjdsfrrav5" path="res://Components/sign.tscn" id="4_65tc4"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="4_cslhv"]
 [ext_resource type="Script" path="res://Scripts/checkpoint.gd" id="5_jro8v"]
 [ext_resource type="PackedScene" uid="uid://b5qmrt8ec1cjv" path="res://Entities/example_npc.tscn" id="8_ynql4"]
-[ext_resource type="PackedScene" uid="uid://dy7nus18mjxp2" path="res://Entities/CollidablePlane.tscn" id="2_4dbmp"]
-[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="3_y86nc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
