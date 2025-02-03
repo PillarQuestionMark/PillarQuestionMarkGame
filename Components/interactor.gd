@@ -16,7 +16,6 @@ func try_interact() -> void:
 	interactables.append_array(get_overlapping_areas())
 	interactables.append_array(get_overlapping_bodies())
 	interactables = interactables.filter(func(i): return i is Interactable)
-	print(interactables)
 	
 	if interactables.is_empty():
 		return
@@ -30,5 +29,5 @@ func try_interact() -> void:
 			closest = i
 			closest_distance = d
 	
-	print("[%s] interacting" % get_path())
+	Logger.debug("interactor %s: interacting with %s" % [get_path(), closest.get_path()])
 	closest.interact()

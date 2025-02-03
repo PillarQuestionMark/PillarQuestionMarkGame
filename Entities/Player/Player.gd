@@ -97,7 +97,7 @@ func end_dash() -> void:
 	$DashCooldown.start()
 	
 func restore_dash() -> void:
-	print("altrive")
+	Logger.debug("player: altrive")
 	can_dash = dash_unlocked
 	
 ## Since the ground states are spread out, this code is repeated multiple times. Safer to be in one place

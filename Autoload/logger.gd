@@ -30,23 +30,23 @@ func _ready() -> void:
 		_logfile = _open_logfile(logfile_path)
 		debug("logger: logfile opened")
 	
-	debug("logger: ready")
+	info("logger: ready")
 
 func debug(message: String) -> void:
 	if loglevel > LogLevel.DEBUG: return
-	_print("[%s DEBUG  ] %s" % [_timestamp(), message])
+	_print("[%s DEBUG] %s" % [_timestamp(), message])
 
 func info(message: String) -> void:
 	if loglevel > LogLevel.INFO: return
-	_print("[%s INFO   ] %s" % [_timestamp(), message])
+	_print("[%s INFO ] %s" % [_timestamp(), message])
 
 func warning(message: String) -> void:
 	if loglevel > LogLevel.WARNING: return
-	_print("[%s WARNING] %s" % [_timestamp(), message])
+	_print("[%s WARN ] %s" % [_timestamp(), message])
 
 func error(message: String) -> void:
 	if loglevel > LogLevel.ERROR: return
-	_print("[%s ERROR  ] %s" % [_timestamp(), message], true)
+	_print("[%s ERROR] %s" % [_timestamp(), message], true)
 
 ## returns the current date and time
 ## e.g. "2025-02-03 12:30:08"
@@ -62,7 +62,7 @@ func _timestamp_filesafe() -> String:
 func _open_logfile(path: String) -> FileAccess:
 	var f := FileAccess.open(path, FileAccess.WRITE)
 	if f == null:
-		print(FileAccess.get_open_error())
+		_print("logger: failed to open logfile: %s" % FileAccess.get_open_error(), true)
 		get_tree().quit(1)
 	return f
 

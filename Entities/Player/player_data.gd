@@ -45,7 +45,7 @@ func load_data() -> void:
 	if error == OK:
 		data = json.data
 	else:
-		print("ERROR: ", json.get_error_message(), " at line ", json.get_error_line())
+		Logger.error("playerdata: json error at line %s: %s" % [json.get_error_line(), json.get_error_message()])
 	
 	get_tree().change_scene_to_file(data["current_scene"]) ## load the scene
 	
