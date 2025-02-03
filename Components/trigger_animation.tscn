@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ud6x3emfmcnt"]
+
+[ext_resource type="Script" path="res://Components/trigger_animation.gd" id="1_6ln08"]
+
+[node name="TriggerAnimation" type="AnimationPlayer"]
+callback_mode_process = 0
+script = ExtResource("1_6ln08")

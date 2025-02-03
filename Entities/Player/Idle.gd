@@ -14,6 +14,8 @@ func physics_update(_delta: float) -> void:
 	player.velocity *= Vector3(0.8, 1, 0.8)
 	
 	#Transition States
+	#if player.in_dialogue:
+		#finished.emit(DIALOGUE)
 	if(!player.is_on_floor()):
 		finished.emit(FALLING)
 	elif(Input.is_action_just_pressed("jump") and player.jumps_left > 0):
@@ -26,7 +28,9 @@ func physics_update(_delta: float) -> void:
 			finished.emit(SPRINTING)
 		else:
 			finished.emit(WALKING)
-			
+	elif (Input.is_action_just_pressed("interact")):
+		player.try_interact()
+	
 	player.apply_gravity(_delta)
 	player.move_and_slide()
 

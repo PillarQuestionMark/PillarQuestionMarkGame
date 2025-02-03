@@ -1,14 +1,14 @@
-[gd_scene load_steps=19 format=3 uid="uid://bi3jsbux6tgru"]
+[gd_scene load_steps=19 format=3 uid="uid://c3xqw80hlhd1n"]
 
-[ext_resource type="ArrayMesh" uid="uid://r21fu3qtohga" path="res://player/feo.obj" id="1_fyoth"]
-[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="2_0odg0"]
-[ext_resource type="Material" uid="uid://1ddv7fifegy7" path="res://player/material_head.tres" id="2_1a7iu"]
-[ext_resource type="Material" uid="uid://d1hwpmu8cx3fc" path="res://player/material_leg.tres" id="3_mw18s"]
-[ext_resource type="Material" uid="uid://dvkqvq4cytdp4" path="res://player/material_body.tres" id="4_yjbvh"]
-[ext_resource type="Material" uid="uid://cie52pam3snu7" path="res://player/material_scarf.tres" id="5_kcviv"]
-[ext_resource type="Material" uid="uid://b581oewwfjj7g" path="res://player/material_hand.tres" id="6_tcu3d"]
-[ext_resource type="Theme" uid="uid://ews1me176sme" path="res://Scenes/main_menu_theme.tres" id="8_gyfsj"]
-[ext_resource type="AudioStream" uid="uid://cq4r7yft33ly7" path="res://Scenes/main_menu_music.mp3" id="9_g6uco"]
+[ext_resource type="Script" path="res://Scenes/file_select.gd" id="1_u4ltf"]
+[ext_resource type="ArrayMesh" uid="uid://r21fu3qtohga" path="res://player/feo.obj" id="2_x01nu"]
+[ext_resource type="Material" uid="uid://1ddv7fifegy7" path="res://player/material_head.tres" id="3_34jc1"]
+[ext_resource type="Material" uid="uid://d1hwpmu8cx3fc" path="res://player/material_leg.tres" id="4_j4sko"]
+[ext_resource type="Material" uid="uid://dvkqvq4cytdp4" path="res://player/material_body.tres" id="5_8nkma"]
+[ext_resource type="Material" uid="uid://cie52pam3snu7" path="res://player/material_scarf.tres" id="6_f1dda"]
+[ext_resource type="Material" uid="uid://b581oewwfjj7g" path="res://player/material_hand.tres" id="7_kurao"]
+[ext_resource type="Theme" uid="uid://ews1me176sme" path="res://Scenes/main_menu_theme.tres" id="8_b7aig"]
+[ext_resource type="AudioStream" uid="uid://cq4r7yft33ly7" path="res://Scenes/main_menu_music.mp3" id="9_c6be6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p81pn"]
 albedo_color = Color(0.494118, 0.396078, 0.607843, 1)
@@ -44,8 +44,8 @@ ambient_light_energy = 0.5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gfnoa"]
 bg_color = Color(0.101961, 0.121569, 0.180392, 0.588235)
 
-[node name="MainMenu" type="Node"]
-script = ExtResource("2_0odg0")
+[node name="Menu" type="Node"]
+script = ExtResource("1_u4ltf")
 
 [node name="Background" type="Node3D" parent="."]
 
@@ -185,17 +185,17 @@ material = SubResource("StandardMaterial3D_usw7t")
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="Background"]
 transform = Transform3D(0.663261, 0, -0.748389, 0, 1, 0, 0.748389, 0, 0.663261, 2, 2.27662, -6.96725)
-mesh = ExtResource("1_fyoth")
-surface_material_override/0 = ExtResource("2_1a7iu")
-surface_material_override/1 = ExtResource("3_mw18s")
-surface_material_override/2 = ExtResource("3_mw18s")
-surface_material_override/3 = ExtResource("4_yjbvh")
-surface_material_override/4 = ExtResource("4_yjbvh")
-surface_material_override/5 = ExtResource("5_kcviv")
-surface_material_override/6 = ExtResource("5_kcviv")
-surface_material_override/7 = ExtResource("5_kcviv")
-surface_material_override/8 = ExtResource("6_tcu3d")
-surface_material_override/9 = ExtResource("6_tcu3d")
+mesh = ExtResource("2_x01nu")
+surface_material_override/0 = ExtResource("3_34jc1")
+surface_material_override/1 = ExtResource("4_j4sko")
+surface_material_override/2 = ExtResource("4_j4sko")
+surface_material_override/3 = ExtResource("5_8nkma")
+surface_material_override/4 = ExtResource("5_8nkma")
+surface_material_override/5 = ExtResource("6_f1dda")
+surface_material_override/6 = ExtResource("6_f1dda")
+surface_material_override/7 = ExtResource("6_f1dda")
+surface_material_override/8 = ExtResource("7_kurao")
+surface_material_override/9 = ExtResource("7_kurao")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Background"]
 environment = SubResource("Environment_bce4g")
@@ -208,11 +208,12 @@ shadow_enabled = true
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_right = 0.247951
-anchor_bottom = 1.0
-offset_right = 0.359985
+anchor_right = 0.251423
+anchor_bottom = 1.53858
+offset_right = 2.36041
+offset_bottom = -349.0
 grow_vertical = 2
-theme = ExtResource("8_gyfsj")
+theme = ExtResource("8_b7aig")
 theme_override_styles/panel = SubResource("StyleBoxFlat_gfnoa")
 metadata/_edit_use_anchors_ = true
 
@@ -230,30 +231,193 @@ alignment = 1
 
 [node name="Title" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "CSE 5912 Game"
+text = "Select Save File"
 horizontal_alignment = 1
 
-[node name="StartButton" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="File1" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../File3")
+focus_neighbor_right = NodePath("../../../../Delete1")
+focus_neighbor_bottom = NodePath("../File2")
 theme_override_font_sizes/font_size = 42
-text = "Start (A)"
+text = "File 1
 
-[node name="OptionsButton" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 42
-text = "Options (?)"
+"
 
-[node name="QuitButton" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Time" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/File1"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -6.5
+offset_right = 155.0
+offset_bottom = 25.5
+grow_vertical = 2
+scale = Vector2(1, 1.00463)
+theme_override_font_sizes/font_size = 18
+text = "Time: 0:00:00"
+
+[node name="Flames" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/File1"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = 15.5
+offset_right = 127.0
+offset_bottom = 47.5
+grow_vertical = 2
+scale = Vector2(1, 1.00439)
+theme_override_font_sizes/font_size = 18
+text = "Flames: 0"
+
+[node name="File2" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_left = NodePath("../../../../Delete2")
+focus_neighbor_top = NodePath("../File1")
+focus_neighbor_right = NodePath("../../../../Delete2")
+focus_neighbor_bottom = NodePath("../File3")
 theme_override_font_sizes/font_size = 42
-text = "Quit (B)"
+text = "File 2
+
+"
+
+[node name="Time" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/File2"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -7.0
+offset_right = 155.0
+offset_bottom = 25.0
+grow_vertical = 2
+scale = Vector2(1, 1.00463)
+theme_override_font_sizes/font_size = 18
+text = "Time: 0:00:00"
+
+[node name="Flames" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/File2"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = 15.5
+offset_right = 127.0
+offset_bottom = 47.5
+grow_vertical = 2
+scale = Vector2(1, 0.986076)
+theme_override_font_sizes/font_size = 18
+text = "Flames: 0"
+
+[node name="File3" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_left = NodePath("../../../../Delete3")
+focus_neighbor_top = NodePath("../File2")
+focus_neighbor_right = NodePath("../../../../Delete3")
+focus_neighbor_bottom = NodePath("../File1")
+theme_override_font_sizes/font_size = 42
+text = "File 3
+
+"
+
+[node name="Time" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/File3"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -7.0
+offset_right = 155.0
+offset_bottom = 25.0
+grow_vertical = 2
+scale = Vector2(1, 1.00463)
+theme_override_font_sizes/font_size = 18
+text = "Time: 0:00:00"
+
+[node name="Flames" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/File3"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = 15.5
+offset_right = 127.0
+offset_bottom = 47.5
+grow_vertical = 2
+scale = Vector2(1, 1.00439)
+theme_override_font_sizes/font_size = 18
+text = "Flames: 0"
+
+[node name="Delete1" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.27
+anchor_right = 0.275
+offset_left = -19.04
+offset_top = 112.0
+offset_right = 120.96
+offset_bottom = 236.0
+scale = Vector2(1, 1.07447)
+size_flags_vertical = 3
+focus_neighbor_left = NodePath("../PanelContainer/MarginContainer/VBoxContainer/File1")
+focus_neighbor_top = NodePath("../Delete3")
+focus_neighbor_right = NodePath("../PanelContainer/MarginContainer/VBoxContainer/File1")
+focus_neighbor_bottom = NodePath("../Delete2")
+theme_override_font_sizes/font_size = 42
+text = "Delete
+
+"
+
+[node name="Delete2" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.27
+anchor_right = 0.275
+offset_left = -19.04
+offset_top = 280.0
+offset_right = 120.96
+offset_bottom = 404.0
+scale = Vector2(1, 1.07447)
+size_flags_vertical = 3
+focus_neighbor_left = NodePath("../PanelContainer/MarginContainer/VBoxContainer/File2")
+focus_neighbor_top = NodePath("../Delete1")
+focus_neighbor_right = NodePath("../PanelContainer/MarginContainer/VBoxContainer/File2")
+focus_neighbor_bottom = NodePath("../Delete3")
+theme_override_font_sizes/font_size = 42
+text = "Delete
+
+"
+
+[node name="Delete3" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.27
+anchor_right = 0.275
+offset_left = -19.04
+offset_top = 444.0
+offset_right = 120.96
+offset_bottom = 568.0
+scale = Vector2(1, 1.07447)
+size_flags_vertical = 3
+focus_neighbor_left = NodePath("../PanelContainer/MarginContainer/VBoxContainer/File3")
+focus_neighbor_top = NodePath("../Delete2")
+focus_neighbor_right = NodePath("../PanelContainer/MarginContainer/VBoxContainer/File3")
+focus_neighbor_bottom = NodePath("../Delete1")
+theme_override_font_sizes/font_size = 42
+text = "Delete
+
+"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_g6uco")
+stream = ExtResource("9_c6be6")
 autoplay = true
 bus = &"Music"
 
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/File1" to="." method="_on_file_pressed" binds= [1]]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/File2" to="." method="_on_file_pressed" binds= [2]]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/File3" to="." method="_on_file_pressed" binds= [3]]
+[connection signal="pressed" from="CanvasLayer/Delete1" to="." method="_on_file_delete" binds= [1]]
+[connection signal="pressed" from="CanvasLayer/Delete2" to="." method="_on_file_delete" binds= [2]]
+[connection signal="pressed" from="CanvasLayer/Delete3" to="." method="_on_file_delete" binds= [3]]

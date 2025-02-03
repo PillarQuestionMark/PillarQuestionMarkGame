@@ -33,6 +33,8 @@ func physics_update(_delta: float) -> void:
 			player.get_pivot().look_at_from_position(player.position, player.position + normal, Vector3.UP)
 	elif (Input.is_action_just_pressed("slam") && player.slam_unlocked):
 		finished.emit(SLAMMING)
+	elif (Input.is_action_just_pressed("interact")):
+		player.try_interact()
 		
 	player.apply_gravity(_delta / player.Slide_Gravity_Factor)
 	player.apply_speed_and_drag(player.Air_Speed, 0)

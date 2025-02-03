@@ -1,0 +1,13 @@
+{
+	"checkpoint": 0,
+	"collected_flames": [],
+	"collected_fragments": [],
+	"current_scene": "res://Scenes/Playground.tscn",
+	"dash_unlocked": false,
+	"double_jump_unlocked": false,
+	"open_dungeons": [],
+	"playtime": 0,
+	"slam_unlocked": false,
+	"sprint_unlocked": false,
+	"wall_slide_unlocked": false
+}

@@ -20,6 +20,8 @@ func physics_update(_delta: float) -> void:
 		finished.emit(JUMPING)
 	elif (Input.is_action_just_pressed("slam")):
 		finished.emit(SLAMMING)
+	elif (Input.is_action_just_pressed("interact")):
+		player.try_interact()
 		
 	player.move_and_slide()
 

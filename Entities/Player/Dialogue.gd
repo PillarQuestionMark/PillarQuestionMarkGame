@@ -10,17 +10,22 @@ func update(_delta: float) -> void:
 
 ## Called by the state machine on the engine's physics update tick.
 func physics_update(_delta: float) -> void:
-	if (Input.is_action_just_pressed("interact")):
-		player.try_interact()
+	player.apply_gravity(_delta)
+	player.move_and_slide()
 
 ## Called by the state machine upon changing the active state. The `data` parameter
 ## is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(previous_state_path: String, data := {}) -> void:
-	player.jump_sound.play()
-	player.velocity.y = player.Jump_Impulse
-	finished.emit(FALLING)
+	player.velocity = Vector3.ZERO
 
 ## Called by the state machine before changing the active state. Use this function
 ## to clean up the state.
 func exit() -> void:
 	pass
+
+func _ready() -> void:
+	super()
+	#EventBus.dialogue_finished.connect(func():
+		#player.in_dialogue = false
+		##finished.emit(IDLE)
+	#)
