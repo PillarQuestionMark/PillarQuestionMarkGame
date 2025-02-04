@@ -20,7 +20,9 @@ func physics_update(_delta: float) -> void:
 	if (player.get_move_direction().is_equal_approx(Vector3.ZERO)):
 		finished.emit(FALLING)
 		
+	## I want to bring back wall jumping not counting towards or with max jumps
 	if (Input.is_action_just_pressed("jump") and player.jumps_left > 0):
+	##if (Input.is_action_just_pressed("jump")):
 		player.jumps_left -= 1
 		player.velocity = player.velocity/2 + player.get_wall_normal() * player.Wall_Kick
 		#player.velocity += player.get_wall_normal() * player.Wall_Kick # fun mode
@@ -31,7 +33,7 @@ func physics_update(_delta: float) -> void:
 		## for some reason, this sometimes gets an error otherwise...
 		if (player.position != player.position + normal):
 			player.get_pivot().look_at_from_position(player.position, player.position + normal, Vector3.UP)
-	elif (Input.is_action_just_pressed("slam") && player.slam_unlocked):
+	elif (Input.is_action_just_pressed("slam") && PlayerData.data["slam_unlocked"]):
 		finished.emit(SLAMMING)
 	elif (Input.is_action_just_pressed("interact")):
 		player.try_interact()

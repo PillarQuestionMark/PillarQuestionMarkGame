@@ -20,11 +20,11 @@ func physics_update(_delta: float) -> void:
 		finished.emit(WALL_SLIDING)
 	elif(Input.is_action_just_pressed("dash") && player.can_dash):
 		finished.emit(DASHING)
-	elif (Input.is_action_just_pressed("slam")):
+	elif (Input.is_action_just_pressed("slam") && PlayerData.data["slam_unlocked"]):
 		finished.emit(SLAMMING)
 	elif(player.is_on_floor()):
 		if (player.get_move_direction() != Vector3.ZERO):
-			if(Input.is_action_pressed("sprint")):
+			if(Input.is_action_pressed("sprint") && PlayerData.data["sprint_unlocked"]):
 				finished.emit(SPRINTING)
 			else:
 				finished.emit(WALKING)

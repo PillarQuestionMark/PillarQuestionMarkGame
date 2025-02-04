@@ -18,7 +18,7 @@ func physics_update(_delta: float) -> void:
 	if (Input.is_action_just_pressed("jump") and player.jumps_left > 0):
 		player.jumps_left -= 1
 		finished.emit(JUMPING)
-	elif (Input.is_action_just_pressed("slam")):
+	elif (Input.is_action_just_pressed("slam") && PlayerData.data["slam_unlocked"]):
 		finished.emit(SLAMMING)
 	elif (Input.is_action_just_pressed("interact")):
 		player.try_interact()

@@ -4,7 +4,7 @@
 	"collected_fragments": [],
 	"current_scene": "res://Scenes/Playground.tscn",
 	"dash_unlocked": false,
-	"double_jump_unlocked": false,
+	"max_jumps": 0,
 	"open_dungeons": [],
 	"playtime": 0,
 	"slam_unlocked": false,
