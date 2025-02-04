@@ -13,17 +13,18 @@ func update(_delta: float) -> void:
 ## Called by the state machine on the engine's physics update tick.
 func physics_update(_delta: float) -> void:
 	#Transition states
-	if(canDoubleJump and Input.is_action_just_pressed("jump")):
-		finished.emit(DOUBLE_JUMPING)
+	if(Input.is_action_just_pressed("jump") and player.jumps_left > 0):
+		player.jumps_left -= 1
+		finished.emit(JUMPING)
 	elif(player.can_wall_slide && player.velocity.y < 0 && player.is_on_wall_only()):
 		finished.emit(WALL_SLIDING)
-	elif(Input.is_action_pressed("dash") && player.can_dash):
+	elif(Input.is_action_just_pressed("dash") && player.can_dash):
 		finished.emit(DASHING)
-	elif (Input.is_action_pressed("slam")):
+	elif (Input.is_action_just_pressed("slam") && PlayerData.data["slam_unlocked"]):
 		finished.emit(SLAMMING)
 	elif(player.is_on_floor()):
 		if (player.get_move_direction() != Vector3.ZERO):
-			if(Input.is_action_pressed("sprint")):
+			if(Input.is_action_pressed("sprint") && PlayerData.data["sprint_unlocked"]):
 				finished.emit(SPRINTING)
 			else:
 				finished.emit(WALKING)
@@ -40,7 +41,7 @@ func physics_update(_delta: float) -> void:
 ## Called by the state machine upon changing the active state. The `data` parameter
 ## is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(previous_state_path: String, data := {}) -> void:
-	canDoubleJump = data["canDoubleJump"]
+	pass
 
 ## Called by the state machine before changing the active state. Use this function
 ## to clean up the state.
