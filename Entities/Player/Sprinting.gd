@@ -38,8 +38,9 @@ func physics_update(_delta: float) -> void:
 ## is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(previous_state_path: String, data := {}) -> void:
 	player.touched_ground()
+	player.wall_slide_particles.emitting = true
 
 ## Called by the state machine before changing the active state. Use this function
 ## to clean up the state.
 func exit() -> void:
-	pass
+	player.wall_slide_particles.emitting = false

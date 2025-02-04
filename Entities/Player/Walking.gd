@@ -23,7 +23,7 @@ func physics_update(_delta: float) -> void:
 		finished.emit(DASHING)
 	elif(player.get_move_direction() == Vector3.ZERO):
 		finished.emit(IDLE)
-	elif(Input.is_action_just_pressed("sprint")):
+	elif(Input.is_action_just_pressed("sprint") && PlayerData.data["sprint_unlocked"]):
 		finished.emit(SPRINTING)
 	elif (Input.is_action_just_pressed("interact")):
 		player.try_interact()
