@@ -21,9 +21,9 @@ func physics_update(_delta: float) -> void:
 		finished.emit(FALLING)
 		
 	## I want to bring back wall jumping not counting towards or with max jumps
-	if (Input.is_action_just_pressed("jump") and player.jumps_left > 0):
-	##if (Input.is_action_just_pressed("jump")):
-		player.jumps_left -= 1
+	##if (Input.is_action_just_pressed("jump") and player.jumps_left > 0):
+	if (Input.is_action_just_pressed("jump")):
+		##player.jumps_left -= 1
 		player.velocity = player.velocity/2 + player.get_wall_normal() * player.Wall_Kick
 		#player.velocity += player.get_wall_normal() * player.Wall_Kick # fun mode
 		finished.emit(JUMPING)
