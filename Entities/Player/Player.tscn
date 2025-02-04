@@ -7,7 +7,6 @@
 [ext_resource type="Material" uid="uid://d1hwpmu8cx3fc" path="res://player/material_leg.tres" id="4_3t3rr"]
 [ext_resource type="Script" path="res://Entities/Player/Jumping.gd" id="4_co1vt"]
 [ext_resource type="Material" uid="uid://dvkqvq4cytdp4" path="res://player/material_body.tres" id="5_wv7w7"]
-[ext_resource type="Script" path="res://Entities/Player/DoubleJumping.gd" id="5_y7164"]
 [ext_resource type="Script" path="res://Entities/Player/Walking.gd" id="6_fnbi7"]
 [ext_resource type="Material" uid="uid://cie52pam3snu7" path="res://player/material_scarf.tres" id="6_oli5n"]
 [ext_resource type="Material" uid="uid://b581oewwfjj7g" path="res://player/material_hand.tres" id="7_2tgxx"]
@@ -95,9 +94,6 @@ script = ExtResource("9_4escj")
 [node name="Jumping" type="Node" parent="StateMachine"]
 script = ExtResource("4_co1vt")
 
-[node name="DoubleJumping" type="Node" parent="StateMachine"]
-script = ExtResource("5_y7164")
-
 [node name="Walking" type="Node" parent="StateMachine"]
 script = ExtResource("6_fnbi7")
 
@@ -118,9 +114,6 @@ script = ExtResource("12_c7jxc")
 
 [node name="Dialogue" type="Node" parent="StateMachine"]
 script = ExtResource("18_b8em8")
-
-[node name="DashCooldown" type="Timer" parent="."]
-one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
@@ -145,4 +138,3 @@ shape = SubResource("CylinderShape3D_ajont")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 radius = 1.0
 
-[connection signal="timeout" from="DashCooldown" to="." method="restore_dash"]
