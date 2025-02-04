@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody3D
 @export_group("Movement")
 @export_range(0.0, 100.0, 0.1) var Jump_Impulse : float = 25.0
+@export_range(0.0, 100.0, 0.1) var Slam_Jump_Impulse : float = 40.0
 @export_range(0.0, 100.0, 0.1) var Air_Speed : float = 10.0
 @export_range(0.0, 100.0, 0.1) var Walk_Speed : float = 10.0
 @export_range(0.0, 100.0, 0.1) var Sprint_Speed : float = 20.0
@@ -24,11 +25,14 @@ var can_wall_slide : bool = true
 
 var jumps_left : int = 0 # how many jumps left
 
+var slamjump_unlocked : bool = true
+
 @onready var jump_sound: AudioStreamPlayer = %AudioStreamPlayer
 @onready var wall_slide_particles: GPUParticles3D = %WallSlideParticles
 @onready var mesh : MeshInstance3D = $Pivot/MeshInstance3D
 
 @onready var interactor: Interactor = %Interactor
+@onready var slamjump_window: Timer = %SlamjumpWindow
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -96,7 +100,15 @@ func touched_ground() -> void:
 
 func try_interact() -> void:
 	interactor.try_interact()
-	
+
+func can_slamjump() -> bool:
+	if not slamjump_unlocked:
+		return false
+	return not slamjump_window.is_stopped()
+
+func start_slamjump_window() -> void:
+	slamjump_window.start()
+
 ## used to DEBUG/DEV mode of toggling unlocks of abilities
 func _toggle_unlocks() -> void:
 	if Input.is_action_just_pressed("toggle_jumps"):
@@ -120,4 +132,3 @@ func _toggle_unlocks() -> void:
 		PlayerData.data["wall_slide_unlocked"] = !PlayerData.data["wall_slide_unlocked"]
 		print("wall_slide = ")
 		print(PlayerData.data["wall_slide_unlocked"])
-	
