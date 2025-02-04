@@ -12,7 +12,7 @@ func update(_delta: float) -> void:
 
 ## Called by the state machine on the engine's physics update tick.
 func physics_update(_delta: float) -> void:
-	print("erm")
+	Logger.debug("player: erm")
 	
 	if (!player.is_on_wall_only()):
 		finished.emit(FALLING)

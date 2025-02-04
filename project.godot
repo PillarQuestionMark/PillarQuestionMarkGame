@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Logger="*res://Autoload/logger.gd"
 EventBus="*res://Autoload/event_bus.gd"
 PlayerData="*res://Entities/Player/player_data.gd"
 

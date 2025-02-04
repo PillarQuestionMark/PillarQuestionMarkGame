@@ -46,8 +46,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 	dash_timer.one_shot = true
 	dash_timer.timeout.connect(_finish_dash)
 	dash_timer.start()
-	
-	print("pikmin 5")
+  
+	Logger.debug("player: pikmin 5")
 
 ## Called by the state machine before changing the active state. Use this function
 ## to clean up the state.

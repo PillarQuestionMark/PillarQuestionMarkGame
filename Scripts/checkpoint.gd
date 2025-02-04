@@ -16,4 +16,4 @@ func set_player(player : CharacterBody3D) -> void:
 ## Checkpoint <- Area3D (link body_entered here) <- CollisionShape3D 
 func _on_area_3d_body_entered(_body: Node3D) -> void:
 	PlayerData.data["checkpoint"] = id
-	print("CHECKPOINT: " + String.num_int64(id))
+	Logger.info("checkpoint: player entered checkpoint %d" % id)
