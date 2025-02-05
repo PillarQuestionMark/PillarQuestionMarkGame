@@ -21,6 +21,7 @@ Logger="*res://Autoload/logger.gd"
 EventBus="*res://Autoload/event_bus.gd"
 PlayerData="*res://Entities/Player/player_data.gd"
 DevConsoleScreen="*res://Scenes/screens/dev_console_screen/dev_console_screen.tscn"
+DevConsoleAPI="*res://Autoload/dev_console_api.tscn"
 
 [dotnet]
 
@@ -36,6 +37,7 @@ interactables="Group for all nodes which use the interactables script."
 save=""
 checkpoint=""
 flames="flames"
+player=""
 
 [input]
 

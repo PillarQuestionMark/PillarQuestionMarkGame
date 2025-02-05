@@ -173,7 +173,7 @@ func _on_console_input_text_submitted(text: String) -> void:
 		if e.parse(code, ["Logger", "EventBus", "PlayerData"]) != OK:
 			console.append_text("[color=red]failed to parse expression \"%s\": %s[/color]\n" % [code, e.get_error_text()])
 			return
-		var result = e.execute([Logger, EventBus, PlayerData], self)
+		var result = e.execute([Logger, EventBus, PlayerData], DevConsoleAPI)
 		if e.has_execute_failed():
 			console.append_text("[color=red]failed to execute expression \"%s\": %s[/color]\n" % [code, e.get_error_text()])
 			return
