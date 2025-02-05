@@ -49,8 +49,10 @@ func _process(delta: float) -> void:
 	physics_1.disabled = not get_tree().paused
 	physics_10.disabled = not get_tree().paused
 	
-	jump_unlock.button_pressed = (PlayerData.data["max_jumps"] > 0)
-	double_jump_unlock.button_pressed = (PlayerData.data["max_jumps"] > 1)
+	if PlayerData.data["max_jumps"] > 1: # must check double_jump before jump, or else jump will disable double_jump
+		double_jump_unlock.button_pressed = (PlayerData.data["max_jumps"] > 1)
+	else:
+		jump_unlock.button_pressed = (PlayerData.data["max_jumps"] > 0)
 	sprint_unlock.button_pressed = PlayerData.data["sprint_unlocked"]
 	dash_unlock.button_pressed = PlayerData.data["dash_unlocked"]
 	slam_unlock.button_pressed = PlayerData.data["slam_unlocked"]
@@ -154,11 +156,12 @@ func _on_console_input_text_submitted(text: String) -> void:
 	if text == "help":
 		console.append_text("> help\n")
 		console.append_text("help               print help\n")
-		console.append_text("debug [lb]MESSAGE[rb]    log debug message\n")
-		console.append_text("info  [lb]MESSAGE[rb]    log info message\n")
-		console.append_text("warn  [lb]MESSAGE[rb]    log warning message\n")
-		console.append_text("error [lb]MESSAGE[rb]    log error message\n")
-		console.append_text("run   [lb]EXPRESSION[rb] evaluate expression\n")
+		console.append_text("debug   [lb]MESSAGE[rb]    log debug message\n")
+		console.append_text("info    [lb]MESSAGE[rb]    log info message\n")
+		console.append_text("warn    [lb]MESSAGE[rb]    log warning message\n")
+		console.append_text("error   [lb]MESSAGE[rb]    log error message\n")
+		console.append_text("trigger [lb]TRIGGER[rb]    trigger interactables\n")
+		console.append_text("run     [lb]EXPRESSION[rb] evaluate expression\n")
 	elif text.begins_with("debug "):
 		Logger.debug(text.trim_prefix("debug "))
 	elif text.begins_with("info "):
@@ -167,7 +170,11 @@ func _on_console_input_text_submitted(text: String) -> void:
 		Logger.warning(text.trim_prefix("warn "))
 	elif text.begins_with("error "):
 		Logger.error(text.trim_prefix("error "))
+	elif text.begins_with("trigger "):
+		console.append_text("> %s\n" % text)
+		EventBus.trigger.emit(text.trim_prefix("trigger "))
 	elif text.begins_with("run "):
+		console.append_text("> %s\n" % text)
 		var code := text.trim_prefix("run ")
 		var e := Expression.new()
 		if e.parse(code, ["Logger", "EventBus", "PlayerData"]) != OK:
@@ -177,7 +184,6 @@ func _on_console_input_text_submitted(text: String) -> void:
 		if e.has_execute_failed():
 			console.append_text("[color=red]failed to execute expression \"%s\": %s[/color]\n" % [code, e.get_error_text()])
 			return
-		console.append_text("> run %s\n" % code)
 		console.append_text("%s\n" % result)
 	else:
 		console.append_text("[color=red]unknown command \"%s\"[/color]\n" % text)
