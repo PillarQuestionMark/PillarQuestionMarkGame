@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bw6emckixywbp"]
+[gd_scene load_steps=8 format=3 uid="uid://bw6emckixywbp"]
 
 [ext_resource type="Script" path="res://Scenes/screens/dev_console_screen/dev_console_screen.gd" id="1_p651c"]
 [ext_resource type="Script" path="res://Scenes/screens/dev_console_screen/panel_container.gd" id="2_1mi0i"]
 [ext_resource type="FontFile" uid="uid://0emee0kxhisl" path="res://Scenes/screens/dev_console_screen/terminus-ttf-4.49.3/TerminusTTF-4.49.3.ttf" id="3_7c7d2"]
-[ext_resource type="Script" path="res://Scenes/screens/dev_console_screen/console_input.gd" id="3_mc256"]
 [ext_resource type="FontFile" uid="uid://dhvev40k8ndad" path="res://Scenes/screens/dev_console_screen/terminus-ttf-4.49.3/TerminusTTF-Italic-4.49.3.ttf" id="4_tq1fu"]
 [ext_resource type="FontFile" uid="uid://cdyxl085r8o0h" path="res://Scenes/screens/dev_console_screen/terminus-ttf-4.49.3/TerminusTTF-Bold-Italic-4.49.3.ttf" id="5_5ucyc"]
 [ext_resource type="FontFile" uid="uid://rst866bwl6mf" path="res://Scenes/screens/dev_console_screen/terminus-ttf-4.49.3/TerminusTTF-Bold-4.49.3.ttf" id="6_7khh1"]
@@ -60,7 +59,6 @@ theme_override_fonts/font = ExtResource("3_7c7d2")
 placeholder_text = ">"
 clear_button_enabled = true
 flat = true
-script = ExtResource("3_mc256")
 
 [node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/HBoxContainer"]
 visible = false
@@ -156,7 +154,7 @@ select_all_on_focus = true
 [connection signal="on_hiding" from="PanelContainer" to="." method="_on_panel_container_on_hiding"]
 [connection signal="on_showing" from="PanelContainer" to="." method="_on_panel_container_on_showing"]
 [connection signal="on_shown" from="PanelContainer" to="." method="_on_panel_container_on_shown"]
-[connection signal="command" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/ConsoleInput" to="." method="_on_console_input_command"]
+[connection signal="text_submitted" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/ConsoleInput" to="." method="_on_console_input_text_submitted"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer/Paused" to="." method="_on_paused_toggled"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer/Advance1Frame" to="." method="_on_advance_1_frame_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer/Advance10Frames" to="." method="_on_advance_10_frames_pressed"]

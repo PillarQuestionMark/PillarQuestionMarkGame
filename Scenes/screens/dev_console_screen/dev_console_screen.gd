@@ -111,7 +111,9 @@ func _on_wall_slide_unlock_toggled(toggled_on: bool) -> void:
 	PlayerData.data["wall_slide_unlocked"] = toggled_on
 
 
-func _on_console_input_command(text: String) -> void:
+func _on_console_input_text_submitted(text: String) -> void:
+	console_input.text = ""
+	
 	if text == "help":
 		console.append_text("> help\n")
 		console.append_text("help               print help\n")
@@ -127,8 +129,20 @@ func _on_console_input_command(text: String) -> void:
 		Logger.warning(text.trim_prefix("warn "))
 	elif text.begins_with("error "):
 		Logger.error(text.trim_prefix("error "))
+	elif text.begins_with("run "):
+		var code := text.trim_prefix("run ")
+		var e := Expression.new()
+		if e.parse(code, ["Logger", "EventBus", "PlayerData"]) != OK:
+			console.append_text("[color=red]failed to parse expression \"%s\": %s[/color]\n" % [code, e.get_error_text()])
+			return
+		var result = e.execute([Logger, EventBus, PlayerData], self)
+		if e.has_execute_failed():
+			console.append_text("[color=red]failed to execute expression \"%s\": %s[/color]\n" % [code, e.get_error_text()])
+			return
+		console.append_text("> run %s\n" % code)
+		console.append_text("%s\n" % result)
 	else:
-		console.append_text("[color=red]unknown command \"%s\"[/color]" % text)
+		console.append_text("[color=red]unknown command \"%s\"[/color]\n" % text)
 
 
 func _on_flames_value_changed(value: float) -> void:
