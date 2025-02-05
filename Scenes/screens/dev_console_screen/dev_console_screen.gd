@@ -16,6 +16,8 @@ extends CanvasLayer
 
 @onready var flames: SpinBox = %Flames
 
+@onready var _original_mouse_mode := Input.mouse_mode
+
 
 func _ready() -> void:
 	Logger.on_logging.connect(_on_logger_logging)
@@ -45,6 +47,7 @@ func _process(delta: float) -> void:
 
 func _on_panel_container_on_showing() -> void:
 	get_tree().paused = true
+	_original_mouse_mode = Input.mouse_mode
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	visible = true
 	
@@ -52,7 +55,7 @@ func _on_panel_container_on_showing() -> void:
 
 
 func _on_panel_container_on_hiding() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Input.mouse_mode = _original_mouse_mode
 
 
 func _on_panel_container_on_shown() -> void:
