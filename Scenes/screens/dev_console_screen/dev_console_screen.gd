@@ -9,6 +9,7 @@ extends CanvasLayer
 
 @onready var jump_unlock := %JumpUnlock
 @onready var double_jump_unlock := %DoubleJumpUnlock
+@onready var sprint_unlock := %SprintUnlock
 @onready var dash_unlock := %DashUnlock
 @onready var slam_unlock := %SlamUnlock
 @onready var wall_slide_unlock := %WallSlideUnlock
@@ -17,7 +18,6 @@ extends CanvasLayer
 
 
 func _process(delta: float) -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	paused.button_pressed = get_tree().paused
 	advance_1_frame.disabled = not get_tree().paused
 	advance_10_frames.disabled = not get_tree().paused
@@ -42,6 +42,7 @@ func _on_panel_container_on_shown() -> void:
 
 
 func _on_panel_container_on_hidden() -> void:
+	get_tree().paused = false
 	visible = false
 
 
@@ -67,25 +68,29 @@ func _on_advance_10_frames_pressed() -> void:
 func _on_jump_unlock_toggled(toggled_on: bool) -> void:
 	if not toggled_on: double_jump_unlock.button_pressed = false
 	
-	pass # TODO: lock/unlock
+	PlayerData.data["max_jumps"] = 1 if toggled_on else 0
 
 
 func _on_double_jump_unlock_toggled(toggled_on: bool) -> void:
 	if toggled_on: jump_unlock.button_pressed = true
 	
-	pass # TODO: lock/unlock
+	PlayerData.data["max_jumps"] = 2 if toggled_on else 1
+
+
+func _on_sprint_unlock_toggled(toggled_on: bool) -> void:
+	PlayerData.data["sprint_unlocked"] = toggled_on
 
 
 func _on_dash_unlock_toggled(toggled_on: bool) -> void:
-	pass # TODO: lock/unlock
+	PlayerData.data["dash_unlocked"] = toggled_on
 
 
 func _on_slam_unlock_toggled(toggled_on: bool) -> void:
-	pass # TODO: lock/unlock
+	PlayerData.data["slam_unlocked"] = toggled_on
 
 
 func _on_wall_slide_unlock_toggled(toggled_on: bool) -> void:
-	pass # TODO: lock/unlock
+	PlayerData.data["wall_slide_unlocked"] = toggled_on
 
 
 func _on_console_input_command(text: String) -> void:

@@ -104,6 +104,11 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "doublejump"
 
+[node name="SprintUnlock" type="CheckButton" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "jump"
+
 [node name="DashUnlock" type="CheckButton" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -143,6 +148,7 @@ select_all_on_focus = true
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer/Advance10Frames" to="." method="_on_advance_10_frames_pressed"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/JumpUnlock" to="." method="_on_jump_unlock_toggled"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/DoubleJumpUnlock" to="." method="_on_double_jump_unlock_toggled"]
+[connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/SprintUnlock" to="." method="_on_sprint_unlock_toggled"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/DashUnlock" to="." method="_on_dash_unlock_toggled"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/SlamUnlock" to="." method="_on_slam_unlock_toggled"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/WallSlideUnlock" to="." method="_on_wall_slide_unlock_toggled"]

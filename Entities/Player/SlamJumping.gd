@@ -17,7 +17,7 @@ func physics_update(_delta: float) -> void:
 ## is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(previous_state_path: String, data := {}) -> void:
 	player.jump_sound.play()
-	player.velocity.y = player.Jump_Impulse
+	player.velocity.y = player.Slam_Jump_Impulse
 	finished.emit(FALLING)
 
 ## Called by the state machine before changing the active state. Use this function

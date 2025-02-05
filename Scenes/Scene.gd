@@ -2,7 +2,10 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Logger.info("playground: loading save data")
 	_load_data()
+	
+	Logger.info("playground: ready")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

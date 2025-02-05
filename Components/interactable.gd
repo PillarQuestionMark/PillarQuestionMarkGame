@@ -39,5 +39,5 @@ class_name Interactable
 signal on_interacting
 
 func interact() -> void:
-	print("[%s] on_interacting" % get_path())
+	Logger.info("interactable %s: interacted" % get_path())
 	on_interacting.emit()

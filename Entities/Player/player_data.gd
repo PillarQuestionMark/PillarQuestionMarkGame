@@ -17,7 +17,7 @@ var data = {
 	"open_dungeons" = [], ## id of dungeons opened already
 	"current_scene" = "res://Scenes/Playground.tscn", ## scene the player is in (or moving to)
 	"checkpoint" = 0, ## checkpoint in current scene
-	"double_jump_unlocked" = false,
+	"max_jumps" = 0,
 	"dash_unlocked" = false,
 	"sprint_unlocked" = false,
 	"slam_unlocked" = false,
@@ -26,7 +26,7 @@ var data = {
 
 ## reads the save file values into the data dictionary
 func load_data() -> void:
-	## _write_default() ## used for writing the default file (DO NOT UNCOMMENT UNLESS YOU KNOW WHAT THIS DOES)
+	##_write_default() ## used for writing the default file (DO NOT UNCOMMENT UNLESS YOU KNOW WHAT THIS DOES)
 	var save
 	var json = JSON.new() ## created for better error messages
 	if (FileAccess.file_exists(_file)):
@@ -45,7 +45,7 @@ func load_data() -> void:
 	if error == OK:
 		data = json.data
 	else:
-		print("ERROR: ", json.get_error_message(), " at line ", json.get_error_line())
+		Logger.error("playerdata: json error at line %s: %s" % [json.get_error_line(), json.get_error_message()])
 	
 	get_tree().change_scene_to_file(data["current_scene"]) ## load the scene
 	

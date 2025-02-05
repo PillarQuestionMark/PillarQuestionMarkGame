@@ -11,3 +11,6 @@ signal trigger(name: String)
 ## see dialogue_screen.gd for more info on the format.
 signal dialogue(dialogue: Array[String])
 signal dialogue_finished
+
+func _ready() -> void:
+	Logger.info("eventbus: ready")

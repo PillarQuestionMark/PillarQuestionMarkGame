@@ -12,10 +12,14 @@ func update(_delta: float) -> void:
 func physics_update(_delta: float) -> void:
 	#Transition States
 	if(!player.is_on_floor()):
-		finished.emit(FALLING, {"canDoubleJump" : true})
-	elif(Input.is_action_just_pressed("jump")):
-		finished.emit(JUMPING)
-	elif(Input.is_action_pressed("dash") && player.can_dash):
+		finished.emit(FALLING)
+	elif(Input.is_action_just_pressed("jump") and player.jumps_left > 0):
+		player.jumps_left -= 1
+		if player.can_slamjump():
+			finished.emit(SLAMJUMPING)
+		else:
+			finished.emit(JUMPING)
+	elif(Input.is_action_just_pressed("dash") && player.can_dash):
 		finished.emit(DASHING)
 	elif(player.get_move_direction() == Vector3.ZERO):
 		finished.emit(IDLE)
@@ -34,8 +38,9 @@ func physics_update(_delta: float) -> void:
 ## is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(previous_state_path: String, data := {}) -> void:
 	player.touched_ground()
+	player.wall_slide_particles.emitting = true
 
 ## Called by the state machine before changing the active state. Use this function
 ## to clean up the state.
 func exit() -> void:
-	pass
+	player.wall_slide_particles.emitting = false

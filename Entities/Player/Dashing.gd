@@ -15,9 +15,13 @@ func update(_delta: float) -> void:
 func physics_update(_delta: float) -> void:
 	player.velocity = _direction * player.Dash_Speed
 		
-	if (Input.is_action_pressed("jump") && (player.is_on_floor() || player.can_double_jump)):
-		finished.emit(JUMPING, {"canDoubleJump" : player.can_double_jump})
-	elif (Input.is_action_pressed("slam")):
+	if (Input.is_action_just_pressed("jump") and player.jumps_left > 0):
+		player.jumps_left -= 1
+		if player.can_slamjump():
+			finished.emit(SLAMJUMPING)
+		else:
+			finished.emit(JUMPING)
+	elif (Input.is_action_just_pressed("slam") && PlayerData.data["slam_unlocked"]):
 		finished.emit(SLAMMING)
 	elif (Input.is_action_just_pressed("interact")):
 		player.try_interact()
@@ -42,16 +46,14 @@ func enter(previous_state_path: String, data := {}) -> void:
 	dash_timer.one_shot = true
 	dash_timer.timeout.connect(_finish_dash)
 	dash_timer.start()
-	
-	print("pikmin 5")
-	
+  
+	Logger.debug("player: pikmin 5")
 
 ## Called by the state machine before changing the active state. Use this function
 ## to clean up the state.
 func exit() -> void:
 	if (dash_timer != null):
 		dash_timer.queue_free()
-	player.end_dash()
-	
+
 func _finish_dash() -> void:
-	finished.emit(FALLING, {"canDoubleJump" : player.can_double_jump})
+	finished.emit(FALLING)
