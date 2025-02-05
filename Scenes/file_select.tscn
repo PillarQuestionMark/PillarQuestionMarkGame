@@ -209,9 +209,9 @@ shadow_enabled = true
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_right = 0.251423
-anchor_bottom = 1.53858
+anchor_bottom = 1.0
 offset_right = 2.36041
-offset_bottom = -349.0
+offset_bottom = -0.000183105
 grow_vertical = 2
 theme = ExtResource("8_b7aig")
 theme_override_styles/panel = SubResource("StyleBoxFlat_gfnoa")
