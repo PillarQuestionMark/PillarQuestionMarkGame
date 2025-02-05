@@ -82,3 +82,7 @@ func _write_default() -> void:
 	## close the default file
 	default_file.close()
 	
+## called when you die to reload scene
+func reload() -> void:
+	save_data()
+	load_data()
