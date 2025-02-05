@@ -1,0 +1,149 @@
+[gd_scene load_steps=5 format=3 uid="uid://bw6emckixywbp"]
+
+[ext_resource type="Script" path="res://Scenes/screens/dev_console_screen/dev_console_screen.gd" id="1_p651c"]
+[ext_resource type="Script" path="res://Scenes/screens/dev_console_screen/panel_container.gd" id="2_1mi0i"]
+[ext_resource type="Script" path="res://Scenes/screens/dev_console_screen/console_input.gd" id="3_mc256"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oo4ou"]
+bg_color = Color(0, 0, 0, 0.784314)
+
+[node name="DevConsoleScreen" type="CanvasLayer"]
+process_mode = 3
+layer = 10
+script = ExtResource("1_p651c")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oo4ou")
+script = ExtResource("2_1mi0i")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Console" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+scroll_following = true
+
+[node name="ConsoleInput" type="LineEdit" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = ">"
+clear_button_enabled = true
+script = ExtResource("3_mc256")
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="TimeControls" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Time" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls"]
+layout_mode = 2
+text = "time"
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls"]
+layout_mode = 2
+
+[node name="Paused" type="CheckButton" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "paused"
+
+[node name="Advance1Frame" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+1 frame"
+
+[node name="Advance10Frames" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+10 frames"
+
+[node name="PlayerControls" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Player" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls"]
+layout_mode = 2
+text = "player"
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls"]
+layout_mode = 2
+
+[node name="JumpUnlock" type="CheckButton" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "jump"
+
+[node name="DoubleJumpUnlock" type="CheckButton" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "doublejump"
+
+[node name="DashUnlock" type="CheckButton" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "dash"
+
+[node name="SlamUnlock" type="CheckButton" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "slam"
+
+[node name="WallSlideUnlock" type="CheckButton" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "wallslide"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls"]
+layout_mode = 2
+
+[node name="FlamesLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "flames"
+
+[node name="Flames" type="SpinBox" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+rounded = true
+select_all_on_focus = true
+
+[connection signal="on_hidden" from="PanelContainer" to="." method="_on_panel_container_on_hidden"]
+[connection signal="on_hiding" from="PanelContainer" to="." method="_on_panel_container_on_hiding"]
+[connection signal="on_showing" from="PanelContainer" to="." method="_on_panel_container_on_showing"]
+[connection signal="on_shown" from="PanelContainer" to="." method="_on_panel_container_on_shown"]
+[connection signal="command" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/ConsoleInput" to="." method="_on_console_input_command"]
+[connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer/Paused" to="." method="_on_paused_toggled"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer/Advance1Frame" to="." method="_on_advance_1_frame_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer/Advance10Frames" to="." method="_on_advance_10_frames_pressed"]
+[connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/JumpUnlock" to="." method="_on_jump_unlock_toggled"]
+[connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/DoubleJumpUnlock" to="." method="_on_double_jump_unlock_toggled"]
+[connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/DashUnlock" to="." method="_on_dash_unlock_toggled"]
+[connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/SlamUnlock" to="." method="_on_slam_unlock_toggled"]
+[connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/WallSlideUnlock" to="." method="_on_wall_slide_unlock_toggled"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/HBoxContainer/Flames" to="." method="_on_flames_value_changed"]
