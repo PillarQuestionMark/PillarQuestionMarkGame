@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://ch0xma4bou77p" path="res://Entities/Flame/flame.tscn" id="4_4gtea"]
 [ext_resource type="PackedScene" uid="uid://cdwnjdsfrrav5" path="res://Components/sign.tscn" id="4_65tc4"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="4_cslhv"]
-[ext_resource type="Script" path="res://Scripts/checkpoint.gd" id="5_jro8v"]
 [ext_resource type="PackedScene" uid="uid://b5qmrt8ec1cjv" path="res://Entities/example_npc.tscn" id="8_ynql4"]
+[ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="9_hll6e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -855,28 +855,18 @@ mouse_sensitivity = 0.04
 
 [node name="Interactables" type="Node" parent="."]
 
-[node name="Checkpoint 1" type="Node3D" parent="." groups=["checkpoint"]]
+[node name="Checkpoint" parent="." instance=ExtResource("9_hll6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.6, 32)
-script = ExtResource("5_jro8v")
 
-[node name="Area3D" type="Area3D" parent="Checkpoint 1"]
-collision_layer = 8
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint 1/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.191971, 1.79443, 0.545349)
 shape = SubResource("BoxShape3D_dc2v7")
 
-[node name="Checkpoint 2" type="Node3D" parent="." groups=["checkpoint"]]
+[node name="Checkpoint2" parent="." instance=ExtResource("9_hll6e")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 41, -32.166)
-script = ExtResource("5_jro8v")
 id = 1
 
-[node name="Area3D" type="Area3D" parent="Checkpoint 2"]
-collision_layer = 8
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint 2/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.191971, 1.79443, 0.545349)
 shape = SubResource("BoxShape3D_dc2v7")
 
@@ -908,6 +898,3 @@ color = Color(0.505449, 0.802076, 0, 1)
 [node name="ExampleNPC" parent="." instance=ExtResource("8_ynql4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17, 21, 1)
 dialogue = Array[String](["stranger: the lawn is looking extra green today!", "you: ...", "stranger: don't wander too far! you'll fall off the edge."])
-
-[connection signal="body_entered" from="Checkpoint 1/Area3D" to="Checkpoint 1" method="_on_area_3d_body_entered"]
-[connection signal="body_entered" from="Checkpoint 2/Area3D" to="Checkpoint 2" method="_on_area_3d_body_entered"]
