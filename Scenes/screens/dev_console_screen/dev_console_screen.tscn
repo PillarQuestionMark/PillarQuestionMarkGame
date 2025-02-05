@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bw6emckixywbp"]
+[gd_scene load_steps=15 format=3 uid="uid://bw6emckixywbp"]
 
 [ext_resource type="Script" path="res://Scenes/screens/dev_console_screen/dev_console_screen.gd" id="1_p651c"]
 [ext_resource type="Script" path="res://Scenes/screens/dev_console_screen/panel_container.gd" id="2_1mi0i"]
@@ -6,9 +6,17 @@
 [ext_resource type="FontFile" uid="uid://dhvev40k8ndad" path="res://Scenes/screens/dev_console_screen/terminus-ttf-4.49.3/TerminusTTF-Italic-4.49.3.ttf" id="4_tq1fu"]
 [ext_resource type="FontFile" uid="uid://cdyxl085r8o0h" path="res://Scenes/screens/dev_console_screen/terminus-ttf-4.49.3/TerminusTTF-Bold-Italic-4.49.3.ttf" id="5_5ucyc"]
 [ext_resource type="FontFile" uid="uid://rst866bwl6mf" path="res://Scenes/screens/dev_console_screen/terminus-ttf-4.49.3/TerminusTTF-Bold-4.49.3.ttf" id="6_7khh1"]
+[ext_resource type="ArrayMesh" uid="uid://r21fu3qtohga" path="res://player/feo.obj" id="7_bmwsl"]
+[ext_resource type="Material" uid="uid://1ddv7fifegy7" path="res://player/material_head.tres" id="8_aiihj"]
+[ext_resource type="Material" uid="uid://d1hwpmu8cx3fc" path="res://player/material_leg.tres" id="9_o8dcy"]
+[ext_resource type="Material" uid="uid://dvkqvq4cytdp4" path="res://player/material_body.tres" id="10_wnwn7"]
+[ext_resource type="Material" uid="uid://cie52pam3snu7" path="res://player/material_scarf.tres" id="11_ab2yl"]
+[ext_resource type="Material" uid="uid://b581oewwfjj7g" path="res://player/material_hand.tres" id="12_yuy8s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oo4ou"]
 bg_color = Color(0, 0, 0, 0.784314)
+
+[sub_resource type="World3D" id="World3D_dgd1x"]
 
 [node name="DevConsoleScreen" type="CanvasLayer"]
 process_mode = 3
@@ -86,15 +94,29 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "paused"
 
-[node name="Advance1Frame" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer"]
-unique_name_in_owner = true
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer"]
 layout_mode = 2
-text = "+1 frame"
+columns = 2
 
-[node name="Advance10Frames" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer"]
+[node name="Process1" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "+10 frames"
+text = "process +1"
+
+[node name="Process10" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "process +10"
+
+[node name="Physics1" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "physics +1"
+
+[node name="Physics10" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "physics +10"
 
 [node name="PlayerControls" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -150,14 +172,68 @@ layout_mode = 2
 rounded = true
 select_all_on_focus = true
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls"]
+layout_mode = 2
+
+[node name="LoadSavefile" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "load savefile"
+
+[node name="WriteSaveFile" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "write savefile"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="SubViewport" type="SubViewport" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/SubViewportContainer"]
+world_3d = SubResource("World3D_dgd1x")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/SubViewportContainer/SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 1.2)
+projection = 1
+size = 3.0
+
+[node name="PlayerMesh" type="MeshInstance3D" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/SubViewportContainer/SubViewport/Node3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transparency = 0.5
+mesh = ExtResource("7_bmwsl")
+surface_material_override/0 = ExtResource("8_aiihj")
+surface_material_override/1 = ExtResource("9_o8dcy")
+surface_material_override/2 = ExtResource("9_o8dcy")
+surface_material_override/3 = ExtResource("10_wnwn7")
+surface_material_override/4 = ExtResource("10_wnwn7")
+surface_material_override/5 = ExtResource("11_ab2yl")
+surface_material_override/6 = ExtResource("11_ab2yl")
+surface_material_override/7 = ExtResource("11_ab2yl")
+surface_material_override/8 = ExtResource("12_yuy8s")
+surface_material_override/9 = ExtResource("12_yuy8s")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(0.765146, -2.98023e-08, 0.643857, -0.514848, 0.60049, 0.611836, -0.386629, -0.799632, 0.459463, 0, 0, 0)
+
 [connection signal="on_hidden" from="PanelContainer" to="." method="_on_panel_container_on_hidden"]
 [connection signal="on_hiding" from="PanelContainer" to="." method="_on_panel_container_on_hiding"]
 [connection signal="on_showing" from="PanelContainer" to="." method="_on_panel_container_on_showing"]
 [connection signal="on_shown" from="PanelContainer" to="." method="_on_panel_container_on_shown"]
 [connection signal="text_submitted" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/ConsoleInput" to="." method="_on_console_input_text_submitted"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer/Paused" to="." method="_on_paused_toggled"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer/Advance1Frame" to="." method="_on_advance_1_frame_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer/Advance10Frames" to="." method="_on_advance_10_frames_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer/GridContainer/Process1" to="." method="_on_process_1_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer/GridContainer/Process10" to="." method="_on_process_10_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer/GridContainer/Physics1" to="." method="_on_physics_1_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/TimeControls/HBoxContainer/GridContainer/Physics10" to="." method="_on_physics_10_pressed"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/JumpUnlock" to="." method="_on_jump_unlock_toggled"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/DoubleJumpUnlock" to="." method="_on_double_jump_unlock_toggled"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/SprintUnlock" to="." method="_on_sprint_unlock_toggled"]
@@ -165,3 +241,5 @@ select_all_on_focus = true
 [connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/SlamUnlock" to="." method="_on_slam_unlock_toggled"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/WallSlideUnlock" to="." method="_on_wall_slide_unlock_toggled"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/HBoxContainer/Flames" to="." method="_on_flames_value_changed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/HBoxContainer2/LoadSavefile" to="." method="_on_load_savefile_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/HBoxContainer2/WriteSaveFile" to="." method="_on_write_save_file_pressed"]

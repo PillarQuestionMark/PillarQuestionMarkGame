@@ -4,8 +4,10 @@ extends CanvasLayer
 @onready var console := %Console
 
 @onready var paused := %Paused
-@onready var advance_1_frame := %Advance1Frame
-@onready var advance_10_frames := %Advance10Frames
+@onready var process_1 := %Process1
+@onready var process_10 := %Process10
+@onready var physics_1 := %Physics1
+@onready var physics_10 := %Physics10
 
 @onready var jump_unlock := %JumpUnlock
 @onready var double_jump_unlock := %DoubleJumpUnlock
@@ -15,6 +17,9 @@ extends CanvasLayer
 @onready var wall_slide_unlock := %WallSlideUnlock
 
 @onready var flames: SpinBox = %Flames
+
+@onready var load_savefile := %LoadSavefile
+@onready var write_save_file := %WriteSaveFile
 
 @onready var _original_mouse_mode := Input.mouse_mode
 
@@ -39,10 +44,19 @@ func _on_logger_logging(severity: Logger.LogLevel, message: String) -> void:
 
 func _process(delta: float) -> void:
 	paused.button_pressed = get_tree().paused
-	advance_1_frame.disabled = not get_tree().paused
-	advance_10_frames.disabled = not get_tree().paused
+	process_1.disabled = not get_tree().paused
+	process_10.disabled = not get_tree().paused
+	physics_1.disabled = not get_tree().paused
+	physics_10.disabled = not get_tree().paused
 	
-	# TODO: set ability unlock controls
+	jump_unlock.button_pressed = (PlayerData.data["max_jumps"] > 0)
+	double_jump_unlock.button_pressed = (PlayerData.data["max_jumps"] > 1)
+	sprint_unlock.button_pressed = PlayerData.data["sprint_unlocked"]
+	dash_unlock.button_pressed = PlayerData.data["dash_unlocked"]
+	slam_unlock.button_pressed = PlayerData.data["slam_unlocked"]
+	wall_slide_unlock.button_pressed = PlayerData.data["wall_slide_unlocked"]
+	
+	%PlayerMesh.rotate_y(delta * 3)
 
 
 func _on_panel_container_on_showing() -> void:
@@ -69,21 +83,41 @@ func _on_panel_container_on_hidden() -> void:
 
 func _on_paused_toggled(toggled_on: bool) -> void:
 	get_tree().paused = toggled_on
-	advance_1_frame.disabled = not toggled_on
-	advance_10_frames.disabled = not toggled_on
+	process_1.disabled = not toggled_on
+	process_10.disabled = not toggled_on
+	physics_1.disabled = not toggled_on
+	physics_10.disabled = not toggled_on
 
 
-func _on_advance_1_frame_pressed() -> void:
+func _on_process_1_pressed() -> void:
 	get_tree().paused = false
+	await get_tree().process_frame # need an extra await because (i think) the tree pauses right before _process(), not right after
 	await get_tree().process_frame
 	get_tree().paused = true
 
 
-func _on_advance_10_frames_pressed() -> void:
+func _on_process_10_pressed() -> void:
 	get_tree().paused = false
+	await get_tree().process_frame
 	for i in 10:
 		await get_tree().process_frame
 	get_tree().paused = true
+
+
+func _on_physics_1_pressed() -> void:
+	get_tree().paused = false
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	get_tree().paused = true
+
+
+func _on_physics_10_pressed() -> void:
+	get_tree().paused = false
+	await get_tree().physics_frame
+	for i in 10:
+		await get_tree().physics_frame
+	get_tree().paused = true
+
 
 
 func _on_jump_unlock_toggled(toggled_on: bool) -> void:
@@ -124,6 +158,7 @@ func _on_console_input_text_submitted(text: String) -> void:
 		console.append_text("info  [lb]MESSAGE[rb]    log info message\n")
 		console.append_text("warn  [lb]MESSAGE[rb]    log warning message\n")
 		console.append_text("error [lb]MESSAGE[rb]    log error message\n")
+		console.append_text("run   [lb]EXPRESSION[rb] evaluate expression\n")
 	elif text.begins_with("debug "):
 		Logger.debug(text.trim_prefix("debug "))
 	elif text.begins_with("info "):
@@ -150,3 +185,11 @@ func _on_console_input_text_submitted(text: String) -> void:
 
 func _on_flames_value_changed(value: float) -> void:
 	pass # TODO: set player collected flame count
+
+
+func _on_load_savefile_pressed() -> void:
+	PlayerData.load_data()
+
+
+func _on_write_save_file_pressed() -> void:
+	PlayerData.save_data()
