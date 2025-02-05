@@ -123,7 +123,7 @@ func start_slamjump_window() -> void:
 
 ## kills the player and reloads the scene
 func die() -> void:
-	PlayerData.reload()
+	PlayerData.load_scene()
 
 ## used to DEBUG/DEV mode of toggling unlocks of abilities
 func _toggle_unlocks() -> void:
