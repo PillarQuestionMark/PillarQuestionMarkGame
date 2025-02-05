@@ -98,7 +98,7 @@ func end_dash() -> void:
 
 func restore_dash() -> void:
 	Logger.debug("player: altrive")
-	can_dash = dash_unlocked
+	can_dash = PlayerData.data["dash_unlocked"]
 
 ## Since the ground states are spread out, this code is repeated multiple times. Safer to be in one place
 func touched_ground() -> void:
