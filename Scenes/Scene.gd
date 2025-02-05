@@ -1,11 +1,16 @@
 extends Node3D
 
+## island id, should be unique for each island. each scene that is part of an island should have the same
+@export var island_id : int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Logger.info("playground: loading save data")
 	_load_data()
 	
 	Logger.info("playground: ready")
+	
+	Logger.info("flames collected in current scene: " + str(PlayerData.get_island_flames(island_id).size()))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,5 +26,5 @@ func _load_data() -> void:
 			
 	## delete the flames that have already been collected
 	for flame in get_tree().get_nodes_in_group("flames"):
-		if PlayerData.data["collected_flames"].has(flame.id):
+		if PlayerData.get_island_flames(island_id).has(flame.id):
 			flame.queue_free()

@@ -12,7 +12,8 @@ var start_time
 ## dictionary of data (default values to be overwritten)
 var data = {
 	"playtime" = 0.0, ## playtime for the save file
-	"collected_flames" = [], ## id of all collected flames, get size() for total
+	"total_flames" = 0,
+	"collected_flames" = {}, ## id of all collected flames, sorted by island id
 	"collected_fragments" = [], ## id of collected fragments from dungeons (final prize)
 	"open_dungeons" = [], ## id of dungeons opened already
 	"current_scene" = "res://Scenes/Playground.tscn", ## scene the player is in (or moving to)
@@ -70,6 +71,19 @@ func save_data() -> void:
 ## used when loading the game to signify which file we are playing on
 func set_file_number(file : int) -> void:
 	_file = _file_name + String.num_int64(file) + _file_ending
+	
+## called when a flame is collected
+func flame_collected(flame_id: int, island_id: int):
+	## get list of flames and add the newly collected flame
+	get_island_flames(island_id).append(flame_id)
+	data["total_flames"] += 1
+	
+## used to get the list of flames on an island
+func get_island_flames(island_id: int) -> Array:
+	## if the flames dictionary has the island already, just return that list
+	## else, create the island entry with an empty list
+	return data["collected_flames"].get_or_add(String.num_int64(island_id), [])
+	
 	
 ## dev function used to write the default save file when changes are made
 func _write_default() -> void:

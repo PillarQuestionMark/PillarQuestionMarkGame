@@ -30,7 +30,7 @@ func _read_file(filePath : String, number : int):
 	if error == OK:
 		var data = json.data
 		FileContainer.get_node("File" + String.num_int64(number) + "/Time").text = "Time: " + _convert_time(data["playtime"])
-		FileContainer.get_node("File" + String.num_int64(number) + "/Flames").text = "Flames: " + String.num(data["collected_flames"].size())
+		FileContainer.get_node("File" + String.num_int64(number) + "/Flames").text = "Flames: " + String.num(data["total_flames"])
 	else:
 		FileContainer.get_node("File" + String.num_int64(number) + "/Time").text = "Empty"
 		FileContainer.get_node("File" + String.num_int64(number) + "/Flames").text = ""
