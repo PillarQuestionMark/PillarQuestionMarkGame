@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bw6emckixywbp"]
+[gd_scene load_steps=9 format=3 uid="uid://bw6emckixywbp"]
 
 [ext_resource type="Script" path="res://Scenes/screens/dev_console_screen/dev_console_screen.gd" id="1_p651c"]
 [ext_resource type="Script" path="res://Scenes/screens/dev_console_screen/panel_container.gd" id="2_1mi0i"]
+[ext_resource type="FontFile" uid="uid://0emee0kxhisl" path="res://Scenes/screens/dev_console_screen/terminus-ttf-4.49.3/TerminusTTF-4.49.3.ttf" id="3_7c7d2"]
 [ext_resource type="Script" path="res://Scenes/screens/dev_console_screen/console_input.gd" id="3_mc256"]
+[ext_resource type="FontFile" uid="uid://dhvev40k8ndad" path="res://Scenes/screens/dev_console_screen/terminus-ttf-4.49.3/TerminusTTF-Italic-4.49.3.ttf" id="4_tq1fu"]
+[ext_resource type="FontFile" uid="uid://cdyxl085r8o0h" path="res://Scenes/screens/dev_console_screen/terminus-ttf-4.49.3/TerminusTTF-Bold-Italic-4.49.3.ttf" id="5_5ucyc"]
+[ext_resource type="FontFile" uid="uid://rst866bwl6mf" path="res://Scenes/screens/dev_console_screen/terminus-ttf-4.49.3/TerminusTTF-Bold-4.49.3.ttf" id="6_7khh1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oo4ou"]
 bg_color = Color(0, 0, 0, 0.784314)
@@ -39,13 +43,23 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_7c7d2")
+theme_override_fonts/mono_font = ExtResource("3_7c7d2")
+theme_override_fonts/italics_font = ExtResource("4_tq1fu")
+theme_override_fonts/bold_italics_font = ExtResource("5_5ucyc")
+theme_override_fonts/bold_font = ExtResource("6_7khh1")
+bbcode_enabled = true
 scroll_following = true
+selection_enabled = true
 
 [node name="ConsoleInput" type="LineEdit" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7c7d2")
 placeholder_text = ">"
 clear_button_enabled = true
+flat = true
 script = ExtResource("3_mc256")
 
 [node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/HBoxContainer"]

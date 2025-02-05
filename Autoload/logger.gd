@@ -12,6 +12,8 @@ enum LogLevel {
 	ERROR = 3,
 }
 
+signal on_logging(severity: LogLevel, message: String)
+
 var _logfile: FileAccess = null
 
 func _ready() -> void:
@@ -34,19 +36,27 @@ func _ready() -> void:
 
 func debug(message: String) -> void:
 	if loglevel > LogLevel.DEBUG: return
-	_print("[%s DEBUG] %s" % [_timestamp(), message])
+	var m := "[%s DEBUG] %s" % [_timestamp(), message]
+	on_logging.emit(LogLevel.DEBUG, m)
+	_print(m)
 
 func info(message: String) -> void:
 	if loglevel > LogLevel.INFO: return
-	_print("[%s INFO ] %s" % [_timestamp(), message])
+	var m := "[%s INFO ] %s" % [_timestamp(), message]
+	on_logging.emit(LogLevel.INFO, m)
+	_print(m)
 
 func warning(message: String) -> void:
 	if loglevel > LogLevel.WARNING: return
-	_print("[%s WARN ] %s" % [_timestamp(), message])
+	var m := "[%s WARN ] %s" % [_timestamp(), message]
+	on_logging.emit(LogLevel.WARNING, m)
+	_print(m)
 
 func error(message: String) -> void:
 	if loglevel > LogLevel.ERROR: return
-	_print("[%s ERROR] %s" % [_timestamp(), message], true)
+	var m := "[%s ERROR] %s" % [_timestamp(), message]
+	on_logging.emit(LogLevel.ERROR, m)
+	_print(m)
 
 ## returns the current date and time
 ## e.g. "2025-02-03 12:30:08"

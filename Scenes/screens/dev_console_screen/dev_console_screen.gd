@@ -17,6 +17,24 @@ extends CanvasLayer
 @onready var flames: SpinBox = %Flames
 
 
+func _ready() -> void:
+	Logger.on_logging.connect(_on_logger_logging)
+
+
+func _on_logger_logging(severity: Logger.LogLevel, message: String) -> void:
+	# filtering by loglevel is already done by Logger, so we don't need to do it
+	var m := message
+	if severity == Logger.LogLevel.DEBUG:
+		m = "[color=dim_gray]%s[/color]\n" % m
+	elif severity == Logger.LogLevel.INFO:
+		m = "[color=white]%s[/color]\n" % m
+	elif severity == Logger.LogLevel.WARNING:
+		m = "[color=orange]%s[/color]\n" % m
+	elif severity == Logger.LogLevel.ERROR:
+		m = "[color=red]%s[/color]\n" % m
+	console.append_text(m)
+
+
 func _process(delta: float) -> void:
 	paused.button_pressed = get_tree().paused
 	advance_1_frame.disabled = not get_tree().paused
@@ -38,7 +56,7 @@ func _on_panel_container_on_hiding() -> void:
 
 
 func _on_panel_container_on_shown() -> void:
-	pass # Replace with function body.
+	console_input.text = "" # prevent picking up random characters
 
 
 func _on_panel_container_on_hidden() -> void:
@@ -94,8 +112,23 @@ func _on_wall_slide_unlock_toggled(toggled_on: bool) -> void:
 
 
 func _on_console_input_command(text: String) -> void:
-	if text.begins_with("log "):
-		console.text += text.trim_prefix("log ") + "\n"
+	if text == "help":
+		console.append_text("> help\n")
+		console.append_text("help               print help\n")
+		console.append_text("debug [lb]MESSAGE[rb]    log debug message\n")
+		console.append_text("info  [lb]MESSAGE[rb]    log info message\n")
+		console.append_text("warn  [lb]MESSAGE[rb]    log warning message\n")
+		console.append_text("error [lb]MESSAGE[rb]    log error message\n")
+	elif text.begins_with("debug "):
+		Logger.debug(text.trim_prefix("debug "))
+	elif text.begins_with("info "):
+		Logger.info(text.trim_prefix("info "))
+	elif text.begins_with("warn "):
+		Logger.warning(text.trim_prefix("warn "))
+	elif text.begins_with("error "):
+		Logger.error(text.trim_prefix("error "))
+	else:
+		console.append_text("[color=red]unknown command \"%s\"[/color]" % text)
 
 
 func _on_flames_value_changed(value: float) -> void:
