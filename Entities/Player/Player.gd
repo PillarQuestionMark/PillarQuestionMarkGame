@@ -57,6 +57,11 @@ func _ready():
 
 func _process(delta : float) -> void:
 	mesh.transparency = Transparency_Curve.sample(Camera.get_hit_length() / Camera.spring_length)
+	_toggle_unlocks() ## this is used to play with testing unlocked abilities
+	
+	## REMOVE LATER. FOR NOW, JUST TO TEST DEATH
+	if Input.is_action_just_pressed("kys"):
+		die()
 
 
 func get_move_direction() -> Vector3:
@@ -115,3 +120,31 @@ func can_slamjump() -> bool:
 
 func start_slamjump_window() -> void:
 	slamjump_window.start()
+
+## kills the player and reloads the scene
+func die() -> void:
+	PlayerData.load_scene()
+
+## used to DEBUG/DEV mode of toggling unlocks of abilities
+func _toggle_unlocks() -> void:
+	if Input.is_action_just_pressed("toggle_jumps"):
+		PlayerData.data["max_jumps"] = (PlayerData.data["max_jumps"] + 1) as int % 3
+		if (is_on_floor()): 
+			touched_ground()
+		print("max_jumps = " + String.num_int64(PlayerData.data["max_jumps"]))
+	if Input.is_action_just_pressed("toggle_dash"):
+		PlayerData.data["dash_unlocked"] = !PlayerData.data["dash_unlocked"]
+		print("dash = ")
+		print(PlayerData.data["dash_unlocked"])
+	if Input.is_action_just_pressed("toggle_slam"):
+		PlayerData.data["slam_unlocked"] = !PlayerData.data["slam_unlocked"]
+		print("slam = ")
+		print(PlayerData.data["slam_unlocked"])
+	if Input.is_action_just_pressed("toggle_sprint"):
+		PlayerData.data["sprint_unlocked"] = !PlayerData.data["sprint_unlocked"]
+		print("sprint = ")
+		print(PlayerData.data["sprint_unlocked"])
+	if Input.is_action_just_pressed("toggle_wall_slide"):
+		PlayerData.data["wall_slide_unlocked"] = !PlayerData.data["wall_slide_unlocked"]
+		print("wall_slide = ")
+		print(PlayerData.data["wall_slide_unlocked"])
