@@ -187,25 +187,25 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "write savefile"
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="SubViewport" type="SubViewport" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/SubViewportContainer"]
 world_3d = SubResource("World3D_dgd1x")
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(256, 256)
 render_target_update_mode = 4
 
-[node name="Node3D" type="Node3D" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/SubViewportContainer/SubViewport"]
+[node name="Node3D" type="Node3D" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/SubViewportContainer/SubViewport"]
 
-[node name="Camera3D" type="Camera3D" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/SubViewportContainer/SubViewport/Node3D"]
+[node name="Camera3D" type="Camera3D" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/SubViewportContainer/SubViewport/Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 1.2)
 projection = 1
 size = 3.0
 
-[node name="PlayerMesh" type="MeshInstance3D" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/SubViewportContainer/SubViewport/Node3D"]
+[node name="PlayerMesh" type="MeshInstance3D" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/SubViewportContainer/SubViewport/Node3D"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 transparency = 0.5
@@ -221,7 +221,7 @@ surface_material_override/7 = ExtResource("11_ab2yl")
 surface_material_override/8 = ExtResource("12_yuy8s")
 surface_material_override/9 = ExtResource("12_yuy8s")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/SubViewportContainer/SubViewport/Node3D"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/SubViewportContainer/SubViewport/Node3D"]
 transform = Transform3D(0.765146, -2.98023e-08, 0.643857, -0.514848, 0.60049, 0.611836, -0.386629, -0.799632, 0.459463, 0, 0, 0)
 
 [connection signal="on_hidden" from="PanelContainer" to="." method="_on_panel_container_on_hidden"]

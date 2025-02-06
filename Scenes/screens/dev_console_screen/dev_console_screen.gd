@@ -155,7 +155,7 @@ func _on_console_input_text_submitted(text: String) -> void:
 	
 	if text == "help":
 		console.append_text("> help\n")
-		console.append_text("help               print help\n")
+		console.append_text("help                 print help\n")
 		console.append_text("debug   [lb]MESSAGE[rb]    log debug message\n")
 		console.append_text("info    [lb]MESSAGE[rb]    log info message\n")
 		console.append_text("warn    [lb]MESSAGE[rb]    log warning message\n")
