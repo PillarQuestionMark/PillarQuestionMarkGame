@@ -92,4 +92,6 @@ func unlock_move(move : String) -> void:
 			data["max_jumps"] = 2
 		_: ## default case, not handled differently
 			data[move + "_unlocked"] = true
+			
+	Logger.info("playerdata: unlocked " + move)
 	
