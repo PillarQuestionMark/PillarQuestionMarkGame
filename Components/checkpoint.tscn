@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbm3e24nt2vqf"]
+
+[ext_resource type="Script" path="res://Components/checkpoint.gd" id="1_ci77o"]
+
+[node name="Checkpoint" type="Area3D" groups=["checkpoint"]]
+collision_mask = 2
+script = ExtResource("1_ci77o")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

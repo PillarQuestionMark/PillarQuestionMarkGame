@@ -10,9 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://ch0xma4bou77p" path="res://Entities/Flame/flame.tscn" id="4_4gtea"]
 [ext_resource type="PackedScene" uid="uid://cdwnjdsfrrav5" path="res://Components/sign.tscn" id="4_65tc4"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="4_cslhv"]
-[ext_resource type="Script" path="res://Scripts/checkpoint.gd" id="5_jro8v"]
 [ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="6_rtf4h"]
 [ext_resource type="PackedScene" uid="uid://b5qmrt8ec1cjv" path="res://Entities/example_npc.tscn" id="8_ynql4"]
+[ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="9_hll6e"]
 [ext_resource type="Script" path="res://Scenes/death_zone.gd" id="13_4rps5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
@@ -685,7 +685,7 @@ depth = 4.0
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="Fragment" type="AnimatableBody3D" parent="Geometry"]
-transform = Transform3D(-0.00675595, 0.0689383, -0.997598, -0.999394, 0.0336087, 0.00909062, 0.0341546, 0.997055, 0.0686694, -6.43581, 37.4142, -85.9073)
+transform = Transform3D(-0.00675595, 0.0689383, -0.997598, -0.999394, 0.0336087, 0.00909061, 0.0341546, 0.997055, 0.0686694, -6.43581, 37.4142, -85.9073)
 sync_to_physics = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Geometry/Fragment"]
@@ -867,28 +867,18 @@ mouse_sensitivity = 0.04
 
 [node name="Interactables" type="Node" parent="."]
 
-[node name="Checkpoint 1" type="Node3D" parent="." groups=["checkpoint"]]
+[node name="Checkpoint" parent="." instance=ExtResource("9_hll6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0.6, 32)
-script = ExtResource("5_jro8v")
 
-[node name="Area3D" type="Area3D" parent="Checkpoint 1"]
-collision_layer = 8
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint 1/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.191971, 1.79443, 0.545349)
 shape = SubResource("BoxShape3D_dc2v7")
 
-[node name="Checkpoint 2" type="Node3D" parent="." groups=["checkpoint"]]
+[node name="Checkpoint2" parent="." instance=ExtResource("9_hll6e")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 41, -32.166)
-script = ExtResource("5_jro8v")
 id = 1
 
-[node name="Area3D" type="Area3D" parent="Checkpoint 2"]
-collision_layer = 8
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint 2/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.191971, 1.79443, 0.545349)
 shape = SubResource("BoxShape3D_dc2v7")
 
@@ -939,6 +929,4 @@ mesh = SubResource("BoxMesh_nv5ok")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25, 1.5, 30)
 dialogue = Array[String](["have you tried [color=red][shake rate=20.0 level=5 connected=1]jumping?![/shake][/color]"])
 
-[connection signal="body_entered" from="Checkpoint 1/Area3D" to="Checkpoint 1" method="_on_area_3d_body_entered"]
-[connection signal="body_entered" from="Checkpoint 2/Area3D" to="Checkpoint 2" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="DeathZone/Area3D" to="DeathZone" method="_on_area_3d_body_entered"]
