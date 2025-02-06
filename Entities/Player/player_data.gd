@@ -55,6 +55,7 @@ func flame_collected(flame_id: int, island_id: int):
 	## get list of flames and add the newly collected flame
 	get_island_flames(island_id).append(flame_id)
 	data["total_flames"] += 1
+	save_data() ## autosave
 	
 ## Returns the list of flames collected on an island - based on island id.
 func get_island_flames(island_id: int) -> Array:
