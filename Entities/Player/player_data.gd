@@ -60,3 +60,6 @@ func get_island_flames(island_id: int) -> Array:
 	## else, create the island entry with an empty list
 	return data["collected_flames"].get_or_add(String.num_int64(island_id), [])
 	
+## called when you die to reload scene, as well as travelling between scenes
+func load_scene() -> void:
+	get_tree().change_scene_to_file(data["current_scene"]) ## load the scene
