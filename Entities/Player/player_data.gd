@@ -1,15 +1,13 @@
 extends Node
-## stores the player's save data, which is accessed in many places between many scenes
+## Stores the player's save data, which is accessed in many places between many scenes.
 
-## based on documentation from Godot on JSON and FileAccess
+# based on documentation from Godot on JSON and FileAccess
 
 var _file
-var _file_name = "user://save"
-var _file_ending = ".pillar"
 
-var start_time
+var start_time ## The time at which the save file is opened, or last saved. Used for playtime calculations.
 
-## dictionary of data (default values to be overwritten)
+## Dictionary of player data (default values to be overwritten).
 var data = {
 	"playtime" = 0.0, ## playtime for the save file
 	"total_flames" = 0,
@@ -25,77 +23,74 @@ var data = {
 	"wall_slide_unlocked" = false
 }
 
-## reads the save file values into the data dictionary
+## Reads the save file values into the data dictionary.
 func load_data() -> void:
-	##_write_default() ## used for writing the default file (DO NOT UNCOMMENT UNLESS YOU KNOW WHAT THIS DOES)
-	var save
-	var json = JSON.new() ## created for better error messages
+	## used for writing the default file (DO NOT UNCOMMENT UNLESS YOU KNOW WHAT THIS DOES)
+	##FileUtility.write_file("res://default_save.pillar", data)
+
 	if (FileAccess.file_exists(_file)):
-		var file = FileAccess.open(_file, FileAccess.READ) ## open the save file
-		save = file.get_as_text() ## get the dictionary from the save file
-		file.close()
+		data = FileUtility.read_file(_file)
 	else:
-		var default_file = FileAccess.open("res://default_save.pillar", FileAccess.READ)
-		var file = FileAccess.open(_file, FileAccess.WRITE_READ) ## open the save file
-		save = default_file.get_as_text() ## get the default data
-		file.store_line(save) ## save the default data to the new file
-		default_file.close()
-		file.close()
-	
-	var error = json.parse(save)
-	if error == OK:
-		data = json.data
-	else:
-		Logger.error("playerdata: json error at line %s: %s" % [json.get_error_line(), json.get_error_message()])
+		data = FileUtility.read_file("res://default_save.pillar")
+		FileUtility.write_file(_file, data)
 	
 	get_tree().change_scene_to_file(data["current_scene"]) ## load the scene
 	
 	start_time = Time.get_unix_time_from_system()
 
-## writes the current data dictionary into the save file
+## Writes the current data dictionary into the save file.
+## This can be called before quitting the game, as well as as an autosave function.
 func save_data() -> void:
-	## THIS BELOW MAY NOT BE NEEDED ANYMORE
-	## tell the player, and any other saving objects, to save their data
-	var save_objects = get_tree().get_nodes_in_group("save")
-	for saving in save_objects:
-		saving.save()
-		
 	## get playtime
 	data["playtime"] += Time.get_unix_time_from_system() - start_time
-	
-	var save = JSON.stringify(data, "\t") ## turn the data into JSON
-	var file = FileAccess.open(_file, FileAccess.WRITE) ## open the save file, should overwrite
-	file.store_line(save) ## write the JSON data
-	file.close() ## close the file
+	FileUtility.write_file(_file, data)
+	start_time = Time.get_unix_time_from_system()
 		
-## used when loading the game to signify which file we are playing on
+## Used when loading the game to signify which file we are playing on
 func set_file_number(file : int) -> void:
-	_file = _file_name + String.num_int64(file) + _file_ending
+	_file = FileUtility.save_file_name + String.num_int64(file) + FileUtility.save_file_ending
 	
-## called when a flame is collected
+## Updates the player's save data to include the given flame.
 func flame_collected(flame_id: int, island_id: int):
 	## get list of flames and add the newly collected flame
 	get_island_flames(island_id).append(flame_id)
 	data["total_flames"] += 1
+	save_data() ## autosave
 	
-## used to get the list of flames on an island
+## Returns the list of flames collected on an island - based on island id.
 func get_island_flames(island_id: int) -> Array:
 	## if the flames dictionary has the island already, just return that list
 	## else, create the island entry with an empty list
 	return data["collected_flames"].get_or_add(String.num_int64(island_id), [])
 	
+## Loads the player into the given scene at the given checkpoint.
+## If no scene and checkpoint passed, it will default to the saved data.
+## If scene and checkpoint passed, it will update the save file.
+func load_scene(next_scene : String = data["current_scene"], checkpoint : int = data["checkpoint"]) -> void:
+	data["current_scene"] = next_scene
+	data["checkpoint"] = checkpoint
+	get_tree().change_scene_to_file(next_scene) ## load the scene
 	
-## dev function used to write the default save file when changes are made
-func _write_default() -> void:
-	## open the default save to write
-	var default_file = FileAccess.open("res://default_save.pillar", FileAccess.WRITE)
-	## get the default data seen above
-	var save = JSON.stringify(data, "\t")
-	## write the default data to the save
-	default_file.store_line(save)
-	## close the default file
-	default_file.close()
+## Sets the checkpoint to spawn at in player data. 
+## Separate from [method load_scene] for collecting checkpoints without loading a scene.
+## If you also want to load a scene, use [method load_scene].
+func update_checkpoint(checkpoint : int):
+	data["checkpoint"] = checkpoint
+
+## Unlocks the given ability in the player save. The string must match exactly the data string. [br]
+## Normal Jump = "jump" [br]
+## Double Jump = "double_jump" [br]
+## Dash = "dash" [br]
+## Slam = "slam" [br]
+## Wall Slide = "wall_slide"
+func unlock_move(move : String) -> void:
+	match move:
+		"jump": ## error checking to avoid losing double jump
+			if (data["max_jumps"] < 1):
+				data["max_jumps"] = 1
+		"double_jump": ## no error checking needed.
+			data["max_jumps"] = 2
+		_: ## default case, not handled differently
+			data[move + "_unlocked"] = true
+
 	
-## called when you die to reload scene, as well as travelling between scenes
-func load_scene() -> void:
-	get_tree().change_scene_to_file(data["current_scene"]) ## load the scene
