@@ -82,3 +82,6 @@ func _write_default() -> void:
 	## close the default file
 	default_file.close()
 	
+## called when you die to reload scene, as well as travelling between scenes
+func load_scene() -> void:
+	get_tree().change_scene_to_file(data["current_scene"]) ## load the scene
