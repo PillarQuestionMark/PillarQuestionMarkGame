@@ -39,10 +39,12 @@ func load_data() -> void:
 	start_time = Time.get_unix_time_from_system()
 
 ## Writes the current data dictionary into the save file.
+## This can be called before quitting the game, as well as as an autosave function.
 func save_data() -> void:
 	## get playtime
 	data["playtime"] += Time.get_unix_time_from_system() - start_time
 	FileUtility.write_file(_file, data)
+	start_time = Time.get_unix_time_from_system()
 		
 ## Used when loading the game to signify which file we are playing on
 func set_file_number(file : int) -> void:
@@ -89,3 +91,4 @@ func unlock_move(move : String) -> void:
 			data["max_jumps"] = 2
 		_: ## default case, not handled differently
 			data[move + "_unlocked"] = true
+	
