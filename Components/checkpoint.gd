@@ -20,7 +20,7 @@ func _on_body_entered(body: Node3D) -> void:
 		return
 	
 	Logger.info("checkpoint %d: player entered checkpoint" % id)
-	PlayerData.data["checkpoint"] = id
+	PlayerData.update_checkpoint(id)
 	Logger.debug("checkpoint %d: saving player data" % id)
 	PlayerData.save_data()
 

@@ -1,6 +1,8 @@
 {
 	"checkpoint": 0,
-	"collected_flames": [],
+	"collected_flames": {
+
+	},
 	"collected_fragments": [],
 	"current_scene": "res://Scenes/Playground.tscn",
 	"dash_unlocked": false,
@@ -9,5 +11,6 @@
 	"playtime": 0,
 	"slam_unlocked": false,
 	"sprint_unlocked": false,
+	"total_flames": 0,
 	"wall_slide_unlocked": false
 }

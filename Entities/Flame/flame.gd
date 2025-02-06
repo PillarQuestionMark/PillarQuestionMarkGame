@@ -4,12 +4,14 @@ extends Area3D
 @export var flame_name := "Humble Beginnings"
 @export var color := Color("#e1a845")
 
+@onready var island : int = get_tree().current_scene.island_id
+
 func _on_body_entered(body: Node3D) -> void:
 	if body is Player:
 		pickup()
 
 func pickup() -> void:
-	PlayerData.data["collected_flames"].append(id)
+	PlayerData.flame_collected(id, island)
 	EventBus.flame_found.emit(flame_name, color)
 	queue_free()
 

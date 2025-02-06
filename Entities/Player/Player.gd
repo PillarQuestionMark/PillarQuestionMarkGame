@@ -58,6 +58,10 @@ func _ready():
 func _process(delta : float) -> void:
 	mesh.transparency = Transparency_Curve.sample(Camera.get_hit_length() / Camera.spring_length)
 	_toggle_unlocks() ## this is used to play with testing unlocked abilities
+	
+	## REMOVE LATER. FOR NOW, JUST TO TEST DEATH
+	if Input.is_action_just_pressed("kys"):
+		die()
 
 
 func get_move_direction() -> Vector3:
@@ -116,6 +120,10 @@ func can_slamjump() -> bool:
 
 func start_slamjump_window() -> void:
 	slamjump_window.start()
+
+## kills the player and reloads the scene
+func die() -> void:
+	PlayerData.load_scene()
 
 ## used to DEBUG/DEV mode of toggling unlocks of abilities
 func _toggle_unlocks() -> void:
