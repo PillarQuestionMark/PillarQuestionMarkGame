@@ -91,7 +91,6 @@ func unlock_move(move : String) -> void:
 		"double_jump": ## no error checking needed.
 			data["max_jumps"] = 2
 		_: ## default case, not handled differently
-			data[move + "_unlocked"] = true
-			
+			data[move + "_unlocked"] = true		
 	Logger.info("playerdata: unlocked " + move)
-	
+

@@ -8,6 +8,11 @@ func _ready() -> void:
 	FileContainer = $CanvasLayer/PanelContainer/MarginContainer/VBoxContainer
 	FileContainer.get_node("File1").grab_focus()
 	
+	## uncomment the below line to delete all saves upon entering file select
+	## this is done when the save files will crash the file select and need to be deleted
+	## please comment it again after you use it once, otherwise it will continue deleting
+	##delete_all_saves()
+	
 	for file in [1, 2, 3]:
 		_read_file(FileUtility.save_file_name + String.num_int64(file) + FileUtility.save_file_ending, file)
 	
@@ -31,3 +36,8 @@ func _on_file_delete(file : int) -> void:
 	var deleting = FileUtility.save_file_name + String.num_int64(file) + FileUtility.save_file_ending
 	FileUtility.delete_file(deleting)
 	_read_file(deleting, file)
+	
+## dev function used to delete all save files. useful for save file changes that crash the game
+func delete_all_saves() -> void:
+	for file in [1, 2, 3]:
+		_on_file_delete(file)
