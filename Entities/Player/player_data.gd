@@ -34,7 +34,7 @@ func load_data() -> void:
 		data = FileUtility.read_file("res://default_save.pillar")
 		FileUtility.write_file(_file, data)
 	
-	get_tree().change_scene_to_file(data["current_scene"]) ## load the scene
+	load_scene()
 	
 	start_time = Time.get_unix_time_from_system()
 
@@ -51,7 +51,8 @@ func set_file_number(file : int) -> void:
 	_file = FileUtility.save_file_name + String.num_int64(file) + FileUtility.save_file_ending
 	
 ## Updates the player's save data to include the given flame.
-func flame_collected(flame_id: int, island_id: int):
+func flame_collected(flame_id: float, island_id: int):
+	print("flame: " + str(flame_id) + " island: " + String.num_int64(island_id))
 	## get list of flames and add the newly collected flame
 	get_island_flames(island_id).append(flame_id)
 	data["total_flames"] += 1
