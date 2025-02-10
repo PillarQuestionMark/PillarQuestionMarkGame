@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dgw6sfwqiwerc"]
+[gd_scene load_steps=31 format=3 uid="uid://dgw6sfwqiwerc"]
 
 [ext_resource type="PackedScene" uid="uid://ud6x3emfmcnt" path="res://Components/trigger_animation.tscn" id="1_l8skm"]
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_yxky3"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="6_rtf4h"]
 [ext_resource type="PackedScene" uid="uid://b5qmrt8ec1cjv" path="res://Entities/example_npc.tscn" id="8_ynql4"]
 [ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="9_hll6e"]
-[ext_resource type="Script" path="res://Scenes/death_zone.gd" id="13_4rps5"]
+[ext_resource type="PackedScene" uid="uid://cftk8sgcrsuv0" path="res://Obstacles/SpikeFloor.tscn" id="15_twh6u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -370,16 +370,6 @@ size = Vector3(4, 17, 8)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dc2v7"]
 size = Vector3(8.30118, 4.58887, 9.11023)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_52kh3"]
-size = Vector3(4, 1, 4)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_deuoo"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_nv5ok"]
-material = SubResource("StandardMaterial3D_deuoo")
-size = Vector3(4, 1, 4)
-
 [node name="Playground" type="Node3D"]
 script = ExtResource("1_yxky3")
 island_id = -1
@@ -686,7 +676,7 @@ depth = 4.0
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="Fragment" type="AnimatableBody3D" parent="Geometry"]
-transform = Transform3D(-0.00675595, 0.0689383, -0.997598, -0.999394, 0.0336087, 0.00909061, 0.0341546, 0.997055, 0.0686694, -6.43581, 37.4142, -85.9073)
+transform = Transform3D(-0.00675595, 0.0689383, -0.997598, -0.999394, 0.0336087, 0.00909062, 0.0341546, 0.997055, 0.0686694, -6.43581, 37.4142, -85.9073)
 sync_to_physics = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Geometry/Fragment"]
@@ -912,22 +902,12 @@ color = Color(0.505449, 0.802076, 0, 1)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17, 21, 1)
 dialogue = Array[String](["stranger: the lawn is looking extra green today!", "you: ...", "stranger: don't wander too far! you'll fall off the edge."])
 
-[node name="DeathZone" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0.5, 8)
-script = ExtResource("13_4rps5")
-
-[node name="Area3D" type="Area3D" parent="DeathZone"]
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone/Area3D"]
-shape = SubResource("BoxShape3D_52kh3")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="DeathZone/Area3D"]
-mesh = SubResource("BoxMesh_nv5ok")
+[node name="SpikeFloor" parent="." instance=ExtResource("15_twh6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+spikeScale = 0.5
+spikeRows = 4
+spikeColumns = 4
 
 [node name="Ability Mural" parent="." instance=ExtResource("6_rtf4h")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25, 1.5, 30)
 dialogue = Array[String](["have you tried [color=red][shake rate=20.0 level=5 connected=1]jumping?![/shake][/color]"])
-
-[connection signal="body_entered" from="DeathZone/Area3D" to="DeathZone" method="_on_area_3d_body_entered"]
