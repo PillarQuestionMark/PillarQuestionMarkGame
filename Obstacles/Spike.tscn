@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://lnx01rajcdr1"]
+
+[ext_resource type="Material" uid="uid://cbhgouyh1nji3" path="res://Assets/Materials/SpikeMaterial.tres" id="1_jn4ly"]
+[ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="1_mh6rd"]
+[ext_resource type="ArrayMesh" uid="uid://ca6cbto6d6e7k" path="res://Assets/Meshes/spike.obj" id="1_nlag7"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6b52k"]
+points = PackedVector3Array(-0.000195742, 2, -0.000195742, 1, 0, -1, -1, 0, -1, -1, 0, 1, 1, 0, 1)
+
+[node name="Spike" type="MeshInstance3D"]
+material_override = ExtResource("1_jn4ly")
+mesh = ExtResource("1_nlag7")
+
+[node name="Obstacle" parent="." instance=ExtResource("1_mh6rd")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
+shape = SubResource("ConvexPolygonShape3D_6b52k")
