@@ -4,4 +4,3 @@ extends Node3D
 
 func _on_interactable_on_interacting() -> void:
 	EventBus.switch_islands.emit(island_id)
-	queue_free()

@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="6_rtf4h"]
 [ext_resource type="PackedScene" uid="uid://b5qmrt8ec1cjv" path="res://Entities/example_npc.tscn" id="8_ynql4"]
 [ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="9_hll6e"]
-[ext_resource type="PackedScene" uid="uid://dnbwgecvlyp7h" path="res://Entities/Boat/boat.tscn" id="11_wn5aq"]
+[ext_resource type="PackedScene" uid="uid://dc1evxye2jpsn" path="res://Entities/Boat.tscn" id="15_ggb0t"]
 [ext_resource type="PackedScene" uid="uid://cftk8sgcrsuv0" path="res://Obstacles/SpikeFloor.tscn" id="15_twh6u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
@@ -897,9 +897,6 @@ id = 2.0
 flame_name = "Castle Walls"
 color = Color(0.505449, 0.802076, 0, 1)
 
-[node name="Boat" parent="." instance=ExtResource("11_wn5aq")]
-transform = Transform3D(3.79011, 0, 0, 0, 2.75676, 0, 0, 0, 2.67513, 0, -0.291246, 34.055)
-
 [node name="GameplayUI" parent="." instance=ExtResource("4_cslhv")]
 
 [node name="ExampleNPC" parent="." instance=ExtResource("8_ynql4")]
@@ -915,3 +912,6 @@ spikeColumns = 4
 [node name="Ability Mural" parent="." instance=ExtResource("6_rtf4h")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25, 1.5, 30)
 dialogue = Array[String](["have you tried [color=red][shake rate=20.0 level=5 connected=1]jumping?![/shake][/color]"])
+
+[node name="Boat" parent="." instance=ExtResource("15_ggb0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35.1068)
