@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://dc1evxye2jpsn"]
+
+[ext_resource type="Script" path="res://Entities/Boat/boat.gd" id="1_wder2"]
+[ext_resource type="PackedScene" uid="uid://nd1s7aeat6mx" path="res://Components/interactable.tscn" id="2_xpkc4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_laol4"]
+albedo_color = Color(0.157382, 0.00199957, 1.10701e-06, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6bsfy"]
+size = Vector3(6, 4, 6)
+
+[node name="Boat" type="Node3D"]
+script = ExtResource("1_wder2")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, 1, 1, 4.37114e-08, -4.37114e-08, 0, 0, 0)
+operation = 2
+radius = 1.5
+height = 4.0
+material = SubResource("StandardMaterial3D_laol4")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.72278e-08, 0, 1.08044)
+operation = 2
+size = Vector3(1.5, 3.5, 1)
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+pixel_size = 0.001
+billboard = 1
+no_depth_test = true
+fixed_size = true
+text = "?"
+
+[node name="Interactable" parent="." instance=ExtResource("2_xpkc4")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+shape = SubResource("BoxShape3D_6bsfy")
+
+[connection signal="on_interacting" from="Interactable" to="." method="_on_interactable_on_interacting"]

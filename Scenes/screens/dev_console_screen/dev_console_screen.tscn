@@ -141,7 +141,7 @@ text = "doublejump"
 [node name="SprintUnlock" type="CheckButton" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "jump"
+text = "sprint"
 
 [node name="DashUnlock" type="CheckButton" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls"]
 unique_name_in_owner = true

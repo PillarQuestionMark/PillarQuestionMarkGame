@@ -3,9 +3,10 @@ extends Node
 
 # based on documentation from Godot on JSON and FileAccess
 
-var _file
+var _file = "user://test_save.pillar" ## default to a testing save
+## test save used if file select skipped. does not load ever
 
-var start_time ## The time at which the save file is opened, or last saved. Used for playtime calculations.
+var start_time : float ## The time at which the save file is opened, or last saved. Used for playtime calculations.
 
 ## Dictionary of player data (default values to be overwritten).
 var data = {
@@ -14,7 +15,7 @@ var data = {
 	"collected_flames" = {}, ## id of all collected flames, sorted by island id
 	"collected_fragments" = [], ## id of collected fragments from dungeons (final prize)
 	"open_dungeons" = [], ## id of dungeons opened already
-	"current_scene" = "res://Scenes/Playground.tscn", ## scene the player is in (or moving to)
+	"current_scene" = "res://Scenes/islands/island0/Island0.tscn", ## scene the player is in (or moving to)
 	"checkpoint" = 0, ## checkpoint in current scene
 	"max_jumps" = 0,
 	"dash_unlocked" = false,
