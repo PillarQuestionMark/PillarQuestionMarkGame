@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dgw6sfwqiwerc"]
+[gd_scene load_steps=33 format=3 uid="uid://dgw6sfwqiwerc"]
 
 [ext_resource type="PackedScene" uid="uid://ud6x3emfmcnt" path="res://Components/trigger_animation.tscn" id="1_l8skm"]
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_yxky3"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://ch0xma4bou77p" path="res://Entities/Flame/flame.tscn" id="4_4gtea"]
 [ext_resource type="PackedScene" uid="uid://cdwnjdsfrrav5" path="res://Components/sign.tscn" id="4_65tc4"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="4_cslhv"]
-[ext_resource type="Script" path="res://Components/flame_lever.gd" id="5_myufu"]
 [ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="6_rtf4h"]
 [ext_resource type="PackedScene" uid="uid://b5qmrt8ec1cjv" path="res://Entities/example_npc.tscn" id="8_ynql4"]
 [ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="9_hll6e"]
@@ -829,48 +828,6 @@ transform = Transform3D(1, -2.98023e-08, -4.37114e-08, -4.37114e-08, 1.05277e-15
 trigger = "door"
 
 [node name="Lever2" parent="Geometry/Doors" instance=ExtResource("2_aubau")]
-transform = Transform3D(-1, 1.17225e-07, 4.37114e-08, -4.37114e-08, 1.05277e-15, -1, -1.17225e-07, -1, 4.70955e-15, 5, 2.0195, -3.5)
-trigger = "door"
-
-[node name="FlameDoors" type="Node3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.093, 0, -14.7055)
-
-[node name="LeftDoor" type="AnimatableBody3D" parent="Geometry/FlameDoors"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 6, 0)
-
-[node name="Mover" parent="Geometry/FlameDoors/LeftDoor" instance=ExtResource("2_18dog")]
-trigger = "door"
-movement = Vector3(-4, 0, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Geometry/FlameDoors/LeftDoor"]
-size = Vector3(4, 12, 5)
-material = SubResource("StandardMaterial3D_x3ejr")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/FlameDoors/LeftDoor"]
-shape = SubResource("BoxShape3D_yyq5c")
-
-[node name="RightDoor" type="AnimatableBody3D" parent="Geometry/FlameDoors"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 6, 0)
-
-[node name="Mover" parent="Geometry/FlameDoors/RightDoor" instance=ExtResource("2_18dog")]
-trigger = "door"
-movement = Vector3(4, 0, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Geometry/FlameDoors/RightDoor"]
-use_collision = true
-size = Vector3(4, 12, 5)
-material = SubResource("StandardMaterial3D_x3ejr")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/FlameDoors/RightDoor"]
-shape = SubResource("BoxShape3D_bfd45")
-
-[node name="Lever" parent="Geometry/FlameDoors" instance=ExtResource("2_aubau")]
-transform = Transform3D(1, -2.98023e-08, -4.37114e-08, -4.37114e-08, 1.05277e-15, -1, 2.98023e-08, 1, -8.88178e-16, 5, 2.0195, 3.5)
-script = ExtResource("5_myufu")
-trigger = "door"
-flames_required = 3
-
-[node name="Lever2" parent="Geometry/FlameDoors" instance=ExtResource("2_aubau")]
 transform = Transform3D(-1, 1.17225e-07, 4.37114e-08, -4.37114e-08, 1.05277e-15, -1, -1.17225e-07, -1, 4.70955e-15, 5, 2.0195, -3.5)
 trigger = "door"
 
