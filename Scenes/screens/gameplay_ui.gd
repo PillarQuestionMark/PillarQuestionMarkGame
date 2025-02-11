@@ -19,9 +19,10 @@ func _on_flame_collected(name: String, color: Color) -> void:
 	s.flame_color = color
 	_show_screen(s)
 	
-func _on_island_switch(name: String, color: Color) -> void:
+func _on_island_switch(island_id: int) -> void:
 	const ISLAND_SWITCH_SCREEN := preload("res://Scenes/screens/change_island_screen/change_island_screen.tscn")
 	var s := ISLAND_SWITCH_SCREEN.instantiate()
+	s.current_island = island_id
 	_show_screen(s)
 
 func _on_dialogue(dialogue: Array[String]) -> void:

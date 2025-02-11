@@ -13,7 +13,7 @@ signal dialogue(dialogue: Array[String])
 signal dialogue_finished
 
 ## shows the island map screen.
-signal switch_islands
+signal switch_islands(island_id: int)
 
 func _ready() -> void:
 	Logger.info("eventbus: ready")

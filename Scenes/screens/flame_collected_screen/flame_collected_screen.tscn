@@ -3,6 +3,32 @@
 [ext_resource type="Script" path="res://Scenes/screens/flame_collected_screen/flame_collected_screen.gd" id="1_7sw4e"]
 [ext_resource type="PackedScene" uid="uid://cwmkkgjitsi0k" path="res://Entities/Flame/flame_model.tscn" id="2_i2gtt"]
 
+[sub_resource type="Animation" id="Animation_nwagg"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SubViewportContainer/SubViewport/FlameModel:rotation:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/FlameName:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_kt0no"]
 resource_name = "animation"
 length = 3.0
@@ -29,32 +55,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_nwagg"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SubViewportContainer/SubViewport/FlameModel:rotation:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/FlameName:visible_ratio")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8p7d5"]
