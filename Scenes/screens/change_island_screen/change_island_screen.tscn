@@ -52,7 +52,7 @@ alignment = 1
 
 [node name="SelectIsland" type="Label" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Select an island to travel to:"
+text = "sail to:"
 label_settings = SubResource("LabelSettings_7b8gp")
 
 [node name="BoxContainer" type="BoxContainer" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -60,16 +60,14 @@ layout_mode = 2
 
 [node name="Island 1" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BoxContainer"]
 layout_mode = 2
-text = "Island 1
-"
+text = "tutorial"
 
 [node name="BoxContainer2" type="BoxContainer" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Island 2" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BoxContainer2"]
 layout_mode = 2
-text = "Island 2
-"
+text = "sea castle"
 icon_alignment = 1
 
 [node name="BoxContainer3" type="BoxContainer" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -77,7 +75,7 @@ layout_mode = 2
 
 [node name="Stay Here" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BoxContainer3"]
 layout_mode = 2
-text = "Stay Here"
+text = "stay here"
 icon_alignment = 1
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

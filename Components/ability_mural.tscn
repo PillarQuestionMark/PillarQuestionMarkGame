@@ -1,19 +1,59 @@
-[gd_scene load_steps=5 format=3 uid="uid://nq872twodk4r"]
+[gd_scene load_steps=9 format=3 uid="uid://nq872twodk4r"]
 
 [ext_resource type="Script" path="res://Components/ability_mural.gd" id="1_qok22"]
 [ext_resource type="PackedScene" uid="uid://nd1s7aeat6mx" path="res://Components/interactable.tscn" id="2_528nu"]
+[ext_resource type="Texture2D" uid="uid://diupswqxew14q" path="res://Assets/aseprite/mural.png" id="3_ljr7n"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmvmc"]
-albedo_color = Color(0.768627, 0.776471, 0.721569, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yg10x"]
+albedo_color = Color(0.494118, 0.396078, 0.607843, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x40r4"]
-size = Vector3(4, 3, 0.5)
+size = Vector3(4, 4, 0.5)
+
+[sub_resource type="Animation" id="Animation_4a805"]
+resource_name = "animate"
+length = 0.3
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_thpxu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dj6g8"]
+_data = {
+"RESET": SubResource("Animation_thpxu"),
+"animate": SubResource("Animation_4a805")
+}
 
 [node name="Ability Mural" type="CSGBox3D"]
 use_collision = true
 collision_mask = 2
-size = Vector3(4, 3, 0.1)
-material = SubResource("StandardMaterial3D_tmvmc")
+size = Vector3(4, 4, 0.1)
+material = SubResource("StandardMaterial3D_yg10x")
 script = ExtResource("1_qok22")
 
 [node name="Label3D" type="Label3D" parent="."]
@@ -30,5 +70,19 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
 shape = SubResource("BoxShape3D_x40r4")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0607038)
+modulate = Color(0.721569, 0.631373, 0.760784, 1)
+pixel_size = 0.0625
+texture_filter = 0
+texture = ExtResource("3_ljr7n")
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dj6g8")
+}
+autoplay = "animate"
 
 [connection signal="on_interacting" from="Interactable" to="." method="_on_interactable_on_interacting"]
