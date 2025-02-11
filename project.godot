@@ -38,6 +38,7 @@ save=""
 checkpoint=""
 flames="flames"
 player=""
+flame_door=""
 
 [input]
 

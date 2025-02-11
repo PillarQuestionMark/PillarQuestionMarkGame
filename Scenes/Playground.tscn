@@ -912,6 +912,7 @@ spikeColumns = 4
 [node name="Ability Mural" parent="." instance=ExtResource("6_rtf4h")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25, 1.5, 30)
 dialogue = Array[String](["have you tried [color=red][shake rate=20.0 level=5 connected=1]jumping?![/shake][/color]"])
+unlock = "double_jump"
 
 [node name="Boat" parent="." instance=ExtResource("15_ggb0t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35.1068)
