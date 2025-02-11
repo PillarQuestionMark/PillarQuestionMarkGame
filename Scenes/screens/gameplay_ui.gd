@@ -3,6 +3,7 @@ extends Node
 func _ready() -> void:
 	EventBus.flame_found.connect(_on_flame_collected)
 	EventBus.dialogue.connect(_on_dialogue)
+	EventBus.switch_islands.connect(_on_island_switch)
 
 
 func _process(delta: float) -> void:
@@ -16,6 +17,11 @@ func _on_flame_collected(name: String, color: Color) -> void:
 	var s := FLAME_COLLECTED_SCREEN.instantiate()
 	s.flame_name = name
 	s.flame_color = color
+	_show_screen(s)
+	
+func _on_island_switch(name: String, color: Color) -> void:
+	const ISLAND_SWITCH_SCREEN := preload("res://Scenes/screens/change_island_screen/change_island_screen.tscn")
+	var s := ISLAND_SWITCH_SCREEN.instantiate()
 	_show_screen(s)
 
 func _on_dialogue(dialogue: Array[String]) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dgw6sfwqiwerc"]
+[gd_scene load_steps=32 format=3 uid="uid://dgw6sfwqiwerc"]
 
 [ext_resource type="PackedScene" uid="uid://ud6x3emfmcnt" path="res://Components/trigger_animation.tscn" id="1_l8skm"]
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_yxky3"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="6_rtf4h"]
 [ext_resource type="PackedScene" uid="uid://b5qmrt8ec1cjv" path="res://Entities/example_npc.tscn" id="8_ynql4"]
 [ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="9_hll6e"]
+[ext_resource type="PackedScene" uid="uid://dnbwgecvlyp7h" path="res://Entities/Boat/boat.tscn" id="11_wn5aq"]
 [ext_resource type="PackedScene" uid="uid://cftk8sgcrsuv0" path="res://Obstacles/SpikeFloor.tscn" id="15_twh6u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
@@ -675,7 +676,7 @@ depth = 4.0
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="Fragment" type="AnimatableBody3D" parent="Geometry"]
-transform = Transform3D(-0.00675595, 0.0689383, -0.997598, -0.999394, 0.0336087, 0.00909062, 0.0341546, 0.997055, 0.0686694, -6.43581, 37.4142, -85.9073)
+transform = Transform3D(-0.00675595, 0.0689383, -0.997598, -0.999394, 0.0336087, 0.00909061, 0.0341546, 0.997055, 0.0686694, -6.43581, 37.4142, -85.9073)
 sync_to_physics = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Geometry/Fragment"]
@@ -894,6 +895,9 @@ collision_mask = 2
 id = 2
 flame_name = "Castle Walls"
 color = Color(0.505449, 0.802076, 0, 1)
+
+[node name="Boat" parent="." instance=ExtResource("11_wn5aq")]
+transform = Transform3D(3.79011, 0, 0, 0, 2.75676, 0, 0, 0, 2.67513, 0, -0.291246, 34.055)
 
 [node name="GameplayUI" parent="." instance=ExtResource("4_cslhv")]
 
