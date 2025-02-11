@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://sg5hhq14qrml"]
+
+[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_4ajsu"]
+[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="1_c4t52"]
+[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="2_xt7df"]
+[ext_resource type="PackedScene" uid="uid://cdwnjdsfrrav5" path="res://Components/sign.tscn" id="3_pqpau"]
+[ext_resource type="Script" path="res://Scripts/Interactable/teleport_sign.gd" id="4_r3a1u"]
+[ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="6_fwr5m"]
+[ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="7_gdbae"]
+
+[node name="Dungeon0" type="Node3D"]
+script = ExtResource("1_4ajsu")
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+use_collision = true
+collision_mask = 2
+size = Vector3(15, 0.5, 20)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 5.5)
+use_collision = true
+collision_mask = 2
+size = Vector3(15, 10, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -15)
+use_collision = true
+collision_mask = 2
+size = Vector3(15, 10, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 5, -5)
+use_collision = true
+collision_mask = 2
+size = Vector3(20, 10, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.99249, 5, -5.02832)
+use_collision = true
+collision_mask = 2
+size = Vector3(20, 10, 1)
+
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("1_c4t52")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+Camera = NodePath("FollowCamera")
+
+[node name="FollowCamera" parent="Player" instance=ExtResource("2_xt7df")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mouse_sensitivity = 0.04
+
+[node name="Dungeon Door" parent="." instance=ExtResource("3_pqpau")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.5, 5)
+script = ExtResource("4_r3a1u")
+Scene = "res://Scenes/islands/island0/Island0.tscn"
+checkpoint = 1
+flames_required = 0
+
+[node name="Dungeon Door2" parent="." instance=ExtResource("3_pqpau")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -14.5)
+script = ExtResource("4_r3a1u")
+Scene = "res://Scenes/islands/island0/Island0.tscn"
+checkpoint = 2
+flames_required = 0
+
+[node name="GameplayUI" parent="." instance=ExtResource("6_fwr5m")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29002, 4.24533)
+omni_range = 20.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -10)
+omni_range = 20.0
+
+[node name="Ability Mural" parent="." instance=ExtResource("7_gdbae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -10)
+dialogue = Array[String](["YOUR JUMP IS READY"])

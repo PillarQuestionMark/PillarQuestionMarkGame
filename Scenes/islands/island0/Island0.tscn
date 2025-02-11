@@ -1,0 +1,226 @@
+[gd_scene load_steps=17 format=3 uid="uid://dgdn3s520cve5"]
+
+[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_8lv5b"]
+[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_e5326"]
+[ext_resource type="PackedScene" uid="uid://cdwnjdsfrrav5" path="res://Components/sign.tscn" id="2_s2ahy"]
+[ext_resource type="Script" path="res://Scripts/Interactable/teleport_sign.gd" id="3_6f8ox"]
+[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="3_b30gx"]
+[ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="4_qw0hh"]
+[ext_resource type="PackedScene" uid="uid://ch0xma4bou77p" path="res://Entities/Flame/flame.tscn" id="5_reynx"]
+[ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="6_ftc75"]
+[ext_resource type="PackedScene" uid="uid://dc1evxye2jpsn" path="res://Entities/Boat.tscn" id="9_qfby2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4c74y"]
+albedo_color = Color(0.151365, 0.532748, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1vyo3"]
+size = Vector3(5, 4, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_si735"]
+albedo_color = Color(0, 0.431373, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yv7d8"]
+material = SubResource("StandardMaterial3D_si735")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sd3yn"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_lwivm"]
+sky_material = SubResource("ProceduralSkyMaterial_sd3yn")
+
+[sub_resource type="Environment" id="Environment_wcdn7"]
+background_mode = 1
+background_color = Color(0.929412, 0.666667, 0.639216, 1)
+sky = SubResource("Sky_lwivm")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.25
+tonemap_mode = 2
+ssao_enabled = true
+glow_enabled = true
+
+[node name="Island0" type="Node3D"]
+script = ExtResource("1_8lv5b")
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="Island" type="CSGCylinder3D" parent="Geometry"]
+use_collision = true
+collision_mask = 2
+radius = 100.0
+height = 0.5
+material = SubResource("StandardMaterial3D_4c74y")
+
+[node name="Tutorial Area" type="Node3D" parent="Geometry"]
+
+[node name="Floor" type="CSGBox3D" parent="Geometry/Tutorial Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+use_collision = true
+collision_mask = 2
+size = Vector3(20, 0.1, 20)
+
+[node name="Floor2" type="CSGBox3D" parent="Geometry/Tutorial Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.35, 0)
+use_collision = true
+collision_mask = 2
+size = Vector3(8, 0.1, 8)
+
+[node name="Floor3" type="CSGBox3D" parent="Geometry/Tutorial Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0.35, 0)
+use_collision = true
+collision_mask = 2
+size = Vector3(8, 0.1, 8)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Geometry/Tutorial Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.4, 0)
+use_collision = true
+collision_mask = 2
+radius = 10.0
+height = 0.1
+sides = 16
+
+[node name="Wall1" type="CSGBox3D" parent="Geometry/Tutorial Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -10.5)
+use_collision = true
+collision_mask = 2
+size = Vector3(22, 10, 1)
+
+[node name="Wall3" type="CSGBox3D" parent="Geometry/Tutorial Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.5)
+use_collision = true
+collision_mask = 2
+size = Vector3(22, 2, 1)
+
+[node name="Wall4" type="CSGBox3D" parent="Geometry/Tutorial Area"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.5, 4, 0)
+use_collision = true
+collision_mask = 2
+size = Vector3(22, 8, 1)
+
+[node name="Wall5" type="CSGBox3D" parent="Geometry/Tutorial Area"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.5, 0, 7.5)
+use_collision = true
+collision_mask = 2
+size = Vector3(7, 2, 1)
+
+[node name="Wall7" type="CSGBox3D" parent="Geometry/Tutorial Area"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14, 0, 4)
+use_collision = true
+collision_mask = 2
+size = Vector3(8, 2, 1)
+
+[node name="Wall9" type="CSGBox3D" parent="Geometry/Tutorial Area"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 40, 0, 4)
+use_collision = true
+collision_mask = 2
+size = Vector3(7, 2, 1)
+
+[node name="Wall10" type="CSGBox3D" parent="Geometry/Tutorial Area"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 40, 0, -4)
+use_collision = true
+collision_mask = 2
+size = Vector3(7, 2, 1)
+
+[node name="Wall8" type="CSGBox3D" parent="Geometry/Tutorial Area"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14, 0, -4)
+use_collision = true
+collision_mask = 2
+size = Vector3(8, 2, 1)
+
+[node name="Wall6" type="CSGBox3D" parent="Geometry/Tutorial Area"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.5, 0, -7.5)
+use_collision = true
+collision_mask = 2
+size = Vector3(7, 2, 1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geometry/Tutorial Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 5, 0)
+use_collision = true
+collision_mask = 2
+size = Vector3(10, 10, 10)
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="Geometry/Tutorial Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.5, 0)
+operation = 2
+use_collision = true
+collision_mask = 2
+inner_radius = 10.0
+outer_radius = 11.0
+sides = 16
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geometry/Tutorial Area/CSGTorus3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0655, 0, 0)
+operation = 2
+size = Vector3(2, 1, 8)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Geometry/Tutorial Area/CSGTorus3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0613, 0, 0)
+operation = 2
+size = Vector3(2, 1, 8)
+
+[node name="Dungeon Door" parent="Geometry/Tutorial Area" instance=ExtResource("2_s2ahy")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 43, 1.5, 0)
+script = ExtResource("3_6f8ox")
+Scene = "res://Scenes/islands/island0/Dungeon0.tscn"
+checkpoint = 0
+flames_required = 1
+
+[node name="Dungeon Door2" parent="Geometry/Tutorial Area" instance=ExtResource("2_s2ahy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 53, 1.5, 0)
+script = ExtResource("3_6f8ox")
+Scene = "res://Scenes/islands/island0/Dungeon0.tscn"
+checkpoint = 0
+flames_required = 0
+
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_e5326")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 5)
+Camera = NodePath("FollowCamera")
+
+[node name="FollowCamera" parent="Player" instance=ExtResource("3_b30gx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mouse_sensitivity = 0.04
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 100, 0)
+
+[node name="GameplayUI" parent="." instance=ExtResource("4_qw0hh")]
+
+[node name="Flame" parent="." groups=["flames"] instance=ExtResource("5_reynx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 1.5, 0)
+collision_layer = 8
+collision_mask = 2
+color = Color(0.882353, 0, 0.270588, 1)
+
+[node name="Checkpoint" parent="." instance=ExtResource("6_ftc75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4)
+shape = SubResource("BoxShape3D_1vyo3")
+
+[node name="Checkpoint2" parent="." instance=ExtResource("6_ftc75")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 41, 1, 0)
+id = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_1vyo3")
+
+[node name="Checkpoint3" parent="." instance=ExtResource("6_ftc75")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 54.6213, 1, 0)
+id = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_1vyo3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 200, 0, 0, 0)
+mesh = SubResource("PlaneMesh_yv7d8")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wcdn7")
+
+[node name="Boat" parent="." instance=ExtResource("9_qfby2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
