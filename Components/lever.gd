@@ -12,6 +12,7 @@ func _on_interactable_on_interacting() -> void:
 		return
 	
 	print("[%s] got interacted" % get_path())
+	
 	if is_on:
 		animator.play("flip_off")
 	else:
