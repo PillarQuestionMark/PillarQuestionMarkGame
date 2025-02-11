@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dgw6sfwqiwerc"]
+[gd_scene load_steps=32 format=3 uid="uid://dgw6sfwqiwerc"]
 
 [ext_resource type="PackedScene" uid="uid://ud6x3emfmcnt" path="res://Components/trigger_animation.tscn" id="1_l8skm"]
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_yxky3"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="6_rtf4h"]
 [ext_resource type="PackedScene" uid="uid://b5qmrt8ec1cjv" path="res://Entities/example_npc.tscn" id="8_ynql4"]
 [ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="9_hll6e"]
+[ext_resource type="PackedScene" uid="uid://dc1evxye2jpsn" path="res://Entities/Boat.tscn" id="15_ggb0t"]
 [ext_resource type="PackedScene" uid="uid://cftk8sgcrsuv0" path="res://Obstacles/SpikeFloor.tscn" id="15_twh6u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
@@ -912,3 +913,6 @@ spikeColumns = 4
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25, 1.5, 30)
 dialogue = Array[String](["have you tried [color=red][shake rate=20.0 level=5 connected=1]jumping?![/shake][/color]"])
 unlock = "double_jump"
+
+[node name="Boat" parent="." instance=ExtResource("15_ggb0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35.1068)
