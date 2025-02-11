@@ -11,7 +11,7 @@ func _ready() -> void:
 	## uncomment the below line to delete all saves upon entering file select
 	## this is done when the save files will crash the file select and need to be deleted
 	## please comment it again after you use it once, otherwise it will continue deleting
-	##delete_all_saves()
+	## delete_all_saves()
 	
 	for file in [1, 2, 3]:
 		_read_file(FileUtility.save_file_name + String.num_int64(file) + FileUtility.save_file_ending, file)
