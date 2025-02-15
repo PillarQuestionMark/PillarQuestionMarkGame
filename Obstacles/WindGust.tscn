@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://b0p3si768yofa"]
+
+[ext_resource type="Script" path="res://Obstacles/wind_gust.gd" id="1_7trvm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2x2f1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5suja"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.129412)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2pkq8"]
+material = SubResource("StandardMaterial3D_5suja")
+
+[sub_resource type="Curve" id="Curve_gegc1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.230769), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gfjck"]
+curve = SubResource("Curve_gegc1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lrrl5"]
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+direction = Vector3(0, 0, 1)
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_gfjck")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_56dw8"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_rhfhv"]
+material = SubResource("StandardMaterial3D_56dw8")
+radial_segments = 8
+rings = 4
+
+[node name="WindGust" type="Node3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 10, 0, 0, 0)
+script = ExtResource("1_7trvm")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_2x2f1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_2pkq8")
+
+[node name="WallSlideParticles" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+amount = 4
+lifetime = 0.4
+process_material = SubResource("ParticleProcessMaterial_lrrl5")
+draw_pass_1 = SubResource("SphereMesh_rhfhv")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
