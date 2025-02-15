@@ -199,5 +199,6 @@ shape = SubResource("BoxShape3D_8hsbt")
 
 [node name="BouncyMushroom" parent="." instance=ExtResource("12_yw0fq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9752, 1.12597, 0)
+bounce_height = 40.0
 
 [connection signal="body_entered" from="Loading-zone" to="Loading-zone" method="_on_body_entered"]

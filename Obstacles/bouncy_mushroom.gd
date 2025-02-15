@@ -1,5 +1,6 @@
-extends Node3D
+class_name BouncyMushroom extends Node3D
 
+@export var bounce_height : float = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,4 +16,4 @@ func _process(delta: float) -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	print("om")
 	if (body is Player && body.is_on_floor()):
-		body.velocity.y += 50
+		body.velocity.y += bounce_height
