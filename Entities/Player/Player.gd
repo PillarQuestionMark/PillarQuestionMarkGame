@@ -1,7 +1,10 @@
 class_name Player extends CharacterBody3D
 @export_group("Movement")
-@export_range(0.0, 100.0, 0.1) var Jump_Impulse : float = 25.0
-@export_range(0.0, 100.0, 0.1) var Slam_Jump_Impulse : float = 40.0
+@export_range(0.0, 100.0, 0.1) var Jump_Impulse : float = 2.0
+@export_range(0.0, 1.0, 0.05) var Jump_Held_Decay : float = 0.6
+@export_range(0.0, 100.0, 0.1) var Jump_Held_Strength : float = 10.0
+@export_range(0.0, 100.0, 0.1) var Slam_Jump_Impulse : float = 10.0
+@export_range(0.0, 1.0, 0.05) var Coyote_Time : float = 0.1
 @export_range(0.0, 100.0, 0.1) var Air_Speed : float = 10.0
 @export_range(0.0, 100.0, 0.1) var Walk_Speed : float = 10.0
 @export_range(0.0, 100.0, 0.1) var Sprint_Speed : float = 20.0
@@ -26,6 +29,8 @@ var can_wall_slide : bool = true
 var jumps_left : int = 0 # how many jumps left
 
 var slamjump_unlocked : bool = true
+
+var max_height : float = 0
 
 @onready var jump_sound: AudioStreamPlayer = %AudioStreamPlayer
 @onready var wall_slide_particles: GPUParticles3D = %WallSlideParticles
@@ -61,6 +66,11 @@ func _process(delta : float) -> void:
 	## REMOVE LATER. FOR NOW, JUST TO TEST DEATH
 	if Input.is_action_just_pressed("kys"):
 		die()
+		
+	
+	if (velocity.y < 0.5 && position.y > max_height):
+		max_height = position.y
+		print("max height: " + str(max_height))
 
 
 func get_move_direction() -> Vector3:
@@ -108,6 +118,7 @@ func touched_ground() -> void:
 	can_wall_slide = PlayerData.data["wall_slide_unlocked"]
 	can_dash = PlayerData.data["dash_unlocked"]
 	jumps_left = PlayerData.data["max_jumps"]
+	max_height = 0
 
 func try_interact() -> void:
 	interactor.try_interact()
