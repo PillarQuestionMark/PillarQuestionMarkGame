@@ -3,7 +3,7 @@ class_name Player extends CharacterBody3D
 @export_range(0.0, 100.0, 0.1) var Jump_Impulse : float = 2.0
 @export_range(0.0, 1.0, 0.05) var Jump_Held_Decay : float = 0.6
 @export_range(0.0, 100.0, 0.1) var Jump_Held_Strength : float = 10.0
-@export_range(0.0, 100.0, 0.1) var Slam_Jump_Impulse : float = 10.0
+@export_range(0.0, 100.0, 0.1) var Slam_Jump_Impulse : float = 15.0
 @export_range(0.0, 1.0, 0.05) var Coyote_Time : float = 0.1
 @export_range(0.0, 100.0, 0.1) var Air_Speed : float = 10.0
 @export_range(0.0, 100.0, 0.1) var Walk_Speed : float = 10.0
@@ -66,11 +66,6 @@ func _process(delta : float) -> void:
 	## REMOVE LATER. FOR NOW, JUST TO TEST DEATH
 	if Input.is_action_just_pressed("kys"):
 		die()
-		
-	
-	if (velocity.y < 0.5 && position.y > max_height):
-		max_height = position.y
-		print("max height: " + str(max_height))
 
 
 func get_move_direction() -> Vector3:

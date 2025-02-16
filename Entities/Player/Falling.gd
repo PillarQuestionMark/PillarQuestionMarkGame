@@ -20,7 +20,6 @@ func physics_update(_delta: float) -> void:
 	if (jump_held && Input.is_action_pressed("jump")):
 		player.velocity += held_boost
 		held_boost *= player.Jump_Held_Decay ## diminishing returns for holding jump boost
-		print("held boost!")
 	else:
 		jump_held = false
 	
@@ -68,8 +67,10 @@ func enter(previous_state_path: String, data := {}) -> void:
 ## Called by the state machine before changing the active state. Use this function
 ## to clean up the state.
 func exit() -> void:
-	pass
+	## not sure if required. but probably safer...
+	if (coyote_timer != null):
+		coyote_timer.queue_free()
 	
 func _end_coyote_timer() -> void:
 	player.jumps_left -= 1
-	print("anvil time")
+	coyote_timer.queue_free()
