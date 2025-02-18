@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://b85t02nj7v1lw"]
+[gd_scene load_steps=16 format=3 uid="uid://b85t02nj7v1lw"]
 
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="1_8h1he"]
 [ext_resource type="PackedScene" uid="uid://lr2cbod4qdx" path="res://Entities/ThirdPersonCamera.tscn" id="2_6g76t"]
+[ext_resource type="Material" uid="uid://bsjsac8c0qd8h" path="res://Scenes/Dungeon1/dungeon_1_walls.tres" id="3_p2srh"]
 [ext_resource type="Script" path="res://Components/mover.gd" id="3_pbfgs"]
+[ext_resource type="Texture2D" uid="uid://dbprv31j7qsm7" path="res://Assets/Textures/Bricks_11-512x512.png" id="3_stit0"]
 [ext_resource type="PackedScene" uid="uid://bciwk8ba8ksvr" path="res://Components/lever.tscn" id="4_rjwws"]
-[ext_resource type="Script" path="res://Scenes/Dungeon1/mover_2_switch.gd" id="5_llbbr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -24,17 +25,30 @@ tonemap_mode = 2
 ssao_enabled = true
 glow_enabled = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7eiw"]
+albedo_color = Color(0.650128, 0.650128, 0.650128, 1)
+albedo_texture = ExtResource("3_stit0")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4tr3y"]
 albedo_color = Color(0.0784314, 0.709804, 0.862745, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vjp0k"]
 size = Vector3(2, 2.5, 0.2)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4i8tr"]
-size = Vector3(2, 1, 2)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ju6g3"]
+albedo_color = Color(0.650128, 0.650128, 0.650128, 1)
+albedo_texture = ExtResource("3_stit0")
+uv1_scale = Vector3(7, 7, 7)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5mqk0"]
-size = Vector3(2, 1, 2)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tu7ix"]
+albedo_color = Color(0.650128, 0.650128, 0.650128, 1)
+albedo_texture = ExtResource("3_stit0")
+uv1_scale = Vector3(7, 7, 7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pqtxp"]
+albedo_color = Color(0.650128, 0.650128, 0.650128, 1)
+albedo_texture = ExtResource("3_stit0")
+uv1_scale = Vector3(1.3, 1.3, 1.3)
 
 [node name="Dungeon1" type="Node3D"]
 
@@ -49,7 +63,7 @@ mouse_sensitivity = 0.05
 environment = SubResource("Environment_bhlpx")
 
 [node name="Rooms" type="Node3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="Room1" type="Node3D" parent="Rooms"]
 
@@ -58,32 +72,68 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 [node name="Stationary" type="Node3D" parent="Rooms/Room1/Geometry"]
 
 [node name="FloorTileSmall2" type="CSGBox3D" parent="Rooms/Room1/Geometry/Stationary"]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 3, -0.5, -1)
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 3, -0.5, -0.991672)
 use_collision = true
 
 [node name="FloorTileBig" type="CSGBox3D" parent="Rooms/Room1/Geometry/Stationary"]
-transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, 5, -0.5, 3)
+transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, 4.99958, -0.5, 3.02793)
 use_collision = true
 
 [node name="FloorTileSmall" type="CSGBox3D" parent="Rooms/Room1/Geometry/Stationary"]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 1, -0.5, 1)
 use_collision = true
 
-[node name="Wall3" type="CSGBox3D" parent="Rooms/Room1/Geometry/Stationary"]
-transform = Transform3D(2, 0, 0, 0, 3.5, 0, 0, 0, 2, 5, 0.75, -1)
-use_collision = true
-
 [node name="Wall4" type="CSGBox3D" parent="Rooms/Room1/Geometry/Stationary"]
-transform = Transform3D(2, 0, 0, 0, 3.5, 0, 0, 0, 2, 5, 0.75, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.75, 3)
 use_collision = true
+size = Vector3(2, 5.5, 2)
 
 [node name="Wall2" type="CSGBox3D" parent="Rooms/Room1/Geometry/Stationary"]
-transform = Transform3D(2, 0, 0, 0, 3.5, 0, 0, 0, 2, 1, 0.75, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.75, -1)
 use_collision = true
+size = Vector3(2, 5.5, 2)
+material = ExtResource("3_p2srh")
 
 [node name="Wall" type="CSGBox3D" parent="Rooms/Room1/Geometry/Stationary"]
-transform = Transform3D(2, 0, 0, 0, 3.5, 0, 0, 0, 2, 1, 0.75, 3)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1, 1.75, 4.7484)
 use_collision = true
+size = Vector3(2, 5.5, 4)
+material = ExtResource("3_p2srh")
+
+[node name="Wall5" type="CSGBox3D" parent="Rooms/Room1/Geometry/Stationary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.75, 7)
+use_collision = true
+size = Vector3(8, 5.5, 2)
+material = ExtResource("3_p2srh")
+
+[node name="Wall6" type="CSGBox3D" parent="Rooms/Room1/Geometry/Stationary"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9, 1.75, 4)
+material_override = ExtResource("3_p2srh")
+use_collision = true
+size = Vector3(8, 5.5, 2)
+material = ExtResource("3_p2srh")
+
+[node name="Wall7" type="CSGBox3D" parent="Rooms/Room1/Geometry/Stationary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.75, -1)
+use_collision = true
+size = Vector3(6, 5.5, 2)
+material = ExtResource("3_p2srh")
+
+[node name="Wall3" type="CSGBox3D" parent="Rooms/Room1/Geometry/Stationary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.75, 1)
+use_collision = true
+size = Vector3(2, 5.5, 2)
+
+[node name="Wall8" type="CSGBox3D" parent="Rooms/Room1/Geometry/Stationary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3.5, -1)
+use_collision = true
+size = Vector3(2, 2, 2)
+material = SubResource("StandardMaterial3D_g7eiw")
+
+[node name="FloorTileBig2" type="CSGBox3D" parent="Rooms/Room1/Geometry/Stationary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4, 3)
+use_collision = true
+size = Vector3(8, 1, 6)
 
 [node name="Movable" type="Node3D" parent="Rooms/Room1/Geometry"]
 
@@ -158,86 +208,62 @@ transform = Transform3D(2, 0, 0, 0, 0.819152, -2.29431, 0, 0.573576, 3.27661, 3.
 use_collision = true
 
 [node name="FloorTileSmall4" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
-transform = Transform3D(12, 0, 0, 0, 1, 0, 0, 0, 2, 3, 1.58939, -6.70194)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.914851, -6.70194)
+material_override = ExtResource("3_p2srh")
 use_collision = true
+size = Vector3(12, 6, 2)
+
+[node name="FloorTileSmall5" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -3.38942, -20.6455)
+use_collision = true
+size = Vector3(12, 1, 26)
 
 [node name="FloorTileSmall6" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 4, 8, 6.4, -25)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, -0.964096, -19.5)
+material_override = SubResource("StandardMaterial3D_ju6g3")
 use_collision = true
+size = Vector3(28, 18, 2)
+
+[node name="FloorTileSmall7" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, -0.964096, -19.5)
+material_override = SubResource("StandardMaterial3D_tu7ix")
+use_collision = true
+size = Vector3(28, 18, 2)
 
 [node name="FloorTileSmall8" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -2, 0.8, -12.837)
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3.99526, -2.5)
 use_collision = true
 
-[node name="Movable" type="Node3D" parent="Rooms/Room2/Geometry"]
-
-[node name="MovingPlatform1" type="AnimatableBody3D" parent="Rooms/Room2/Geometry/Movable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -15)
-
-[node name="FloorTileSmall5" type="CSGBox3D" parent="Rooms/Room2/Geometry/Movable/MovingPlatform1"]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+[node name="FloorTileSmall9" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
+transform = Transform3D(2, 0, 0, 0, 0.819152, -2.29431, 0, 0.573576, 3.27661, 3.00108, 5.03478, -4.34196)
 use_collision = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Room2/Geometry/Movable/MovingPlatform1"]
-shape = SubResource("BoxShape3D_4i8tr")
-
-[node name="Mover" type="Node3D" parent="Rooms/Room2/Geometry/Movable/MovingPlatform1"]
-script = ExtResource("3_pbfgs")
-trigger = "d1_r2_set1"
-
-[node name="MovingPlatform2" type="AnimatableBody3D" parent="Rooms/Room2/Geometry/Movable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4.5, -24)
-
-[node name="Mover" type="Node3D" parent="Rooms/Room2/Geometry/Movable/MovingPlatform2"]
-script = ExtResource("3_pbfgs")
-trigger = "d1_r2_set2"
-movement = Vector3(0, -4, 0)
-
-[node name="FloorTileSmall7" type="CSGBox3D" parent="Rooms/Room2/Geometry/Movable/MovingPlatform2"]
-transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+[node name="FloorTileSmall10" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 5, -6.05301)
+material_override = ExtResource("3_p2srh")
 use_collision = true
+size = Vector3(7, 6, 0.5)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Room2/Geometry/Movable/MovingPlatform2"]
-shape = SubResource("BoxShape3D_5mqk0")
+[node name="FloorTileSmall11" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48711, 5, -6.05504)
+material_override = ExtResource("3_p2srh")
+use_collision = true
+size = Vector3(7, 6, 0.5)
 
-[node name="Gate" type="AnimatableBody3D" parent="Rooms/Room2/Geometry/Movable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 6.8, -25)
+[node name="FloorTileSmall12" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 6.5, -5.3)
+material_override = SubResource("StandardMaterial3D_pqtxp")
+use_collision = true
+size = Vector3(2, 3, 2)
 
-[node name="Mover" type="Node3D" parent="Rooms/Room2/Geometry/Movable/Gate"]
-script = ExtResource("5_llbbr")
-trigger1 = "d1_r2_set1"
-trigger1_on = true
-trigger2 = "d1_r2_set2"
-trigger2_on = true
-movement = Vector3(0, -2.5, 0)
+[node name="FloorTileSmall13" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 2.955, -3.90178)
+material_override = ExtResource("3_p2srh")
+use_collision = true
+size = Vector3(3.8, 6, 2)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Rooms/Room2/Geometry/Movable/Gate"]
-transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 2.5, 0, -0.2, 0, -8.74228e-09, 1, 1.25, -0.1)
-material = SubResource("StandardMaterial3D_4tr3y")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Rooms/Room2/Geometry/Movable/Gate"]
-transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 2.5, 0, -0.2, 0, -8.74228e-09, 0.4, 1.25, -0.1)
-material = SubResource("StandardMaterial3D_4tr3y")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Rooms/Room2/Geometry/Movable/Gate"]
-transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 2.5, 0, -0.2, 0, -8.74228e-09, 1.6, 1.25, -0.1)
-material = SubResource("StandardMaterial3D_4tr3y")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Room2/Geometry/Movable/Gate"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.25, -0.1)
-shape = SubResource("BoxShape3D_vjp0k")
-
-[node name="Switches" type="Node3D" parent="Rooms/Room2/Geometry"]
-
-[node name="Lever" parent="Rooms/Room2/Geometry/Switches" instance=ExtResource("4_rjwws")]
-transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-08, 5.876, 2.08, -6.68)
-trigger = "d1_r2_set1"
-
-[node name="Lever2" parent="Rooms/Room2/Geometry/Switches" instance=ExtResource("4_rjwws")]
-transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-08, -2, 5, -24)
-trigger = "d1_r2_set2"
-
-[node name="Mover" type="Node3D" parent="Rooms/Room2/Geometry/Switches/Lever2"]
-script = ExtResource("3_pbfgs")
-trigger = "d1_r2_set2"
-movement = Vector3(0, -4, 0)
+[node name="FloorTileSmall14" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 3, -3.90703)
+material_override = ExtResource("3_p2srh")
+use_collision = true
+size = Vector3(3.8, 6, 2)
