@@ -29,10 +29,9 @@ func _physics_process(delta: float) -> void:
 
 func _transition_to_next_state(target_state_path: String, data: Dictionary = {}) -> void:
 	if not has_node(target_state_path):
-		printerr(owner.name + ": Trying to transition to state " + target_state_path + " but it does not exist.")
+		Logger.error("statemachine %s: trying to transition to nonexistent state %s" % [get_path(), target_state_path])
 		return
-	#Print transition
-	print(owner.name + ": Transitioning to state " + target_state_path)
+	Logger.debug("statemachine %s: transitioning to state %s" % [get_path(), target_state_path])
 	var previous_state_path := state.name
 	state.exit()
 	state = get_node(target_state_path)

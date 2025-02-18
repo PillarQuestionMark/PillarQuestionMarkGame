@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://sg5hhq14qrml"]
+
+[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_4ajsu"]
+[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="1_c4t52"]
+[ext_resource type="PackedScene" uid="uid://dql4b8bulv1vi" path="res://Components/loading-zone.tscn" id="2_60qb3"]
+[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="2_xt7df"]
+[ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="6_fwr5m"]
+[ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="7_gdbae"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1y08l"]
+size = Vector3(2, 3, 1.5)
+
+[node name="Dungeon0" type="Node3D"]
+script = ExtResource("1_4ajsu")
+
+[node name="Geometry" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+use_collision = true
+collision_mask = 2
+size = Vector3(15, 0.5, 20)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 7.17599)
+use_collision = true
+collision_mask = 2
+size = Vector3(15, 10, 4.35199)
+
+[node name="Doorway" type="CSGBox3D" parent="Geometry/CSGBox3D2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -3.25, -1.25)
+operation = 2
+size = Vector3(2, 3, 2)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -16.7754)
+operation = 2
+use_collision = true
+collision_mask = 2
+size = Vector3(15, 10, 4.55078)
+
+[node name="Doorway" type="CSGBox3D" parent="Geometry/CSGBox3D3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -3.25, 1.5)
+operation = 2
+size = Vector3(2, 3, 2)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 5, -5)
+use_collision = true
+collision_mask = 2
+size = Vector3(20, 10, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.99249, 5, -5.02832)
+use_collision = true
+collision_mask = 2
+size = Vector3(20, 10, 1)
+
+[node name="Loading-zone" parent="Geometry" instance=ExtResource("2_60qb3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.8328)
+scene = "res://Scenes/islands/island0/Island0.tscn"
+checkpoint = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Loading-zone"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_1y08l")
+
+[node name="Loading-zone2" parent="Geometry" instance=ExtResource("2_60qb3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.90734)
+scene = "res://Scenes/islands/island0/Island0.tscn"
+checkpoint = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Loading-zone2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_1y08l")
+
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("1_c4t52")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+Camera = NodePath("FollowCamera")
+
+[node name="FollowCamera" parent="Player" instance=ExtResource("2_xt7df")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mouse_sensitivity = 0.04
+
+[node name="GameplayUI" parent="." instance=ExtResource("6_fwr5m")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29002, 4.24533)
+omni_range = 20.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -13.1446)
+omni_range = 20.0
+
+[node name="Ability Mural" parent="." instance=ExtResource("7_gdbae")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 3.35, -5)
+dialogue = Array[String](["mural: jump unlocked!"])
+
+[connection signal="body_entered" from="Geometry/Loading-zone" to="Geometry/Loading-zone" method="_on_body_entered"]
+[connection signal="body_entered" from="Geometry/Loading-zone2" to="Geometry/Loading-zone2" method="_on_body_entered"]

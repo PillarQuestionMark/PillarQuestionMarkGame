@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody3D
-
+@export_group("Movement")
 @export_range(0.0, 100.0, 0.1) var Jump_Impulse : float = 25.0
+@export_range(0.0, 100.0, 0.1) var Slam_Jump_Impulse : float = 40.0
 @export_range(0.0, 100.0, 0.1) var Air_Speed : float = 10.0
 @export_range(0.0, 100.0, 0.1) var Walk_Speed : float = 10.0
 @export_range(0.0, 100.0, 0.1) var Sprint_Speed : float = 20.0
@@ -14,35 +15,53 @@ class_name Player extends CharacterBody3D
 @export_range(0.0, 100, 1) var Slam_Gravity_Factor : float = 20
 @export_range(0.0, 100, 1) var Slide_Gravity_Factor : float = 10
 @export_range(0.0, 100, 1) var Wall_Kick : float = 20
-@export var Camera : Node3D
+@export_group("Camera")
+@export var Transparency_Curve : Curve
+@export var Camera : SpringArm3D
 
 var can_dash : bool = true
-var dash_unlocked : bool = true
 
 var can_wall_slide : bool = true
-var wall_slide_unlocked : bool = true
 
-var can_double_jump : bool = true
-var double_jump_unlocked : bool = true
+var jumps_left : int = 0 # how many jumps left
 
-var slam_unlocked : bool = true
+var slamjump_unlocked : bool = true
 
 @onready var jump_sound: AudioStreamPlayer = %AudioStreamPlayer
 @onready var wall_slide_particles: GPUParticles3D = %WallSlideParticles
+@onready var mesh : MeshInstance3D = $Pivot/MeshInstance3D
 
 @onready var interactor: Interactor = %Interactor
+@onready var slamjump_window: Timer = %SlamjumpWindow
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(Camera != null, "The Player Node requires a Camera of type Node3D to find its bearings")
-	
+	EventBus.dialogue.connect(func(dialogue: Array[String]):
+		$StateMachine.state.finished.emit("Dialogue")
+	)
+	EventBus.dialogue_finished.connect(func():
+		# wait at least 1 full _process() frame to make sure the interact
+		# keypress used to finish the dialogue screen doesn't immediately get
+		# read by player idle state code again.
+		# otherwise, dialogue interactables can get immediately interacted with
+		# again, showing the entire dialogue again.
+		# see also: dialogue_screen.gd
+		await get_tree().process_frame
+		await get_tree().process_frame
+		# simply changing out of the Dialogue state after waiting is enough.
+		# we don't need to stop _process() from doing anything because the
+		# player can't interact while in the Dialogue state.
+		$StateMachine.state.finished.emit("Idle")
+	)
+
 func _process(delta : float) -> void:
-	if (Input.is_action_just_pressed("menu")):
-		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+	mesh.transparency = Transparency_Curve.sample(Camera.get_hit_length() / Camera.spring_length)
 	
-	# rn we can interact in any state
-	if (Input.is_action_just_pressed("interact")):
-		interactor.try_interact()
+	## REMOVE LATER. FOR NOW, JUST TO TEST DEATH
+	if Input.is_action_just_pressed("kys"):
+		die()
+
 
 func get_move_direction() -> Vector3:
 	#Determines the movement direction based on the cameras rotation
@@ -65,7 +84,7 @@ func apply_gravity(delta : float, gravity : float = Gravity):
 	
 func get_pivot() -> Node3D:
 	return $Pivot
-	
+
 func rotate_player(direction : Vector3, delta : float) -> void:
 	## character faces direction you are moving (if moving)
 	if (direction != Vector3.ZERO):
@@ -75,17 +94,32 @@ func rotate_player(direction : Vector3, delta : float) -> void:
 		temp.look_at_from_position(position, position + direction, Vector3.UP)
 		## gradually rotate rather than snap to angle
 		pivotChild.rotation.y = lerp_angle(pivotChild.rotation.y, temp.rotation.y, Rotation_Speed * delta)
-		
+
 ## I tried to make dash cooldown handled at the dash state, but it would not work
 func end_dash() -> void:
 	$DashCooldown.start()
-	
+
 func restore_dash() -> void:
-	print("altrive")
-	can_dash = dash_unlocked
-	
+	Logger.debug("player: altrive")
+	can_dash = PlayerData.data["dash_unlocked"]
+
 ## Since the ground states are spread out, this code is repeated multiple times. Safer to be in one place
 func touched_ground() -> void:
-	can_wall_slide = wall_slide_unlocked
-	can_double_jump = double_jump_unlocked
-	
+	can_wall_slide = PlayerData.data["wall_slide_unlocked"]
+	can_dash = PlayerData.data["dash_unlocked"]
+	jumps_left = PlayerData.data["max_jumps"]
+
+func try_interact() -> void:
+	interactor.try_interact()
+
+func can_slamjump() -> bool:
+	if not slamjump_unlocked:
+		return false
+	return not slamjump_window.is_stopped()
+
+func start_slamjump_window() -> void:
+	slamjump_window.start()
+
+## kills the player and reloads the scene
+func die() -> void:
+	PlayerData.load_scene()

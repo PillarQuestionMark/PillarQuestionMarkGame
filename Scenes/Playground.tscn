@@ -1,39 +1,37 @@
-[gd_scene load_steps=24 format=3 uid="uid://dgw6sfwqiwerc"]
+[gd_scene load_steps=33 format=3 uid="uid://dgw6sfwqiwerc"]
 
 [ext_resource type="PackedScene" uid="uid://ud6x3emfmcnt" path="res://Components/trigger_animation.tscn" id="1_l8skm"]
+[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_yxky3"]
 [ext_resource type="PackedScene" uid="uid://bw4ak8fk223nn" path="res://Components/mover.tscn" id="2_18dog"]
 [ext_resource type="PackedScene" uid="uid://bciwk8ba8ksvr" path="res://Components/lever.tscn" id="2_aubau"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_n32rs"]
-[ext_resource type="PackedScene" uid="uid://lr2cbod4qdx" path="res://Entities/ThirdPersonCamera.tscn" id="3_y86nc"]
-[ext_resource type="PackedScene" uid="uid://b5g6hmix8dyq4" path="res://Scenes/Dungeon1/dungeon_1_entrance.tscn" id="4_2nsoj"]
+[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="3_y86nc"]
+[ext_resource type="PackedScene" uid="uid://ch0xma4bou77p" path="res://Entities/Flame/flame.tscn" id="4_4gtea"]
+[ext_resource type="PackedScene" uid="uid://cdwnjdsfrrav5" path="res://Components/sign.tscn" id="4_65tc4"]
+[ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="4_cslhv"]
+[ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="6_rtf4h"]
+[ext_resource type="PackedScene" uid="uid://b5qmrt8ec1cjv" path="res://Entities/example_npc.tscn" id="8_ynql4"]
+[ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="9_hll6e"]
+[ext_resource type="PackedScene" uid="uid://dc1evxye2jpsn" path="res://Entities/Boat.tscn" id="15_ggb0t"]
+[ext_resource type="PackedScene" uid="uid://cftk8sgcrsuv0" path="res://Obstacles/SpikeFloor.tscn" id="15_twh6u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_lwivm"]
+[sub_resource type="Sky" id="Sky_tmj6c"]
 sky_material = SubResource("ProceduralSkyMaterial_2hx8a")
 
 [sub_resource type="Environment" id="Environment_fvsiw"]
 background_mode = 1
 background_color = Color(0.929412, 0.666667, 0.639216, 1)
-sky = SubResource("Sky_lwivm")
+sky = SubResource("Sky_tmj6c")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.25
 tonemap_mode = 2
 ssao_enabled = true
 glow_enabled = true
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0
-volumetric_fog_albedo = Color(0, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mc4en"]
-albedo_color = Color(0.580392, 0.678431, 0.223529, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_06lha"]
-material = SubResource("StandardMaterial3D_mc4en")
-size = Vector2(10000, 10000)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3ejr"]
 albedo_color = Color(0.898039, 0.937255, 0.937255, 1)
@@ -369,7 +367,18 @@ size = Vector3(4, 12, 5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_d3kti"]
 size = Vector3(4, 17, 8)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_761au"]
+albedo_color = Color(0.239216, 0.501961, 0.639216, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dc2v7"]
+size = Vector3(8.30118, 4.58887, 9.11023)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g5f1x"]
+albedo_color = Color(0.898039, 0.937255, 0.937255, 1)
+
 [node name="Playground" type="Node3D"]
+script = ExtResource("1_yxky3")
+island_id = -1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fvsiw")
@@ -379,11 +388,6 @@ transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -
 shadow_enabled = true
 
 [node name="Geometry" type="Node3D" parent="."]
-
-[node name="Ground" type="CSGMesh3D" parent="Geometry"]
-use_collision = true
-mesh = SubResource("PlaneMesh_06lha")
-metadata/_edit_lock_ = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000432968, 0.519525, -0.0630999)
@@ -440,21 +444,21 @@ size = Vector3(44, 21, 8)
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="CSGBox3D29" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99997, 18.5195, -37.9994)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99997, 10.5195, -37.9994)
 use_collision = true
-size = Vector3(8, 37, 8)
+size = Vector3(8, 53, 8)
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="CSGBox3D30" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99997, 18.5195, -61.9994)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99997, 10.5195, -61.9994)
 use_collision = true
-size = Vector3(8, 37, 8)
+size = Vector3(8, 53, 8)
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="CSGBox3D31" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 0.999356, -0.0358937, 0, 0.0358937, 0.999356, -3.99997, 13.8179, -84.3673)
+transform = Transform3D(1, 0, 0, 0, 0.999356, -0.0358937, 0, 0.0358937, 0.999356, -3.99997, 5.82305, -84.6544)
 use_collision = true
-size = Vector3(8, 28, 8)
+size = Vector3(8, 44, 8)
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Geometry/CSGBox3D31"]
@@ -477,9 +481,9 @@ size = Vector3(5, 4, 19)
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="CSGBox3D37" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(0.996964, -0.0778675, 0, 0.0778675, 0.996964, 0, 0, 0, 1, -5.0554, 12.0195, -107.999)
+transform = Transform3D(0.996964, -0.0778675, 0, 0.0778675, 0.996964, 0, 0, 0, 1, -4.43246, 4.04379, -107.999)
 use_collision = true
-size = Vector3(8, 25, 8)
+size = Vector3(8, 41, 8)
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Geometry/CSGBox3D37"]
@@ -489,9 +493,9 @@ radius = 7.02124
 height = 20.3681
 
 [node name="CSGBox3D39" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99997, 18.5195, -130.999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99997, 10.5195, -130.999)
 use_collision = true
-size = Vector3(8, 37, 8)
+size = Vector3(8, 53, 8)
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="CSGBox3D40" type="CSGBox3D" parent="Geometry"]
@@ -507,15 +511,15 @@ size = Vector3(5, 4, 27)
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="CSGBox3D41" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99997, 18.5195, -153.999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99997, 10.5195, -153.999)
 use_collision = true
-size = Vector3(8, 37, 8)
+size = Vector3(8, 53, 8)
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="CSGBox3D43" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99997, 18.5195, -176.999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99997, 10.5195, -176.999)
 use_collision = true
-size = Vector3(8, 37, 8)
+size = Vector3(8, 53, 8)
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="CSGBox3D44" type="CSGBox3D" parent="Geometry"]
@@ -525,15 +529,15 @@ size = Vector3(10, 4, 69)
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="CSGBox3D45" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99997, 18.5195, -199.999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99997, 10.5195, -199.999)
 use_collision = true
-size = Vector3(8, 37, 8)
+size = Vector3(8, 53, 8)
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="CSGBox3D47" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99997, 18.5195, -222.999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99997, 10.5195, -222.999)
 use_collision = true
-size = Vector3(8, 37, 8)
+size = Vector3(8, 53, 8)
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="CSGBox3D33" type="CSGBox3D" parent="Geometry"]
@@ -608,6 +612,12 @@ use_collision = true
 size = Vector3(8, 17, 24)
 material = SubResource("StandardMaterial3D_x3ejr")
 
+[node name="CSGBox3D26" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9958, -7.97804, 1.50166)
+use_collision = true
+size = Vector3(46, 16, 41)
+material = SubResource("StandardMaterial3D_x3ejr")
+
 [node name="CSGBox3D21" type="CSGBox3D" parent="Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 19.0195, -4)
 use_collision = true
@@ -677,8 +687,15 @@ polygon = PackedVector2Array(-1, -2, -1, 2, 7, -2)
 depth = 4.0
 material = SubResource("StandardMaterial3D_x3ejr")
 
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="Geometry"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12, -16, 22)
+use_collision = true
+polygon = PackedVector2Array(0, 0, 0, 16, 32, 0)
+depth = 8.0
+material = SubResource("StandardMaterial3D_x3ejr")
+
 [node name="Fragment" type="AnimatableBody3D" parent="Geometry"]
-transform = Transform3D(-0.00675595, 0.0689383, -0.997598, -0.999394, 0.0336087, 0.00909061, 0.0341546, 0.997055, 0.0686694, -6.43581, 37.4142, -85.9073)
+transform = Transform3D(-0.00675595, 0.0689383, -0.997598, -0.999394, 0.0336087, 0.00909062, 0.0341546, 0.997055, 0.0686694, -6.43581, 37.4142, -85.9073)
 sync_to_physics = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Geometry/Fragment"]
@@ -839,20 +856,170 @@ shape = SubResource("BoxShape3D_d3kti")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 trigger = "platform"
 
-[node name="Dungeon1Entrance" parent="Geometry" instance=ExtResource("4_2nsoj")]
-transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0.5, 0.1, 6.6)
+[node name="Sign" parent="Geometry" instance=ExtResource("4_65tc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2.28318, 21)
+dialogue = Array[String](["welcome to the castle!", "interact with the lever to open the door.", "bbcode supports [color=red][shake rate=20.0 level=5 connected=1]cool effects[/shake][/color]!"])
 
-[node name="TriggerBox" parent="Geometry/Dungeon1Entrance" index="2"]
-dungeon_path = "res://Scenes/Dungeon1/dungeon_1.tscn"
+[node name="Sign2" parent="Geometry" instance=ExtResource("4_65tc4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18, 2.28318, 4.226)
+dialogue = Array[String](["try jumping off moving platforms!"])
+
+[node name="Sea" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.5106, 0)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_761au")
+
+[node name="Sea2" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.5106, 100)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_761au")
+
+[node name="Sea3" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.5106, -100)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_761au")
+
+[node name="Sea4" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.5106, -200)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_761au")
+
+[node name="Sea5" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, -13.5106, 0)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_761au")
+
+[node name="Sea6" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, -13.5106, 100)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_761au")
+
+[node name="Sea7" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, -13.5106, -100)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_761au")
+
+[node name="Sea8" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, -13.5106, -200)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_761au")
+
+[node name="Sea9" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, -13.5106, 0)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_761au")
+
+[node name="Sea10" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, -13.5106, 100)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_761au")
+
+[node name="Sea11" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, -13.5106, -100)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_761au")
+
+[node name="Sea12" type="CSGBox3D" parent="Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, -13.5106, -200)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_761au")
+
+[node name="Checkpoint" parent="." instance=ExtResource("9_hll6e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21929, -11.2942, 50.9885)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.191971, 1.79443, 0.545349)
+shape = SubResource("BoxShape3D_dc2v7")
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_n32rs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21929, 0.633381, 32.5046)
-Camera = NodePath("ThirdPersonCamera")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21929, -11.2942, 50.9885)
+Camera = NodePath("FollowCamera")
 
-[node name="ThirdPersonCamera" parent="Player" instance=ExtResource("3_y86nc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
-mouse_sensitivity = 0.05
+[node name="FollowCamera" parent="Player" instance=ExtResource("3_y86nc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mouse_sensitivity = 0.04
 
 [node name="Interactables" type="Node" parent="."]
 
-[editable path="Geometry/Dungeon1Entrance"]
+[node name="Checkpoint2" parent="." instance=ExtResource("9_hll6e")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4, 41, -32.166)
+id = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.191971, 1.79443, 0.545349)
+shape = SubResource("BoxShape3D_dc2v7")
+
+[node name="Flame" parent="." groups=["flames"] instance=ExtResource("4_4gtea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51791, 25.3908, -108.287)
+collision_layer = 8
+collision_mask = 2
+flame_name = "Aqueduct"
+color = Color(0, 0.788936, 0.893223, 1)
+
+[node name="Flame2" parent="." groups=["flames"] instance=ExtResource("4_4gtea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51791, 42.173, -21.7444)
+collision_layer = 8
+collision_mask = 2
+id = 1
+flame_name = "Cubes"
+color = Color(0.837957, 0.616061, 0.83013, 1)
+
+[node name="Flame3" parent="." groups=["flames"] instance=ExtResource("4_4gtea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.919, 21.9953, 17.9254)
+collision_layer = 8
+collision_mask = 2
+id = 2.0
+flame_name = "Castle Walls"
+color = Color(0.505449, 0.802076, 0, 1)
+
+[node name="GameplayUI" parent="." instance=ExtResource("4_cslhv")]
+
+[node name="ExampleNPC" parent="." instance=ExtResource("8_ynql4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17, 21, 1)
+dialogue = Array[String](["stranger: the lawn is looking extra green today!", "you: ...", "stranger: don't wander too far! you'll fall off the edge."])
+
+[node name="SpikeFloor" parent="." instance=ExtResource("15_twh6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+spikeScale = 0.5
+spikeRows = 4
+spikeColumns = 4
+
+[node name="Ability Mural" parent="." instance=ExtResource("6_rtf4h")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -15, 3, -10)
+dialogue = Array[String](["mural: [color=green][shake rate=20.0 level=5 connected=1]double jump[/shake][/color] unlocked!"])
+unlock = "double_jump"
+
+[node name="Boat" parent="." instance=ExtResource("15_ggb0t")]
+transform = Transform3D(0.932014, -0.0297404, 0.361199, 0, 0.996627, 0.0820603, -0.362422, -0.0764813, 0.928871, -4.59106, -12.6479, 50.2878)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.856644, 0.229408, -0.462097, -0.475451, 0.698751, -0.534504, 0.200271, 0.677583, 0.707653, 0.391769, -14.0383, 77.5182)
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_g5f1x")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.963072, -0.268818, -0.0151615, 0.0125173, 0.100954, -0.994812, 0.268954, 0.957886, 0.100591, 14.8029, -13.6047, 56.6726)
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_g5f1x")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(0.556095, 0.293347, -0.777628, -0.140108, -0.889162, -0.435615, -0.819224, 0.351195, -0.453359, -40.1669, -14.0096, 74.4386)
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_g5f1x")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(0.522788, 0.132403, -0.842118, 0.084111, -0.991056, -0.103603, -0.848303, -0.0166685, -0.529249, -33.8957, -12.4497, 92.3677)
+size = Vector3(4, 4, 4)
+material = SubResource("StandardMaterial3D_g5f1x")

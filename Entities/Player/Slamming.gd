@@ -10,10 +10,13 @@ func update(_delta: float) -> void:
 
 ## Called by the state machine on the engine's physics update tick.
 func physics_update(_delta: float) -> void:	
-	if (Input.is_action_pressed("dash") && player.can_dash):
+	if (Input.is_action_just_pressed("dash") && player.can_dash):
 		finished.emit(DASHING)
 	elif (player.is_on_floor()):
+		player.start_slamjump_window()
 		finished.emit(IDLE)
+	elif (Input.is_action_just_pressed("interact")):
+		player.try_interact()
 	
 	player.apply_gravity(_delta * player.Slam_Gravity_Factor)
 	player.move_and_slide()

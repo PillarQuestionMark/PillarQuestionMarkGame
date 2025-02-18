@@ -10,14 +10,15 @@ func update(_delta: float) -> void:
 
 ## Called by the state machine on the engine's physics update tick.
 func physics_update(_delta: float) -> void:
-	pass
+	if (Input.is_action_just_pressed("interact")):
+		player.try_interact()
 
 ## Called by the state machine upon changing the active state. The `data` parameter
 ## is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(previous_state_path: String, data := {}) -> void:
 	player.jump_sound.play()
 	player.velocity.y = player.Jump_Impulse
-	finished.emit(FALLING, {"canDoubleJump" : false})
+	finished.emit(FALLING)
 	player.can_double_jump = false
 
 ## Called by the state machine before changing the active state. Use this function

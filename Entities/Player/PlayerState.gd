@@ -5,11 +5,13 @@ const IDLE = "Idle"
 const SPRINTING = "Sprinting"
 const WALKING = "Walking"
 const JUMPING = "Jumping"
+const SLAMJUMPING = "Slamjumping"
 const DOUBLE_JUMPING = "DoubleJumping"
 const FALLING = "Falling"
 const DASHING = "Dashing"
 const WALL_SLIDING = "WallSliding"
 const SLAMMING = "Slamming"
+const DIALOGUE = "Dialogue"
 
 #Gotta change once the player has a better defined type
 var player : Player

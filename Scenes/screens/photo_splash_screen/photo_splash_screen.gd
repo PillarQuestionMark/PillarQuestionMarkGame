@@ -50,6 +50,10 @@ func _process(delta: float) -> void:
 		var p := photos[i]
 		p.origin.x = p.size.x * (i + 0.5)
 		p.origin.y = get_viewport().size.y / 2
+	
+	# skip
+	if Input.is_action_just_pressed("interact") or Input.is_action_just_pressed("ui_accept"):
+		_finish()
 
 ## make nametag's font big enough to cover screen
 func _update_nametag_fontsize() -> void:
@@ -60,4 +64,7 @@ func _update_nametag_fontsize() -> void:
 	nametag.add_theme_font_size_override("font_size", fontsize)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	_finish()
+
+func _finish() -> void:
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")

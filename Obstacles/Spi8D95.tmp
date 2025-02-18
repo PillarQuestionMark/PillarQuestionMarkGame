@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cftk8sgcrsuv0"]
+
+[ext_resource type="ArrayMesh" uid="uid://ca6cbto6d6e7k" path="res://Assets/Meshes/spike.obj" id="1_4ksla"]
+[ext_resource type="Script" path="res://Obstacles/SpikeFloor.gd" id="1_m5336"]
+[ext_resource type="Material" uid="uid://cbhgouyh1nji3" path="res://Assets/Materials/SpikeMaterial.tres" id="1_ucipi"]
+[ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="2_wdmwc"]
+
+[node name="SpikeFloor" type="Node3D"]
+script = ExtResource("1_m5336")
+spikeScale = null
+spikeRows = null
+spikeColumns = null
+
+[node name="Spike" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+material_override = ExtResource("1_ucipi")
+mesh = ExtResource("1_4ksla")
+
+[node name="Obstacle" parent="." instance=ExtResource("2_wdmwc")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
+unique_name_in_owner = true

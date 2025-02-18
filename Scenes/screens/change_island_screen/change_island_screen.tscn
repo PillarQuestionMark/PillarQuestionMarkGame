@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3 uid="uid://bso6p3yjhh7gw"]
+
+[ext_resource type="Script" path="res://Scenes/screens/change_island_screen/switch_island.gd" id="1_vccmq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_53sqr"]
+bg_color = Color(0, 0, 0, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqtv5"]
+bg_color = Color(0, 0, 0, 0.392157)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_7b8gp"]
+font_size = 32
+font_color = Color(0.898039, 0.937255, 0.937255, 1)
+
+[node name="ChangeIslandScreen" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_vccmq")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -266.0
+offset_top = -132.0
+offset_right = 225.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_53sqr")
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gqtv5")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="SelectIsland" type="Label" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "sail to:"
+label_settings = SubResource("LabelSettings_7b8gp")
+
+[node name="BoxContainer" type="BoxContainer" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Island 1" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+text = "tutorial"
+
+[node name="BoxContainer2" type="BoxContainer" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Island 2" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+text = "sea castle"
+icon_alignment = 1
+
+[node name="BoxContainer3" type="BoxContainer" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Stay Here" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+text = "stay here"
+icon_alignment = 1
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="pressed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BoxContainer/Island 1" to="." method="_on_island_pressed" binds= ["Island1"]]
+[connection signal="pressed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BoxContainer2/Island 2" to="." method="_on_island_pressed" binds= ["Island2"]]
+[connection signal="pressed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BoxContainer3/Stay Here" to="." method="_on_stay_here_pressed"]

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cftk8sgcrsuv0"]
+
+[ext_resource type="Script" path="res://Obstacles/SpikeFloor.gd" id="1_m5336"]
+[ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="2_wdmwc"]
+
+[node name="SpikeFloor" type="Node3D"]
+script = ExtResource("1_m5336")
+
+[node name="Obstacle" parent="." instance=ExtResource("2_wdmwc")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
+unique_name_in_owner = true

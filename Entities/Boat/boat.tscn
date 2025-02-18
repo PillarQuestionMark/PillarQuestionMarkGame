@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnbwgecvlyp7h"]
+
+[ext_resource type="PackedScene" uid="uid://nd1s7aeat6mx" path="res://Components/interactable.tscn" id="1_h8ai1"]
+[ext_resource type="Script" path="res://Entities/Boat/boat.gd" id="1_oavce"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixg3g"]
+albedo_color = Color(0.898039, 0.937255, 0.937255, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h1ihm"]
+
+[node name="Boat" type="Node3D"]
+script = ExtResource("1_oavce")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.0787681, 0, 0, 0, 1, 0, 0, 0, 0.117908, -0.000432968, 0.519525, -0.0630999)
+use_collision = true
+size = Vector3(4, 1, 4)
+material = SubResource("StandardMaterial3D_ixg3g")
+
+[node name="Interactable" parent="." instance=ExtResource("1_h8ai1")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_h1ihm")
