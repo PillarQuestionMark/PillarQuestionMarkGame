@@ -9,7 +9,8 @@ var _mouse_mode: Input.MouseMode
 
 func _ready() -> void:
 	get_tree().paused = true
-	Input.mouse_mode = _mouse_mode	
+	PhysicsServer2D.set_active(true) # see https://forum.godotengine.org/t/how-can-i-pause-the-scene-but-have-process-mode-nodes-still-process-physics/26271/2
+	Input.mouse_mode = _mouse_mode
 
 func _on_island_pressed(island_number: String) -> void:
 	get_tree().paused = false
