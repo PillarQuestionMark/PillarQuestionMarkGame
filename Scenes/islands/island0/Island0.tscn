@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dgdn3s520cve5"]
+[gd_scene load_steps=24 format=3 uid="uid://dgdn3s520cve5"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_8lv5b"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_e5326"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bciwk8ba8ksvr" path="res://Components/lever.tscn" id="10_3v8pb"]
 [ext_resource type="Script" path="res://Components/flame_lever.gd" id="11_grqrm"]
 [ext_resource type="PackedScene" uid="uid://bw4ak8fk223nn" path="res://Components/mover.tscn" id="12_6wsbu"]
+[ext_resource type="PackedScene" uid="uid://b5bqe4fvpyopq" path="res://Obstacles/CrumblingPlatform.tscn" id="12_egbot"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4c74y"]
 albedo_color = Color(0.151365, 0.532748, 0, 1)
@@ -195,5 +196,8 @@ material = SubResource("StandardMaterial3D_3rdwg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftDoor"]
 shape = SubResource("BoxShape3D_8hsbt")
+
+[node name="CrumblingPlatform" parent="." instance=ExtResource("12_egbot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.13535, 1.61356, 0)
 
 [connection signal="body_entered" from="Loading-zone" to="Loading-zone" method="_on_body_entered"]
