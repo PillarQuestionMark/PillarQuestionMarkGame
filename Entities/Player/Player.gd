@@ -71,9 +71,9 @@ func list_flames() -> void:
 		print("Island " + str(island) + " ... " + str(collected_flames.size()) + "/" + str(FlameIndex.island_total_flames(island)))
 		for flame in FlameIndex.get_flame_ids(island):
 			if (collected_flames.has(float(flame))):
-				print(FlameIndex.get_flame_name(island, flame))
+				print("- " + FlameIndex.get_flame_name(island, flame))
 			else:
-				print("???")
+				print("- ???")
 
 
 func get_move_direction() -> Vector3:
