@@ -27,12 +27,16 @@ var data = {
 ## Reads the save file values into the data dictionary.
 func load_data() -> void:
 	## used for writing the default file (DO NOT UNCOMMENT UNLESS YOU KNOW WHAT THIS DOES)
+	## this should not even be needed anymore with file versioning. let me know if it is necessary - Seven
 	##FileUtility.write_file("res://default_save.pillar", data)
 
 	if (FileAccess.file_exists(_file)):
 		data = FileUtility.read_file(_file)
 	else:
 		data = FileUtility.read_file("res://default_save.pillar")
+		if (SaveVersioning.check_version(data)): ## if the default save is out-of-date, make sure to update it first
+			FileUtility.write_file("res://default_save.pillar", data)
+			data = FileUtility.read_file("res://default_save.pillar")
 		FileUtility.write_file(_file, data)
 	
 	load_scene()

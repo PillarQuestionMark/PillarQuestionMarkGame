@@ -2,7 +2,7 @@ class_name SaveVersioning
 ## Helps assure save files are compatible with the current version.
 
 ## The current version of save file, to which all outdated save files will be updated to.
-const current_version : float = 2
+const current_version : float = 0
 
 ## Updates the save file passed until it is up-to-date.
 static func check_version(save : Dictionary) -> bool:
@@ -30,18 +30,7 @@ static func check_version(save : Dictionary) -> bool:
 ## if outdated field, convert it using old data
 ## Conversion Functions:
 
-		
 ## Converts from no version to v0.
 static func _convert_new(save : Dictionary) -> void:
 	save["version"] = 0
-	
-## Converts from v0 to v1.
-static func _convert_0(save : Dictionary) -> void:
-	save["version"] = 1
-	save["testing"] = "it does work!"
-	
-## Converts from v2 to v3.
-static func _convert_1(save : Dictionary) -> void:
-	save["version"] = 2
-	save.erase("testing")
 	

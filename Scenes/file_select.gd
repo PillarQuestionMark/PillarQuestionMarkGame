@@ -8,6 +8,8 @@ func _ready() -> void:
 	FileContainer = $CanvasLayer/PanelContainer/MarginContainer/VBoxContainer
 	FileContainer.get_node("File1").grab_focus()
 	
+	## this should not happen thanks to file versioning
+	## if it is needed; let me know! - Seven
 	## uncomment the below line to delete all saves upon entering file select
 	## this is done when the save files will crash the file select and need to be deleted
 	## please comment it again after you use it once, otherwise it will continue deleting
@@ -22,6 +24,7 @@ func _read_file(filePath : String, number : int):
 	if (data != null):
 		if (SaveVersioning.check_version(data)):
 			FileUtility.write_file(filePath, data)
+			data = FileUtility.read_file(filePath)
 		FileContainer.get_node("File" + String.num_int64(number) + "/Time").text = "Time: " + FileUtility.get_time_string(data["playtime"])
 		FileContainer.get_node("File" + String.num_int64(number) + "/Flames").text = "Flames: " + String.num(data["total_flames"])
 	else:
