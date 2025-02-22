@@ -27,7 +27,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 script = ExtResource("4_c8x4j")
 trigger = "rotating_room"
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Rotating Room"]
+[node name="Outer Wall" type="CSGCylinder3D" parent="Rotating Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 operation = 2
 use_collision = true
@@ -36,11 +36,16 @@ radius = 20.0
 height = 20.0
 sides = 16
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Rotating Room/CSGCylinder3D"]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Rotating Room/Outer Wall"]
 operation = 2
 radius = 19.0
 height = 20.0
 sides = 16
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Rotating Room/Outer Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.05402, -19.5767)
+operation = 2
+size = Vector3(4, 7, 2)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Rotating Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.6293)
