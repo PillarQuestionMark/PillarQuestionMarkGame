@@ -21,7 +21,7 @@ static func check_version(save : Dictionary) -> bool:
 			Logger.info("Converting save from version " + str(save["version"]))
 			updated = true
 		else:
-			Logger.info("Could not convert from version " + str(save["version"]))
+			Logger.error("Could not convert from version " + str(save["version"]))
 			
 	return updated
 		
