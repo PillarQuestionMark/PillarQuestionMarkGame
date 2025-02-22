@@ -20,6 +20,8 @@ func _ready() -> void:
 func _read_file(filePath : String, number : int):
 	var data = FileUtility.read_file(filePath)
 	if (data != null):
+		if (SaveVersioning.check_version(data)):
+			FileUtility.write_file(filePath, data)
 		FileContainer.get_node("File" + String.num_int64(number) + "/Time").text = "Time: " + FileUtility.get_time_string(data["playtime"])
 		FileContainer.get_node("File" + String.num_int64(number) + "/Flames").text = "Flames: " + String.num(data["total_flames"])
 	else:
