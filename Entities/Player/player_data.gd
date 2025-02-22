@@ -24,8 +24,17 @@ var data = {
 	"wall_slide_unlocked" = false
 }
 
+## When loading the game, test if we are using run current scene.
+## Used for improving the "run current scene" experience.
+func _ready() -> void:
+	## main scene : res://Scenes/screens/photo_splash_screen/photo_splash_screen.tscn
+	var parent = get_parent()
+	if (!parent.has_node("PhotoSplashScreen")): ## CHANGE IF FIRST SCENE CHANGES!
+		load_data(false) ## do not load a scene, but load everything else
+		data["current_scene"] = get_tree().current_scene.scene_file_path
+
 ## Reads the save file values into the data dictionary.
-func load_data() -> void:
+func load_data(load_scene : bool = true) -> void:
 	## used for writing the default file (DO NOT UNCOMMENT UNLESS YOU KNOW WHAT THIS DOES)
 	## this should not even be needed anymore with file versioning. let me know if it is necessary - Seven
 	##FileUtility.write_file("res://default_save.pillar", data)
@@ -39,7 +48,7 @@ func load_data() -> void:
 			data = FileUtility.read_file("res://default_save.pillar")
 		FileUtility.write_file(_file, data)
 	
-	load_scene()
+	if (load_scene): load_scene()
 	
 	start_time = Time.get_unix_time_from_system()
 
