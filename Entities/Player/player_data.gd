@@ -21,7 +21,8 @@ var data = {
 	"dash_unlocked" = false,
 	"sprint_unlocked" = false,
 	"slam_unlocked" = false,
-	"wall_slide_unlocked" = false
+	"wall_slide_unlocked" = false,
+	"version" = 0
 }
 
 ## When loading the game, test if we are using run current scene.
@@ -31,6 +32,9 @@ func _ready() -> void:
 	var parent = get_parent()
 	if (!parent.has_node("PhotoSplashScreen")): ## CHANGE IF FIRST SCENE CHANGES!
 		load_data(false) ## do not load a scene, but load everything else
+		if (SaveVersioning.check_version(data)): ## update if out-of-date file
+			FileUtility.write_file(_file, data)
+			data = FileUtility.read_file(_file)
 		data["current_scene"] = get_tree().current_scene.scene_file_path
 
 ## Reads the save file values into the data dictionary.
