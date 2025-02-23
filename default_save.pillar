@@ -4,7 +4,7 @@
 
 	},
 	"collected_fragments": [],
-	"current_scene": "res://Scenes/islands/island0/Island0.tscn",
+	"current_scene": "res://Scenes/islands/ruins/ruins_island.tscn",
 	"dash_unlocked": false,
 	"max_jumps": 0,
 	"open_dungeons": [],
