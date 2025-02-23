@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://hhfqxwync0f2"]
 
 [ext_resource type="ArrayMesh" uid="uid://c03ynvawg6nr8" path="res://Scenes/props/lantern/round_lantern.obj" id="1_nify0"]
-[ext_resource type="Material" uid="uid://bohrgao1qymp1" path="res://Scenes/props/lantern/lantern_material_c33c40.tres" id="2_erbno"]
+[ext_resource type="Material" uid="uid://bohrgao1qymp1" path="res://Scenes/props/lantern/lantern_material_on_c33c40.tres" id="2_erbno"]
 [ext_resource type="Script" path="res://Scenes/props/lantern/lantern.gd" id="2_rvlw2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ww5l0"]

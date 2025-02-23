@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dmwlaf2f3cmd4"]
+[gd_scene load_steps=38 format=3 uid="uid://dmwlaf2f3cmd4"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_wbxxr"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_4qj5t"]
@@ -11,18 +11,22 @@
 [ext_resource type="PackedScene" uid="uid://btmje4fgwjpmy" path="res://Scenes/islands/ruins/ruins.blend" id="8_kouu0"]
 [ext_resource type="PackedScene" uid="uid://ch0xma4bou77p" path="res://Entities/Flame/flame.tscn" id="9_8qidy"]
 [ext_resource type="PackedScene" uid="uid://hhfqxwync0f2" path="res://Scenes/props/lantern/round_lantern.tscn" id="9_kopx0"]
-[ext_resource type="Material" uid="uid://bohrgao1qymp1" path="res://Scenes/props/lantern/lantern_material_c33c40.tres" id="11_kbx3r"]
+[ext_resource type="Material" uid="uid://dhuoe0ubbi6ku" path="res://Scenes/props/lantern/lantern_material_off_63c4cc.tres" id="10_xhuas"]
+[ext_resource type="Material" uid="uid://chmqd3xotty5j" path="res://Scenes/props/lantern/lantern_material_off_c33c40.tres" id="11_6qxph"]
+[ext_resource type="Material" uid="uid://bohrgao1qymp1" path="res://Scenes/props/lantern/lantern_material_on_c33c40.tres" id="11_kbx3r"]
 [ext_resource type="PackedScene" uid="uid://bfnog8bl0a8ej" path="res://Scenes/props/lantern/floor_lantern.tscn" id="11_xgfhs"]
+[ext_resource type="Material" uid="uid://b76b2cj57fqe7" path="res://Scenes/props/lantern/lantern_material_off_e1a845.tres" id="12_6mrf8"]
 [ext_resource type="PackedScene" uid="uid://dql4b8bulv1vi" path="res://Components/loading-zone.tscn" id="12_u475q"]
 [ext_resource type="LightmapGIData" uid="uid://bokhqwwpmemug" path="res://Scenes/islands/ruins/ruins_island.lmbake" id="12_w5b05"]
-[ext_resource type="Material" uid="uid://c81y8f6r4j56g" path="res://Scenes/props/lantern/lantern_material_e1a845.tres" id="13_mr3ie"]
-[ext_resource type="Material" uid="uid://dlcsckm6dkfud" path="res://Scenes/props/lantern/lantern_material_b23657.tres" id="13_tl4x8"]
-[ext_resource type="Material" uid="uid://48xykaovfh8f" path="res://Scenes/props/lantern/lantern_material_63c4cc.tres" id="14_xadis"]
-[ext_resource type="Material" uid="uid://cj6x6vkwlwphw" path="res://Scenes/props/lantern/lantern_material_94ad39.tres" id="15_wossf"]
-[ext_resource type="Material" uid="uid://bwba7yyhtwxo6" path="res://Scenes/props/lantern/lantern_material_d16974.tres" id="16_68ie1"]
-[ext_resource type="Material" uid="uid://dj7nono3qn7hb" path="res://Scenes/props/lantern/lantern_material_e47259.tres" id="16_khp1a"]
-[ext_resource type="Material" uid="uid://7m66o5pyoqe" path="res://Scenes/props/lantern/lantern_material_b49d7e.tres" id="17_g5ihq"]
-[ext_resource type="Material" uid="uid://cp1us0nug7k3m" path="res://Scenes/props/lantern/lantern_material_7e659b.tres" id="19_djfiq"]
+[ext_resource type="Material" uid="uid://c81y8f6r4j56g" path="res://Scenes/props/lantern/lantern_material_on_e1a845.tres" id="13_mr3ie"]
+[ext_resource type="Material" uid="uid://dlcsckm6dkfud" path="res://Scenes/props/lantern/lantern_material_on_b23657.tres" id="13_tl4x8"]
+[ext_resource type="Material" uid="uid://nyf6ir4c8nyd" path="res://Scenes/props/lantern/lantern_material_off_94ad39.tres" id="14_upmg4"]
+[ext_resource type="Material" uid="uid://48xykaovfh8f" path="res://Scenes/props/lantern/lantern_material_on_63c4cc.tres" id="14_xadis"]
+[ext_resource type="Material" uid="uid://cj6x6vkwlwphw" path="res://Scenes/props/lantern/lantern_material_on_94ad39.tres" id="15_wossf"]
+[ext_resource type="Material" uid="uid://bwba7yyhtwxo6" path="res://Scenes/props/lantern/lantern_material_on_d16974.tres" id="16_68ie1"]
+[ext_resource type="Material" uid="uid://dj7nono3qn7hb" path="res://Scenes/props/lantern/lantern_material_on_e47259.tres" id="16_khp1a"]
+[ext_resource type="Material" uid="uid://7m66o5pyoqe" path="res://Scenes/props/lantern/lantern_material_on_b49d7e.tres" id="17_g5ihq"]
+[ext_resource type="Material" uid="uid://cp1us0nug7k3m" path="res://Scenes/props/lantern/lantern_material_on_7e659b.tres" id="19_djfiq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o1wxf"]
 sky_top_color = Color(0.929412, 0.666667, 0.639216, 1)
@@ -207,29 +211,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4, 18, -27.2)
 transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, -7.4, 0, -1.90735e-06)
 skeleton = NodePath("../..")
 surface_material_override/0 = null
-surface_material_override/1 = ExtResource("14_xadis")
-material = ExtResource("14_xadis")
+surface_material_override/1 = ExtResource("10_xhuas")
+material = ExtResource("10_xhuas")
 
 [node name="SquareLantern2" parent="ruins/FishingHut" instance=ExtResource("8_55b45")]
 transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 0, 0, -1.90735e-06)
 skeleton = NodePath("../..")
 surface_material_override/0 = null
-surface_material_override/1 = ExtResource("11_kbx3r")
-material = ExtResource("11_kbx3r")
+surface_material_override/1 = ExtResource("11_6qxph")
+material = ExtResource("11_6qxph")
 
 [node name="SquareLantern3" parent="ruins/FishingHut" instance=ExtResource("8_55b45")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -0.927494, 0, -1.90735e-06)
 skeleton = NodePath("../..")
 surface_material_override/0 = null
-surface_material_override/1 = ExtResource("13_mr3ie")
-material = ExtResource("13_mr3ie")
+surface_material_override/1 = ExtResource("12_6mrf8")
+material = ExtResource("12_6mrf8")
 
 [node name="RoundLantern" parent="ruins/FishingHut" instance=ExtResource("9_kopx0")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.2, 0, -1.90735e-06)
 skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("15_wossf")
+surface_material_override/0 = ExtResource("14_upmg4")
 surface_material_override/1 = null
-material = ExtResource("15_wossf")
+material = ExtResource("14_upmg4")
 
 [node name="Dungeon" type="Node3D" parent="ruins"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 14, 1)
