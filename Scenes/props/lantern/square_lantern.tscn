@@ -3,24 +3,20 @@
 [ext_resource type="ArrayMesh" uid="uid://do36bmf7f2blf" path="res://Scenes/props/lantern/square_lantern.obj" id="1_q8y8x"]
 [ext_resource type="Material" uid="uid://4ciirimgegx0" path="res://Scenes/props/lantern/wire_material.tres" id="2_byqgv"]
 [ext_resource type="Script" path="res://Scenes/props/lantern/lantern.gd" id="2_r0tyf"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bqfrp"]
-cull_mode = 2
-albedo_color = Color(0.764706, 0.235294, 0.25098, 1)
-emission = Color(0.764706, 0.235294, 0.25098, 1)
+[ext_resource type="Material" uid="uid://xqjnw071nyjn" path="res://Scenes/props/lantern/lantern_material_default.tres" id="3_a3cln"]
 
 [node name="SquareLantern" type="MeshInstance3D"]
 layers = 2
 mesh = ExtResource("1_q8y8x")
 surface_material_override/0 = ExtResource("2_byqgv")
-surface_material_override/1 = SubResource("StandardMaterial3D_bqfrp")
+surface_material_override/1 = ExtResource("3_a3cln")
 script = ExtResource("2_r0tyf")
-surface_material_override_idx = 1
+_surface_material_override_idx = 1
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
 visible = false
-light_color = Color(0.764706, 0.235294, 0.25098, 1)
+light_color = Color(1, 0, 1, 1)
 light_energy = 3.0
 light_size = 1.0
 light_bake_mode = 0
