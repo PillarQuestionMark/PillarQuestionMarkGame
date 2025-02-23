@@ -111,111 +111,111 @@ albedo_color = Color(0.764706, 0.235294, 0.25098, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_w6afg"]
 size = Vector3(6, 6, 6)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vs2ub"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ajea"]
 cull_mode = 2
 albedo_color = Color(0.882353, 0.658824, 0.270588, 1)
 emission = Color(0.882353, 0.658824, 0.270588, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rhx61"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oaqob"]
 cull_mode = 2
 albedo_color = Color(0.764706, 0.235294, 0.25098, 1)
 emission = Color(0.764706, 0.235294, 0.25098, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trpx8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n0kdo"]
 cull_mode = 2
 albedo_color = Color(0.388235, 0.768627, 0.8, 1)
 emission = Color(0.388235, 0.768627, 0.8, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bjxg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3n0be"]
 cull_mode = 2
 albedo_color = Color(0.764706, 0.235294, 0.25098, 1)
 emission = Color(0.764706, 0.235294, 0.25098, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdsp8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brtov"]
 cull_mode = 2
 albedo_color = Color(0.764706, 0.235294, 0.25098, 1)
 emission_enabled = true
 emission = Color(0.764706, 0.235294, 0.25098, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yv6rf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o1vln"]
 cull_mode = 2
 albedo_color = Color(0.698039, 0.211765, 0.341176, 1)
 emission_enabled = true
 emission = Color(0.698039, 0.211765, 0.341176, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_msjmv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_se4vv"]
 cull_mode = 2
 albedo_color = Color(0.768627, 0.776471, 0.721569, 1)
 emission_enabled = true
 emission = Color(0.768627, 0.776471, 0.721569, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tni1t"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6167"]
 cull_mode = 2
 albedo_color = Color(0.882353, 0.658824, 0.270588, 1)
 emission_enabled = true
 emission = Color(0.882353, 0.658824, 0.270588, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73tt8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6pcoi"]
 cull_mode = 2
 albedo_color = Color(0.580392, 0.678431, 0.223529, 1)
 emission_enabled = true
 emission = Color(0.580392, 0.678431, 0.223529, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vgye7"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_12xtr"]
 cull_mode = 2
 albedo_color = Color(0.388235, 0.768627, 0.8, 1)
 emission_enabled = true
 emission = Color(0.388235, 0.768627, 0.8, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tb0jq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dln4r"]
 cull_mode = 2
 albedo_color = Color(0.819608, 0.411765, 0.454902, 1)
 emission_enabled = true
 emission = Color(0.819608, 0.411765, 0.454902, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lsji6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t5thm"]
 cull_mode = 2
 albedo_color = Color(0.894118, 0.447059, 0.34902, 1)
 emission_enabled = true
 emission = Color(0.894118, 0.447059, 0.34902, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_muyfi"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4k35k"]
 cull_mode = 2
 albedo_color = Color(0.388235, 0.768627, 0.8, 1)
 emission_enabled = true
 emission = Color(0.388235, 0.768627, 0.8, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hy8m0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xeiyr"]
 cull_mode = 2
 albedo_color = Color(0.772549, 0.470588, 0.207843, 1)
 emission_enabled = true
 emission = Color(0.772549, 0.470588, 0.207843, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hg0h5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vme3h"]
 cull_mode = 2
 albedo_color = Color(0.698039, 0.211765, 0.341176, 1)
 emission_enabled = true
 emission = Color(0.698039, 0.211765, 0.341176, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0uxnh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g5dbu"]
 cull_mode = 2
 albedo_color = Color(0.698039, 0.211765, 0.341176, 1)
 emission_enabled = true
 emission = Color(0.698039, 0.211765, 0.341176, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xdnl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wifmi"]
 cull_mode = 2
 albedo_color = Color(0.882353, 0.658824, 0.270588, 1)
 emission_enabled = true
 emission = Color(0.882353, 0.658824, 0.270588, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e8oqw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_31ees"]
 cull_mode = 2
 albedo_color = Color(0.764706, 0.235294, 0.25098, 1)
 emission_enabled = true
 emission = Color(0.764706, 0.235294, 0.25098, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m73im"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k0bri"]
 cull_mode = 2
 albedo_color = Color(0.772549, 0.470588, 0.207843, 1)
 emission_enabled = true
@@ -308,26 +308,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4, 18, -27.2)
 transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, -7.4, 0, -1.90735e-06)
 skeleton = NodePath("../..")
 surface_material_override/0 = null
-surface_material_override/1 = SubResource("StandardMaterial3D_vs2ub")
+surface_material_override/1 = SubResource("StandardMaterial3D_7ajea")
 color = Color(0.882353, 0.658824, 0.270588, 1)
 
 [node name="SquareLantern2" parent="ruins/FishingHut" instance=ExtResource("8_55b45")]
 transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 0, 0, -1.90735e-06)
 skeleton = NodePath("../..")
 surface_material_override/0 = null
-surface_material_override/1 = SubResource("StandardMaterial3D_rhx61")
+surface_material_override/1 = SubResource("StandardMaterial3D_oaqob")
 
 [node name="SquareLantern3" parent="ruins/FishingHut" instance=ExtResource("8_55b45")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -0.927494, 0, -1.90735e-06)
 skeleton = NodePath("../..")
 surface_material_override/0 = null
-surface_material_override/1 = SubResource("StandardMaterial3D_trpx8")
+surface_material_override/1 = SubResource("StandardMaterial3D_n0kdo")
 color = Color(0.388235, 0.768627, 0.8, 1)
 
 [node name="RoundLantern" parent="ruins/FishingHut" instance=ExtResource("9_kopx0")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.2, 0, -1.90735e-06)
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_2bjxg")
+surface_material_override/0 = SubResource("StandardMaterial3D_3n0be")
 surface_material_override/1 = null
 
 [node name="Dungeon" type="Node3D" parent="ruins"]
@@ -337,14 +337,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 14, 1)
 transform = Transform3D(0.642787, 0, 0.766045, 0, 1, 0, -0.766045, 0, 0.642787, -0.799999, 6, -10.1)
 skeleton = NodePath("../..")
 surface_material_override/0 = null
-surface_material_override/1 = SubResource("StandardMaterial3D_jdsp8")
+surface_material_override/1 = SubResource("StandardMaterial3D_brtov")
 on = true
 
 [node name="SquareLantern5" parent="ruins/Dungeon" instance=ExtResource("8_55b45")]
 transform = Transform3D(-0.0871561, 0, 0.996195, 0, 1, 0, -0.996195, 0, -0.0871561, -0.799999, 6, 4)
 skeleton = NodePath("../..")
 surface_material_override/0 = null
-surface_material_override/1 = SubResource("StandardMaterial3D_yv6rf")
+surface_material_override/1 = SubResource("StandardMaterial3D_o1vln")
 on = true
 color = Color(0.698039, 0.211765, 0.341176, 1)
 
@@ -352,7 +352,7 @@ color = Color(0.698039, 0.211765, 0.341176, 1)
 transform = Transform3D(0.573576, 0, 0.819153, 0, 1, 0, -0.819153, 0, 0.573576, -1.3, 6, 5.5)
 skeleton = NodePath("../..")
 surface_material_override/0 = null
-surface_material_override/1 = SubResource("StandardMaterial3D_msjmv")
+surface_material_override/1 = SubResource("StandardMaterial3D_se4vv")
 on = true
 color = Color(0.768627, 0.776471, 0.721569, 1)
 
@@ -360,7 +360,7 @@ color = Color(0.768627, 0.776471, 0.721569, 1)
 transform = Transform3D(-0.173649, 0, 0.984808, 0, 1, 0, -0.984808, 0, -0.173649, -0.958155, 6, 12.0145)
 skeleton = NodePath("../..")
 surface_material_override/0 = null
-surface_material_override/1 = SubResource("StandardMaterial3D_tni1t")
+surface_material_override/1 = SubResource("StandardMaterial3D_i6167")
 on = true
 color = Color(0.882353, 0.658824, 0.270588, 1)
 
@@ -368,7 +368,7 @@ color = Color(0.882353, 0.658824, 0.270588, 1)
 transform = Transform3D(-0.34202, 0, 0.939692, 0, 1, 0, -0.939692, 0, -0.34202, -0.299999, 6, -6.2)
 skeleton = NodePath("../..")
 surface_material_override/0 = null
-surface_material_override/1 = SubResource("StandardMaterial3D_73tt8")
+surface_material_override/1 = SubResource("StandardMaterial3D_6pcoi")
 on = true
 color = Color(0.580392, 0.678431, 0.223529, 1)
 
@@ -376,7 +376,7 @@ color = Color(0.580392, 0.678431, 0.223529, 1)
 transform = Transform3D(-0.34202, 0, 0.939692, 0, 1, 0, -0.939692, 0, -0.34202, -9, 6, -12.5)
 skeleton = NodePath("../..")
 surface_material_override/0 = null
-surface_material_override/1 = SubResource("StandardMaterial3D_vgye7")
+surface_material_override/1 = SubResource("StandardMaterial3D_12xtr")
 on = true
 color = Color(0.388235, 0.768627, 0.8, 1)
 
@@ -384,7 +384,7 @@ color = Color(0.388235, 0.768627, 0.8, 1)
 transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, -8, 6, -12)
 skeleton = NodePath("../..")
 surface_material_override/0 = null
-surface_material_override/1 = SubResource("StandardMaterial3D_tb0jq")
+surface_material_override/1 = SubResource("StandardMaterial3D_dln4r")
 on = true
 color = Color(0.819608, 0.411765, 0.454902, 1)
 
@@ -392,14 +392,14 @@ color = Color(0.819608, 0.411765, 0.454902, 1)
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -1, 6, 3.1)
 skeleton = NodePath("../..")
 surface_material_override/0 = null
-surface_material_override/1 = SubResource("StandardMaterial3D_lsji6")
+surface_material_override/1 = SubResource("StandardMaterial3D_t5thm")
 on = true
 color = Color(0.894118, 0.447059, 0.34902, 1)
 
 [node name="RoundLantern2" parent="ruins/Dungeon" instance=ExtResource("9_kopx0")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -1, 6, -5.33188)
 skeleton = NodePath("../../FishingHut/RoundLantern")
-surface_material_override/0 = SubResource("StandardMaterial3D_muyfi")
+surface_material_override/0 = SubResource("StandardMaterial3D_4k35k")
 surface_material_override/1 = null
 on = true
 color = Color(0.388235, 0.768627, 0.8, 1)
@@ -407,7 +407,7 @@ color = Color(0.388235, 0.768627, 0.8, 1)
 [node name="RoundLantern5" parent="ruins/Dungeon" instance=ExtResource("9_kopx0")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -0.700001, 6, 4.86812)
 skeleton = NodePath("../../FishingHut/RoundLantern")
-surface_material_override/0 = SubResource("StandardMaterial3D_hy8m0")
+surface_material_override/0 = SubResource("StandardMaterial3D_xeiyr")
 surface_material_override/1 = null
 on = true
 color = Color(0.772549, 0.470588, 0.207843, 1)
@@ -415,7 +415,7 @@ color = Color(0.772549, 0.470588, 0.207843, 1)
 [node name="RoundLantern6" parent="ruins/Dungeon" instance=ExtResource("9_kopx0")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -1.6, 6, 12.3681)
 skeleton = NodePath("../../FishingHut/RoundLantern")
-surface_material_override/0 = SubResource("StandardMaterial3D_hg0h5")
+surface_material_override/0 = SubResource("StandardMaterial3D_vme3h")
 surface_material_override/1 = null
 on = true
 color = Color(0.698039, 0.211765, 0.341176, 1)
@@ -423,7 +423,7 @@ color = Color(0.698039, 0.211765, 0.341176, 1)
 [node name="RoundLantern3" parent="ruins/Dungeon" instance=ExtResource("9_kopx0")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -1, 6, -12.3319)
 skeleton = NodePath("../../FishingHut/RoundLantern")
-surface_material_override/0 = SubResource("StandardMaterial3D_0uxnh")
+surface_material_override/0 = SubResource("StandardMaterial3D_g5dbu")
 surface_material_override/1 = null
 on = true
 color = Color(0.698039, 0.211765, 0.341176, 1)
@@ -431,19 +431,19 @@ color = Color(0.698039, 0.211765, 0.341176, 1)
 [node name="RoundLantern4" parent="ruins/Dungeon" instance=ExtResource("9_kopx0")]
 transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -2, 6, -12)
 skeleton = NodePath("../../FishingHut/RoundLantern")
-surface_material_override/0 = SubResource("StandardMaterial3D_6xdnl")
+surface_material_override/0 = SubResource("StandardMaterial3D_wifmi")
 surface_material_override/1 = null
 on = true
 color = Color(0.882353, 0.658824, 0.270588, 1)
 
 [node name="FloorLantern" parent="ruins/Dungeon" instance=ExtResource("11_xgfhs")]
 transform = Transform3D(0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, -1.6, 0, -1.2)
-surface_material_override/1 = SubResource("StandardMaterial3D_e8oqw")
+surface_material_override/1 = SubResource("StandardMaterial3D_31ees")
 on = true
 
 [node name="FloorLantern2" parent="ruins/Dungeon" instance=ExtResource("11_xgfhs")]
 transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -1.6, 0, -2)
-surface_material_override/1 = SubResource("StandardMaterial3D_m73im")
+surface_material_override/1 = SubResource("StandardMaterial3D_k0bri")
 on = true
 color = Color(0.772549, 0.470588, 0.207843, 1)
 

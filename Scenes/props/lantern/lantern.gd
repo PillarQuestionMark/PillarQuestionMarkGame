@@ -12,12 +12,14 @@ extends MeshInstance3D
 	set(value):
 		on = value
 		if _is_ready:
+			_duplicate_if_needed()
 			_update_on()
 
 @export var color := Color("c33c40"):
 	set(value):
 		color = value
 		if _is_ready: # _update_color() will fail if _ready() isn't done yet
+			_duplicate_if_needed()
 			_update_color()
 
 @export_group("Internal")
@@ -29,12 +31,19 @@ extends MeshInstance3D
 var _is_ready := false
 
 func _ready() -> void:
-	material = material.duplicate()
-	set_surface_override_material(surface_material_override_idx, material)
+	_duplicate_if_needed()
 	
 	_is_ready = true
 	_update_on()
 	_update_color()
+
+func _duplicate_if_needed() -> void:
+	# only duplicate if absolutely necessary, otherwise resource ids will change way too much and make git merges a pain
+	if material.albedo_color == color and material.emission == color:
+		return
+	
+	material = material.duplicate()
+	set_surface_override_material(surface_material_override_idx, material)
 
 func _update_color() -> void:
 	material.albedo_color = color
