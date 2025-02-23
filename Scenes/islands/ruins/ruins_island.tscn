@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dmwlaf2f3cmd4"]
+[gd_scene load_steps=42 format=3 uid="uid://dmwlaf2f3cmd4"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_wbxxr"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_4qj5t"]
@@ -7,8 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="4_c2hl0"]
 [ext_resource type="PackedScene" uid="uid://daqo3a6ove7qf" path="res://Components/flame_lever.tscn" id="5_d0sa3"]
 [ext_resource type="PackedScene" uid="uid://dc1evxye2jpsn" path="res://Entities/Boat.tscn" id="5_kogkr"]
+[ext_resource type="PackedScene" uid="uid://dbwr3lokvosdn" path="res://Scenes/props/lantern/square_lantern.tscn" id="8_55b45"]
 [ext_resource type="PackedScene" uid="uid://btmje4fgwjpmy" path="res://Scenes/islands/ruins/ruins.blend" id="8_kouu0"]
 [ext_resource type="PackedScene" uid="uid://ch0xma4bou77p" path="res://Entities/Flame/flame.tscn" id="9_8qidy"]
+[ext_resource type="PackedScene" uid="uid://hhfqxwync0f2" path="res://Scenes/props/lantern/round_lantern.tscn" id="9_kopx0"]
+[ext_resource type="PackedScene" uid="uid://bfnog8bl0a8ej" path="res://Scenes/props/lantern/floor_lantern.tscn" id="11_xgfhs"]
+[ext_resource type="LightmapGIData" uid="uid://bokhqwwpmemug" path="res://Scenes/islands/ruins/ruins_island.lmbake" id="12_w5b05"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o1wxf"]
 sky_top_color = Color(0.929412, 0.666667, 0.639216, 1)
@@ -35,6 +39,8 @@ fog_density = 0.7
 fog_sky_affect = 0.0
 fog_height = -1.0
 fog_height_density = 0.1
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
 
 [sub_resource type="Animation" id="Animation_2lmvs"]
 length = 0.001
@@ -104,6 +110,120 @@ albedo_color = Color(0.764706, 0.235294, 0.25098, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_w6afg"]
 size = Vector3(6, 6, 6)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2wblq"]
+cull_mode = 2
+albedo_color = Color(0.882353, 0.658824, 0.270588, 1)
+emission = Color(0.882353, 0.658824, 0.270588, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iubsq"]
+cull_mode = 2
+albedo_color = Color(0.764706, 0.235294, 0.25098, 1)
+emission = Color(0.764706, 0.235294, 0.25098, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e8hlp"]
+cull_mode = 2
+albedo_color = Color(0.388235, 0.768627, 0.8, 1)
+emission = Color(0.388235, 0.768627, 0.8, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ej6fj"]
+cull_mode = 2
+albedo_color = Color(0.764706, 0.235294, 0.25098, 1)
+emission = Color(0.764706, 0.235294, 0.25098, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yo31r"]
+cull_mode = 2
+albedo_color = Color(0.764706, 0.235294, 0.25098, 1)
+emission_enabled = true
+emission = Color(0.764706, 0.235294, 0.25098, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vabxr"]
+cull_mode = 2
+albedo_color = Color(0.698039, 0.211765, 0.341176, 1)
+emission_enabled = true
+emission = Color(0.698039, 0.211765, 0.341176, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oc83j"]
+cull_mode = 2
+albedo_color = Color(0.768627, 0.776471, 0.721569, 1)
+emission_enabled = true
+emission = Color(0.768627, 0.776471, 0.721569, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6cekn"]
+cull_mode = 2
+albedo_color = Color(0.882353, 0.658824, 0.270588, 1)
+emission_enabled = true
+emission = Color(0.882353, 0.658824, 0.270588, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hoghg"]
+cull_mode = 2
+albedo_color = Color(0.580392, 0.678431, 0.223529, 1)
+emission_enabled = true
+emission = Color(0.580392, 0.678431, 0.223529, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ynhtq"]
+cull_mode = 2
+albedo_color = Color(0.388235, 0.768627, 0.8, 1)
+emission_enabled = true
+emission = Color(0.388235, 0.768627, 0.8, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4e1o3"]
+cull_mode = 2
+albedo_color = Color(0.819608, 0.411765, 0.454902, 1)
+emission_enabled = true
+emission = Color(0.819608, 0.411765, 0.454902, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sqys6"]
+cull_mode = 2
+albedo_color = Color(0.894118, 0.447059, 0.34902, 1)
+emission_enabled = true
+emission = Color(0.894118, 0.447059, 0.34902, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhosh"]
+cull_mode = 2
+albedo_color = Color(0.388235, 0.768627, 0.8, 1)
+emission_enabled = true
+emission = Color(0.388235, 0.768627, 0.8, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_65hdp"]
+cull_mode = 2
+albedo_color = Color(0.772549, 0.470588, 0.207843, 1)
+emission_enabled = true
+emission = Color(0.772549, 0.470588, 0.207843, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dcqq3"]
+cull_mode = 2
+albedo_color = Color(0.698039, 0.211765, 0.341176, 1)
+emission_enabled = true
+emission = Color(0.698039, 0.211765, 0.341176, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f1mis"]
+cull_mode = 2
+albedo_color = Color(0.698039, 0.211765, 0.341176, 1)
+emission_enabled = true
+emission = Color(0.698039, 0.211765, 0.341176, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01hue"]
+cull_mode = 2
+albedo_color = Color(0.882353, 0.658824, 0.270588, 1)
+emission_enabled = true
+emission = Color(0.882353, 0.658824, 0.270588, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14jc7"]
+cull_mode = 2
+albedo_color = Color(0.764706, 0.235294, 0.25098, 1)
+emission_enabled = true
+emission = Color(0.764706, 0.235294, 0.25098, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gm125"]
+cull_mode = 2
+albedo_color = Color(0.772549, 0.470588, 0.207843, 1)
+emission_enabled = true
+emission = Color(0.772549, 0.470588, 0.207843, 1)
+
+[sub_resource type="FogMaterial" id="FogMaterial_v641q"]
+density = 2.0
+albedo = Color(0.101961, 0.121569, 0.180392, 1)
+
 [node name="RuinsIsland" type="Node3D"]
 script = ExtResource("1_wbxxr")
 island_id = 1
@@ -112,6 +232,9 @@ island_id = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2o6d4")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+light_data = ExtResource("12_w5b05")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.720684, -0.681256, 0.128476, 0.118781, 0.30392, 0.945264, -0.683013, -0.665976, 0.29995, 5, 5, 5)
@@ -173,6 +296,157 @@ shape = SubResource("BoxShape3D_w6afg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 7, 1)
 billboard = 2
 text = "press [f] to interact"
+
+[node name="FishingHut" type="Node3D" parent="ruins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4, 18, -27.2)
+
+[node name="SquareLantern" parent="ruins/FishingHut" instance=ExtResource("8_55b45")]
+transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, -7.4, 0, -1.90735e-06)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = SubResource("StandardMaterial3D_2wblq")
+color = Color(0.882353, 0.658824, 0.270588, 1)
+
+[node name="SquareLantern2" parent="ruins/FishingHut" instance=ExtResource("8_55b45")]
+transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 0, 0, -1.90735e-06)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = SubResource("StandardMaterial3D_iubsq")
+
+[node name="SquareLantern3" parent="ruins/FishingHut" instance=ExtResource("8_55b45")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -0.927494, 0, -1.90735e-06)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = SubResource("StandardMaterial3D_e8hlp")
+color = Color(0.388235, 0.768627, 0.8, 1)
+
+[node name="RoundLantern" parent="ruins/FishingHut" instance=ExtResource("9_kopx0")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.2, 0, -1.90735e-06)
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ej6fj")
+surface_material_override/1 = null
+
+[node name="Dungeon" type="Node3D" parent="ruins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 14, 1)
+
+[node name="SquareLantern4" parent="ruins/Dungeon" instance=ExtResource("8_55b45")]
+transform = Transform3D(0.642787, 0, 0.766045, 0, 1, 0, -0.766045, 0, 0.642787, -0.799999, 6, -10.1)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = SubResource("StandardMaterial3D_yo31r")
+on = true
+
+[node name="SquareLantern5" parent="ruins/Dungeon" instance=ExtResource("8_55b45")]
+transform = Transform3D(-0.0871561, 0, 0.996195, 0, 1, 0, -0.996195, 0, -0.0871561, -0.799999, 6, 4)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = SubResource("StandardMaterial3D_vabxr")
+on = true
+color = Color(0.698039, 0.211765, 0.341176, 1)
+
+[node name="SquareLantern10" parent="ruins/Dungeon" instance=ExtResource("8_55b45")]
+transform = Transform3D(0.573576, 0, 0.819153, 0, 1, 0, -0.819153, 0, 0.573576, -1.3, 6, 5.5)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = SubResource("StandardMaterial3D_oc83j")
+on = true
+color = Color(0.768627, 0.776471, 0.721569, 1)
+
+[node name="SquareLantern11" parent="ruins/Dungeon" instance=ExtResource("8_55b45")]
+transform = Transform3D(-0.173649, 0, 0.984808, 0, 1, 0, -0.984808, 0, -0.173649, -0.958155, 6, 12.0145)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = SubResource("StandardMaterial3D_6cekn")
+on = true
+color = Color(0.882353, 0.658824, 0.270588, 1)
+
+[node name="SquareLantern6" parent="ruins/Dungeon" instance=ExtResource("8_55b45")]
+transform = Transform3D(-0.34202, 0, 0.939692, 0, 1, 0, -0.939692, 0, -0.34202, -0.299999, 6, -6.2)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = SubResource("StandardMaterial3D_hoghg")
+on = true
+color = Color(0.580392, 0.678431, 0.223529, 1)
+
+[node name="SquareLantern7" parent="ruins/Dungeon" instance=ExtResource("8_55b45")]
+transform = Transform3D(-0.34202, 0, 0.939692, 0, 1, 0, -0.939692, 0, -0.34202, -9, 6, -12.5)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = SubResource("StandardMaterial3D_ynhtq")
+on = true
+color = Color(0.388235, 0.768627, 0.8, 1)
+
+[node name="SquareLantern8" parent="ruins/Dungeon" instance=ExtResource("8_55b45")]
+transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, -8, 6, -12)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = SubResource("StandardMaterial3D_4e1o3")
+on = true
+color = Color(0.819608, 0.411765, 0.454902, 1)
+
+[node name="SquareLantern9" parent="ruins/Dungeon" instance=ExtResource("8_55b45")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -1, 6, 3.1)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = SubResource("StandardMaterial3D_sqys6")
+on = true
+color = Color(0.894118, 0.447059, 0.34902, 1)
+
+[node name="RoundLantern2" parent="ruins/Dungeon" instance=ExtResource("9_kopx0")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -1, 6, -5.33188)
+skeleton = NodePath("../../FishingHut/RoundLantern")
+surface_material_override/0 = SubResource("StandardMaterial3D_yhosh")
+surface_material_override/1 = null
+on = true
+color = Color(0.388235, 0.768627, 0.8, 1)
+
+[node name="RoundLantern5" parent="ruins/Dungeon" instance=ExtResource("9_kopx0")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -0.700001, 6, 4.86812)
+skeleton = NodePath("../../FishingHut/RoundLantern")
+surface_material_override/0 = SubResource("StandardMaterial3D_65hdp")
+surface_material_override/1 = null
+on = true
+color = Color(0.772549, 0.470588, 0.207843, 1)
+
+[node name="RoundLantern6" parent="ruins/Dungeon" instance=ExtResource("9_kopx0")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -1.6, 6, 12.3681)
+skeleton = NodePath("../../FishingHut/RoundLantern")
+surface_material_override/0 = SubResource("StandardMaterial3D_dcqq3")
+surface_material_override/1 = null
+on = true
+color = Color(0.698039, 0.211765, 0.341176, 1)
+
+[node name="RoundLantern3" parent="ruins/Dungeon" instance=ExtResource("9_kopx0")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -1, 6, -12.3319)
+skeleton = NodePath("../../FishingHut/RoundLantern")
+surface_material_override/0 = SubResource("StandardMaterial3D_f1mis")
+surface_material_override/1 = null
+on = true
+color = Color(0.698039, 0.211765, 0.341176, 1)
+
+[node name="RoundLantern4" parent="ruins/Dungeon" instance=ExtResource("9_kopx0")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -2, 6, -12)
+skeleton = NodePath("../../FishingHut/RoundLantern")
+surface_material_override/0 = SubResource("StandardMaterial3D_01hue")
+surface_material_override/1 = null
+on = true
+color = Color(0.882353, 0.658824, 0.270588, 1)
+
+[node name="FloorLantern" parent="ruins/Dungeon" instance=ExtResource("11_xgfhs")]
+transform = Transform3D(0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, -1.6, 0, -1.2)
+surface_material_override/1 = SubResource("StandardMaterial3D_14jc7")
+on = true
+
+[node name="FloorLantern2" parent="ruins/Dungeon" instance=ExtResource("11_xgfhs")]
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -1.6, 0, -2)
+surface_material_override/1 = SubResource("StandardMaterial3D_gm125")
+on = true
+color = Color(0.772549, 0.470588, 0.207843, 1)
+
+[node name="FogVolume" type="FogVolume" parent="ruins/Dungeon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 2, 0)
+size = Vector3(7, 4, 2)
+material = SubResource("FogMaterial_v641q")
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_4qj5t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3, 1)
