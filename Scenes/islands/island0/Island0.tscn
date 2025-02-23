@@ -191,5 +191,3 @@ material = SubResource("StandardMaterial3D_3rdwg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftDoor"]
 shape = SubResource("BoxShape3D_8hsbt")
-
-[connection signal="body_entered" from="Loading-zone" to="Loading-zone" method="_on_body_entered"]
