@@ -27,10 +27,6 @@ DevConsoleAPI="*res://Autoload/dev_console_api.tscn"
 
 project/assembly_name="CSE5902_Game"
 
-[filesystem]
-
-import/blender/enabled=false
-
 [global_group]
 
 interactables="Group for all nodes which use the interactables script."
