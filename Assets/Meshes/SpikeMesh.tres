@@ -1,16 +1,19 @@
-[gd_resource type="ArrayMesh" format=4 uid="uid://d16aorhnytpod"]
+[gd_resource type="ArrayMesh" load_steps=2 format=4 uid="uid://d1u6ugp6do72w"]
+
+[ext_resource type="Material" uid="uid://cbhgouyh1nji3" path="res://Assets/Materials/SpikeMaterial.tres" id="1_wbkiy"]
 
 [resource]
 _surfaces = [{
-"aabb": AABB(-1, 0, -1, 2, 2, 2),
+"aabb": AABB(-0.5, 0, -0.5, 1, 1, 1),
 "attribute_data": PackedByteArray("/x//P/+f/7//X/8//5//v/9f/3//X/8//5//v/9f////X/+//1//f/8f/3//X/8//x//P/+f/3//X/+//1//fw=="),
 "format": 34896613399,
 "index_count": 18,
 "index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsACwAKAAwADQAOAA8A"),
+"material": ExtResource("1_wbkiy"),
 "name": "Material",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 16,
-"vertex_data": PackedByteArray("//8AAAAAAAD/f////38AAAAAAAAAAAAA/3////9/CeEAAAAA//8J4QAAAAAAAAnh/3////9/Wdb//wAAAABZ1v//AAD//1nWAAAAAP///////wAA/////wAAAAAAAP////8AAAAA////f////38gsv//AAD//yCyAAAAAP//ILL/f4zn/3+M5/9/jOco+iK+KPoivij6Ir5APIkVQDyJFUA8iRX/f/8//3//P/9//z//f/8/He0hHR3tIR0d7SEd")
+"vertex_data": PackedByteArray("AAAAAP//G23/f////38bbf//AAD//xtt/3////9/5/r//wAAAADn+v//AAD//+f6/3////9/n8QAAAAA//+fxAAAAAAAAJ/E//8AAAAA/78AAAAAAAD/v///AAD///+/AAAAAP///7//f////3/J9QAAAAAAAMn1//8AAAAAyfX///9/////f////39NHPItTRzyLU0c8i1rzTDLa80wy2vNMMsAAP9/AAD/fwAA/38AAP9/CKztwwis7cMIrO3D")
 }]
 blend_shape_mode = 0
