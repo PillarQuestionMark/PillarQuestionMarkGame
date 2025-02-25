@@ -21,6 +21,7 @@ func pickup() -> void:
 
 ## Called on loading the scene. Sets the color.
 func _ready() -> void:
+	flame_name = FlameIndex.get_flame_name(island, id)
 	_apply_color()
 	$FlameModel.color = color
 

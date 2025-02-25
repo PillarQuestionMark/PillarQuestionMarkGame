@@ -972,7 +972,7 @@ color = Color(0, 0.788936, 0.893223, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51791, 42.173, -21.7444)
 collision_layer = 8
 collision_mask = 2
-id = 1
+id = 1.0
 flame_name = "Cubes"
 color = Color(0.837957, 0.616061, 0.83013, 1)
 

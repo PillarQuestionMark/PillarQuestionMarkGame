@@ -83,6 +83,19 @@ func _process(delta : float) -> void:
 	## REMOVE LATER. FOR NOW, JUST TO TEST DEATH
 	if Input.is_action_just_pressed("kys"):
 		die()
+	if Input.is_action_just_pressed("flames"):
+		list_flames()
+		
+func list_flames() -> void:
+	print("signaling glorp... flames list:")
+	for island in [0, -1]:
+		var collected_flames = PlayerData.get_island_flames(island)
+		print("Island " + str(island) + " ... " + str(collected_flames.size()) + "/" + str(FlameIndex.island_total_flames(island)))
+		for flame in FlameIndex.get_flame_ids(island):
+			if (collected_flames.has(float(flame))):
+				print("- " + FlameIndex.get_flame_name(island, flame))
+			else:
+				print("- ???")
 
 
 func get_move_direction() -> Vector3:
