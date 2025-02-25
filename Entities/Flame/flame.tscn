@@ -44,6 +44,8 @@ _data = {
 }
 
 [node name="Flame" type="Area3D"]
+collision_layer = 8
+collision_mask = 2
 script = ExtResource("1_f7ahf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

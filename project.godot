@@ -27,10 +27,6 @@ DevConsoleAPI="*res://Autoload/dev_console_api.tscn"
 
 project/assembly_name="CSE5902_Game"
 
-[filesystem]
-
-import/blender/enabled=false
-
 [global_group]
 
 interactables="Group for all nodes which use the interactables script."
@@ -172,6 +168,8 @@ flames={
 
 [layer_names]
 
+3d_render/layer_1="world"
+3d_render/layer_2="lanterns"
 3d_physics/layer_1="World"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Obstacle"
