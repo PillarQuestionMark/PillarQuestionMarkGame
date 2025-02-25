@@ -47,7 +47,7 @@ var jumps_left : int = 0 # how many jumps left
 
 var slamjump_unlocked : bool = true
 
-var max_height : float = 0
+@onready var state_machine : StateMachine = $StateMachine
 
 @onready var jump_sound: AudioStreamPlayer = %AudioStreamPlayer
 @onready var wall_slide_particles: GPUParticles3D = %WallSlideParticles
@@ -146,3 +146,4 @@ func start_slamjump_window() -> void:
 ## kills the player and reloads the scene
 func die() -> void:
 	PlayerData.load_scene()
+	
