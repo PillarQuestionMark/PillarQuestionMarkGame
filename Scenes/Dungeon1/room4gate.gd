@@ -7,19 +7,19 @@
 extends Node3D
 
 @export var trigger1 := ""
-var trigger1_on := false
+var trigger1_on := true
 @export var trigger2 := ""
-var trigger2_on := true
+var trigger2_on := false
 @export var trigger3 := ""
-var trigger3_on := false
+var trigger3_on := true
 @export var trigger4 := ""
-var trigger4_on := false
+var trigger4_on := true
 @export var trigger5 := ""
-var trigger5_on := true
+var trigger5_on := false
 @export var trigger6 := ""
 var trigger6_on := true
 @export var trigger7 := ""
-var trigger7_on := true
+var trigger7_on := false
 @export var trigger8 := ""
 var trigger8_on := false
 
