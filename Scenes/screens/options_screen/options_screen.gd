@@ -1,16 +1,20 @@
-extends CanvasLayer
+extends Menu
 
 func _ready() -> void:
-	Logger.info("optionsscreen: ready")
+	Logger.info(name + ": ready")
+
+func _escape_menu() -> void:
+	Logger.info(name + ": escaped menu")
+	_exit_menu()
 
 func _on_cancel_pressed() -> void:
 	Logger.info("optionsscreen: cancel pressed")
-	queue_free()
+	_exit_menu()
 
 func _on_apply_pressed() -> void:
 	# TODO: save settings
 	Logger.info("optionsscreen: apply button pressed")
-	queue_free()
+	_exit_menu()
 
 func _on_option_button_item_selected(index: int) -> void:
 	Logger.info("optionsscreen: control scheme changed to %s" % index)
