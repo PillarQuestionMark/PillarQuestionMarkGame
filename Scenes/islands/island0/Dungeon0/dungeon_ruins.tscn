@@ -1,20 +1,21 @@
-[gd_scene load_steps=68 format=3 uid="uid://b85t02nj7v1lw"]
+[gd_scene load_steps=70 format=3 uid="uid://b85t02nj7v1lw"]
 
-[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="1_8h1he"]
-[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="2_6g76t"]
-[ext_resource type="Texture2D" uid="uid://b88ya08s6hgum" path="res://Assets/Textures/Tile_02-512x512.png" id="3_bd1yy"]
-[ext_resource type="Material" uid="uid://bsjsac8c0qd8h" path="res://Scenes/Dungeon1/dungeon_1_walls.tres" id="3_p2srh"]
-[ext_resource type="Script" path="res://Components/mover.gd" id="3_pbfgs"]
-[ext_resource type="Texture2D" uid="uid://dbprv31j7qsm7" path="res://Assets/Textures/Bricks_11-512x512.png" id="3_stit0"]
-[ext_resource type="PackedScene" uid="uid://bciwk8ba8ksvr" path="res://Components/lever.tscn" id="4_rjwws"]
-[ext_resource type="PackedScene" uid="uid://b5bqe4fvpyopq" path="res://Obstacles/CrumblingPlatform.tscn" id="7_ftqh3"]
-[ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="8_hnexd"]
-[ext_resource type="Script" path="res://Scenes/Dungeon1/room2gate.gd" id="8_pi5ac"]
-[ext_resource type="Texture2D" uid="uid://cejeu602juk1w" path="res://Assets/Textures/Tile_08-512x512.png" id="9_vry5o"]
-[ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="12_1c8w1"]
-[ext_resource type="PackedScene" uid="uid://bw4ak8fk223nn" path="res://Components/mover.tscn" id="12_7cwtb"]
-[ext_resource type="Script" path="res://Scenes/Dungeon1/mover_constant.gd" id="13_r62x8"]
-[ext_resource type="Script" path="res://Scenes/Dungeon1/room4gate.gd" id="14_6577v"]
+[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="1_ttkg7"]
+[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="2_skuil"]
+[ext_resource type="Texture2D" uid="uid://b88ya08s6hgum" path="res://Assets/Textures/Tile_02-512x512.png" id="3_3ypva"]
+[ext_resource type="Texture2D" uid="uid://dbprv31j7qsm7" path="res://Assets/Textures/Bricks_11-512x512.png" id="4_7xihn"]
+[ext_resource type="Material" uid="uid://bsjsac8c0qd8h" path="res://Scenes/islands/island0/Dungeon0/dungeon_1_walls.tres" id="5_6wwb2"]
+[ext_resource type="Script" path="res://Components/mover.gd" id="6_mkgtr"]
+[ext_resource type="PackedScene" uid="uid://bciwk8ba8ksvr" path="res://Components/lever.tscn" id="7_uce32"]
+[ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="8_7jcmn"]
+[ext_resource type="PackedScene" uid="uid://b5bqe4fvpyopq" path="res://Obstacles/CrumblingPlatform.tscn" id="9_rvs2r"]
+[ext_resource type="Texture2D" uid="uid://cejeu602juk1w" path="res://Assets/Textures/Tile_08-512x512.png" id="10_oxikc"]
+[ext_resource type="Script" path="res://Scenes/islands/island0/Dungeon0/room2gate.gd" id="11_prdc5"]
+[ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="12_dueqk"]
+[ext_resource type="PackedScene" uid="uid://bw4ak8fk223nn" path="res://Components/mover.tscn" id="13_bfv7q"]
+[ext_resource type="Script" path="res://Scenes/islands/island0/Dungeon0/mover_constant.gd" id="14_o81ip"]
+[ext_resource type="Script" path="res://Scenes/islands/island0/Dungeon0/room4gate.gd" id="15_jdjat"]
+[ext_resource type="PackedScene" uid="uid://dql4b8bulv1vi" path="res://Components/loading-zone.tscn" id="16_8jbod"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -36,29 +37,29 @@ glow_enabled = true
 volumetric_fog_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_txb2y"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2wjn"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 uv1_scale = Vector3(3, 3, 3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5q4y"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o314t"]
-albedo_texture = ExtResource("3_stit0")
+albedo_texture = ExtResource("4_7xihn")
 uv1_scale = Vector3(3.5, 3.5, 3.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7444"]
-albedo_texture = ExtResource("3_stit0")
+albedo_texture = ExtResource("4_7xihn")
 uv1_scale = Vector3(3, 3, 3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7eiw"]
 albedo_color = Color(0.650128, 0.650128, 0.650128, 1)
-albedo_texture = ExtResource("3_stit0")
+albedo_texture = ExtResource("4_7xihn")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1okbs"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 uv1_scale = Vector3(4, 4, 4)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4tr3y"]
@@ -68,141 +69,144 @@ albedo_color = Color(0.0784314, 0.709804, 0.862745, 1)
 size = Vector3(2, 2.5, 0.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8i1f8"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mugk4"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54i26"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 uv1_scale = Vector3(7, 7, 7)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ju6g3"]
 albedo_color = Color(0.650128, 0.650128, 0.650128, 1)
-albedo_texture = ExtResource("3_stit0")
+albedo_texture = ExtResource("4_7xihn")
 uv1_scale = Vector3(7, 7, 7)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tu7ix"]
 albedo_color = Color(0.650128, 0.650128, 0.650128, 1)
-albedo_texture = ExtResource("3_stit0")
+albedo_texture = ExtResource("4_7xihn")
 uv1_scale = Vector3(7, 7, 7)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kafvp"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fuy4c"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pqtxp"]
 albedo_color = Color(0.650128, 0.650128, 0.650128, 1)
-albedo_texture = ExtResource("3_stit0")
+albedo_texture = ExtResource("4_7xihn")
 uv1_scale = Vector3(1.3, 1.3, 1.3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c7icr"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vyog3"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2agqu"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a8ql8"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8v10"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2i84k"]
-albedo_texture = ExtResource("9_vry5o")
+albedo_texture = ExtResource("10_oxikc")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ux7kd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_etef8"]
-albedo_texture = ExtResource("9_vry5o")
+albedo_texture = ExtResource("10_oxikc")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4fp82"]
-albedo_texture = ExtResource("9_vry5o")
+albedo_texture = ExtResource("10_oxikc")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cng2d"]
-albedo_texture = ExtResource("9_vry5o")
+albedo_texture = ExtResource("10_oxikc")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jnyjv"]
-albedo_texture = ExtResource("9_vry5o")
+albedo_texture = ExtResource("10_oxikc")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f1gf5"]
-albedo_texture = ExtResource("9_vry5o")
+albedo_texture = ExtResource("10_oxikc")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0iw28"]
-albedo_texture = ExtResource("9_vry5o")
+albedo_texture = ExtResource("10_oxikc")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r7ta4"]
-albedo_texture = ExtResource("9_vry5o")
+albedo_texture = ExtResource("10_oxikc")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7x8i"]
-albedo_texture = ExtResource("9_vry5o")
+albedo_texture = ExtResource("10_oxikc")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufv6k"]
-albedo_texture = ExtResource("9_vry5o")
+albedo_texture = ExtResource("10_oxikc")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ygfix"]
-albedo_texture = ExtResource("9_vry5o")
+albedo_texture = ExtResource("10_oxikc")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1g3w3"]
-albedo_texture = ExtResource("9_vry5o")
+albedo_texture = ExtResource("10_oxikc")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8lkqn"]
 size = Vector3(2.63403, 2.7218, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jyosu"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 uv1_scale = Vector3(3.01, 3.01, 3.01)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4n7rq"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lyvdr"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 uv1_scale = Vector3(4, 4, 4)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yd100"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uipwr"]
-albedo_texture = ExtResource("9_vry5o")
+albedo_texture = ExtResource("10_oxikc")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3xnr0"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aa235"]
-albedo_texture = ExtResource("9_vry5o")
+albedo_texture = ExtResource("10_oxikc")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6fgiq"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rapvr"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pbhbh"]
-albedo_texture = ExtResource("3_bd1yy")
+albedo_texture = ExtResource("3_3ypva")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sv5ld"]
-albedo_texture = ExtResource("9_vry5o")
+albedo_texture = ExtResource("10_oxikc")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wbk3d"]
-albedo_texture = ExtResource("9_vry5o")
+albedo_texture = ExtResource("10_oxikc")
 
 [sub_resource type="FogMaterial" id="FogMaterial_frb6y"]
 density = 8.0
 albedo = Color(0, 0, 0, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_76f32"]
+size = Vector3(2, 3, 1.5)
+
 [node name="Dungeon1" type="Node3D"]
 
-[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("1_8h1he")]
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("1_ttkg7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.87136, 0.667002, 2.96871)
 Camera = NodePath("ThirdPersonCamera")
 
-[node name="ThirdPersonCamera" parent="Player" instance=ExtResource("2_6g76t")]
+[node name="ThirdPersonCamera" parent="Player" instance=ExtResource("2_skuil")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 mouse_sensitivity = 0.05
 
@@ -244,32 +248,32 @@ size = Vector3(2, 5.5, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.75, -1)
 use_collision = true
 size = Vector3(2, 5.5, 2)
-material = ExtResource("3_p2srh")
+material = ExtResource("5_6wwb2")
 
 [node name="Wall" type="CSGBox3D" parent="Rooms/Room1/Geometry/Stationary"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1, 1.75, 4.7484)
 use_collision = true
 size = Vector3(2, 5.5, 4)
-material = ExtResource("3_p2srh")
+material = ExtResource("5_6wwb2")
 
 [node name="Wall5" type="CSGBox3D" parent="Rooms/Room1/Geometry/Stationary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.75, 7)
 use_collision = true
 size = Vector3(8, 5.5, 2)
-material = ExtResource("3_p2srh")
+material = ExtResource("5_6wwb2")
 
 [node name="Wall6" type="CSGBox3D" parent="Rooms/Room1/Geometry/Stationary"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9, 1.75, 4)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(8, 5.5, 2)
-material = ExtResource("3_p2srh")
+material = ExtResource("5_6wwb2")
 
 [node name="Wall7" type="CSGBox3D" parent="Rooms/Room1/Geometry/Stationary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.75, -1)
 use_collision = true
 size = Vector3(6, 5.5, 2)
-material = ExtResource("3_p2srh")
+material = ExtResource("5_6wwb2")
 
 [node name="Wall3" type="CSGBox3D" parent="Rooms/Room1/Geometry/Stationary"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 1.75, 1)
@@ -306,7 +310,7 @@ material = SubResource("StandardMaterial3D_g7eiw")
 [node name="Gate" type="AnimatableBody3D" parent="Rooms/Room1/Geometry/Movable"]
 
 [node name="Mover" type="Node3D" parent="Rooms/Room1/Geometry/Movable/Gate"]
-script = ExtResource("3_pbfgs")
+script = ExtResource("6_mkgtr")
 trigger = "d1_r1_set1"
 movement = Vector3(0, -2.6, 0)
 duration = 0.3
@@ -331,7 +335,7 @@ shape = SubResource("BoxShape3D_vjp0k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.6, 2.2)
 
 [node name="Mover" type="Node3D" parent="Rooms/Room1/Geometry/Movable/Gate2"]
-script = ExtResource("3_pbfgs")
+script = ExtResource("6_mkgtr")
 trigger = "d1_r1_set1"
 movement = Vector3(0, 2.6, 0)
 duration = 0.3
@@ -356,7 +360,7 @@ shape = SubResource("BoxShape3D_vjp0k")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.739, 0, 4.03289)
 
 [node name="Mover" type="Node3D" parent="Rooms/Room1/Geometry/Movable/Gate3"]
-script = ExtResource("3_pbfgs")
+script = ExtResource("6_mkgtr")
 trigger = "d1_r1_set1"
 movement = Vector3(0, -2.6, 0)
 duration = 0.3
@@ -380,11 +384,11 @@ shape = SubResource("BoxShape3D_vjp0k")
 [node name="Switches" type="Node3D" parent="Rooms/Room1/Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="Lever" parent="Rooms/Room1/Geometry/Switches" instance=ExtResource("4_rjwws")]
+[node name="Lever" parent="Rooms/Room1/Geometry/Switches" instance=ExtResource("7_uce32")]
 transform = Transform3D(-1.74846e-08, -0.4, 1.74846e-08, 0, -1.74846e-08, -0.4, 0.4, -1.74846e-08, 7.64274e-16, 4.04334, 1.1, 1.99488)
 trigger = "d1_r1_set1"
 
-[node name="Ability Mural" parent="Rooms/Room1" instance=ExtResource("12_1c8w1")]
+[node name="Ability Mural" parent="Rooms/Room1" instance=ExtResource("8_7jcmn")]
 transform = Transform3D(0.333333, 0, 2.36848e-15, 0, 0.333333, 0, -2.36848e-15, 0, 0.333333, 6.98571, 1.36676, 0.00850932)
 dialogue = Array[String](["Jump
 "])
@@ -408,7 +412,7 @@ use_collision = true
 
 [node name="Wall4" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.914851, -6.70194)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(12, 6, 2)
 
@@ -482,13 +486,13 @@ use_collision = true
 
 [node name="Wall12" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 5, -6.05301)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(7, 6, 0.5)
 
 [node name="Wall13" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48711, 5, -6.05504)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(7, 6, 0.5)
 
@@ -500,37 +504,37 @@ size = Vector3(2, 3, 2)
 
 [node name="Wall15" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 2.955, -3.90178)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(3.8, 6, 2)
 
 [node name="Wall16" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 3, -3.90703)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(3.8, 6, 2)
 
 [node name="Wall17" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.914851, -6.70194)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(12, 6, 2)
 
 [node name="Wall18" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.914851, -33.4845)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(12, 6, 2)
 
 [node name="Wall19" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 5, -33.7511)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(7, 6, 0.5)
 
 [node name="Wall20" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48711, 5, -33.7531)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(7, 6, 0.5)
 
@@ -549,13 +553,13 @@ use_collision = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3.82097, -34.8963)
 use_collision = true
 size = Vector3(2, 5.5, 2)
-material = ExtResource("3_p2srh")
+material = ExtResource("5_6wwb2")
 
 [node name="Wall7" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 3.82097, -34.8963)
 use_collision = true
 size = Vector3(6, 5.5, 2)
-material = ExtResource("3_p2srh")
+material = ExtResource("5_6wwb2")
 
 [node name="Wall8" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 5.57097, -34.8963)
@@ -585,13 +589,13 @@ use_collision = true
 
 [node name="Wall27" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 5.02597, -37.7981)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(3.8, 6, 2)
 
 [node name="Wall28" type="CSGBox3D" parent="Rooms/Room2/Geometry/Stationary"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 5.07097, -37.8033)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(3.8, 6, 2)
 
@@ -603,7 +607,7 @@ size = Vector3(12, 1, 27.469)
 
 [node name="Moving" type="Node3D" parent="Rooms/Room2/Geometry"]
 
-[node name="CrumblingPlatform" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("7_ftqh3")]
+[node name="CrumblingPlatform" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("9_rvs2r")]
 transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1.3, -1.87359, 1.65727, -12.1484)
 crumble_time = 3.0
 
@@ -611,77 +615,77 @@ crumble_time = 3.0
 material_override = SubResource("StandardMaterial3D_2i84k")
 material = SubResource("StandardMaterial3D_ux7kd")
 
-[node name="CrumblingPlatform2" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("7_ftqh3")]
+[node name="CrumblingPlatform2" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("9_rvs2r")]
 transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1.3, -1.87359, 1.65727, -17.4948)
 crumble_time = 3.0
 
 [node name="CSGBox3D" parent="Rooms/Room2/Geometry/Moving/CrumblingPlatform2" index="0"]
 material_override = SubResource("StandardMaterial3D_etef8")
 
-[node name="CrumblingPlatform3" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("7_ftqh3")]
+[node name="CrumblingPlatform3" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("9_rvs2r")]
 transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1.3, -1.87359, 1.65727, -22.8818)
 crumble_time = 3.0
 
 [node name="CSGBox3D" parent="Rooms/Room2/Geometry/Moving/CrumblingPlatform3" index="0"]
 material_override = SubResource("StandardMaterial3D_4fp82")
 
-[node name="CrumblingPlatform4" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("7_ftqh3")]
+[node name="CrumblingPlatform4" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("9_rvs2r")]
 transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1.3, -1.87359, 1.65727, -28.2282)
 crumble_time = 3.0
 
 [node name="CSGBox3D" parent="Rooms/Room2/Geometry/Moving/CrumblingPlatform4" index="0"]
 material_override = SubResource("StandardMaterial3D_cng2d")
 
-[node name="CrumblingPlatform5" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("7_ftqh3")]
+[node name="CrumblingPlatform5" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("9_rvs2r")]
 transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1.3, 7.8454, 1.65727, -12.1484)
 crumble_time = 3.0
 
 [node name="CSGBox3D" parent="Rooms/Room2/Geometry/Moving/CrumblingPlatform5" index="0"]
 material_override = SubResource("StandardMaterial3D_jnyjv")
 
-[node name="CrumblingPlatform6" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("7_ftqh3")]
+[node name="CrumblingPlatform6" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("9_rvs2r")]
 transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1.3, 7.8454, 1.65727, -17.4948)
 crumble_time = 3.0
 
 [node name="CSGBox3D" parent="Rooms/Room2/Geometry/Moving/CrumblingPlatform6" index="0"]
 material_override = SubResource("StandardMaterial3D_f1gf5")
 
-[node name="CrumblingPlatform7" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("7_ftqh3")]
+[node name="CrumblingPlatform7" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("9_rvs2r")]
 transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1.3, 7.8454, 1.65727, -22.8818)
 crumble_time = 3.0
 
 [node name="CSGBox3D" parent="Rooms/Room2/Geometry/Moving/CrumblingPlatform7" index="0"]
 material_override = SubResource("StandardMaterial3D_0iw28")
 
-[node name="CrumblingPlatform8" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("7_ftqh3")]
+[node name="CrumblingPlatform8" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("9_rvs2r")]
 transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1.3, 7.8454, 1.65727, -28.2282)
 crumble_time = 3.0
 
 [node name="CSGBox3D" parent="Rooms/Room2/Geometry/Moving/CrumblingPlatform8" index="0"]
 material_override = SubResource("StandardMaterial3D_r7ta4")
 
-[node name="CrumblingPlatform10" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("7_ftqh3")]
+[node name="CrumblingPlatform10" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("9_rvs2r")]
 transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1.3, 3.00267, 1.65727, -14.6073)
 crumble_time = 3.0
 
 [node name="CSGBox3D" parent="Rooms/Room2/Geometry/Moving/CrumblingPlatform10" index="0"]
 material_override = SubResource("StandardMaterial3D_l7x8i")
 
-[node name="CrumblingPlatform11" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("7_ftqh3")]
+[node name="CrumblingPlatform11" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("9_rvs2r")]
 transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1.3, 3.00267, 1.65727, -19.9943)
 crumble_time = 3.0
 
 [node name="CSGBox3D" parent="Rooms/Room2/Geometry/Moving/CrumblingPlatform11" index="0"]
 material_override = SubResource("StandardMaterial3D_ufv6k")
 
-[node name="CrumblingPlatform12" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("7_ftqh3")]
+[node name="CrumblingPlatform12" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("9_rvs2r")]
 transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1.3, 3.00267, 1.65727, -25.3407)
 crumble_time = 3.0
 
 [node name="CSGBox3D" parent="Rooms/Room2/Geometry/Moving/CrumblingPlatform12" index="0"]
 material_override = SubResource("StandardMaterial3D_ygfix")
 
-[node name="CrumblingPlatform13" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("7_ftqh3")]
+[node name="CrumblingPlatform13" parent="Rooms/Room2/Geometry/Moving" instance=ExtResource("9_rvs2r")]
 transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 1.3, 3.00267, 1.65727, -30.1167)
 crumble_time = 3.0
 
@@ -692,7 +696,7 @@ material_override = SubResource("StandardMaterial3D_1g3w3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04274, 2.05424, -33.7231)
 
 [node name="Mover" type="Node3D" parent="Rooms/Room2/Geometry/Moving/Gate"]
-script = ExtResource("8_pi5ac")
+script = ExtResource("11_prdc5")
 trigger1 = "d1_r2_1"
 trigger2 = "d1_r2_2"
 trigger3 = "d1_r2_3"
@@ -720,7 +724,7 @@ material = SubResource("StandardMaterial3D_4tr3y")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.25, -0.1)
 shape = SubResource("BoxShape3D_vjp0k")
 
-[node name="Checkpoint" parent="Rooms/Room2" instance=ExtResource("8_hnexd")]
+[node name="Checkpoint" parent="Rooms/Room2" instance=ExtResource("12_dueqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.99443, 2.81528, -6.96111)
 id = 20
 
@@ -730,35 +734,35 @@ shape = SubResource("BoxShape3D_8lkqn")
 
 [node name="Levers" type="Node3D" parent="Rooms/Room2"]
 
-[node name="Lever" parent="Rooms/Room2/Levers" instance=ExtResource("4_rjwws")]
+[node name="Lever" parent="Rooms/Room2/Levers" instance=ExtResource("7_uce32")]
 transform = Transform3D(-1.74846e-08, -0.4, 1.74846e-08, 0, -1.74846e-08, -0.4, 0.4, -1.74846e-08, 7.64274e-16, 8.93374, 2.95113, -12.1078)
 trigger = "d1_r2_1"
 
-[node name="Lever2" parent="Rooms/Room2/Levers" instance=ExtResource("4_rjwws")]
+[node name="Lever2" parent="Rooms/Room2/Levers" instance=ExtResource("7_uce32")]
 transform = Transform3D(-1.74846e-08, -0.4, 1.74846e-08, 0, -1.74846e-08, -0.4, 0.4, -1.74846e-08, 7.64274e-16, 8.93374, 2.95113, -17.5298)
 trigger = "d1_r2_2"
 
-[node name="Lever3" parent="Rooms/Room2/Levers" instance=ExtResource("4_rjwws")]
+[node name="Lever3" parent="Rooms/Room2/Levers" instance=ExtResource("7_uce32")]
 transform = Transform3D(-1.74846e-08, -0.4, 1.74846e-08, 0, -1.74846e-08, -0.4, 0.4, -1.74846e-08, 7.64274e-16, 8.93374, 2.95113, -22.9436)
 trigger = "d1_r2_3"
 
-[node name="Lever4" parent="Rooms/Room2/Levers" instance=ExtResource("4_rjwws")]
+[node name="Lever4" parent="Rooms/Room2/Levers" instance=ExtResource("7_uce32")]
 transform = Transform3D(-1.74846e-08, -0.4, 1.74846e-08, 0, -1.74846e-08, -0.4, 0.4, -1.74846e-08, 7.64274e-16, 8.93374, 2.95113, -28.3656)
 trigger = "d1_r2_4"
 
-[node name="Lever5" parent="Rooms/Room2/Levers" instance=ExtResource("4_rjwws")]
+[node name="Lever5" parent="Rooms/Room2/Levers" instance=ExtResource("7_uce32")]
 transform = Transform3D(-1.74846e-08, 0.4, -1.74846e-08, 0, -1.74846e-08, -0.4, -0.4, -1.74846e-08, 7.64274e-16, -2.98311, 2.95113, -12.1078)
 trigger = "d1_r2_5"
 
-[node name="Lever6" parent="Rooms/Room2/Levers" instance=ExtResource("4_rjwws")]
+[node name="Lever6" parent="Rooms/Room2/Levers" instance=ExtResource("7_uce32")]
 transform = Transform3D(-1.74846e-08, 0.4, -1.74846e-08, 0, -1.74846e-08, -0.4, -0.4, -1.74846e-08, 7.64274e-16, -2.98311, 2.95113, -17.5298)
 trigger = "d1_r2_6"
 
-[node name="Lever7" parent="Rooms/Room2/Levers" instance=ExtResource("4_rjwws")]
+[node name="Lever7" parent="Rooms/Room2/Levers" instance=ExtResource("7_uce32")]
 transform = Transform3D(-1.74846e-08, 0.4, -1.74846e-08, 0, -1.74846e-08, -0.4, -0.4, -1.74846e-08, 7.64274e-16, -2.98311, 2.95113, -22.9436)
 trigger = "d1_r2_7"
 
-[node name="Lever8" parent="Rooms/Room2/Levers" instance=ExtResource("4_rjwws")]
+[node name="Lever8" parent="Rooms/Room2/Levers" instance=ExtResource("7_uce32")]
 transform = Transform3D(-1.74846e-08, 0.4, -1.74846e-08, 0, -1.74846e-08, -0.4, -0.4, -1.74846e-08, 7.64274e-16, -2.98311, 2.95113, -28.3656)
 trigger = "d1_r2_8"
 
@@ -792,7 +796,7 @@ spot_range = 42.448
 spot_attenuation = -0.45
 spot_angle = 3.55
 
-[node name="Ability Mural" parent="Rooms/Room2" instance=ExtResource("12_1c8w1")]
+[node name="Ability Mural" parent="Rooms/Room2" instance=ExtResource("8_7jcmn")]
 transform = Transform3D(-0.333333, 0, -2.91409e-08, 0, 0.333333, 0, 2.91409e-08, 0, -0.333333, 6.16969, 3.42097, -6.2902)
 dialogue = Array[String](["Jump
 "])
@@ -805,13 +809,13 @@ dialogue = Array[String](["Jump
 
 [node name="Wall" type="CSGBox3D" parent="Rooms/Room3/Geometry/Stationary"]
 transform = Transform3D(-2.1629e-08, 0, -1, 0, 1, 0, 0.494815, 0, -4.37114e-08, -2.72956, 6.1203, -41.3077)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(7, 4, 0.5)
 
 [node name="Wall2" type="CSGBox3D" parent="Rooms/Room3/Geometry/Stationary"]
 transform = Transform3D(-2.54774e-08, 0, -1, 0, 1, 0, 0.582855, 0, -4.37114e-08, -2.72397, 6.10121, -47.2044)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(7.67291, 4, 0.5)
 
@@ -823,7 +827,7 @@ size = Vector3(2, 1, 0.5)
 
 [node name="Wall5" type="CSGBox3D" parent="Rooms/Room3/Geometry/Stationary"]
 transform = Transform3D(-2.54774e-08, 0, -1, 0, 1, 0, 0.582855, 0, -4.37114e-08, 8.79251, 6.10121, -44.5228)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(16.8747, 4, 0.5)
 
@@ -841,13 +845,13 @@ size = Vector3(12, 1, 26)
 
 [node name="Wall9" type="CSGBox3D" parent="Rooms/Room3/Geometry/Stationary"]
 transform = Transform3D(-0.582855, 0, 8.74228e-08, 0, 1, 0, -5.09548e-08, 0, -1, 6.29681, 6.10121, -49.196)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(7.67291, 4, 0.5)
 
 [node name="Wall10" type="CSGBox3D" parent="Rooms/Room3/Geometry/Stationary"]
 transform = Transform3D(-0.582855, 0, 8.74228e-08, 0, 1, 0, -5.09548e-08, 0, -1, -0.261019, 6.10121, -49.196)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(7.67291, 4, 0.5)
 
@@ -859,13 +863,13 @@ size = Vector3(2.09656, 1.54199, 0.5)
 
 [node name="Wall12" type="CSGBox3D" parent="Rooms/Room3/Geometry/Stationary"]
 transform = Transform3D(-0.582855, 0, 8.74228e-08, 0, 1, 0, -5.09548e-08, 0, -1, 6.26807, 6.10121, -39.5141)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(7.77151, 4, 0.5)
 
 [node name="Wall13" type="CSGBox3D" parent="Rooms/Room3/Geometry/Stationary"]
 transform = Transform3D(-0.582855, 0, 8.74228e-08, 0, 1, 0, -5.09548e-08, 0, -1, -0.285067, 6.10121, -39.5141)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(7.77151, 4, 0.5)
 
@@ -923,8 +927,8 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18.98
 use_collision = true
 size = Vector3(2.532, 10, 3.565)
 
-[node name="Mover" parent="Rooms/Room4/Geometry/Moving/Platform" instance=ExtResource("12_7cwtb")]
-script = ExtResource("13_r62x8")
+[node name="Mover" parent="Rooms/Room4/Geometry/Moving/Platform" instance=ExtResource("13_bfv7q")]
+script = ExtResource("14_o81ip")
 movement = Vector3(0, 10, 0)
 duration = 6.0
 
@@ -934,8 +938,8 @@ material_override = SubResource("StandardMaterial3D_yd100")
 use_collision = true
 size = Vector3(2.532, 0.5, 1.75893)
 
-[node name="Mover" parent="Rooms/Room4/Geometry/Moving/Platform2" instance=ExtResource("12_7cwtb")]
-script = ExtResource("13_r62x8")
+[node name="Mover" parent="Rooms/Room4/Geometry/Moving/Platform2" instance=ExtResource("13_bfv7q")]
+script = ExtResource("14_o81ip")
 movement = Vector3(0, 0, 2.4)
 duration = 4.0
 
@@ -945,8 +949,8 @@ material_override = SubResource("StandardMaterial3D_uipwr")
 use_collision = true
 size = Vector3(2.532, 0.5, 1.75893)
 
-[node name="Mover" parent="Rooms/Room4/Geometry/Moving/Platform3" instance=ExtResource("12_7cwtb")]
-script = ExtResource("13_r62x8")
+[node name="Mover" parent="Rooms/Room4/Geometry/Moving/Platform3" instance=ExtResource("13_bfv7q")]
+script = ExtResource("14_o81ip")
 movement = Vector3(0, 0, -2.4)
 duration = 4.0
 
@@ -956,8 +960,8 @@ material_override = SubResource("StandardMaterial3D_3xnr0")
 use_collision = true
 size = Vector3(2.532, 0.5, 1.75893)
 
-[node name="Mover" parent="Rooms/Room4/Geometry/Moving/Platform4" instance=ExtResource("12_7cwtb")]
-script = ExtResource("13_r62x8")
+[node name="Mover" parent="Rooms/Room4/Geometry/Moving/Platform4" instance=ExtResource("13_bfv7q")]
+script = ExtResource("14_o81ip")
 movement = Vector3(0, 0, -2.4)
 duration = 4.0
 
@@ -967,8 +971,8 @@ material_override = SubResource("StandardMaterial3D_aa235")
 use_collision = true
 size = Vector3(2.532, 0.5, 1.75893)
 
-[node name="Mover" parent="Rooms/Room4/Geometry/Moving/Platform5" instance=ExtResource("12_7cwtb")]
-script = ExtResource("13_r62x8")
+[node name="Mover" parent="Rooms/Room4/Geometry/Moving/Platform5" instance=ExtResource("13_bfv7q")]
+script = ExtResource("14_o81ip")
 movement = Vector3(0, 0, 2.4)
 duration = 4.0
 
@@ -984,8 +988,8 @@ material_override = SubResource("StandardMaterial3D_rapvr")
 use_collision = true
 size = Vector3(2.532, 0.5, 1.75893)
 
-[node name="Mover" parent="Rooms/Room4/Geometry/Moving/Platform7" instance=ExtResource("12_7cwtb")]
-script = ExtResource("13_r62x8")
+[node name="Mover" parent="Rooms/Room4/Geometry/Moving/Platform7" instance=ExtResource("13_bfv7q")]
+script = ExtResource("14_o81ip")
 movement = Vector3(0, 0, 2.4)
 duration = 4.0
 
@@ -995,8 +999,8 @@ material_override = SubResource("StandardMaterial3D_pbhbh")
 use_collision = true
 size = Vector3(2.532, 0.5, 1.75893)
 
-[node name="Mover" parent="Rooms/Room4/Geometry/Moving/Platform8" instance=ExtResource("12_7cwtb")]
-script = ExtResource("13_r62x8")
+[node name="Mover" parent="Rooms/Room4/Geometry/Moving/Platform8" instance=ExtResource("13_bfv7q")]
+script = ExtResource("14_o81ip")
 movement = Vector3(0, 0, -2.4)
 duration = 4.0
 
@@ -1006,8 +1010,8 @@ material_override = SubResource("StandardMaterial3D_sv5ld")
 use_collision = true
 size = Vector3(2.532, 0.5, 1.75893)
 
-[node name="Mover" parent="Rooms/Room4/Geometry/Moving/Platform9" instance=ExtResource("12_7cwtb")]
-script = ExtResource("13_r62x8")
+[node name="Mover" parent="Rooms/Room4/Geometry/Moving/Platform9" instance=ExtResource("13_bfv7q")]
+script = ExtResource("14_o81ip")
 movement = Vector3(0, 0, -2.4)
 duration = 4.0
 
@@ -1017,8 +1021,8 @@ material_override = SubResource("StandardMaterial3D_wbk3d")
 use_collision = true
 size = Vector3(2.532, 0.5, 1.75893)
 
-[node name="Mover" parent="Rooms/Room4/Geometry/Moving/Platform10" instance=ExtResource("12_7cwtb")]
-script = ExtResource("13_r62x8")
+[node name="Mover" parent="Rooms/Room4/Geometry/Moving/Platform10" instance=ExtResource("13_bfv7q")]
+script = ExtResource("14_o81ip")
 movement = Vector3(0, 0, 2.4)
 duration = 4.0
 
@@ -1026,7 +1030,7 @@ duration = 4.0
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 6.02004, 4.15261, -49.2199)
 
 [node name="Mover" type="Node3D" parent="Rooms/Room4/Gate"]
-script = ExtResource("14_6577v")
+script = ExtResource("15_jdjat")
 trigger1 = "d1_r4_1"
 trigger2 = "d1_r4_2"
 trigger3 = "d1_r4_3"
@@ -1057,35 +1061,35 @@ shape = SubResource("BoxShape3D_vjp0k")
 [node name="Levers" type="Node3D" parent="Rooms/Room4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7176, 6.58743, -36.5649)
 
-[node name="Lever" parent="Rooms/Room4/Levers" instance=ExtResource("4_rjwws")]
+[node name="Lever" parent="Rooms/Room4/Levers" instance=ExtResource("7_uce32")]
 transform = Transform3D(0.4, -4.5001e-14, -2.11758e-21, -8.28237e-23, -1.74846e-08, -0.4, 4.5001e-14, 0.4, -1.74846e-08, 6.37363, 3.47979, -10.8587)
 trigger = "d1_r4_1"
 
-[node name="Lever2" parent="Rooms/Room4/Levers" instance=ExtResource("4_rjwws")]
+[node name="Lever2" parent="Rooms/Room4/Levers" instance=ExtResource("7_uce32")]
 transform = Transform3D(0.4, -4.5001e-14, -2.11758e-21, -8.28237e-23, -1.74846e-08, -0.4, 4.5001e-14, 0.4, -1.74846e-08, 6.37363, 8.31375, -10.8587)
 trigger = "d1_r4_2"
 
-[node name="Lever3" parent="Rooms/Room4/Levers" instance=ExtResource("4_rjwws")]
+[node name="Lever3" parent="Rooms/Room4/Levers" instance=ExtResource("7_uce32")]
 transform = Transform3D(0.4, -4.5001e-14, -2.11758e-21, -8.28237e-23, -1.74846e-08, -0.4, 4.5001e-14, 0.4, -1.74846e-08, 0.585769, 3.47979, -10.8587)
 trigger = "d1_r4_3"
 
-[node name="Lever4" parent="Rooms/Room4/Levers" instance=ExtResource("4_rjwws")]
+[node name="Lever4" parent="Rooms/Room4/Levers" instance=ExtResource("7_uce32")]
 transform = Transform3D(0.4, -4.5001e-14, -2.11758e-21, -8.28237e-23, -1.74846e-08, -0.4, 4.5001e-14, 0.4, -1.74846e-08, 0.585769, 8.31375, -10.8587)
 trigger = "d1_r4_4"
 
-[node name="Lever5" parent="Rooms/Room4/Levers" instance=ExtResource("4_rjwws")]
+[node name="Lever5" parent="Rooms/Room4/Levers" instance=ExtResource("7_uce32")]
 transform = Transform3D(-0.4, -3.49691e-08, 1.52855e-15, -8.28237e-23, -1.74846e-08, -0.4, 3.49691e-08, -0.4, 1.74846e-08, 0.585769, 3.4622, 1.16774)
 trigger = "d1_r4_5"
 
-[node name="Lever6" parent="Rooms/Room4/Levers" instance=ExtResource("4_rjwws")]
+[node name="Lever6" parent="Rooms/Room4/Levers" instance=ExtResource("7_uce32")]
 transform = Transform3D(-0.4, -3.49691e-08, 1.52855e-15, -8.28237e-23, -1.74846e-08, -0.4, 3.49691e-08, -0.4, 1.74846e-08, 0.585769, 8.27268, 1.16774)
 trigger = "d1_r4_6"
 
-[node name="Lever7" parent="Rooms/Room4/Levers" instance=ExtResource("4_rjwws")]
+[node name="Lever7" parent="Rooms/Room4/Levers" instance=ExtResource("7_uce32")]
 transform = Transform3D(-0.4, -3.49691e-08, 1.52855e-15, -8.28237e-23, -1.74846e-08, -0.4, 3.49691e-08, -0.4, 1.74846e-08, 6.37363, 3.44099, 1.16774)
 trigger = "d1_r4_7"
 
-[node name="Lever8" parent="Rooms/Room4/Levers" instance=ExtResource("4_rjwws")]
+[node name="Lever8" parent="Rooms/Room4/Levers" instance=ExtResource("7_uce32")]
 transform = Transform3D(-0.4, -3.49691e-08, 1.52855e-15, -8.28237e-23, -1.74846e-08, -0.4, 3.49691e-08, -0.4, 1.74846e-08, 6.37363, 8.27495, 1.16774)
 trigger = "d1_r4_8"
 
@@ -1107,13 +1111,13 @@ size = Vector3(1, 1, 1.39404)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.999186, 5.88098, -50.0487)
 use_collision = true
 size = Vector3(2, 5.5, 2)
-material = ExtResource("3_p2srh")
+material = ExtResource("5_6wwb2")
 
 [node name="Wall7" type="CSGBox3D" parent="Rooms/Exit"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.99919, 5.88098, -50.0487)
 use_collision = true
 size = Vector3(6, 5.5, 2)
-material = ExtResource("3_p2srh")
+material = ExtResource("5_6wwb2")
 
 [node name="Wall8" type="CSGBox3D" parent="Rooms/Exit"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.99919, 7.63098, -50.0487)
@@ -1133,13 +1137,13 @@ use_collision = true
 
 [node name="Wall27" type="CSGBox3D" parent="Rooms/Exit"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.999186, 7.08598, -52.9505)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(3.8, 6, 2)
 
 [node name="Wall28" type="CSGBox3D" parent="Rooms/Exit"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.99919, 7.13098, -52.9557)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(3.8, 6, 2)
 
@@ -1156,9 +1160,20 @@ material = SubResource("FogMaterial_frb6y")
 
 [node name="Wall29" type="CSGBox3D" parent="Rooms/Exit"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.98185, 7.13098, -55.2253)
-material_override = ExtResource("3_p2srh")
+material_override = ExtResource("5_6wwb2")
 use_collision = true
 size = Vector3(0.615698, 6, 6.03467)
+
+[node name="Loading-zone2" parent="Rooms/Exit" instance=ExtResource("16_8jbod")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.06319, 4.83267, -53.1499)
+scene = "res://Scenes/islands/island0/Island0.tscn"
+checkpoint = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Exit/Loading-zone2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_76f32")
+
+[connection signal="body_entered" from="Rooms/Exit/Loading-zone2" to="Rooms/Exit/Loading-zone2" method="_on_body_entered"]
 
 [editable path="Rooms/Room2/Geometry/Moving/CrumblingPlatform"]
 [editable path="Rooms/Room2/Geometry/Moving/CrumblingPlatform2"]
