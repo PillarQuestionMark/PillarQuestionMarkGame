@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dgdn3s520cve5"]
+[gd_scene load_steps=24 format=3 uid="uid://dgdn3s520cve5"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_8lv5b"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_e5326"]
@@ -117,6 +117,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 100
 
 [node name="Flame" parent="." groups=["flames"] instance=ExtResource("5_reynx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.5, -10)
+flame_name = "bruh"
 color = Color(0.882353, 0, 0.270588, 1)
 
 [node name="Checkpoint" parent="." instance=ExtResource("6_ftc75")]
