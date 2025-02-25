@@ -1,20 +1,40 @@
 class_name Player extends CharacterBody3D
 @export_group("Movement")
-@export_range(0.0, 100.0, 0.1) var Jump_Impulse : float = 25.0
-@export_range(0.0, 100.0, 0.1) var Slam_Jump_Impulse : float = 40.0
+
+@export_subgroup("Jumping")
+@export_range(0.0, 100.0, 0.1) var Jump_Impulse : float = 2.0
+@export_range(0.0, 1.0, 0.05) var Jump_Held_Decay : float = 0.6
+@export_range(0.0, 100.0, 0.1) var Jump_Held_Strength : float = 10.0
+@export_range(0.0, 100.0, 0.1) var Slam_Jump_Impulse : float = 15.0
+
+@export_subgroup("Falling")
+@export_range(0.0, 1.0, 0.05) var Coyote_Time : float = 0.1
+@export_range(-100.0, 0.0, 0.5) var Gravity : float = -50.0
+
+@export_subgroup("Speed")
 @export_range(0.0, 100.0, 0.1) var Air_Speed : float = 10.0
 @export_range(0.0, 100.0, 0.1) var Walk_Speed : float = 10.0
 @export_range(0.0, 100.0, 0.1) var Sprint_Speed : float = 20.0
+
+@export_subgroup("Drag")
 @export_range(0.0, 1.0, 0.01) var Ground_Drag : float = 0.4
 @export_range(0.0, 1.0, 0.01) var Air_Drag : float = 0.04
-@export_range(-100.0, 0.0, 0.5) var Gravity : float = -50.0
+
+@export_subgroup("Rotation")
 @export_range(0.0, 100) var Rotation_Speed : float = 10.0
 @export_range(0.0, 5) var Rotation_Flux : float = 2.0
+
+@export_subgroup("Dash")
 @export_range(0.0, 2.0, 0.05) var Dash_Length : float = 0.1
 @export_range(0.0, 100, 1) var Dash_Speed : float = 50
+
+@export_subgroup("Slam")
 @export_range(0.0, 100, 1) var Slam_Gravity_Factor : float = 20
+
+@export_subgroup("Slide")
 @export_range(0.0, 100, 1) var Slide_Gravity_Factor : float = 10
 @export_range(0.0, 100, 1) var Wall_Kick : float = 20
+
 @export_group("Camera")
 @export var Transparency_Curve : Curve
 @export var Camera : SpringArm3D
@@ -26,6 +46,8 @@ var can_wall_slide : bool = true
 var jumps_left : int = 0 # how many jumps left
 
 var slamjump_unlocked : bool = true
+
+@onready var state_machine : StateMachine = $StateMachine
 
 @onready var jump_sound: AudioStreamPlayer = %AudioStreamPlayer
 @onready var wall_slide_particles: GPUParticles3D = %WallSlideParticles
@@ -61,6 +83,19 @@ func _process(delta : float) -> void:
 	## REMOVE LATER. FOR NOW, JUST TO TEST DEATH
 	if Input.is_action_just_pressed("kys"):
 		die()
+	if Input.is_action_just_pressed("flames"):
+		list_flames()
+		
+func list_flames() -> void:
+	print("signaling glorp... flames list:")
+	for island in [0, -1]:
+		var collected_flames = PlayerData.get_island_flames(island)
+		print("Island " + str(island) + " ... " + str(collected_flames.size()) + "/" + str(FlameIndex.island_total_flames(island)))
+		for flame in FlameIndex.get_flame_ids(island):
+			if (collected_flames.has(float(flame))):
+				print("- " + FlameIndex.get_flame_name(island, flame))
+			else:
+				print("- ???")
 
 
 func get_move_direction() -> Vector3:
@@ -108,6 +143,7 @@ func touched_ground() -> void:
 	can_wall_slide = PlayerData.data["wall_slide_unlocked"]
 	can_dash = PlayerData.data["dash_unlocked"]
 	jumps_left = PlayerData.data["max_jumps"]
+	max_height = 0
 
 func try_interact() -> void:
 	interactor.try_interact()
@@ -123,3 +159,4 @@ func start_slamjump_window() -> void:
 ## kills the player and reloads the scene
 func die() -> void:
 	PlayerData.load_scene()
+	
