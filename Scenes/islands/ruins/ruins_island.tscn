@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="3_qrmmi"]
 [ext_resource type="PackedScene" uid="uid://ud6x3emfmcnt" path="res://Components/trigger_animation.tscn" id="4_1uusq"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="4_c2hl0"]
-[ext_resource type="PackedScene" uid="uid://daqo3a6ove7qf" path="res://Components/flame_lever.tscn" id="5_d0sa3"]
+[ext_resource type="PackedScene" path="res://Components/flame_lever.tscn" id="5_d0sa3"]
 [ext_resource type="PackedScene" uid="uid://dc1evxye2jpsn" path="res://Entities/Boat.tscn" id="5_kogkr"]
 [ext_resource type="PackedScene" uid="uid://dbwr3lokvosdn" path="res://Scenes/props/lantern/square_lantern.tscn" id="8_55b45"]
 [ext_resource type="PackedScene" uid="uid://btmje4fgwjpmy" path="res://Scenes/islands/ruins/ruins.blend" id="8_kouu0"]
@@ -161,15 +161,18 @@ flame_name = "Arch-eologist"
 
 [node name="Flame2" parent="ruins" instance=ExtResource("9_8qidy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 13, 11)
+id = 1.0
 flame_name = "It's Beautiful Up Here"
 color = Color(0.894118, 0.447059, 0.34902, 1)
 
 [node name="Flame3" parent="ruins" instance=ExtResource("9_8qidy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 15, 1)
+id = 2.0
 color = Color(0.721569, 0.631373, 0.760784, 1)
 
 [node name="Flame4" parent="ruins" instance=ExtResource("9_8qidy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 35, 1)
+id = 3.0
 flame_name = "Sea Lord"
 color = Color(0.388235, 0.768627, 0.8, 1)
 
