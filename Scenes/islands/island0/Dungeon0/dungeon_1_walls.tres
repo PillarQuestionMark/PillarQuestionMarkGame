@@ -1,8 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bsjsac8c0qd8h"]
-
-[ext_resource type="Texture2D" uid="uid://dbprv31j7qsm7" path="res://Assets/Textures/Bricks_11-512x512.png" id="1_jss56"]
-
-[resource]
-albedo_color = Color(0.650128, 0.650128, 0.650128, 1)
-albedo_texture = ExtResource("1_jss56")
-uv1_scale = Vector3(3, 3, 3)
