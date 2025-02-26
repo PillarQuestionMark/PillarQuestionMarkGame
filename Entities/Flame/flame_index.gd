@@ -10,6 +10,12 @@ const flames : Dictionary = {
 	},
 	0: {
 		0: "Humble Beginnings"
+	},
+	1: {
+		0: "Arch-eologist",
+		1: "It's Beautiful Up Here",
+		2: "Humble Beginnings",
+		3: "Sea Lord"
 	}
 }
 

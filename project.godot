@@ -12,7 +12,7 @@ config_version=5
 
 config/name="CSE5902_Game"
 run/main_scene="res://Scenes/screens/photo_splash_screen/photo_splash_screen.tscn"
-config/features=PackedStringArray("4.3", "C#", "Forward Plus")
+config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -26,10 +26,6 @@ DevConsoleAPI="*res://Autoload/dev_console_api.tscn"
 [dotnet]
 
 project/assembly_name="CSE5902_Game"
-
-[filesystem]
-
-import/blender/enabled=false
 
 [global_group]
 
@@ -172,6 +168,8 @@ flames={
 
 [layer_names]
 
+3d_render/layer_1="world"
+3d_render/layer_2="lanterns"
 3d_physics/layer_1="World"
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Obstacle"

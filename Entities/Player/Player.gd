@@ -143,7 +143,6 @@ func touched_ground() -> void:
 	can_wall_slide = PlayerData.data["wall_slide_unlocked"]
 	can_dash = PlayerData.data["dash_unlocked"]
 	jumps_left = PlayerData.data["max_jumps"]
-	max_height = 0
 
 func try_interact() -> void:
 	interactor.try_interact()
