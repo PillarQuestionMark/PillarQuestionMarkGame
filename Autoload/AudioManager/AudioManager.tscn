@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2yrjlexgqqvi"]
+
+[ext_resource type="Script" path="res://Autoload/AudioManager/AudioManager.gd" id="1_31ioa"]
+[ext_resource type="AudioStream" uid="uid://cq4r7yft33ly7" path="res://Assets/Audio/Music/main_menu.mp3" id="2_egk6x"]
+[ext_resource type="AudioStream" uid="uid://c6ichm6woikfd" path="res://Assets/Audio/Sound Effects/jump.wav" id="3_a7lsk"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_31ioa")
+music = Array[Resource]([ExtResource("2_egk6x")])
+effects = Array[Resource]([ExtResource("3_a7lsk")])
+
+[node name="Music" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Music"]
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Music"]
+
+[node name="Effects" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Effects"]

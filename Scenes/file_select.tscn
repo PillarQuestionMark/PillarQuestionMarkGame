@@ -8,7 +8,7 @@
 [ext_resource type="Material" uid="uid://cie52pam3snu7" path="res://player/material_scarf.tres" id="6_f1dda"]
 [ext_resource type="Material" uid="uid://b581oewwfjj7g" path="res://player/material_hand.tres" id="7_kurao"]
 [ext_resource type="Theme" uid="uid://ews1me176sme" path="res://Scenes/main_menu_theme.tres" id="8_b7aig"]
-[ext_resource type="AudioStream" uid="uid://cq4r7yft33ly7" path="res://Scenes/main_menu_music.mp3" id="9_c6be6"]
+[ext_resource type="AudioStream" uid="uid://cq4r7yft33ly7" path="res://Assets/Audio/Music/main_menu.mp3" id="9_c6be6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p81pn"]
 albedo_color = Color(0.494118, 0.396078, 0.607843, 1)

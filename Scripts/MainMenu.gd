@@ -2,6 +2,7 @@ extends Node
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	AudioManager.play_music("main_menu")
 	Logger.info("mainmenu: ready")
 
 func _on_start_button_pressed():
