@@ -35,12 +35,14 @@ func _read_file(filePath : String, number : int):
 func _on_file_pressed(file : int) -> void:
 	PlayerData.set_file_number(file)
 	PlayerData.load_data()
-	AudioManager.stop_music()
+	AudioManager.play_fx("button")
+	AudioManager.stop_music() # not sure if this should go here :/
 	
 ## Called when a file is being deleted. The function is passed an int representing which save file to delete.
 func _on_file_delete(file : int) -> void:
 	var deleting = FileUtility.save_file_name + String.num_int64(file) + FileUtility.save_file_ending
 	FileUtility.delete_file(deleting)
+	AudioManager.play_fx("button")
 	_read_file(deleting, file)
 	
 ## dev function used to delete all save files. useful for save file changes that crash the game

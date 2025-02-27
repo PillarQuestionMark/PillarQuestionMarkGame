@@ -7,10 +7,12 @@ func _ready() -> void:
 
 func _on_start_button_pressed():
 	Logger.info("mainmenu: start button pressed")
+	AudioManager.play_fx("button")
 	get_tree().change_scene_to_file("res://Scenes/file_select.tscn")
 
 func _on_options_button_pressed() -> void:
 	Logger.info("mainmenu: options button pressed")
+	AudioManager.play_fx("button")
 	const OPTIONS_SCREEN := preload("res://Scenes/screens/options_screen/options_screen.tscn")
 	var s := OPTIONS_SCREEN.instantiate()
 	get_tree().root.add_child(s)

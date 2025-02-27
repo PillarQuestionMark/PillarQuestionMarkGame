@@ -15,6 +15,7 @@ func _process(delta: float) -> void:
 
 func _on_resume_pressed() -> void:
 	Logger.info("pausescreen: resume button pressed")
+	AudioManager.play_fx("button")
 	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	queue_free()
@@ -22,6 +23,7 @@ func _on_resume_pressed() -> void:
 
 func _on_options_pressed() -> void:
 	Logger.info("pausescreen: options button pressed")
+	AudioManager.play_fx("button")
 	const OPTIONS_SCREEN := preload("res://Scenes/screens/options_screen/options_screen.tscn")
 	var s := OPTIONS_SCREEN.instantiate()
 	get_tree().root.add_child(s)
@@ -33,6 +35,7 @@ func _on_options_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	Logger.info("pausescreen: save and quit button pressed")
+	AudioManager.play_fx("button")
 	PlayerData.save_data()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
