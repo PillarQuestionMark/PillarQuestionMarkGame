@@ -37,6 +37,7 @@ var slamjump_unlocked : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(Camera != null, "The Player Node requires a Camera of type Node3D to find its bearings")
+	@warning_ignore("unused_parameter")
 	EventBus.dialogue.connect(func(dialogue: Array[String]):
 		$StateMachine.state.finished.emit("Dialogue")
 	)
@@ -55,7 +56,7 @@ func _ready():
 		$StateMachine.state.finished.emit("Idle")
 	)
 
-func _process(delta : float) -> void:
+func _process(_delta : float) -> void:
 	mesh.transparency = Transparency_Curve.sample(Camera.get_hit_length() / Camera.spring_length)
 	
 	## REMOVE LATER. FOR NOW, JUST TO TEST DEATH

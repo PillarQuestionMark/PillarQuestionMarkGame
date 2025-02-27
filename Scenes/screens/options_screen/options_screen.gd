@@ -2,10 +2,11 @@ extends Menu
 
 func _ready() -> void:
 	Logger.info(name + ": ready")
+	_enter_menu()
 
 func _escape_menu() -> void:
 	Logger.info(name + ": escaped menu")
-	_exit_menu()
+	super()
 
 func _on_cancel_pressed() -> void:
 	Logger.info("optionsscreen: cancel pressed")
