@@ -14,9 +14,13 @@ extends Node
 var paused_position : float = 0.0 #the position music has been paused at
 
 func _ready() -> void:
+	audio_stream_player.bus = "Music"
+	audio_stream_player_2.bus = "Music"
+	
 	for i in num_sfx_players:
 		var stream = AudioStreamPlayer.new()
 		effects_container.add_child(stream)
+		stream.bus = "Effects"
 
 func play_fx(play_sfx_name : String) -> void:
 	for i in effects.size():
@@ -45,3 +49,11 @@ func stop_music() -> void:
 func pause_music() -> void:
 	paused_position = audio_stream_player.get_playback_position()
 	audio_stream_player.stop()
+	
+func get_music_vol() -> float:
+	return audio_stream_player.volume_db
+	
+func set_music_vol(new_volume : float) -> void:
+	audio_stream_player.volume_db = new_volume
+	
+	
