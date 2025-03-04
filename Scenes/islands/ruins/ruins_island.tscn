@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dmwlaf2f3cmd4"]
+[gd_scene load_steps=40 format=3 uid="uid://dmwlaf2f3cmd4"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_wbxxr"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_4qj5t"]
@@ -27,6 +27,7 @@
 [ext_resource type="Material" uid="uid://dj7nono3qn7hb" path="res://Scenes/props/lantern/lantern_material_on_e47259.tres" id="16_khp1a"]
 [ext_resource type="Material" uid="uid://7m66o5pyoqe" path="res://Scenes/props/lantern/lantern_material_on_b49d7e.tres" id="17_g5ihq"]
 [ext_resource type="Material" uid="uid://cp1us0nug7k3m" path="res://Scenes/props/lantern/lantern_material_on_7e659b.tres" id="19_djfiq"]
+[ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="28_55pw6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o1wxf"]
 sky_top_color = Color(0.929412, 0.666667, 0.639216, 1)
@@ -131,11 +132,12 @@ albedo = Color(0.101961, 0.121569, 0.180392, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_i3wrv"]
 size = Vector3(6, 3, 2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ch64q"]
+size = Vector3(8.30118, 4.58887, 9.11023)
+
 [node name="RuinsIsland" type="Node3D"]
 script = ExtResource("1_wbxxr")
 island_id = 1
-
-[node name="GameplayUI" parent="." instance=ExtResource("4_c2hl0")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2o6d4")
@@ -376,3 +378,21 @@ Camera = NodePath("FollowCamera")
 
 [node name="FollowCamera" parent="Player" instance=ExtResource("3_qrmmi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mouse_sensitivity = 0.04
+
+[node name="GameplayUI" parent="." instance=ExtResource("4_c2hl0")]
+
+[node name="Checkpoint" parent="." instance=ExtResource("28_55pw6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.191971, 1.79443, 0.545349)
+shape = SubResource("BoxShape3D_ch64q")
+
+[node name="Checkpoint2" parent="." instance=ExtResource("28_55pw6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26, 15, 1)
+id = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.191971, 1.79443, 0.545349)
+shape = SubResource("BoxShape3D_ch64q")

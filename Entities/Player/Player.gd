@@ -88,7 +88,7 @@ func _process(delta : float) -> void:
 		
 func list_flames() -> void:
 	print("signaling glorp... flames list:")
-	for island in [0, -1]:
+	for island in FlameIndex.island_list():
 		var collected_flames = PlayerData.get_island_flames(island)
 		print("Island " + str(island) + " ... " + str(collected_flames.size()) + "/" + str(FlameIndex.island_total_flames(island)))
 		for flame in FlameIndex.get_flame_ids(island):

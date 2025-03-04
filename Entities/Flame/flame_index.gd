@@ -31,3 +31,6 @@ static func get_flame_ids(island : int) -> Array:
 static func island_total_flames(island : int) -> int:
 	return flames[island].size()
 	
+## Returns a list of all island ids.
+static func island_list() -> Array:
+	return flames.keys()

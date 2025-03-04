@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-var island_scenes = {"Island1": "res://Scenes/islands/island0/Island0.tscn","Island2" : "res://Scenes/Playground.tscn"}
-var island_checkpoints = {"Island1": 0, "Island2" : 0}
+var island_scenes = {"Island1": "res://Scenes/islands/island0/Island0.tscn","Island2" : "res://Scenes/Playground.tscn", "Island3" : "res://Scenes/islands/ruins/ruins_island.tscn"}
+var island_checkpoints = {"Island1": 0, "Island2" : 0, "Island3" : 0}
 @export var current_island : int = 0
 @export var flames_required : int = 0
 

@@ -58,8 +58,8 @@ size = Vector3(20, 10, 1)
 
 [node name="Loading-zone" parent="Geometry" instance=ExtResource("2_60qb3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.8328)
-scene = "res://Scenes/islands/island0/Island0.tscn"
-checkpoint = 2
+scene = "res://Scenes/islands/ruins/ruins_island.tscn"
+checkpoint = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Loading-zone"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.5, 0)
@@ -67,7 +67,7 @@ shape = SubResource("BoxShape3D_1y08l")
 
 [node name="Loading-zone2" parent="Geometry" instance=ExtResource("2_60qb3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.90734)
-scene = "res://Scenes/islands/island0/Island0.tscn"
+scene = "res://Scenes/islands/ruins/ruins_island.tscn"
 checkpoint = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Loading-zone2"]
@@ -95,6 +95,3 @@ omni_range = 20.0
 [node name="Ability Mural" parent="." instance=ExtResource("7_gdbae")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 3.35, -5)
 dialogue = Array[String](["mural: jump unlocked!"])
-
-[connection signal="body_entered" from="Geometry/Loading-zone" to="Geometry/Loading-zone" method="_on_body_entered"]
-[connection signal="body_entered" from="Geometry/Loading-zone2" to="Geometry/Loading-zone2" method="_on_body_entered"]

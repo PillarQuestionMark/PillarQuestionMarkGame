@@ -70,6 +70,14 @@ layout_mode = 2
 text = "sea castle"
 icon_alignment = 1
 
+[node name="BoxContainer4" type="BoxContainer" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Island 2" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BoxContainer4"]
+layout_mode = 2
+text = "ruins"
+icon_alignment = 1
+
 [node name="BoxContainer3" type="BoxContainer" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -81,4 +89,5 @@ icon_alignment = 1
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="pressed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BoxContainer/Island 1" to="." method="_on_island_pressed" binds= ["Island1"]]
 [connection signal="pressed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BoxContainer2/Island 2" to="." method="_on_island_pressed" binds= ["Island2"]]
+[connection signal="pressed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BoxContainer4/Island 2" to="." method="_on_island_pressed" binds= ["Island3"]]
 [connection signal="pressed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/BoxContainer3/Stay Here" to="." method="_on_stay_here_pressed"]

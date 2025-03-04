@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dgdn3s520cve5"]
+[gd_scene load_steps=24 format=3 uid="uid://dgdn3s520cve5"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_8lv5b"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_e5326"]
@@ -9,7 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="6_ftc75"]
 [ext_resource type="PackedScene" path="res://Components/flame_lever.tscn" id="8_n7jxr"]
 [ext_resource type="PackedScene" uid="uid://dc1evxye2jpsn" path="res://Entities/Boat.tscn" id="9_qfby2"]
+[ext_resource type="PackedScene" path="res://Obstacles/CrumblingPlatform.tscn" id="11_n63un"]
 [ext_resource type="PackedScene" uid="uid://bw4ak8fk223nn" path="res://Components/mover.tscn" id="12_6wsbu"]
+[ext_resource type="PackedScene" path="res://Obstacles/BouncyMushroom.tscn" id="12_owpax"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4c74y"]
 albedo_color = Color(0.151365, 0.532748, 0, 1)
@@ -192,3 +194,9 @@ material = SubResource("StandardMaterial3D_3rdwg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftDoor"]
 shape = SubResource("BoxShape3D_8hsbt")
+
+[node name="CrumblingPlatform" parent="." instance=ExtResource("11_n63un")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8302, 4.29476, 0)
+
+[node name="BouncyMushroom" parent="." instance=ExtResource("12_owpax")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.60972, 1.51685, 0)
