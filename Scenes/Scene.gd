@@ -31,6 +31,7 @@ func _load_data() -> void:
 			door.queue_free()
 			
 	## delete the flames that have already been collected
+	print("deleting flames om")
 	for flame in get_tree().get_nodes_in_group("flames"):
 		if PlayerData.get_island_flames(island_id).has(flame.id):
 			flame.queue_free()
