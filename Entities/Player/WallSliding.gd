@@ -39,7 +39,7 @@ func physics_update(_delta: float) -> void:
 		player.try_interact()
 		
 	player.apply_gravity(_delta / player.Slide_Gravity_Factor)
-	player.apply_speed_and_drag(player.Air_Speed, 0)
+	player.apply_speed_and_drag(player.Air_Speed, player.Air_Drag)
 	player.move_and_slide()
 
 ## Called by the state machine upon changing the active state. The `data` parameter

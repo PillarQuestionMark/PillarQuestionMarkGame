@@ -10,9 +10,6 @@ func update(_delta: float) -> void:
 
 ## Called by the state machine on the engine's physics update tick.
 func physics_update(_delta: float) -> void:
-	## friction, otherwise stores momentum until next jump
-	player.velocity *= Vector3(0.8, 1, 0.8)
-	
 	#Transition States
 	#if player.in_dialogue:
 		#finished.emit(DIALOGUE)
@@ -34,6 +31,7 @@ func physics_update(_delta: float) -> void:
 	elif (Input.is_action_just_pressed("interact")):
 		player.try_interact()
 	
+	player.apply_speed_and_drag(0, player.Ground_Drag)
 	player.apply_gravity(_delta)
 	player.move_and_slide()
 

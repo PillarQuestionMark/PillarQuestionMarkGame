@@ -111,8 +111,9 @@ func get_move_direction() -> Vector3:
 
 func apply_speed_and_drag(speed : float, drag : float):
 	var move_direction := get_move_direction()
-	velocity.x = lerpf(velocity.x, move_direction.x * speed, drag)
-	velocity.z = lerpf(velocity.z, move_direction.z * speed, drag)
+	velocity.x += (speed * move_direction.x - velocity.x) * drag
+	velocity.z += (speed * move_direction.z - velocity.z) * drag
+	
 
 func apply_gravity(delta : float, gravity : float = Gravity):
 	velocity.y += gravity * delta
