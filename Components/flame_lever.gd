@@ -4,7 +4,10 @@ extends Node3D
 
 @export var is_on := false
 
-@export var flames_required:= 3  
+@export var flames_required:= 0
+@export_multiline var fail_dialogue: Array[String] = [ # what you see if you don't have enough flames
+	"0 flames are required to use this lever!"
+]
 
 @onready var animator: AnimationPlayer = %AnimationPlayer
 @onready var island : int = get_tree().current_scene.island_id
@@ -26,11 +29,5 @@ func _on_interactable_on_interacting() -> void:
 	
 		EventBus.trigger.emit(trigger)
 	else:
-		var tense = "flame is" if flames_required == 1 else "flames are"
-		var dialogue: Array[String] = [
-		str(flames_required)+ " " + tense + " [color=red]required[/color] to open this door!",
-		"keep exploring the island to find more flames!"
-		]
-		
-		EventBus.dialogue.emit(dialogue)
+		EventBus.dialogue.emit(fail_dialogue)
 	

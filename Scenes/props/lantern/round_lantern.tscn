@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://hhfqxwync0f2"]
+
+[ext_resource type="ArrayMesh" uid="uid://c03ynvawg6nr8" path="res://Scenes/props/lantern/round_lantern.obj" id="1_nify0"]
+[ext_resource type="Material" uid="uid://bohrgao1qymp1" path="res://Scenes/props/lantern/lantern_material_on_c33c40.tres" id="2_erbno"]
+[ext_resource type="Script" path="res://Scenes/props/lantern/lantern.gd" id="2_rvlw2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ww5l0"]
+albedo_color = Color(0.768627, 0.776471, 0.721569, 1)
+
+[node name="RoundLantern" type="MeshInstance3D"]
+layers = 2
+mesh = ExtResource("1_nify0")
+surface_material_override/0 = ExtResource("2_erbno")
+surface_material_override/1 = SubResource("StandardMaterial3D_ww5l0")
+script = ExtResource("2_rvlw2")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.35, 0)
+visible = false
+light_color = Color(0.76, 0.2356, 0.25308, 1)
+light_energy = 3.0
+light_size = 1.0
+light_bake_mode = 0
+light_cull_mask = 4294967293
+omni_range = 20.0
