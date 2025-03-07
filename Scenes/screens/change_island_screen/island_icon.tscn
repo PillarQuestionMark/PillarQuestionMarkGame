@@ -1,37 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0sd75bp5hwj4"]
+[gd_scene load_steps=5 format=3 uid="uid://b0sd75bp5hwj4"]
 
 [ext_resource type="Script" path="res://Scenes/screens/change_island_screen/island_icon.gd" id="1_m86nt"]
-[ext_resource type="Texture2D" uid="uid://8axsdj03bsno" path="res://Assets/aseprite/islandmap_island.png" id="1_t1x7w"]
 [ext_resource type="PackedScene" uid="uid://bvebbtxnfoh73" path="res://Components/interactable_2d.tscn" id="2_x1gom"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8e82g"]
-atlas = ExtResource("1_t1x7w")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gr7ap"]
-atlas = ExtResource("1_t1x7w")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sflcg"]
-atlas = ExtResource("1_t1x7w")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_y1evj"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8e82g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gr7ap")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sflcg")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tkrur"]
 radius = 7.0
@@ -42,12 +12,6 @@ radius = 41.0122
 
 [node name="IslandIcon" type="StaticBody2D"]
 script = ExtResource("1_m86nt")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_y1evj")
-autoplay = "default"
-offset = Vector2(0, -17)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -64,7 +28,7 @@ offset_right = 41.5
 offset_bottom = -52.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "[f] to enter"
+text = "[f] to dock"
 horizontal_alignment = 1
 vertical_alignment = 1
 

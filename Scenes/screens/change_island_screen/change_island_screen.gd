@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 @export var current_island_id := 0 # where the boat should start at
 
