@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dql4b8bulv1vi" path="res://Components/loading-zone.tscn" id="4_to0s7"]
 [ext_resource type="PackedScene" uid="uid://ch0xma4bou77p" path="res://Entities/Flame/flame.tscn" id="5_reynx"]
 [ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="6_ftc75"]
-[ext_resource type="PackedScene" path="res://Components/flame_lever.tscn" id="8_n7jxr"]
+[ext_resource type="PackedScene" uid="uid://daqo3a6ove7qf" path="res://Components/flame_lever.tscn" id="8_n7jxr"]
 [ext_resource type="PackedScene" uid="uid://dc1evxye2jpsn" path="res://Entities/Boat.tscn" id="9_qfby2"]
 [ext_resource type="PackedScene" uid="uid://bw4ak8fk223nn" path="res://Components/mover.tscn" id="12_6wsbu"]
 
@@ -20,23 +20,23 @@ albedo_color = Color(0.933333, 0.796078, 0.564706, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_1vyo3"]
 size = Vector3(8, 4, 8)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_si735"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k8rib"]
 albedo_color = Color(0, 0.431373, 1, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yv7d8"]
-material = SubResource("StandardMaterial3D_si735")
+material = SubResource("StandardMaterial3D_k8rib")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sd3yn"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_lwivm"]
+[sub_resource type="Sky" id="Sky_82lm1"]
 sky_material = SubResource("ProceduralSkyMaterial_sd3yn")
 
 [sub_resource type="Environment" id="Environment_wcdn7"]
 background_mode = 1
 background_color = Color(0.929412, 0.666667, 0.639216, 1)
-sky = SubResource("Sky_lwivm")
+sky = SubResource("Sky_82lm1")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.25

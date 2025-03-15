@@ -16,6 +16,11 @@ const flames : Dictionary = {
 		1: "It's Beautiful Up Here",
 		2: "Humble Beginnings",
 		3: "Sea Lord"
+	},
+	4: {
+		0: "Bridge yet? No.",
+		1: "There's not much room",
+		2: "Man."
 	}
 }
 
