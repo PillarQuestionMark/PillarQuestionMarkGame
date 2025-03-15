@@ -20,7 +20,8 @@ const flames : Dictionary = {
 	4: {
 		0: "Bridge yet? No.",
 		1: "There's not much room",
-		2: "Man."
+		2: "Man.",
+		3: "Die on That Hill"
 	}
 }
 

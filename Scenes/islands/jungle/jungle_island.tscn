@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bvgmckduk7v6e"]
+[gd_scene load_steps=28 format=3 uid="uid://bvgmckduk7v6e"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_4x2bx"]
 [ext_resource type="PackedScene" uid="uid://dc1evxye2jpsn" path="res://Entities/Boat.tscn" id="1_gxl2q"]
@@ -8,6 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://cdwnjdsfrrav5" path="res://Components/sign.tscn" id="3_fwegr"]
 [ext_resource type="PackedScene" uid="uid://kqx2i4sjvw3d" path="res://Obstacles/BouncyMushroom.tscn" id="3_xuoqo"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="5_6r7x1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gb3oh"]
+albedo_color = Color(1, 0.32549, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qyyux"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onblf"]
+albedo_color = Color(1, 0.32549, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uq5hx"]
 albedo_color = Color(0.494118, 0.266667, 0.00392157, 1)
@@ -24,14 +32,6 @@ albedo_color = Color(0.157452, 0.344357, 0.0827951, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5oouv"]
 albedo_color = Color(0.49586, 0.266363, 0.00303455, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gb3oh"]
-albedo_color = Color(1, 0.32549, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qyyux"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onblf"]
-albedo_color = Color(1, 0.32549, 0, 1)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25ljc"]
 albedo_color = Color(0.494118, 0.266667, 0.00392157, 1)
 
@@ -40,6 +40,15 @@ albedo_color = Color(0.494118, 0.266667, 0.00392157, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uc6fa"]
 albedo_color = Color(0.494118, 0.266667, 0.00392157, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qrntx"]
+albedo_color = Color(0.156863, 0.345098, 0.0823529, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yu6kb"]
+albedo_color = Color(0.987024, 0.933656, 0.768766, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xy7mf"]
+albedo_color = Color(0.156863, 0.345098, 0.0823529, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_k1grp"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -76,14 +85,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 10, 25)
 color = Color(0.636755, 0.759246, 0.344344, 1)
 
 [node name="Flame2" parent="Flames" groups=["flames"] instance=ExtResource("2_5vta1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 18, -31)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 19, -28)
 id = 1.0
 color = Color(0.747431, 0.723793, 0.257522, 1)
 
 [node name="Flame3" parent="Flames" groups=["flames"] instance=ExtResource("2_5vta1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84, 6, 39)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72, 7, 28)
 id = 2.0
 color = Color(0.747431, 0.723793, 0.257522, 1)
+
+[node name="Flame4" parent="Flames" groups=["flames"] instance=ExtResource("2_5vta1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59, 27, -15)
+id = 3.0
+color = Color(0.824906, 0.691768, 0.191706, 1)
 
 [node name="Boat" parent="." instance=ExtResource("1_gxl2q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.2528)
@@ -101,12 +115,106 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 1.5, -3)
 jump_height = 30.0
 
 [node name="BouncyMushroom3" parent="Mushroomd" instance=ExtResource("3_xuoqo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89, 6, 33)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76, 6, 23)
 jump_height = 30.0
 
 [node name="BouncyMushroom2" parent="Mushroomd" instance=ExtResource("3_xuoqo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55, 11.25, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 11.25, -9)
 jump_height = 30.0
+
+[node name="Giant Mushrooms" type="Node3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Giant Mushrooms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 8, 22)
+use_collision = true
+collision_mask = 2
+radius = 1.0
+height = 20.0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Giant Mushrooms/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+radius = 10.0
+height = 1.0
+material = SubResource("StandardMaterial3D_gb3oh")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Giant Mushrooms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 20, 14)
+use_collision = true
+collision_mask = 2
+radius = 1.0
+height = 20.0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Giant Mushrooms/CSGCylinder3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+radius = 10.0
+height = 1.0
+material = SubResource("StandardMaterial3D_gb3oh")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Giant Mushrooms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115, 8, 22)
+use_collision = true
+collision_mask = 2
+radius = 1.0
+height = 30.0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Giant Mushrooms/CSGCylinder3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+radius = 10.0
+height = 1.0
+material = SubResource("StandardMaterial3D_gb3oh")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Giant Mushrooms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67, 8, 49)
+use_collision = true
+collision_mask = 2
+radius = 1.0
+height = 30.0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Giant Mushrooms/CSGCylinder3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+radius = 10.0
+height = 1.0
+material = SubResource("StandardMaterial3D_gb3oh")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Giant Mushrooms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84, 10, -36)
+use_collision = true
+collision_mask = 2
+radius = 1.0
+height = 30.0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Giant Mushrooms/CSGCylinder3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+radius = 10.0
+height = 1.0
+material = SubResource("StandardMaterial3D_gb3oh")
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Giant Mushrooms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157, 2, 43)
+use_collision = true
+collision_mask = 2
+radius = 1.0
+height = 30.0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Giant Mushrooms/CSGCylinder3D7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+radius = 10.0
+height = 1.0
+material = SubResource("StandardMaterial3D_gb3oh")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Giant Mushrooms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 6, -28)
+use_collision = true
+collision_mask = 2
+radius = 1.0
+height = 20.0
+material = SubResource("StandardMaterial3D_qyyux")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Giant Mushrooms/CSGCylinder3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+radius = 10.0
+height = 1.0
+material = SubResource("StandardMaterial3D_onblf")
 
 [node name="Dock Island" type="Node3D" parent="."]
 
@@ -139,7 +247,7 @@ size = Vector3(13, 15, 26)
 material = SubResource("StandardMaterial3D_7avcn")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="Dock Island/Main Ground"]
-transform = Transform3D(-0.523985, 0, -0.851726, 0, 1, 0, 0.851726, 0, -0.523985, 12, -0.5, 39)
+transform = Transform3D(0.68072, 0, -0.732542, 0, 1, 0, 0.732542, 0, 0.68072, 12, -0.5, 32)
 use_collision = true
 collision_mask = 2
 size = Vector3(13, 15, 26)
@@ -153,24 +261,17 @@ size = Vector3(13, 15, 22)
 material = SubResource("StandardMaterial3D_7avcn")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="Dock Island/Main Ground"]
-transform = Transform3D(0.507529, 0, -0.861614, 0, 1, 0, 0.861614, 0, 0.507529, 54.198, -2, 37.2426)
+transform = Transform3D(0.507529, 0, -0.861614, 0, 1, 0, 0.861614, 0, 0.507529, 41.198, -2, 28.2426)
 use_collision = true
 collision_mask = 2
 size = Vector3(13, 8, 16)
 material = SubResource("StandardMaterial3D_7avcn")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="Dock Island/Main Ground"]
-transform = Transform3D(0.965905, 0.258819, 0, -0.258814, 0.965926, 0, 0, 0, 0.999978, 34.8901, 12.4489, -20.3983)
+transform = Transform3D(0.965905, 0.258819, 0, -0.258814, 0.965926, 0, 0, 0, 0.999978, 29.8901, 12.4489, -13.3983)
 use_collision = true
 collision_mask = 2
-size = Vector3(19, 17, 18)
-material = SubResource("StandardMaterial3D_7avcn")
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="Dock Island/Main Ground"]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 6, 0, -20)
-use_collision = true
-collision_mask = 2
-size = Vector3(13, 15, 26)
+size = Vector3(19, 17, 14)
 material = SubResource("StandardMaterial3D_7avcn")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Dock Island/Main Ground"]
@@ -181,8 +282,8 @@ size = Vector3(13, 13, 15)
 material = SubResource("StandardMaterial3D_7avcn")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Dock Island/Main Ground"]
-transform = Transform3D(0.965925, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965925, 36, 0, 3.49999)
-radius = 40.0
+transform = Transform3D(0.965925, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965925, 23, 0, 3.49999)
+radius = 30.0
 height = 15.0
 material = SubResource("StandardMaterial3D_7avcn")
 
@@ -202,74 +303,6 @@ collision_mask = 2
 size = Vector3(4, 0.5, 3)
 material = SubResource("StandardMaterial3D_5oouv")
 
-[node name="Giant Mushrooms" type="Node3D" parent="Dock Island"]
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Dock Island/Giant Mushrooms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 8, 22)
-use_collision = true
-collision_mask = 2
-radius = 1.0
-height = 20.0
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Dock Island/Giant Mushrooms/CSGCylinder3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
-radius = 10.0
-height = 1.0
-material = SubResource("StandardMaterial3D_gb3oh")
-
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Dock Island/Giant Mushrooms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74, 20, 30)
-use_collision = true
-collision_mask = 2
-radius = 1.0
-height = 20.0
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Dock Island/Giant Mushrooms/CSGCylinder3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
-radius = 10.0
-height = 1.0
-material = SubResource("StandardMaterial3D_gb3oh")
-
-[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Dock Island/Giant Mushrooms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 20, 14)
-use_collision = true
-collision_mask = 2
-radius = 1.0
-height = 20.0
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Dock Island/Giant Mushrooms/CSGCylinder3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
-radius = 10.0
-height = 1.0
-material = SubResource("StandardMaterial3D_gb3oh")
-
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Dock Island/Giant Mushrooms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115, 8, 22)
-use_collision = true
-collision_mask = 2
-radius = 1.0
-height = 30.0
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Dock Island/Giant Mushrooms/CSGCylinder3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
-radius = 10.0
-height = 1.0
-material = SubResource("StandardMaterial3D_gb3oh")
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Dock Island/Giant Mushrooms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 6, -31)
-use_collision = true
-collision_mask = 2
-radius = 1.0
-height = 20.0
-material = SubResource("StandardMaterial3D_qyyux")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Dock Island/Giant Mushrooms/CSGCylinder3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
-radius = 10.0
-height = 1.0
-material = SubResource("StandardMaterial3D_onblf")
-
 [node name="Tree s" type="Node3D" parent="Dock Island"]
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Dock Island/Tree s"]
@@ -279,6 +312,7 @@ height = 15.0
 material = SubResource("StandardMaterial3D_25ljc")
 
 [node name="Main Island" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 0)
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Main Island"]
 transform = Transform3D(0.965925, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965925, 217, 68, -54.5)
@@ -290,16 +324,59 @@ material = SubResource("StandardMaterial3D_ahbaa")
 transform = Transform3D(0.965925, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965925, 217, 6, -54.5)
 use_collision = true
 collision_mask = 2
-radius = 100.0
+radius = 60.0
 height = 30.0
 material = SubResource("StandardMaterial3D_7avcn")
 
 [node name="Bridge" type="CSGBox3D" parent="Main Island"]
-transform = Transform3D(0.836516, -0.224144, 0.5, 0.258819, 0.965926, 0, -0.482963, 0.12941, 0.866025, 109.837, 15.2588, -15.483)
+transform = Transform3D(0.836516, -0.224144, 0.5, 0.258819, 0.965926, 0, -0.482963, 0.12941, 0.866025, 154.837, 15.2588, -16.483)
 use_collision = true
 collision_mask = 2
 size = Vector3(36, 0.5, 8)
 material = SubResource("StandardMaterial3D_uc6fa")
+
+[node name="A third___ secret island" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="A third___ secret island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 166, 0, 54)
+use_collision = true
+collision_mask = 2
+radius = 20.0
+material = SubResource("StandardMaterial3D_qrntx")
+
+[node name="Sand" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Sand"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 108, 0, 0)
+use_collision = true
+collision_mask = 2
+radius = 80.0
+height = 1.0
+material = SubResource("StandardMaterial3D_yu6kb")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Sand"]
+transform = Transform3D(0.79653, 0, 0.604599, 0, 1, 0, -0.604599, 0, 0.79653, 89.5787, 1, -20.6803)
+use_collision = true
+collision_mask = 2
+size = Vector3(61, 1, 40)
+material = SubResource("StandardMaterial3D_xy7mf")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Sand/CSGBox3D"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 20.7782, 0, -24.041)
+size = Vector3(40, 1, 13)
+material = SubResource("StandardMaterial3D_xy7mf")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Sand/CSGBox3D"]
+transform = Transform3D(0.646792, 0, 0.762673, 0, 1, 0, -0.762673, 0, 0.646792, -12.6841, 0, 47.331)
+size = Vector3(40, 1, 22)
+material = SubResource("StandardMaterial3D_xy7mf")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Sand/CSGBox3D"]
+transform = Transform3D(0.907779, 0, 0.419453, 0, 1, 0, -0.419453, 0, 0.907779, 5.69328, 0, 34.6392)
+size = Vector3(38, 1, 50)
+material = SubResource("StandardMaterial3D_xy7mf")
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_hvnbj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
