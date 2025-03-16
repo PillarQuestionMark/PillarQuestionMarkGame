@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0bdwuhoxbd2"]
+
+[ext_resource type="Script" path="res://Entities/Flame/order_pylon.gd" id="1_ibu4u"]
+[ext_resource type="PackedScene" uid="uid://nd1s7aeat6mx" path="res://Components/interactable.tscn" id="2_54255"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xp4p3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_er642"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+
+[node name="OrderPylon" type="CSGBox3D"]
+use_collision = true
+collision_mask = 2
+size = Vector3(0.5, 1, 0.5)
+script = ExtResource("1_ibu4u")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.051)
+pixel_size = 0.001
+billboard = 1
+no_depth_test = true
+fixed_size = true
+text = "?"
+
+[node name="Interactable" parent="." instance=ExtResource("2_54255")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+shape = SubResource("BoxShape3D_xp4p3")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12269, 0)
+radius = 0.25
+material = SubResource("StandardMaterial3D_er642")
+
+[connection signal="on_interacting" from="Interactable" to="." method="on_interacted"]

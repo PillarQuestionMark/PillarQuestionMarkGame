@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dgdn3s520cve5"]
+[gd_scene load_steps=26 format=3 uid="uid://dgdn3s520cve5"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_8lv5b"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_e5326"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://Entities/Flame/flame_challenge.gd" id="11_j1yqi"]
 [ext_resource type="PackedScene" uid="uid://bw4ak8fk223nn" path="res://Components/mover.tscn" id="12_6wsbu"]
 [ext_resource type="PackedScene" uid="uid://dwrgyw4a4tqca" path="res://Entities/Flame/spark.tscn" id="12_cfe71"]
+[ext_resource type="PackedScene" uid="uid://cojfaw2pshswd" path="res://Entities/Flame/order_challenge.tscn" id="12_h33jw"]
+[ext_resource type="PackedScene" uid="uid://d0bdwuhoxbd2" path="res://Entities/Flame/order_pylon.tscn" id="13_iacyu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4c74y"]
 albedo_color = Color(0.151365, 0.532748, 0, 1)
@@ -194,6 +196,29 @@ material = SubResource("StandardMaterial3D_3rdwg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftDoor"]
 shape = SubResource("BoxShape3D_8hsbt")
+
+[node name="Order" type="Node3D" parent="." node_paths=PackedStringArray("toggle") groups=["challenge_flame"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3508, 1.71515, 15.224)
+script = ExtResource("11_j1yqi")
+id = 9.0
+toggle = NodePath("Flame")
+
+[node name="OrderChallenge" parent="Order" instance=ExtResource("12_h33jw")]
+correct_order = Array[int]([1, 0, 2])
+
+[node name="OrderPylon" parent="Order/OrderChallenge" instance=ExtResource("13_iacyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17953, 0, 0)
+
+[node name="OrderPylon2" parent="Order/OrderChallenge" instance=ExtResource("13_iacyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17953, 0, 1.68507)
+id = 1
+
+[node name="OrderPylon3" parent="Order/OrderChallenge" instance=ExtResource("13_iacyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17953, 0, -1.99869)
+id = 2
+
+[node name="Flame" parent="Order" instance=ExtResource("5_reynx")]
+id = 9.0
 
 [node name="Sparks" type="Node3D" parent="." node_paths=PackedStringArray("toggle") groups=["challenge_flame"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.51101, 1.71515, 6.77486)
