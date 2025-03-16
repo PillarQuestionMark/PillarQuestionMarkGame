@@ -1,20 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwmkkgjitsi0k"]
+[gd_scene load_steps=8 format=3 uid="uid://4pteeb4dmacl"]
 
-[ext_resource type="Material" uid="uid://4brk0ort0js" path="res://Entities/Flame/material_flame.tres" id="1_1ygwg"]
-[ext_resource type="Script" path="res://Entities/Flame/flame_model.gd" id="2_vnmdh"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_e5ya6"]
-material = ExtResource("1_1ygwg")
-radius = 0.25
-height = 0.5
+[ext_resource type="Material" uid="uid://4brk0ort0js" path="res://Entities/Flame/material_flame.tres" id="1_o0r7b"]
+[ext_resource type="Script" path="res://Entities/Flame/flame_model.gd" id="2_p7rxy"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_rracl"]
-material = ExtResource("1_1ygwg")
+material = ExtResource("1_o0r7b")
 radius = 0.1
 height = 0.2
 
 [sub_resource type="SphereMesh" id="SphereMesh_eongx"]
-material = ExtResource("1_1ygwg")
+material = ExtResource("1_o0r7b")
 radius = 0.05
 height = 0.1
 
@@ -82,8 +77,7 @@ _data = {
 }
 
 [node name="FlameModel" type="MeshInstance3D"]
-mesh = SubResource("SphereMesh_e5ya6")
-script = ExtResource("2_vnmdh")
+script = ExtResource("2_p7rxy")
 
 [node name="MediumBall" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0582469, 0.4, 0)

@@ -1,6 +1,6 @@
 extends Node
 
-signal flame_found(name: String, color: Color)
+signal flame_found(name: String, color: Color, id : float)
 
 ## interactables/interactors with the same trigger name affect each other
 signal trigger(name: String)

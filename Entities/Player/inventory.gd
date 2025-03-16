@@ -16,7 +16,7 @@ func add(item : Node3D) -> void:
 	
 ## Adjusts the positioning of items around the player.
 func adjust_inv() -> void:
-	var gap : float = deg_to_rad(360 / items.size())
+	var gap : float = deg_to_rad(360 / max(1, items.size()))
 	for index in range(0, items.size()):
 		var item = items[index]
 		var to_rotate = Vector3(1, 0, 0)
