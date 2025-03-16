@@ -43,3 +43,6 @@ func _ready() -> void:
 func _apply_color() -> void:
 	$OmniLight3D.light_color = color
 	
+## Called if the flame it belongs to was already collected.
+func collected() -> void:
+	queue_free()

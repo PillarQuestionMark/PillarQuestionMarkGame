@@ -195,7 +195,7 @@ material = SubResource("StandardMaterial3D_3rdwg")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftDoor"]
 shape = SubResource("BoxShape3D_8hsbt")
 
-[node name="Sparks" type="Node3D" parent="." node_paths=PackedStringArray("toggle")]
+[node name="Sparks" type="Node3D" parent="." node_paths=PackedStringArray("toggle") groups=["challenge_flame"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.51101, 1.71515, 6.77486)
 script = ExtResource("11_j1yqi")
 id = 10.0
