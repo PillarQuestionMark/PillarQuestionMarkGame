@@ -149,8 +149,8 @@ y_sort_enabled = true
 [node name="TutorialIsland" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("3_g12fm")]
 unique_name_in_owner = true
 position = Vector2(-9, 17)
-island_id = 1
-island_scene = "res://Scenes/islands/island0/Island0.tscn"
+island_id = 0
+island_scene = "res://Scenes/islands/ruins/ruins_island.tscn"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/CenterContainer/Control/Map/YSort/TutorialIsland"]
 texture_filter = 1

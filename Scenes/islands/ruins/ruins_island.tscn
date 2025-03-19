@@ -133,7 +133,6 @@ size = Vector3(6, 3, 2)
 
 [node name="RuinsIsland" type="Node3D"]
 script = ExtResource("1_wbxxr")
-island_id = 1
 
 [node name="GameplayUI" parent="." instance=ExtResource("4_c2hl0")]
 
