@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://bso6p3yjhh7gw"]
+[gd_scene load_steps=22 format=3 uid="uid://bso6p3yjhh7gw"]
 
 [ext_resource type="PackedScene" uid="uid://6wkokjqa4tnv" path="res://Entities/boat_model.tscn" id="2_66k23"]
 [ext_resource type="Texture2D" uid="uid://v87a2ty7kmn3" path="res://Assets/aseprite/islandmap_bg.png" id="2_jxuc3"]
 [ext_resource type="Script" path="res://Scenes/screens/change_island_screen/change_island_screen.gd" id="2_tcyaw"]
 [ext_resource type="PackedScene" uid="uid://b0sd75bp5hwj4" path="res://Scenes/screens/change_island_screen/island_icon.tscn" id="3_g12fm"]
 [ext_resource type="PackedScene" uid="uid://b3aeddxreoudm" path="res://Scenes/screens/change_island_screen/boat_icon.tscn" id="4_uulgi"]
+[ext_resource type="Texture2D" uid="uid://chih3dctolq7l" path="res://Assets/aseprite/islandmap_island_ruins.png" id="5_hfejx"]
 [ext_resource type="Texture2D" uid="uid://8axsdj03bsno" path="res://Assets/aseprite/islandmap_island.png" id="5_jjhgc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fjbn6"]
@@ -31,6 +32,35 @@ ambient_light_energy = 0.25
 tonemap_mode = 2
 ssao_enabled = true
 glow_enabled = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_444qm"]
+atlas = ExtResource("5_hfejx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khork"]
+atlas = ExtResource("5_hfejx")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rwg6"]
+atlas = ExtResource("5_hfejx")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hs5ou"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_444qm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khork")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rwg6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8e82g"]
 atlas = ExtResource("5_jjhgc")
@@ -119,12 +149,12 @@ y_sort_enabled = true
 [node name="TutorialIsland" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("3_g12fm")]
 unique_name_in_owner = true
 position = Vector2(-9, 17)
-island_id = 0
+island_id = 1
 island_scene = "res://Scenes/islands/island0/Island0.tscn"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/CenterContainer/Control/Map/YSort/TutorialIsland"]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_8p8ak")
+sprite_frames = SubResource("SpriteFrames_hs5ou")
 autoplay = "default"
 offset = Vector2(0, -17)
 
