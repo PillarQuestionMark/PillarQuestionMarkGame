@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://de4v1dwr7hpx1"]
+[gd_scene load_steps=32 format=3 uid="uid://de4v1dwr7hpx1"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_3tqia"]
 [ext_resource type="Script" path="res://Scripts/PlayerBehavior/StateMachines/StateMachine.gd" id="3_6ta2n"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://Entities/Player/Slamming.gd" id="12_c7jxc"]
 [ext_resource type="AudioStream" uid="uid://c6ichm6woikfd" path="res://Assets/Audio/Sound Effects/jumpsfx.wav" id="18_6b8vf"]
 [ext_resource type="Script" path="res://Entities/Player/Dialogue.gd" id="18_b8em8"]
+[ext_resource type="Script" path="res://Entities/Player/Grappling.gd" id="19_3aadc"]
 [ext_resource type="PackedScene" uid="uid://cij0oovbuoki5" path="res://Components/shadow.tscn" id="19_5nhyd"]
 [ext_resource type="PackedScene" uid="uid://dmhwfbc05xhsb" path="res://Components/interactor.tscn" id="19_dm15w"]
 
@@ -58,6 +59,9 @@ rings = 4
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ajont"]
 height = 3.0
 radius = 2.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7jfcr"]
+radius = 15.0
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 2
@@ -119,6 +123,9 @@ script = ExtResource("12_c7jxc")
 [node name="Dialogue" type="Node" parent="StateMachine"]
 script = ExtResource("18_b8em8")
 
+[node name="Grappling" type="Node" parent="StateMachine"]
+script = ExtResource("19_3aadc")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("18_6b8vf")
@@ -146,3 +153,12 @@ radius = 1.0
 unique_name_in_owner = true
 wait_time = 0.25
 one_shot = true
+
+[node name="GrappleRange" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 32
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrappleRange"]
+shape = SubResource("SphereShape3D_7jfcr")
