@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cnhkyx61bdgpn"]
+
+[resource]
+cull_mode = 2
+albedo_color = Color(0.894118, 0.447059, 0.34902, 1)
+emission = Color(0.894118, 0.447059, 0.34902, 1)
