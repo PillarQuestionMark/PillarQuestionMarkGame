@@ -9,6 +9,8 @@ func _ready() -> void:
 	pauseTree = Pause_Tree_Options.Pause
 	mouseMode = Mouse_Mode_Options.Visible
 	_enter_menu()
+	# TODO: is this the way?
+	PhysicsServer2D.set_active(true) # see https://forum.godotengine.org/t/how-can-i-pause-the-scene-but-have-process-mode-nodes-still-process-physics/26271/2
 
 func _on_island_pressed(island_number: String) -> void:
 	if (PlayerData.get_island_flames(current_island).size() >= flames_required):
