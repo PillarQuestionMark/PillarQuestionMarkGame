@@ -60,6 +60,7 @@ size = Vector3(4, 4, 1)
 
 [node name="Island0" type="Node3D"]
 script = ExtResource("1_8lv5b")
+island_id = -2
 
 [node name="Geometry" type="Node3D" parent="."]
 
