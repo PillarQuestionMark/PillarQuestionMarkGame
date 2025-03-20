@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0a6ifjctwbqj"]
+
+[ext_resource type="PackedScene" uid="uid://co1p57wfy7aj0" path="res://Scenes/islands/jungle/jungle.blend" id="1_2e48r"]
+[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_frwy3"]
+[ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="2_6hyr4"]
+[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_xy8xx"]
+[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="3_fceu4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7pmkp"]
+sky_top_color = Color(0.929412, 0.666667, 0.639216, 1)
+sky_horizon_color = Color(0.929412, 0.666667, 0.639216, 1)
+ground_bottom_color = Color(0.239216, 0.501961, 0.639216, 1)
+ground_horizon_color = Color(0.239216, 0.501961, 0.639216, 1)
+
+[sub_resource type="Sky" id="Sky_8d7fk"]
+sky_material = SubResource("ProceduralSkyMaterial_7pmkp")
+
+[sub_resource type="Environment" id="Environment_p6coe"]
+background_mode = 2
+sky = SubResource("Sky_8d7fk")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.25
+tonemap_mode = 2
+ssao_enabled = true
+glow_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.239216, 0.501961, 0.639216, 1)
+fog_density = 0.7
+fog_sky_affect = 0.0
+fog_height = -1.0
+fog_height_density = 0.1
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[node name="JungleIsland" type="Node3D"]
+script = ExtResource("1_frwy3")
+
+[node name="GameplayUI" parent="." instance=ExtResource("2_6hyr4")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_p6coe")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.720684, -0.681256, 0.128476, 0.118781, 0.30392, 0.945264, -0.683013, -0.665976, 0.29995, 5, 5, 5)
+shadow_enabled = true
+
+[node name="jungle" parent="." instance=ExtResource("1_2e48r")]
+
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_xy8xx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77029, 42.554, 3.03907)
+Camera = NodePath("FollowCamera")
+
+[node name="FollowCamera" parent="Player" instance=ExtResource("3_fceu4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
