@@ -36,6 +36,7 @@ checkpoint=""
 flames="flames"
 player=""
 flame_door=""
+challenge_flame="Challenges that spawn flames."
 
 [input]
 

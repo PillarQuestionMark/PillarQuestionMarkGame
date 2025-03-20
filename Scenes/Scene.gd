@@ -29,3 +29,9 @@ func _load_data() -> void:
 	for flame in get_tree().get_nodes_in_group("flames"):
 		if PlayerData.get_island_flames(island_id).has(flame.id):
 			flame.queue_free()
+			
+	## set flame challenges as completed if the flame they hold is collected
+	for challenge in get_tree().get_nodes_in_group("challenge_flame"):
+		if PlayerData.get_island_flames(island_id).has(challenge.id):
+			challenge.collected()
+			

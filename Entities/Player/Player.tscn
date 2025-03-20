@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://de4v1dwr7hpx1"]
+[gd_scene load_steps=31 format=3 uid="uid://de4v1dwr7hpx1"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_3tqia"]
 [ext_resource type="Script" path="res://Scripts/PlayerBehavior/StateMachines/StateMachine.gd" id="3_6ta2n"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://Entities/Player/Dialogue.gd" id="18_b8em8"]
 [ext_resource type="PackedScene" uid="uid://cij0oovbuoki5" path="res://Components/shadow.tscn" id="19_5nhyd"]
 [ext_resource type="PackedScene" uid="uid://dmhwfbc05xhsb" path="res://Components/interactor.tscn" id="19_dm15w"]
+[ext_resource type="Script" path="res://Entities/Player/inventory.gd" id="22_q8h2y"]
 
 [sub_resource type="Curve" id="Curve_e4jrd"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -140,3 +141,7 @@ radius = 1.0
 unique_name_in_owner = true
 wait_time = 0.25
 one_shot = true
+
+[node name="Inventory" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("22_q8h2y")

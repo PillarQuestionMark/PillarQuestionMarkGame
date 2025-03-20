@@ -58,6 +58,7 @@ script = ExtResource("1_qok22")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.051)
+visibility_range_end = 20.0
 pixel_size = 0.001
 billboard = 1
 no_depth_test = true

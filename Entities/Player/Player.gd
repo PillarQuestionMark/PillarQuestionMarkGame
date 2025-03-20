@@ -117,6 +117,11 @@ func apply_speed_and_drag(speed : float, drag : float):
 func apply_gravity(delta : float, gravity : float = Gravity):
 	velocity.y += gravity * delta
 	
+## Returns the player's inventory instance
+func get_inventory() -> Node3D:
+	return $Inventory
+	
+## Returns the player's pivot instance
 func get_pivot() -> Node3D:
 	return $Pivot
 
