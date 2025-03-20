@@ -1,212 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://c3xqw80hlhd1n"]
+[gd_scene load_steps=4 format=3 uid="uid://cajahfo5qk81g"]
 
 [ext_resource type="Script" path="res://Scenes/file_select.gd" id="1_u4ltf"]
-[ext_resource type="ArrayMesh" uid="uid://r21fu3qtohga" path="res://player/feo.obj" id="2_x01nu"]
-[ext_resource type="Material" uid="uid://1ddv7fifegy7" path="res://player/material_head.tres" id="3_34jc1"]
-[ext_resource type="Material" uid="uid://d1hwpmu8cx3fc" path="res://player/material_leg.tres" id="4_j4sko"]
-[ext_resource type="Material" uid="uid://dvkqvq4cytdp4" path="res://player/material_body.tres" id="5_8nkma"]
-[ext_resource type="Material" uid="uid://cie52pam3snu7" path="res://player/material_scarf.tres" id="6_f1dda"]
-[ext_resource type="Material" uid="uid://b581oewwfjj7g" path="res://player/material_hand.tres" id="7_kurao"]
 [ext_resource type="Theme" uid="uid://ews1me176sme" path="res://Scenes/main_menu_theme.tres" id="8_b7aig"]
-[ext_resource type="AudioStream" uid="uid://cq4r7yft33ly7" path="res://Scenes/main_menu_music.mp3" id="9_c6be6"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p81pn"]
-albedo_color = Color(0.494118, 0.396078, 0.607843, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_seqyv"]
-albedo_color = Color(0.898039, 0.937255, 0.937255, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8usds"]
-shading_mode = 0
-albedo_color = Color(0.101961, 0.121569, 0.180392, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67tfh"]
-shading_mode = 0
-albedo_color = Color(0.819608, 0.411765, 0.454902, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usw7t"]
-albedo_color = Color(0.933333, 0.796078, 0.564706, 1)
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kq7jb"]
-
-[sub_resource type="Sky" id="Sky_ms0v3"]
-sky_material = SubResource("ProceduralSkyMaterial_kq7jb")
-
-[sub_resource type="Environment" id="Environment_bce4g"]
-background_mode = 1
-background_color = Color(0.388235, 0.768627, 0.8, 1)
-background_energy_multiplier = 1.1
-sky = SubResource("Sky_ms0v3")
-ambient_light_source = 2
-ambient_light_color = Color(1, 0.921569, 0.870588, 1)
-ambient_light_energy = 0.5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gfnoa"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_diaxe"]
 bg_color = Color(0.101961, 0.121569, 0.180392, 0.588235)
 
-[node name="Menu" type="Node"]
+[node name="FileSelect" type="CanvasLayer"]
 script = ExtResource("1_u4ltf")
 
-[node name="Background" type="Node3D" parent="."]
-
-[node name="Camera3D" type="Camera3D" parent="Background"]
-transform = Transform3D(1, 0, 0, 0, 0.989029, 0.147723, 0, -0.147723, 0.989029, 0, 4.42805, 4.55107)
-current = true
-fov = 60.0
-
-[node name="Rock" type="CSGBox3D" parent="Background"]
-transform = Transform3D(0.689126, 0, 0.724641, 0.205433, 0.958973, -0.195365, -0.694911, 0.283497, 0.660854, 0, 0, -9.08146)
-material = SubResource("StandardMaterial3D_p81pn")
-
-[node name="Rock2" type="CSGBox3D" parent="Background"]
-transform = Transform3D(0.52883, 0.3021, 0.793143, -0.397684, 0.913771, -0.0828896, -0.749792, -0.271586, 0.603369, -2.21131, -0.357791, -7.62367)
-material = SubResource("StandardMaterial3D_p81pn")
-
-[node name="Rock3" type="CSGBox3D" parent="Background"]
-transform = Transform3D(0.394897, 0.543583, 0.740658, 0.0695769, 0.78617, -0.614082, -0.916087, 0.294032, 0.272636, -1.8572, -0.0695097, -8.75784)
-material = SubResource("StandardMaterial3D_p81pn")
-
-[node name="Rock4" type="CSGBox3D" parent="Background"]
-transform = Transform3D(0.922382, 0.183764, 0.33977, -0.217854, 0.973834, 0.0647144, -0.318987, -0.133711, 0.93828, 1.44106, -0.0695097, -8.75784)
-material = SubResource("StandardMaterial3D_p81pn")
-
-[node name="Rock5" type="CSGBox3D" parent="Background"]
-transform = Transform3D(0.947522, -0.0228441, 0.318874, 0.011838, 0.999267, 0.0364103, -0.319472, -0.0307245, 0.947098, 2.0605, 0.330977, -6.8059)
-material = SubResource("StandardMaterial3D_p81pn")
-
-[node name="Rock6" type="CSGBox3D" parent="Background"]
-transform = Transform3D(0.496578, -0.576143, 0.649207, 0.337934, 0.817255, 0.466793, -0.799507, -0.0124097, 0.600529, 1.45227, -0.26489, -5.40681)
-material = SubResource("StandardMaterial3D_p81pn")
-
-[node name="Rock7" type="CSGBox3D" parent="Background"]
-transform = Transform3D(0.0477467, -0.100521, 0.993789, -0.0606989, 0.992792, 0.103336, -0.997014, -0.0652555, 0.0413012, -0.0850568, -0.461584, -5.40681)
-material = SubResource("StandardMaterial3D_p81pn")
-
-[node name="Rock8" type="CSGBox3D" parent="Background"]
-transform = Transform3D(-0.849138, -0.314236, 0.424525, -0.465628, 0.82477, -0.320851, -0.249313, -0.470117, -0.84666, -1.51897, -0.450359, -5.84631)
-material = SubResource("StandardMaterial3D_p81pn")
-
-[node name="BigRock" type="CSGBox3D" parent="Background"]
-transform = Transform3D(0.543103, 0.136105, -0.828562, -0.049447, 0.990247, 0.130254, 0.838209, -0.0297715, 0.544536, -7.16498, 0.437002, -5.83865)
-size = Vector3(4, 4, 4)
-material = SubResource("StandardMaterial3D_p81pn")
-
-[node name="BigRock2" type="CSGBox3D" parent="Background"]
-transform = Transform3D(-0.54987, 0.0840931, -0.831007, -0.052451, 0.989479, 0.134836, 0.833602, 0.117729, -0.539674, -7.24003, 1.3677, -9.17123)
-size = Vector3(4, 4, 4)
-material = SubResource("StandardMaterial3D_p81pn")
-
-[node name="BigRock3" type="CSGBox3D" parent="Background"]
-transform = Transform3D(0.00868387, -0.992307, -0.123499, -0.308737, 0.114809, -0.944193, 0.951108, 0.0463277, -0.305365, 6.29906, -0.227768, -9.17123)
-size = Vector3(4, 4, 4)
-material = SubResource("StandardMaterial3D_p81pn")
-
-[node name="BigRock4" type="CSGBox3D" parent="Background"]
-transform = Transform3D(0.594466, -0.751627, -0.285776, -0.308737, 0.114809, -0.944193, 0.74249, 0.64952, -0.163805, 8.42978, 0.253076, -7.28376)
-size = Vector3(4, 4, 4)
-material = SubResource("StandardMaterial3D_p81pn")
-
-[node name="BigRock5" type="CSGBox3D" parent="Background"]
-transform = Transform3D(0.799648, -0.599243, -0.0383718, -0.125911, -0.104851, -0.986485, 0.58712, 0.793671, -0.159295, 8.37484, 2.39078, -11.396)
-size = Vector3(4, 4, 4)
-material = SubResource("StandardMaterial3D_p81pn")
-
-[node name="BigRock6" type="CSGBox3D" parent="Background"]
-transform = Transform3D(0.785149, -0.618346, -0.0344907, -0.125911, -0.104851, -0.986485, 0.606373, 0.77888, -0.160181, 11.2605, 4.28871, -11.5132)
-size = Vector3(4, 4, 4)
-material = SubResource("StandardMaterial3D_p81pn")
-
-[node name="BigRock7" type="CSGBox3D" parent="Background"]
-transform = Transform3D(0.834989, -0.550246, -0.0048102, -0.0903433, -0.128461, -0.987591, 0.5428, 0.825062, -0.156975, 11.2605, 1.28237, -10.9072)
-size = Vector3(4, 4, 4)
-material = SubResource("StandardMaterial3D_p81pn")
-
-[node name="Pillar" type="CSGBox3D" parent="Background"]
-transform = Transform3D(0.997506, -0.0705748, 0, 0.0705748, 0.997506, 0, 0, 0, 1, -19.4296, 2.64447, -16.9829)
-size = Vector3(2, 10, 2)
-material = SubResource("StandardMaterial3D_seqyv")
-
-[node name="Pillar2" type="CSGBox3D" parent="Background"]
-transform = Transform3D(0.840841, 0, -0.541283, 0, 1, 0, 0.541283, 0, 0.840841, -12.7193, 4.24463, -23.2814)
-size = Vector3(2, 10, 2)
-material = SubResource("StandardMaterial3D_seqyv")
-
-[node name="Pillar3" type="CSGBox3D" parent="Background"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09273, 4.24463, -25.5634)
-size = Vector3(2, 10, 2)
-material = SubResource("StandardMaterial3D_seqyv")
-
-[node name="Pillar4" type="CSGBox3D" parent="Background"]
-transform = Transform3D(0.92035, 0.182916, -0.345685, -0.29872, 0.899282, -0.319464, 0.252433, 0.397282, 0.882295, 2.59264, 1.39048, -25.8497)
-size = Vector3(2, 10, 2)
-material = SubResource("StandardMaterial3D_seqyv")
-
-[node name="Pillar5" type="CSGBox3D" parent="Background"]
-transform = Transform3D(0.793765, -0.0234534, -0.607772, 0.0888859, 0.993001, 0.0777681, 0.601694, -0.115752, 0.790295, 10.1442, 4.24463, -21.1828)
-size = Vector3(2, 10, 2)
-material = SubResource("StandardMaterial3D_seqyv")
-
-[node name="Pillar6" type="CSGBox3D" parent="Background"]
-transform = Transform3D(0.582978, -0.0573362, -0.810463, -0.026654, 0.995621, -0.0896078, 0.812051, 0.0738414, 0.578896, 14.79, 4.24463, -15.2726)
-size = Vector3(2, 10, 2)
-material = SubResource("StandardMaterial3D_seqyv")
-
-[node name="Pillar7" type="CSGBox3D" parent="Background"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9304, 4.24463, -6.90023)
-size = Vector3(2, 10, 2)
-material = SubResource("StandardMaterial3D_seqyv")
-
-[node name="DistantRock" type="CSGBox3D" parent="Background"]
-transform = Transform3D(0.624861, 0.239486, -0.743098, -0.357879, 0.933768, 0, 0.693881, 0.265939, 0.669182, -26.985, -0.19, -496.543)
-size = Vector3(10, 10, 10)
-material = SubResource("StandardMaterial3D_8usds")
-
-[node name="DistantRock2" type="CSGBox3D" parent="Background"]
-transform = Transform3D(0.987173, -0.155887, 0.0344671, 0.138295, 0.942819, 0.30326, -0.0797706, -0.294603, 0.952284, 102.707, -0.039, -496.543)
-size = Vector3(10, 10, 10)
-material = SubResource("StandardMaterial3D_8usds")
-
-[node name="DistantRock3" type="CSGBox3D" parent="Background"]
-transform = Transform3D(0.947333, 0.0513949, 0.316098, 0, 0.987038, -0.160484, -0.320249, 0.152032, 0.935054, 118.719, 2.873, -496.543)
-size = Vector3(10, 10, 10)
-material = SubResource("StandardMaterial3D_8usds")
-
-[node name="Sun" type="CSGSphere3D" parent="Background"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.467, -4.938, -602.821)
-radius = 100.0
-radial_segments = 16
-rings = 16
-material = SubResource("StandardMaterial3D_67tfh")
-
-[node name="Ground" type="CSGBox3D" parent="Background"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
-size = Vector3(1000, 0.5, 1000)
-material = SubResource("StandardMaterial3D_usw7t")
-
-[node name="PlayerMesh" type="MeshInstance3D" parent="Background"]
-transform = Transform3D(0.663261, 0, -0.748389, 0, 1, 0, 0.748389, 0, 0.663261, 2, 2.27662, -6.96725)
-mesh = ExtResource("2_x01nu")
-surface_material_override/0 = ExtResource("3_34jc1")
-surface_material_override/1 = ExtResource("4_j4sko")
-surface_material_override/2 = ExtResource("4_j4sko")
-surface_material_override/3 = ExtResource("5_8nkma")
-surface_material_override/4 = ExtResource("5_8nkma")
-surface_material_override/5 = ExtResource("6_f1dda")
-surface_material_override/6 = ExtResource("6_f1dda")
-surface_material_override/7 = ExtResource("6_f1dda")
-surface_material_override/8 = ExtResource("7_kurao")
-surface_material_override/9 = ExtResource("7_kurao")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Background"]
-environment = SubResource("Environment_bce4g")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Background"]
-transform = Transform3D(0.870142, -0.416313, 0.263697, -0.359381, -0.169938, 0.917587, -0.337191, -0.893199, -0.297485, 0, 2.07598, 0)
-shadow_enabled = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = -1
 anchor_right = 0.251423
 anchor_bottom = 1.0
@@ -214,27 +17,27 @@ offset_right = 2.36041
 offset_bottom = -0.000183105
 grow_vertical = 2
 theme = ExtResource("8_b7aig")
-theme_override_styles/panel = SubResource("StyleBoxFlat_gfnoa")
-metadata/_edit_use_anchors_ = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_diaxe")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 64
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer"]
+[node name="FileContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Title" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/FileContainer"]
 layout_mode = 2
 text = "Select Save File"
 horizontal_alignment = 1
 
-[node name="File1" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="File1" type="Button" parent="PanelContainer/MarginContainer/FileContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../File3")
@@ -245,7 +48,7 @@ text = "File 1
 
 "
 
-[node name="Time" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/File1"]
+[node name="Time" type="Label" parent="PanelContainer/MarginContainer/FileContainer/File1"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -259,7 +62,7 @@ scale = Vector2(1, 1.00463)
 theme_override_font_sizes/font_size = 18
 text = "Time: 0:00:00"
 
-[node name="Flames" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/File1"]
+[node name="Flames" type="Label" parent="PanelContainer/MarginContainer/FileContainer/File1"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -273,7 +76,7 @@ scale = Vector2(1, 1.00439)
 theme_override_font_sizes/font_size = 18
 text = "Flames: 0"
 
-[node name="File2" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="File2" type="Button" parent="PanelContainer/MarginContainer/FileContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_left = NodePath("../../../../Delete2")
@@ -285,7 +88,7 @@ text = "File 2
 
 "
 
-[node name="Time" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/File2"]
+[node name="Time" type="Label" parent="PanelContainer/MarginContainer/FileContainer/File2"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -299,7 +102,7 @@ scale = Vector2(1, 1.00463)
 theme_override_font_sizes/font_size = 18
 text = "Time: 0:00:00"
 
-[node name="Flames" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/File2"]
+[node name="Flames" type="Label" parent="PanelContainer/MarginContainer/FileContainer/File2"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -313,7 +116,7 @@ scale = Vector2(1, 0.986076)
 theme_override_font_sizes/font_size = 18
 text = "Flames: 0"
 
-[node name="File3" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="File3" type="Button" parent="PanelContainer/MarginContainer/FileContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_left = NodePath("../../../../Delete3")
@@ -325,7 +128,7 @@ text = "File 3
 
 "
 
-[node name="Time" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/File3"]
+[node name="Time" type="Label" parent="PanelContainer/MarginContainer/FileContainer/File3"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -339,7 +142,7 @@ scale = Vector2(1, 1.00463)
 theme_override_font_sizes/font_size = 18
 text = "Time: 0:00:00"
 
-[node name="Flames" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/File3"]
+[node name="Flames" type="Label" parent="PanelContainer/MarginContainer/FileContainer/File3"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -353,7 +156,7 @@ scale = Vector2(1, 1.00439)
 theme_override_font_sizes/font_size = 18
 text = "Flames: 0"
 
-[node name="Delete1" type="Button" parent="CanvasLayer"]
+[node name="Delete1" type="Button" parent="."]
 anchors_preset = -1
 anchor_left = 0.27
 anchor_right = 0.275
@@ -363,16 +166,16 @@ offset_right = 120.96
 offset_bottom = 236.0
 scale = Vector2(1, 1.07447)
 size_flags_vertical = 3
-focus_neighbor_left = NodePath("../PanelContainer/MarginContainer/VBoxContainer/File1")
+focus_neighbor_left = NodePath("../PanelContainer/MarginContainer/FileContainer/File1")
 focus_neighbor_top = NodePath("../Delete3")
-focus_neighbor_right = NodePath("../PanelContainer/MarginContainer/VBoxContainer/File1")
+focus_neighbor_right = NodePath("../PanelContainer/MarginContainer/FileContainer/File1")
 focus_neighbor_bottom = NodePath("../Delete2")
 theme_override_font_sizes/font_size = 42
 text = "Delete
 
 "
 
-[node name="Delete2" type="Button" parent="CanvasLayer"]
+[node name="Delete2" type="Button" parent="."]
 anchors_preset = -1
 anchor_left = 0.27
 anchor_right = 0.275
@@ -382,16 +185,16 @@ offset_right = 120.96
 offset_bottom = 404.0
 scale = Vector2(1, 1.07447)
 size_flags_vertical = 3
-focus_neighbor_left = NodePath("../PanelContainer/MarginContainer/VBoxContainer/File2")
+focus_neighbor_left = NodePath("../PanelContainer/MarginContainer/FileContainer/File2")
 focus_neighbor_top = NodePath("../Delete1")
-focus_neighbor_right = NodePath("../PanelContainer/MarginContainer/VBoxContainer/File2")
+focus_neighbor_right = NodePath("../PanelContainer/MarginContainer/FileContainer/File2")
 focus_neighbor_bottom = NodePath("../Delete3")
 theme_override_font_sizes/font_size = 42
 text = "Delete
 
 "
 
-[node name="Delete3" type="Button" parent="CanvasLayer"]
+[node name="Delete3" type="Button" parent="."]
 anchors_preset = -1
 anchor_left = 0.27
 anchor_right = 0.275
@@ -401,23 +204,18 @@ offset_right = 120.96
 offset_bottom = 568.0
 scale = Vector2(1, 1.07447)
 size_flags_vertical = 3
-focus_neighbor_left = NodePath("../PanelContainer/MarginContainer/VBoxContainer/File3")
+focus_neighbor_left = NodePath("../PanelContainer/MarginContainer/FileContainer/File3")
 focus_neighbor_top = NodePath("../Delete2")
-focus_neighbor_right = NodePath("../PanelContainer/MarginContainer/VBoxContainer/File3")
+focus_neighbor_right = NodePath("../PanelContainer/MarginContainer/FileContainer/File3")
 focus_neighbor_bottom = NodePath("../Delete1")
 theme_override_font_sizes/font_size = 42
 text = "Delete
 
 "
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_c6be6")
-autoplay = true
-bus = &"Music"
-
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/File1" to="." method="_on_file_pressed" binds= [1]]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/File2" to="." method="_on_file_pressed" binds= [2]]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/File3" to="." method="_on_file_pressed" binds= [3]]
-[connection signal="pressed" from="CanvasLayer/Delete1" to="." method="_on_file_delete" binds= [1]]
-[connection signal="pressed" from="CanvasLayer/Delete2" to="." method="_on_file_delete" binds= [2]]
-[connection signal="pressed" from="CanvasLayer/Delete3" to="." method="_on_file_delete" binds= [3]]
+[connection signal="pressed" from="PanelContainer/MarginContainer/FileContainer/File1" to="." method="_on_file_pressed" binds= [1]]
+[connection signal="pressed" from="PanelContainer/MarginContainer/FileContainer/File2" to="." method="_on_file_pressed" binds= [2]]
+[connection signal="pressed" from="PanelContainer/MarginContainer/FileContainer/File3" to="." method="_on_file_pressed" binds= [3]]
+[connection signal="pressed" from="Delete1" to="." method="_on_file_delete" binds= [1]]
+[connection signal="pressed" from="Delete2" to="." method="_on_file_delete" binds= [2]]
+[connection signal="pressed" from="Delete3" to="." method="_on_file_delete" binds= [3]]
