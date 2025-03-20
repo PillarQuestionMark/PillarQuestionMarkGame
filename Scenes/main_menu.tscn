@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bi3jsbux6tgru"]
+[gd_scene load_steps=18 format=3 uid="uid://bi3jsbux6tgru"]
 
 [ext_resource type="ArrayMesh" uid="uid://r21fu3qtohga" path="res://player/feo.obj" id="1_fyoth"]
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="2_0odg0"]
@@ -8,7 +8,6 @@
 [ext_resource type="Material" uid="uid://cie52pam3snu7" path="res://player/material_scarf.tres" id="5_kcviv"]
 [ext_resource type="Material" uid="uid://b581oewwfjj7g" path="res://player/material_hand.tres" id="6_tcu3d"]
 [ext_resource type="Theme" uid="uid://ews1me176sme" path="res://Scenes/main_menu_theme.tres" id="8_gyfsj"]
-[ext_resource type="AudioStream" uid="uid://cq4r7yft33ly7" path="res://Scenes/main_menu_music.mp3" id="9_g6uco"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p81pn"]
 albedo_color = Color(0.494118, 0.396078, 0.607843, 1)
@@ -45,7 +44,6 @@ ambient_light_energy = 0.5
 bg_color = Color(0.101961, 0.121569, 0.180392, 0.588235)
 
 [node name="MainMenu" type="Node"]
-script = ExtResource("2_0odg0")
 
 [node name="Background" type="Node3D" parent="."]
 
@@ -205,6 +203,7 @@ transform = Transform3D(0.870142, -0.416313, 0.263697, -0.359381, -0.169938, 0.9
 shadow_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_0odg0")
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
 anchors_preset = -1
@@ -248,11 +247,6 @@ text = "Options (?)"
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "Quit (B)"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_g6uco")
-autoplay = true
-bus = &"Music"
 
 [connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

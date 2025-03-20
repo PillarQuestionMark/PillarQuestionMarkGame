@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0sd75bp5hwj4"]
+
+[ext_resource type="Script" path="res://Scenes/screens/change_island_screen/island_icon.gd" id="1_m86nt"]
+[ext_resource type="PackedScene" uid="uid://bvebbtxnfoh73" path="res://Components/interactable_2d.tscn" id="2_x1gom"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tkrur"]
+radius = 7.0
+height = 44.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5gnk3"]
+radius = 41.0122
+
+[node name="IslandIcon" type="StaticBody2D"]
+script = ExtResource("1_m86nt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_tkrur")
+
+[node name="Interact" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.5
+offset_top = -75.0
+offset_right = 41.5
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "[f] to dock"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Interactable2D" parent="." instance=ExtResource("2_x1gom")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable2D"]
+shape = SubResource("CircleShape2D_5gnk3")
+
+[connection signal="body_entered" from="Interactable2D" to="." method="_on_interactable_2d_body_entered"]
+[connection signal="body_exited" from="Interactable2D" to="." method="_on_interactable_2d_body_exited"]
+[connection signal="on_interacting" from="Interactable2D" to="." method="_on_interactable_2d_on_interacting"]

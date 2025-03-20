@@ -38,12 +38,6 @@ func _process(delta):
 	rotation.x -= input.y
 	rotation.x = clamp(rotation.x, deg_to_rad(min_pitch), deg_to_rad(max_pitch))
 	rotation.y -= input.x
-	#This should be moved to UI probably
-	if Input.is_action_just_pressed("ui_cancel"):
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		else :
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if Input.is_action_just_pressed("switch_camera"):
 		if state == States.THIRD_BACK:
 			spring_length = 0.0

@@ -12,7 +12,7 @@ config_version=5
 
 config/name="CSE5902_Game"
 run/main_scene="res://Scenes/screens/photo_splash_screen/photo_splash_screen.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -22,6 +22,7 @@ EventBus="*res://Autoload/event_bus.gd"
 PlayerData="*res://Entities/Player/player_data.gd"
 DevConsoleScreen="*res://Scenes/screens/dev_console_screen/dev_console_screen.tscn"
 DevConsoleAPI="*res://Autoload/dev_console_api.tscn"
+AudioManager="*res://Autoload/AudioManager/AudioManager.tscn"
 
 [dotnet]
 

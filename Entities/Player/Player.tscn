@@ -17,7 +17,6 @@
 [ext_resource type="Script" path="res://Entities/Player/WallSliding.gd" id="11_j1x64"]
 [ext_resource type="Script" path="res://Entities/Player/SlamJumping.gd" id="11_tywix"]
 [ext_resource type="Script" path="res://Entities/Player/Slamming.gd" id="12_c7jxc"]
-[ext_resource type="AudioStream" uid="uid://c6ichm6woikfd" path="res://Assets/Audio/Sound Effects/jumpsfx.wav" id="18_6b8vf"]
 [ext_resource type="Script" path="res://Entities/Player/Dialogue.gd" id="18_b8em8"]
 [ext_resource type="PackedScene" uid="uid://cij0oovbuoki5" path="res://Components/shadow.tscn" id="19_5nhyd"]
 [ext_resource type="PackedScene" uid="uid://dmhwfbc05xhsb" path="res://Components/interactor.tscn" id="19_dm15w"]
@@ -119,11 +118,6 @@ script = ExtResource("12_c7jxc")
 
 [node name="Dialogue" type="Node" parent="StateMachine"]
 script = ExtResource("18_b8em8")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("18_6b8vf")
-max_polyphony = 16
 
 [node name="WallSlideParticles" type="GPUParticles3D" parent="."]
 unique_name_in_owner = true

@@ -1,23 +1,28 @@
-extends Node
+extends Menu
+
+const OPTIONS_SCREEN := preload("res://Scenes/screens/options_screen/options_screen.tscn")
+const FILE_MENU := preload("res://Scenes/file_select.tscn")
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Logger.info("mainmenu: ready")
+	pauseTree = Pause_Tree_Options.Run
+	mouseMode = Mouse_Mode_Options.Visible
+	_enter_menu()
 
-func _on_start_button_pressed():
+func _escape_menu() -> void:
+	_on_quit_button_pressed()
+
+func _on_start_button_pressed() -> void:
 	Logger.info("mainmenu: start button pressed")
-	get_tree().change_scene_to_file("res://Scenes/file_select.tscn")
+	AudioManager.play_fx("button")
+	_enter_submenu(FILE_MENU)
 
 func _on_options_button_pressed() -> void:
 	Logger.info("mainmenu: options button pressed")
-	const OPTIONS_SCREEN := preload("res://Scenes/screens/options_screen/options_screen.tscn")
-	var s := OPTIONS_SCREEN.instantiate()
-	get_tree().root.add_child(s)
-	
-	# hide current screen and restore it when the options screen goes away
-	$CanvasLayer.visible = false
-	s.tree_exited.connect(func(): $CanvasLayer.visible = true)
+  AudioManager.play_fx("button")
+	_enter_submenu(OPTIONS_SCREEN)
 
-func _on_quit_button_pressed():
+func _on_quit_button_pressed() -> void:
 	Logger.info("mainmenu: quit button pressed")
+  AudioManager.play_fx("button")
 	get_tree().quit()

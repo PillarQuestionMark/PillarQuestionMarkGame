@@ -1,15 +1,12 @@
 extends PanelContainer
 
-
 @onready var tween := create_tween()
 var is_showing := false
-
 
 signal on_showing # right before the show animation
 signal on_shown # right after the show animation
 signal on_hiding # right before the hide animation
 signal on_hidden # right after the hide animation
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,9 +14,8 @@ func _ready() -> void:
 	
 	tween.tween_callback(func():) # do nothing, prevent error about tween starting with no tweeners
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("toggle_dev_console"):
 		if is_showing:
 			_hide()

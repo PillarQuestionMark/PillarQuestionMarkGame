@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="3_qrmmi"]
 [ext_resource type="PackedScene" uid="uid://ud6x3emfmcnt" path="res://Components/trigger_animation.tscn" id="4_1uusq"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="4_c2hl0"]
-[ext_resource type="PackedScene" path="res://Components/flame_lever.tscn" id="5_d0sa3"]
+[ext_resource type="PackedScene" uid="uid://daqo3a6ove7qf" path="res://Components/flame_lever.tscn" id="5_d0sa3"]
 [ext_resource type="PackedScene" uid="uid://dc1evxye2jpsn" path="res://Entities/Boat.tscn" id="5_kogkr"]
 [ext_resource type="PackedScene" uid="uid://dbwr3lokvosdn" path="res://Scenes/props/lantern/square_lantern.tscn" id="8_55b45"]
 [ext_resource type="PackedScene" uid="uid://btmje4fgwjpmy" path="res://Scenes/islands/ruins/ruins.blend" id="8_kouu0"]
@@ -133,7 +133,6 @@ size = Vector3(6, 3, 2)
 
 [node name="RuinsIsland" type="Node3D"]
 script = ExtResource("1_wbxxr")
-island_id = 1
 
 [node name="GameplayUI" parent="." instance=ExtResource("4_c2hl0")]
 

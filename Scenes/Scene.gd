@@ -13,11 +13,6 @@ func _ready() -> void:
 	
 	Logger.info("flames collected on current island: " + str(PlayerData.get_island_flames(island_id).size()))
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 ## Takes save data and applies it to the scene.
 func _load_data() -> void:
 	## find the checkpoint to load the player at

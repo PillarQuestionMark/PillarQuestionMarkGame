@@ -1,47 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://dc1evxye2jpsn"]
+[gd_scene load_steps=5 format=3 uid="uid://dc1evxye2jpsn"]
 
 [ext_resource type="Script" path="res://Entities/Boat/boat.gd" id="1_wder2"]
 [ext_resource type="PackedScene" uid="uid://nd1s7aeat6mx" path="res://Components/interactable.tscn" id="2_xpkc4"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_laol4"]
-albedo_color = Color(0.882353, 0.658824, 0.270588, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c3r51"]
-albedo_color = Color(0.933333, 0.796078, 0.564706, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nrasv"]
-albedo_color = Color(0.882353, 0.658824, 0.270588, 1)
+[ext_resource type="PackedScene" uid="uid://6wkokjqa4tnv" path="res://Entities/boat_model.tscn" id="3_f1mj3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6bsfy"]
 size = Vector3(6, 4, 6)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wj6lt"]
-albedo_color = Color(0.898039, 0.937255, 0.937255, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cnj2l"]
-albedo_color = Color(0.764706, 0.235294, 0.25098, 1)
-
 [node name="Boat" type="Node3D"]
 script = ExtResource("1_wder2")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
-transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, 1, 1, 4.37114e-08, -4.37114e-08, 0, 0, 0)
-operation = 2
-radius = 1.5
-height = 8.0
-material = SubResource("StandardMaterial3D_laol4")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCylinder3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.55271e-15, 1.05879e-22, 0.75)
-operation = 2
-size = Vector3(2, 7, 1.5)
-material = SubResource("StandardMaterial3D_c3r51")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCylinder3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-operation = 2
-size = Vector3(5, 10, 1)
-material = SubResource("StandardMaterial3D_nrasv")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
@@ -57,16 +24,6 @@ text = "?"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
 shape = SubResource("BoxShape3D_6bsfy")
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-radius = 0.1
-height = 6.0
-material = SubResource("StandardMaterial3D_wj6lt")
-
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 1, 0)
-polygon = PackedVector2Array(0, 0, 0, 5, 4, 0)
-depth = 0.01
-material = SubResource("StandardMaterial3D_cnj2l")
+[node name="BoatModel" parent="." instance=ExtResource("3_f1mj3")]
 
 [connection signal="on_interacting" from="Interactable" to="." method="_on_interactable_on_interacting"]
