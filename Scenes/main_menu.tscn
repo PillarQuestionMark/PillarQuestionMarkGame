@@ -203,6 +203,7 @@ transform = Transform3D(0.870142, -0.416313, 0.263697, -0.359381, -0.169938, 0.9
 shadow_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_0odg0")
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
@@ -248,6 +249,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 42
 text = "Quit (B)"
 
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="CanvasLayer" method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/OptionsButton" to="CanvasLayer" method="_on_options_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="CanvasLayer" method="_on_quit_button_pressed"]

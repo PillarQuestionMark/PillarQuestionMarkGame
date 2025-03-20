@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://Scenes/file_select.gd" id="1_u4ltf"]
 [ext_resource type="Theme" uid="uid://ews1me176sme" path="res://Scenes/main_menu_theme.tres" id="8_b7aig"]
-[ext_resource type="AudioStream" uid="uid://cq4r7yft33ly7" path="res://Assets/Audio/Music/main_menu.mp3" id="9_c6be6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_diaxe"]
 bg_color = Color(0.101961, 0.121569, 0.180392, 0.588235)

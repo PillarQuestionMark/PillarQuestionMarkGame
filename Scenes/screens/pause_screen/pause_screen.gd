@@ -19,7 +19,7 @@ func _on_resume_pressed() -> void:
 
 func _on_options_pressed() -> void:
 	Logger.info("pausescreen: options button pressed")
-  AudioManager.play_fx("button")
+	AudioManager.play_fx("button")
 	_enter_submenu(OPTIONS_SCREEN)
 
 func _on_quit_pressed() -> void:
