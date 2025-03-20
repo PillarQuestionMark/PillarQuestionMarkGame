@@ -14,14 +14,17 @@ func _escape_menu() -> void:
 
 func _on_resume_pressed() -> void:
 	Logger.info("pausescreen: resume button pressed")
+	AudioManager.play_fx("button")
 	_exit_menu()
 
 func _on_options_pressed() -> void:
 	Logger.info("pausescreen: options button pressed")
+  AudioManager.play_fx("button")
 	_enter_submenu(OPTIONS_SCREEN)
 
 func _on_quit_pressed() -> void:
 	Logger.info("pausescreen: save and quit button pressed")
+	AudioManager.play_fx("button")
 	PlayerData.save_data()
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 	_exit_menu()

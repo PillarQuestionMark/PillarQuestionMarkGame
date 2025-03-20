@@ -49,7 +49,6 @@ var slamjump_unlocked : bool = true
 
 @onready var state_machine : StateMachine = $StateMachine
 
-@onready var jump_sound: AudioStreamPlayer = %AudioStreamPlayer
 @onready var wall_slide_particles: GPUParticles3D = %WallSlideParticles
 @onready var mesh : MeshInstance3D = $Pivot/MeshInstance3D
 

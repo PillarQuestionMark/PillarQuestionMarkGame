@@ -14,12 +14,15 @@ func _escape_menu() -> void:
 
 func _on_start_button_pressed() -> void:
 	Logger.info("mainmenu: start button pressed")
+	AudioManager.play_fx("button")
 	_enter_submenu(FILE_MENU)
 
 func _on_options_button_pressed() -> void:
 	Logger.info("mainmenu: options button pressed")
+  AudioManager.play_fx("button")
 	_enter_submenu(OPTIONS_SCREEN)
 
 func _on_quit_button_pressed() -> void:
 	Logger.info("mainmenu: quit button pressed")
+  AudioManager.play_fx("button")
 	get_tree().quit()
