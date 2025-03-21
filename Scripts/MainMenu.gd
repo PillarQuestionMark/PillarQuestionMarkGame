@@ -7,7 +7,6 @@ func _ready() -> void:
 	Logger.info("mainmenu: ready")
 	pauseTree = Pause_Tree_Options.Run
 	mouseMode = Mouse_Mode_Options.Visible
-	
 	AudioManager.play_music("main_menu")
 	_enter_menu()
 

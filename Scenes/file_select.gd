@@ -39,6 +39,7 @@ func _on_file_pressed(file : int) -> void:
 	PlayerData.load_data()
 	AudioManager.play_fx("button")
 	AudioManager.stop_music() # not sure if this should go here :/
+	AudioManager.play_music("feet")
 	
 ## Called when a file is being deleted. The function is passed an int representing which save file to delete.
 func _on_file_delete(file : int) -> void:
