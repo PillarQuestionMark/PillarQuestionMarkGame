@@ -38,11 +38,19 @@ func physics_update(_delta: float) -> void:
 ## is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(previous_state_path: String, data := {}) -> void:
 	var search := %GrappleRange
-	var bestDest : Area3D = null
-	for dest in search.get_overlapping_areas():
-		
-	if bestDest is null:
-		
+	var bestDest : GrappleablePoint = null
+	for dest : Area3D in search.get_overlapping_areas():
+		var ray := RayCast3D.new()
+		ray.collide_with_areas = true
+		ray.collision_mask = 33
+		ray.target_position = dest.position
+		ray.force_raycast_update()
+		if ray.get_collider() != null:
+			pass
+	
+	if bestDest == null:
+		pass
+	
 
 ## Called by the state machine before changing the active state. Use this function
 ## to clean up the state.
