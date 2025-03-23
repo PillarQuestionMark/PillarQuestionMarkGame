@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0a6ifjctwbqj"]
+[gd_scene load_steps=11 format=3 uid="uid://b0a6ifjctwbqj"]
 
 [ext_resource type="PackedScene" uid="uid://co1p57wfy7aj0" path="res://Scenes/islands/jungle/jungle.blend" id="1_2e48r"]
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_frwy3"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="2_6hyr4"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_xy8xx"]
 [ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="3_fceu4"]
+[ext_resource type="PackedScene" uid="uid://kqx2i4sjvw3d" path="res://Obstacles/BouncyMushroom.tscn" id="4_lu4s8"]
+[ext_resource type="PackedScene" uid="uid://dc1evxye2jpsn" path="res://Entities/Boat.tscn" id="6_w83nn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7pmkp"]
 sky_top_color = Color(0.929412, 0.666667, 0.639216, 1)
@@ -48,9 +50,18 @@ shadow_enabled = true
 
 [node name="jungle" parent="." instance=ExtResource("1_2e48r")]
 
+[node name="BouncyMushroom" parent="jungle" instance=ExtResource("4_lu4s8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 46, 79)
+
+[node name="BouncyMushroom2" parent="jungle" instance=ExtResource("4_lu4s8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26, 53)
+
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_xy8xx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77029, 42.554, 3.03907)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.2907, 1.14213, -9.81445)
 Camera = NodePath("FollowCamera")
 
 [node name="FollowCamera" parent="Player" instance=ExtResource("3_fceu4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Boat" parent="." instance=ExtResource("6_w83nn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.8558, 0.0332417, -18.2021)
