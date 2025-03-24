@@ -1,15 +1,18 @@
 extends PlayerState
 
+var targetPosition : Vector3
+
 ## Called by the state machine when receiving unhandled input events.
 func handle_input(_event: InputEvent) -> void:
 	pass
 
 ## Called by the state machine on the engine's physics update tick.
 func physics_update(_delta: float) -> void:
-	if(true): # 
+	if(player.global_position.distance_squared_to(targetPosition) > 1.0 and Input.is_action_pressed("grapple")):
 		# Here is where grapple hook pull happens
 		# Skip all state changes, still in pulling stage
-		player.apply_gravity(_delta)
+		var direction = player.global_position.direction_to(targetPosition)
+		player.velocity = direction * player.Grapple_Speed
 		player.move_and_slide()
 		return
 	
@@ -30,26 +33,19 @@ func physics_update(_delta: float) -> void:
 			finished.emit(WALKING)
 	elif (Input.is_action_just_pressed("interact")):
 		player.try_interact()
-	
-	player.apply_gravity(_delta)
-	player.move_and_slide()
+	else:
+		finished.emit(IDLE)
 
 ## Called by the state machine upon changing the active state. The `data` parameter
 ## is a dictionary with arbitrary data the state can use to initialize itself.
-func enter(previous_state_path: String, data := {}) -> void:
-	var search := %GrappleRange
-	var bestDest : GrappleablePoint = null
-	for dest : Area3D in search.get_overlapping_areas():
-		var ray := RayCast3D.new()
-		ray.collide_with_areas = true
-		ray.collision_mask = 33
-		ray.target_position = dest.position
-		ray.force_raycast_update()
-		if ray.get_collider() != null:
-			pass
-	
+func enter(_previous_state_path: String, _data := {}) -> void:
+	var bestDest : GrappleablePoint = %GrappleTargetLocator.get_best_target()
 	if bestDest == null:
-		pass
+		# TODO: This works for now, but it could have unexpected consequences.
+		# Should probably just switch out here.
+		targetPosition = player.global_position
+		return
+	targetPosition = bestDest.global_position
 	
 
 ## Called by the state machine before changing the active state. Use this function

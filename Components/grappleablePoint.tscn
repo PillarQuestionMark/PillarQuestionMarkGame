@@ -1,12 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cj3ku0n0t8fw5"]
 
 [ext_resource type="Script" path="res://Components/grappleable_point.gd" id="1_0xnwg"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n2euy"]
-albedo_color = Color(0.612299, 1.50409e-06, 5.77569e-07, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wlb0b"]
-albedo_color = Color(4.87324e-07, 0.342791, 4.33177e-07, 1)
+[ext_resource type="Material" uid="uid://b4cigyte4lppr" path="res://Assets/Materials/GrappleInactive.tres" id="2_ixkbh"]
+[ext_resource type="Material" uid="uid://cncl8ykl4el2i" path="res://Assets/Materials/GrappleActive.tres" id="3_oso5v"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yr7mh"]
 
@@ -15,8 +11,8 @@ collision_layer = 32
 collision_mask = 17
 monitoring = false
 script = ExtResource("1_0xnwg")
-inactiveMat = SubResource("StandardMaterial3D_n2euy")
-activeMat = SubResource("StandardMaterial3D_wlb0b")
+inactiveMat = ExtResource("2_ixkbh")
+activeMat = ExtResource("3_oso5v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_yr7mh")

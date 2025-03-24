@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dmwlaf2f3cmd4"]
+[gd_scene load_steps=43 format=3 uid="uid://dmwlaf2f3cmd4"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_wbxxr"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_4qj5t"]
@@ -29,7 +29,6 @@
 [ext_resource type="Material" uid="uid://cp1us0nug7k3m" path="res://Scenes/props/lantern/lantern_material_on_7e659b.tres" id="19_djfiq"]
 [ext_resource type="PackedScene" uid="uid://cj3ku0n0t8fw5" path="res://Components/grappleablePoint.tscn" id="28_4p48d"]
 [ext_resource type="Material" uid="uid://b4cigyte4lppr" path="res://Assets/Materials/GrappleInactive.tres" id="28_jcvbb"]
-[ext_resource type="Material" uid="uid://cncl8ykl4el2i" path="res://Assets/Materials/GrappleActive.tres" id="30_kgxbo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o1wxf"]
 sky_top_color = Color(0.929412, 0.666667, 0.639216, 1)
@@ -134,7 +133,11 @@ albedo = Color(0.101961, 0.121569, 0.180392, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_i3wrv"]
 size = Vector3(6, 3, 2)
 
-[sub_resource type="BoxMesh" id="BoxMesh_mgikn"]
+[sub_resource type="SphereMesh" id="SphereMesh_lfg2b"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_levhq"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_uwljf"]
 
 [node name="RuinsIsland" type="Node3D"]
 script = ExtResource("1_wbxxr")
@@ -383,28 +386,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_i3wrv")
 
 [node name="GrapplePointTest" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.74556, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5758, 37.8197, -9.10109)
 material_override = ExtResource("28_jcvbb")
-mesh = SubResource("BoxMesh_mgikn")
+mesh = SubResource("SphereMesh_lfg2b")
 
-[node name="GrappleablePoint" parent="GrapplePointTest" instance=ExtResource("28_4p48d")]
-inactiveMat = ExtResource("28_jcvbb")
-activeMat = ExtResource("30_kgxbo")
+[node name="GrappleablePoint1" parent="GrapplePointTest" instance=ExtResource("28_4p48d")]
 
 [node name="GrapplePointTest2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0390396, 5.85227, 1.35303)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0192804, 29.8239, -30.9651)
 material_override = ExtResource("28_jcvbb")
-mesh = SubResource("BoxMesh_mgikn")
+ignore_occlusion_culling = true
+mesh = SubResource("SphereMesh_levhq")
 
-[node name="GrappleablePoint" parent="GrapplePointTest2" instance=ExtResource("28_4p48d")]
-inactiveMat = ExtResource("28_jcvbb")
-activeMat = ExtResource("30_kgxbo")
+[node name="GrappleablePoint2" parent="GrapplePointTest2" instance=ExtResource("28_4p48d")]
 
 [node name="GrapplePointTest3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.58491, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1859, 22.2111, -27.4008)
 material_override = ExtResource("28_jcvbb")
-mesh = SubResource("BoxMesh_mgikn")
+mesh = SubResource("SphereMesh_uwljf")
 
-[node name="GrappleablePoint" parent="GrapplePointTest3" instance=ExtResource("28_4p48d")]
-inactiveMat = ExtResource("28_jcvbb")
-activeMat = ExtResource("30_kgxbo")
+[node name="GrappleablePoint3" parent="GrapplePointTest3" instance=ExtResource("28_4p48d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00100321, -1.90735e-06, 0.00414601)

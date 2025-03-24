@@ -35,6 +35,9 @@ class_name Player extends CharacterBody3D
 @export_range(0.0, 100, 1) var Slide_Gravity_Factor : float = 10
 @export_range(0.0, 100, 1) var Wall_Kick : float = 20
 
+@export_subgroup("Grapple")
+@export_range(0.1, 100.0, 0.1) var Grapple_Speed : float = 25.0
+
 @export_group("Camera")
 @export var Transparency_Curve : Curve
 @export var Camera : SpringArm3D
