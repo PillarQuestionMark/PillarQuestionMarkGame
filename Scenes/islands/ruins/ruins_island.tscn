@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dmwlaf2f3cmd4"]
+[gd_scene load_steps=46 format=3 uid="uid://dmwlaf2f3cmd4"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_wbxxr"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_4qj5t"]
@@ -135,9 +135,15 @@ size = Vector3(6, 3, 2)
 
 [sub_resource type="SphereMesh" id="SphereMesh_lfg2b"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_mw07j"]
+
 [sub_resource type="SphereMesh" id="SphereMesh_levhq"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_iyjme"]
+
 [sub_resource type="SphereMesh" id="SphereMesh_uwljf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t1ah8"]
 
 [node name="RuinsIsland" type="Node3D"]
 script = ExtResource("1_wbxxr")
@@ -392,6 +398,9 @@ mesh = SubResource("SphereMesh_lfg2b")
 
 [node name="GrappleablePoint1" parent="GrapplePointTest" instance=ExtResource("28_4p48d")]
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrapplePointTest/GrappleablePoint1"]
+shape = SubResource("SphereShape3D_mw07j")
+
 [node name="GrapplePointTest2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0192804, 29.8239, -30.9651)
 material_override = ExtResource("28_jcvbb")
@@ -400,6 +409,9 @@ mesh = SubResource("SphereMesh_levhq")
 
 [node name="GrappleablePoint2" parent="GrapplePointTest2" instance=ExtResource("28_4p48d")]
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrapplePointTest2/GrappleablePoint2"]
+shape = SubResource("SphereShape3D_iyjme")
+
 [node name="GrapplePointTest3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1859, 22.2111, -27.4008)
 material_override = ExtResource("28_jcvbb")
@@ -407,3 +419,6 @@ mesh = SubResource("SphereMesh_uwljf")
 
 [node name="GrappleablePoint3" parent="GrapplePointTest3" instance=ExtResource("28_4p48d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00100321, -1.90735e-06, 0.00414601)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrapplePointTest3/GrappleablePoint3"]
+shape = SubResource("SphereShape3D_t1ah8")
