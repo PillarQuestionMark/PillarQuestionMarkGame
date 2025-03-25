@@ -155,6 +155,8 @@ Camera = NodePath("FollowCamera")
 
 [node name="FollowCamera" parent="Player" instance=ExtResource("3_qrmmi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+max_pitch = 80.0
+min_pitch = -80.0
 
 [node name="GameplayUI" parent="." instance=ExtResource("4_c2hl0")]
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cj3ku0n0t8fw5"]
+[gd_scene load_steps=5 format=3 uid="uid://cj3ku0n0t8fw5"]
 
 [ext_resource type="Script" path="res://Components/grappleable_point.gd" id="1_0xnwg"]
 [ext_resource type="Material" uid="uid://b4cigyte4lppr" path="res://Assets/Materials/GrappleInactive.tres" id="2_ixkbh"]
 [ext_resource type="Material" uid="uid://cncl8ykl4el2i" path="res://Assets/Materials/GrappleActive.tres" id="3_oso5v"]
+[ext_resource type="Material" uid="uid://duxwkinrjl4rf" path="res://Assets/Materials/GrappleTargetted.tres" id="4_k08xk"]
 
 [node name="GrappleablePoint" type="Area3D"]
 collision_layer = 32
@@ -11,3 +12,4 @@ monitoring = false
 script = ExtResource("1_0xnwg")
 inactiveMat = ExtResource("2_ixkbh")
 activeMat = ExtResource("3_oso5v")
+targettedMat = ExtResource("4_k08xk")
