@@ -17,12 +17,12 @@
 [ext_resource type="Script" path="res://Entities/Player/WallSliding.gd" id="11_j1x64"]
 [ext_resource type="Script" path="res://Entities/Player/SlamJumping.gd" id="11_tywix"]
 [ext_resource type="Script" path="res://Entities/Player/Slamming.gd" id="12_c7jxc"]
-[ext_resource type="AudioStream" uid="uid://c6ichm6woikfd" path="res://Assets/Audio/Sound Effects/jumpsfx.wav" id="18_6b8vf"]
 [ext_resource type="Script" path="res://Entities/Player/Dialogue.gd" id="18_b8em8"]
 [ext_resource type="Script" path="res://Entities/Player/Grappling.gd" id="19_3aadc"]
 [ext_resource type="PackedScene" uid="uid://cij0oovbuoki5" path="res://Components/shadow.tscn" id="19_5nhyd"]
 [ext_resource type="PackedScene" uid="uid://dmhwfbc05xhsb" path="res://Components/interactor.tscn" id="19_dm15w"]
 [ext_resource type="Script" path="res://Entities/Player/range_finder.gd" id="23_m208i"]
+[ext_resource type="Script" path="res://Entities/Player/inventory.gd" id="22_q8h2y"]
 
 [sub_resource type="Curve" id="Curve_e4jrd"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -127,11 +127,6 @@ script = ExtResource("18_b8em8")
 [node name="Grappling" type="Node" parent="StateMachine"]
 script = ExtResource("19_3aadc")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("18_6b8vf")
-max_polyphony = 16
-
 [node name="WallSlideParticles" type="GPUParticles3D" parent="."]
 unique_name_in_owner = true
 emitting = false
@@ -169,3 +164,7 @@ shape = SubResource("SphereShape3D_dgi6d")
 
 [connection signal="area_entered" from="GrappleTargetLocator" to="GrappleTargetLocator" method="_on_area_entered"]
 [connection signal="area_exited" from="GrappleTargetLocator" to="GrappleTargetLocator" method="_on_area_exited"]
+
+[node name="Inventory" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("22_q8h2y")

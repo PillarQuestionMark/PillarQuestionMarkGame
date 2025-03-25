@@ -23,10 +23,8 @@ extends CanvasLayer
 
 @onready var _original_mouse_mode := Input.mouse_mode
 
-
 func _ready() -> void:
 	Logger.on_logging.connect(_on_logger_logging)
-
 
 func _on_logger_logging(severity: Logger.LogLevel, message: String) -> void:
 	# filtering by loglevel is already done by Logger, so we don't need to do it
@@ -40,7 +38,6 @@ func _on_logger_logging(severity: Logger.LogLevel, message: String) -> void:
 	elif severity == Logger.LogLevel.ERROR:
 		m = "[color=red]%s[/color]\n" % m
 	console.append_text(m)
-
 
 func _process(delta: float) -> void:
 	paused.button_pressed = get_tree().paused
@@ -60,28 +57,22 @@ func _process(delta: float) -> void:
 	
 	%PlayerMesh.rotate_y(delta * 3)
 
-
 func _on_panel_container_on_showing() -> void:
 	get_tree().paused = true
 	_original_mouse_mode = Input.mouse_mode
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	visible = true
-	
 	console_input.grab_focus()
-
 
 func _on_panel_container_on_hiding() -> void:
 	Input.mouse_mode = _original_mouse_mode
 
-
 func _on_panel_container_on_shown() -> void:
 	console_input.text = "" # prevent picking up random characters
-
 
 func _on_panel_container_on_hidden() -> void:
 	get_tree().paused = false
 	visible = false
-
 
 func _on_paused_toggled(toggled_on: bool) -> void:
 	get_tree().paused = toggled_on
@@ -90,13 +81,11 @@ func _on_paused_toggled(toggled_on: bool) -> void:
 	physics_1.disabled = not toggled_on
 	physics_10.disabled = not toggled_on
 
-
 func _on_process_1_pressed() -> void:
 	get_tree().paused = false
 	await get_tree().process_frame # need an extra await because (i think) the tree pauses right before _process(), not right after
 	await get_tree().process_frame
 	get_tree().paused = true
-
 
 func _on_process_10_pressed() -> void:
 	get_tree().paused = false
@@ -105,13 +94,11 @@ func _on_process_10_pressed() -> void:
 		await get_tree().process_frame
 	get_tree().paused = true
 
-
 func _on_physics_1_pressed() -> void:
 	get_tree().paused = false
 	await get_tree().physics_frame
 	await get_tree().physics_frame
 	get_tree().paused = true
-
 
 func _on_physics_10_pressed() -> void:
 	get_tree().paused = false
@@ -120,35 +107,27 @@ func _on_physics_10_pressed() -> void:
 		await get_tree().physics_frame
 	get_tree().paused = true
 
-
-
 func _on_jump_unlock_toggled(toggled_on: bool) -> void:
 	if not toggled_on: double_jump_unlock.button_pressed = false
 	
 	PlayerData.data["max_jumps"] = 1 if toggled_on else 0
-
 
 func _on_double_jump_unlock_toggled(toggled_on: bool) -> void:
 	if toggled_on: jump_unlock.button_pressed = true
 	
 	PlayerData.data["max_jumps"] = 2 if toggled_on else 1
 
-
 func _on_sprint_unlock_toggled(toggled_on: bool) -> void:
 	PlayerData.data["sprint_unlocked"] = toggled_on
-
 
 func _on_dash_unlock_toggled(toggled_on: bool) -> void:
 	PlayerData.data["dash_unlocked"] = toggled_on
 
-
 func _on_slam_unlock_toggled(toggled_on: bool) -> void:
 	PlayerData.data["slam_unlocked"] = toggled_on
 
-
 func _on_wall_slide_unlock_toggled(toggled_on: bool) -> void:
 	PlayerData.data["wall_slide_unlocked"] = toggled_on
-
 
 func _on_console_input_text_submitted(text: String) -> void:
 	console_input.text = ""

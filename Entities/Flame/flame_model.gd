@@ -16,7 +16,8 @@ func _ready() -> void:
 	# i'm using the surface material override so we don't have to duplicate
 	# the mesh resource too.
 	_material = _material.duplicate()
-	set_surface_override_material(0, _material)
+	if (mesh != null):
+		set_surface_override_material(0, _material)
 	$MediumBall.set_surface_override_material(0, _material)
 	$SmallBall.set_surface_override_material(0, _material)
 	

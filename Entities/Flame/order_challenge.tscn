@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cojfaw2pshswd"]
+
+[ext_resource type="Script" path="res://Entities/Flame/order_challenge.gd" id="1_7s6wq"]
+
+[node name="OrderChallenge" type="Node3D"]
+script = ExtResource("1_7s6wq")

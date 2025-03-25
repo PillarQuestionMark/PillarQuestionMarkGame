@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpl2d4ribgw3f"]
+
+[ext_resource type="PackedScene" uid="uid://bk2fxpy25acjm" path="res://Entities/Animals/Squid/Squid.gltf" id="1_d0e4n"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Squid2" parent="." instance=ExtResource("1_d0e4n")]
