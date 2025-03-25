@@ -5,8 +5,11 @@ extends Node
 
 var _file = "user://test_save.pillar" ## default to a testing save
 ## test save used if file select skipped. does not load ever
+var _default_file_path = "user://default_save.pillar"
 
 var start_time : float ## The time at which the save file is opened, or last saved. Used for playtime calculations.
+
+signal movementUnlocked(data : String, value)
 
 ## Dictionary of player data (default values to be overwritten).
 var data = {
@@ -15,13 +18,14 @@ var data = {
 	"collected_flames" = {}, ## id of all collected flames, sorted by island id
 	"collected_fragments" = [], ## id of collected fragments from dungeons (final prize)
 	"open_dungeons" = [], ## id of dungeons opened already
-	"current_scene" = "res://Scenes/islands/island0/Island0.tscn", ## scene the player is in (or moving to)
+	"current_scene" = "res://Scenes/islands/ruins/ruins_island.tscn", ## scene the player is in (or moving to)
 	"checkpoint" = 0, ## checkpoint in current scene
 	"max_jumps" = 0,
 	"dash_unlocked" = false,
 	"sprint_unlocked" = false,
 	"slam_unlocked" = false,
 	"wall_slide_unlocked" = false,
+	"grapple_unlocked" = false,
 	"version" = 0
 }
 
@@ -30,6 +34,7 @@ var data = {
 func _ready() -> void:
 	## main scene : res://Scenes/screens/photo_splash_screen/photo_splash_screen.tscn
 	var parent = get_parent()
+	create_default_save()
 	if (!parent.has_node("PhotoSplashScreen")): ## CHANGE IF FIRST SCENE CHANGES!
 		load_data(false) ## do not load a scene, but load everything else
 		if (SaveVersioning.check_version(data)): ## update if out-of-date file
@@ -46,10 +51,7 @@ func load_data(load_scene : bool = true) -> void:
 	if (FileAccess.file_exists(_file)):
 		data = FileUtility.read_file(_file)
 	else:
-		data = FileUtility.read_file("res://default_save.pillar")
-		if (SaveVersioning.check_version(data)): ## if the default save is out-of-date, make sure to update it first
-			FileUtility.write_file("res://default_save.pillar", data)
-			data = FileUtility.read_file("res://default_save.pillar")
+		data = FileUtility.read_file(_default_file_path)
 		FileUtility.write_file(_file, data)
 	
 	if (load_scene): load_scene()
@@ -63,11 +65,15 @@ func save_data() -> void:
 	data["playtime"] += Time.get_unix_time_from_system() - start_time
 	FileUtility.write_file(_file, data)
 	start_time = Time.get_unix_time_from_system()
-		
+
+func create_default_save() -> void:
+	data["playtime"] = 0
+	FileUtility.write_file(_default_file_path, data)
+
 ## Used when loading the game to signify which file we are playing on
 func set_file_number(file : int) -> void:
 	_file = FileUtility.save_file_name + String.num_int64(file) + FileUtility.save_file_ending
-	
+
 ## Updates the player's save data to include the given flame.
 func flame_collected(flame_id: float, island_id: int):
 	print("flame: " + str(flame_id) + " island: " + String.num_int64(island_id))
@@ -75,13 +81,13 @@ func flame_collected(flame_id: float, island_id: int):
 	get_island_flames(island_id).append(flame_id)
 	data["total_flames"] += 1
 	save_data() ## autosave
-	
+
 ## Returns the list of flames collected on an island - based on island id.
 func get_island_flames(island_id: int) -> Array:
 	## if the flames dictionary has the island already, just return that list
 	## else, create the island entry with an empty list
 	return data["collected_flames"].get_or_add(String.num_int64(island_id), [])
-	
+
 ## Loads the player into the given scene at the given checkpoint.
 ## If no scene and checkpoint passed, it will default to the saved data.
 ## If scene and checkpoint passed, it will update the save file.
@@ -89,7 +95,7 @@ func load_scene(next_scene : String = data["current_scene"], checkpoint : int = 
 	data["current_scene"] = next_scene
 	data["checkpoint"] = checkpoint
 	get_tree().change_scene_to_file(next_scene) ## load the scene
-	
+
 ## Sets the checkpoint to spawn at in player data. 
 ## Separate from [method load_scene] for collecting checkpoints without loading a scene.
 ## If you also want to load a scene, use [method load_scene].
@@ -101,14 +107,18 @@ func update_checkpoint(checkpoint : int):
 ## Double Jump = "double_jump" [br]
 ## Dash = "dash" [br]
 ## Slam = "slam" [br]
-## Wall Slide = "wall_slide"
+## Wall Slide = "wall_slide" [br]
+## Grappling hook = "grapple" [br]
 func unlock_move(move : String) -> void:
 	match move:
 		"jump": ## error checking to avoid losing double jump
 			if (data["max_jumps"] < 1):
 				data["max_jumps"] = 1
+				movementUnlocked.emit("max_jumps", 1)
 		"double_jump": ## no error checking needed.
 			data["max_jumps"] = 2
+			movementUnlocked.emit("max_jumps", 2)
 		_: ## default case, not handled differently
-			data[move + "_unlocked"] = true		
+			data[move + "_unlocked"] = true
+			movementUnlocked.emit(move + "_unlocked", true)
 	Logger.info("playerdata: unlocked " + move)
