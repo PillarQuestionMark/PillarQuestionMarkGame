@@ -25,6 +25,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	Logger.on_logging.connect(_on_logger_logging)
+	PlayerData.movementUnlocked.connect(updateUnlockButtons)
 
 func _on_logger_logging(severity: Logger.LogLevel, message: String) -> void:
 	# filtering by loglevel is already done by Logger, so we don't need to do it
@@ -46,16 +47,26 @@ func _process(delta: float) -> void:
 	physics_1.disabled = not get_tree().paused
 	physics_10.disabled = not get_tree().paused
 	
-	if PlayerData.data["max_jumps"] > 1: # must check double_jump before jump, or else jump will disable double_jump
-		double_jump_unlock.button_pressed = (PlayerData.data["max_jumps"] > 1)
-	else:
-		jump_unlock.button_pressed = (PlayerData.data["max_jumps"] > 0)
-	sprint_unlock.button_pressed = PlayerData.data["sprint_unlocked"]
-	dash_unlock.button_pressed = PlayerData.data["dash_unlocked"]
-	slam_unlock.button_pressed = PlayerData.data["slam_unlocked"]
-	wall_slide_unlock.button_pressed = PlayerData.data["wall_slide_unlocked"]
-	
 	%PlayerMesh.rotate_y(delta * 3)
+
+func updateUnlockButtons (data, value):
+	match data:
+		"max_jumps":
+			if value > 1:
+				double_jump_unlock.button_pressed = value > 1
+			else:
+				jump_unlock.button_pressed = value > 0
+		"sprint_unlocked":
+			sprint_unlock.button_pressed = value
+		"dash_unlocked":
+			dash_unlock.button_pressed = value
+		"slam_unlocked":
+			slam_unlock.button_pressed = value
+		"wall_slide_unlocked":
+			wall_slide_unlock.button_pressed = value
+		"grappple_unlocked":
+			pass
+
 
 func _on_panel_container_on_showing() -> void:
 	get_tree().paused = true
