@@ -35,6 +35,9 @@ class_name Player extends CharacterBody3D
 @export_range(0.0, 100, 1) var Slide_Gravity_Factor : float = 10
 @export_range(0.0, 100, 1) var Wall_Kick : float = 20
 
+@export_subgroup("Grapple")
+@export_range(0.1, 100.0, 0.1) var Grapple_Speed : float = 25.0
+
 @export_group("Camera")
 @export var Transparency_Curve : Curve
 @export var Camera : SpringArm3D
@@ -79,7 +82,6 @@ func _ready():
 
 func _process(_delta : float) -> void:
 	mesh.transparency = Transparency_Curve.sample(Camera.get_hit_length() / Camera.spring_length)
-	
 	## REMOVE LATER. FOR NOW, JUST TO TEST DEATH
 	if Input.is_action_just_pressed("kys"):
 		die()

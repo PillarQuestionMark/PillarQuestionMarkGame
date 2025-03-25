@@ -34,7 +34,7 @@ ssao_enabled = true
 glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3ejr"]
-albedo_color = Color(0.898039, 0.937255, 0.937255, 1)
+albedo_color = Color(0.542982, 0.667354, 0.739045, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yait4"]
 size = Vector3(4, 7, 4)
