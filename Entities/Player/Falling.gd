@@ -27,6 +27,8 @@ func physics_update(_delta: float) -> void:
 	if(Input.is_action_just_pressed("jump") and player.jumps_left > 0):
 		player.jumps_left -= 1
 		finished.emit(JUMPING)
+	elif(Input.is_action_just_pressed("grapple")):
+		finished.emit(GRAPPLING)
 	elif(player.can_wall_slide && player.velocity.y < 0 && player.is_on_wall_only()):
 		finished.emit(WALL_SLIDING)
 	elif(Input.is_action_just_pressed("dash") && player.can_dash):

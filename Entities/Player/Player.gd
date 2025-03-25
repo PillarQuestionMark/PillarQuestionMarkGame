@@ -35,6 +35,9 @@ class_name Player extends CharacterBody3D
 @export_range(0.0, 100, 1) var Slide_Gravity_Factor : float = 10
 @export_range(0.0, 100, 1) var Wall_Kick : float = 20
 
+@export_subgroup("Grapple")
+@export_range(0.1, 100.0, 0.1) var Grapple_Speed : float = 25.0
+
 @export_group("Camera")
 @export var Transparency_Curve : Curve
 @export var Camera : SpringArm3D
@@ -49,7 +52,6 @@ var slamjump_unlocked : bool = true
 
 @onready var state_machine : StateMachine = $StateMachine
 
-@onready var jump_sound: AudioStreamPlayer = %AudioStreamPlayer
 @onready var wall_slide_particles: GPUParticles3D = %WallSlideParticles
 @onready var mesh : MeshInstance3D = $Pivot/MeshInstance3D
 
@@ -59,6 +61,7 @@ var slamjump_unlocked : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(Camera != null, "The Player Node requires a Camera of type Node3D to find its bearings")
+	@warning_ignore("unused_parameter")
 	EventBus.dialogue.connect(func(dialogue: Array[String]):
 		$StateMachine.state.finished.emit("Dialogue")
 	)
@@ -77,9 +80,8 @@ func _ready():
 		$StateMachine.state.finished.emit("Idle")
 	)
 
-func _process(delta : float) -> void:
+func _process(_delta : float) -> void:
 	mesh.transparency = Transparency_Curve.sample(Camera.get_hit_length() / Camera.spring_length)
-	
 	## REMOVE LATER. FOR NOW, JUST TO TEST DEATH
 	if Input.is_action_just_pressed("kys"):
 		die()
@@ -118,6 +120,11 @@ func apply_speed_and_drag(speed : float, drag : float):
 func apply_gravity(delta : float, gravity : float = Gravity):
 	velocity.y += gravity * delta
 	
+## Returns the player's inventory instance
+func get_inventory() -> Node3D:
+	return $Inventory
+	
+## Returns the player's pivot instance
 func get_pivot() -> Node3D:
 	return $Pivot
 
@@ -159,4 +166,3 @@ func start_slamjump_window() -> void:
 ## kills the player and reloads the scene
 func die() -> void:
 	PlayerData.load_scene()
-	

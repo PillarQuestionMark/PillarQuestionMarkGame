@@ -37,7 +37,7 @@ func _ready() -> void:
 	# TODO: play some sound
 
 var name_idx := 0.0
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_update_nametag_fontsize() # TODO: instead of doing this every frame, do it only when the text changes or the screen/viewport is resized
 	
 	# set photo size (distribute available space, and keep a 1:3 aspect ratio)
@@ -63,7 +63,7 @@ func _update_nametag_fontsize() -> void:
 	var fontsize := ((vp_width / 800.0) * 1300.0) / nametag.text.length()
 	nametag.add_theme_font_size_override("font_size", fontsize)
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	_finish()
 
 func _finish() -> void:
