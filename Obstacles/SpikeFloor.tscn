@@ -1,12 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://cftk8sgcrsuv0"]
+[gd_scene load_steps=6 format=3 uid="uid://cftk8sgcrsuv0"]
 
+[ext_resource type="ArrayMesh" uid="uid://d1u6ugp6do72w" path="res://Assets/Meshes/SpikeMesh.tres" id="1_0h14s"]
 [ext_resource type="Script" path="res://Obstacles/SpikeFloor.gd" id="1_m5336"]
 [ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="2_wdmwc"]
 
+[sub_resource type="MultiMesh" id="MultiMesh_4ieao"]
+transform_format = 1
+instance_count = 1
+mesh = ExtResource("1_0h14s")
+buffer = PackedFloat32Array(1, 0, 0, 0.5, 0, 1, 0, 0, 0, 0, 1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hoa6c"]
+
 [node name="SpikeFloor" type="MultiMeshInstance3D"]
+multimesh = SubResource("MultiMesh_4ieao")
 script = ExtResource("1_m5336")
 
 [node name="Obstacle" parent="." instance=ExtResource("2_wdmwc")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
+shape = SubResource("BoxShape3D_hoa6c")
