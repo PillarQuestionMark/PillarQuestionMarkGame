@@ -163,4 +163,3 @@ func start_slamjump_window() -> void:
 ## kills the player and reloads the scene
 func die() -> void:
 	PlayerData.load_scene()
-	
