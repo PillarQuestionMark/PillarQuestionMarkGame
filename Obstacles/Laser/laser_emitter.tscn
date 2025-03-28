@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqcei7yuxodc"]
+
+[ext_resource type="Script" path="res://Obstacles/Laser/laser_emitter.gd" id="1_yaeu3"]
+[ext_resource type="PackedScene" uid="uid://nd1s7aeat6mx" path="res://Components/interactable.tscn" id="2_csd4g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xavl5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ix3y"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.458824)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+
+[node name="LaserEmitter" type="CSGBox3D" node_paths=PackedStringArray("laser")]
+use_collision = true
+collision_mask = 2
+size = Vector3(0.5, 1, 0.5)
+script = ExtResource("1_yaeu3")
+laser = NodePath("Laser")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
+size = Vector3(0.25, 0.25, 0.25)
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.051)
+visibility_range_end = 20.0
+pixel_size = 0.001
+billboard = 1
+no_depth_test = true
+fixed_size = true
+text = "?"
+
+[node name="Interactable" parent="." instance=ExtResource("2_csd4g")]
+collision_layer = 65
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+shape = SubResource("BoxShape3D_xavl5")
+
+[node name="Laser" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+layers = 64
+radius = 0.05
+material = SubResource("StandardMaterial3D_2ix3y")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="on_interacting" from="Interactable" to="." method="interacted"]
+[connection signal="timeout" from="Timer" to="." method="end_laser"]

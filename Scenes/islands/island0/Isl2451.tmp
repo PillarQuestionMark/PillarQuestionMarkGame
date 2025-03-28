@@ -264,7 +264,7 @@ id = 2
 id = 9.0
 
 [node name="Lasers" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0, 0)
 
 [node name="LaserEmitter" parent="Lasers" instance=ExtResource("16_rroee")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2, 1)
@@ -272,18 +272,24 @@ laser_distance = 10.0
 
 [node name="LaserReflector3" parent="Lasers" instance=ExtResource("17_77qyn")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -17, 2, -4)
+laser_distance = 10.0
 
 [node name="LaserReflector2" parent="Lasers" instance=ExtResource("17_77qyn")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -14, 2, -4)
+laser_distance = 10.0
 
 [node name="LaserReflector4" parent="Lasers" instance=ExtResource("17_77qyn")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -14, 2, 1)
+laser_distance = 10.0
 
 [node name="LaserReflector5" parent="Lasers" instance=ExtResource("17_77qyn")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -10, 2, 1)
+laser_distance = 10.0
 
 [node name="LaserReflector6" parent="Lasers" instance=ExtResource("17_77qyn")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -10, 2, -1)
+laser_distance = 10.0
 
 [node name="LaserReflector7" parent="Lasers" instance=ExtResource("17_77qyn")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -16, 2, -1)
+laser_distance = 10.0
