@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://csd5u5j2ybj3w"]
+[gd_scene load_steps=9 format=3 uid="uid://dfq0qv0t85gr3"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_u3kjy"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_0c3ni"]
@@ -54,6 +54,12 @@ collision_mask = 2
 size = Vector3(10, 1, 5)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Rotating Room"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.7504, 0, 0)
+use_collision = true
+collision_mask = 2
+size = Vector3(10, 1, 5)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Rotating Room"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.7504, 0, 0)
 use_collision = true
 collision_mask = 2

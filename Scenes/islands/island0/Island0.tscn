@@ -38,13 +38,13 @@ material = SubResource("StandardMaterial3D_si735")
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_lwivm"]
+[sub_resource type="Sky" id="Sky_a48ir"]
 sky_material = SubResource("ProceduralSkyMaterial_sd3yn")
 
 [sub_resource type="Environment" id="Environment_wcdn7"]
 background_mode = 1
 background_color = Color(0.929412, 0.666667, 0.639216, 1)
-sky = SubResource("Sky_lwivm")
+sky = SubResource("Sky_a48ir")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.25

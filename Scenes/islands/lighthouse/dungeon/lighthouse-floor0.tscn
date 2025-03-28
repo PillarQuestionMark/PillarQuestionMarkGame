@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://c02m0rbfoqagf"]
+
+[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_t734c"]
+[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_s0qah"]
+[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="3_sbe0h"]
+[ext_resource type="Script" path="res://Scenes/islands/lighthouse/rotating_room.gd" id="4_orcll"]
+[ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="7_6u0ro"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yqiut"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_lwivm"]
+sky_material = SubResource("ProceduralSkyMaterial_yqiut")
+
+[sub_resource type="Environment" id="Environment_5ue21"]
+background_mode = 1
+background_color = Color(0.00625076, 0.31725, 0.347433, 1)
+sky = SubResource("Sky_lwivm")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.25
+tonemap_mode = 2
+ssao_enabled = true
+glow_enabled = true
+
+[node name="Lighthousedungeontest" type="Node3D"]
+script = ExtResource("1_t734c")
+island_id = 2
+
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_s0qah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.484077, 36.6597)
+Camera = NodePath("FollowCamera")
+
+[node name="FollowCamera" parent="Player" instance=ExtResource("3_sbe0h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0349903, 1.54822, 0.00927925)
+mouse_sensitivity = 0.04
+
+[node name="Rotating Room" type="Node3D" parent="."]
+script = ExtResource("4_orcll")
+trigger = "rotating_room"
+
+[node name="Outer Wall" type="CSGCylinder3D" parent="Rotating Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+operation = 2
+use_collision = true
+collision_mask = 2
+radius = 40.0
+height = 20.0
+sides = 16
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Rotating Room/Outer Wall"]
+operation = 2
+radius = 39.0
+height = 20.0
+sides = 16
+
+[node name="Window" type="CSGBox3D" parent="Rotating Room/Outer Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.38836, 39.3236)
+operation = 2
+size = Vector3(4, 7, 2)
+
+[node name="Floor" type="CSGCylinder3D" parent="Rotating Room"]
+use_collision = true
+collision_mask = 2
+radius = 41.0
+sides = 16
+
+[node name="Non-Rotating Room" type="Node3D" parent="."]
+
+[node name="GameplayUI" parent="." instance=ExtResource("7_6u0ro")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.22352, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5ue21")

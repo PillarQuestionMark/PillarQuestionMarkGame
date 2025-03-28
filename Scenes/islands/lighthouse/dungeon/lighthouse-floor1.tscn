@@ -1,0 +1,117 @@
+[gd_scene load_steps=12 format=3 uid="uid://b5sedhcjrlh3j"]
+
+[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_i81sb"]
+[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_3ip4j"]
+[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="3_jin71"]
+[ext_resource type="Script" path="res://Scenes/islands/lighthouse/rotating_room.gd" id="4_57vu3"]
+[ext_resource type="Script" path="res://Scenes/islands/lighthouse/compass.gd" id="5_txokn"]
+[ext_resource type="PackedScene" uid="uid://nd1s7aeat6mx" path="res://Components/interactable.tscn" id="6_wofop"]
+[ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="7_2sa4g"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_crl53"]
+height = 2.5
+radius = 1.0
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yqiut"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_lwivm"]
+sky_material = SubResource("ProceduralSkyMaterial_yqiut")
+
+[sub_resource type="Environment" id="Environment_5ue21"]
+background_mode = 1
+background_color = Color(0.00625076, 0.31725, 0.347433, 1)
+sky = SubResource("Sky_lwivm")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.25
+tonemap_mode = 2
+ssao_enabled = true
+glow_enabled = true
+
+[node name="Lighthousedungeontest" type="Node3D"]
+script = ExtResource("1_i81sb")
+island_id = 2
+
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_3ip4j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.484077, 15.8152)
+Camera = NodePath("FollowCamera")
+
+[node name="FollowCamera" parent="Player" instance=ExtResource("3_jin71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0349903, 1.54822, 0.00927925)
+mouse_sensitivity = 0.04
+
+[node name="Rotating Room" type="Node3D" parent="."]
+script = ExtResource("4_57vu3")
+trigger = "rotating_room"
+
+[node name="Outer Wall" type="CSGCylinder3D" parent="Rotating Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+operation = 2
+use_collision = true
+collision_mask = 2
+radius = 40.0
+height = 20.0
+sides = 16
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Rotating Room/Outer Wall"]
+operation = 2
+radius = 39.0
+height = 20.0
+sides = 16
+
+[node name="Window" type="CSGBox3D" parent="Rotating Room/Outer Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.05402, -39.2508)
+operation = 2
+size = Vector3(4, 7, 2)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Rotating Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.495605, 0, 27.4918)
+use_collision = true
+collision_mask = 2
+size = Vector3(21.7002, 1, 23.5439)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Rotating Room"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26.9361, 0, 0.265046)
+use_collision = true
+collision_mask = 2
+size = Vector3(24.2431, 1, 24.6235)
+
+[node name="Non-Rotating Room" type="Node3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Non-Rotating Room"]
+use_collision = true
+collision_mask = 2
+radius = 5.0
+height = 1.0
+
+[node name="Compass" type="Node3D" parent="Non-Rotating Room"]
+script = ExtResource("5_txokn")
+trigger = "rotating_room"
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Non-Rotating Room/Compass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+use_collision = true
+collision_mask = 2
+
+[node name="Interactable" parent="Non-Rotating Room/Compass/CSGCylinder3D" instance=ExtResource("6_wofop")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Non-Rotating Room/Compass/CSGCylinder3D/Interactable"]
+shape = SubResource("CylinderShape3D_crl53")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Non-Rotating Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.52583)
+use_collision = true
+collision_mask = 2
+size = Vector3(2, 1, 4)
+
+[node name="GameplayUI" parent="." instance=ExtResource("7_2sa4g")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.22352, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5ue21")
+
+[connection signal="on_interacting" from="Non-Rotating Room/Compass/CSGCylinder3D/Interactable" to="Non-Rotating Room/Compass" method="_on_interactable_on_interacting"]
