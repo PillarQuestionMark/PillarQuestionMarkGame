@@ -24,13 +24,13 @@ albedo_color = Color(0.471109, 0.32434, 0, 1)
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_lwivm"]
+[sub_resource type="Sky" id="Sky_ha6qe"]
 sky_material = SubResource("ProceduralSkyMaterial_yqiut")
 
 [sub_resource type="Environment" id="Environment_5ue21"]
 background_mode = 1
 background_color = Color(0.00625076, 0.31725, 0.347433, 1)
-sky = SubResource("Sky_lwivm")
+sky = SubResource("Sky_ha6qe")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.25
