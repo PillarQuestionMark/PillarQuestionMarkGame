@@ -154,15 +154,6 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Non-Rotating Room/Compass/CSGCylinder3D/Interactable"]
 shape = SubResource("CylinderShape3D_crl53")
 
-[node name="Label3D" type="Label3D" parent="Non-Rotating Room/Compass"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-visibility_range_end = 20.0
-pixel_size = 0.001
-billboard = 1
-no_depth_test = true
-fixed_size = true
-text = "?"
-
 [node name="CSGBox3D" type="CSGBox3D" parent="Non-Rotating Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.52583)
 use_collision = true
