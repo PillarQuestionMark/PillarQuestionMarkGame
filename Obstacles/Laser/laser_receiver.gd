@@ -1,5 +1,9 @@
 class_name LaserReceiver extends LaserObstacle
 
+@export var trigger := ""
+
+var on = false
+
 func interacted():
 	pass
 
@@ -16,3 +20,6 @@ func _process(delta: float) -> void:
 func laser_hit(direction : Vector3, normal : Vector3) -> void:
 	$CSGBox3D2.visible = true
 	print(str(self) + " RECEIVER HIT!")
+	if (!on):
+		EventBus.trigger.emit(trigger)
+	on = true

@@ -16,7 +16,7 @@ use_collision = true
 collision_mask = 2
 size = Vector3(0.5, 1, 0.5)
 script = ExtResource("1_yaeu3")
-laser = NodePath("Laser")
+laser = NodePath("MIDDLE MAN FOR CSG/Laser")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
@@ -37,14 +37,16 @@ collision_layer = 65
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
 shape = SubResource("BoxShape3D_xavl5")
 
-[node name="Laser" type="CSGCylinder3D" parent="."]
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="MIDDLE MAN FOR CSG" type="Node3D" parent="."]
+
+[node name="Laser" type="CSGCylinder3D" parent="MIDDLE MAN FOR CSG"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 layers = 64
 radius = 0.05
 material = SubResource("StandardMaterial3D_2ix3y")
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
 
 [connection signal="on_interacting" from="Interactable" to="." method="interacted"]
 [connection signal="timeout" from="Timer" to="." method="end_laser"]
