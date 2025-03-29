@@ -1,6 +1,7 @@
 class_name LaserObstacle extends Node3D
 ## The parent class representing any of the three parts of laser puzzles (emitters, reflectors, and receivers).
 
+@export var cut_laser : String = "rotating_room"
 @export var laser : Node3D = null
 @export var laser_distance : float = 100
 
@@ -120,6 +121,10 @@ func laser_hit(direction : Vector3, normal : Vector3) -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	laser.visible = false
+	EventBus.trigger.connect(func(name: String):
+		if name == cut_laser:
+			end_laser()
+	)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
