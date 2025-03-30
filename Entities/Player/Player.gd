@@ -44,9 +44,14 @@ class_name Player extends CharacterBody3D
 
 var can_dash : bool = true
 
-var can_wall_slide : bool = true
+var wall_slide_unlocked : bool = true
 
-var jumps_left : int = 0 # how many jumps left
+var jumps_left : int = 0 : # how many jumps left
+	set(value):
+		jumps_left = value
+		print("rn:", jumps_left)
+	get:
+		return jumps_left
 
 var slamjump_unlocked : bool = true
 
@@ -148,7 +153,7 @@ func restore_dash() -> void:
 
 ## Since the ground states are spread out, this code is repeated multiple times. Safer to be in one place
 func touched_ground() -> void:
-	can_wall_slide = PlayerData.data["wall_slide_unlocked"]
+	wall_slide_unlocked = PlayerData.data["wall_slide_unlocked"]
 	can_dash = PlayerData.data["dash_unlocked"]
 	jumps_left = PlayerData.data["max_jumps"]
 
@@ -162,6 +167,9 @@ func can_slamjump() -> bool:
 
 func start_slamjump_window() -> void:
 	slamjump_window.start()
+
+func can_wall_slide() -> bool:
+	return wall_slide_unlocked and velocity.y < 0 and is_on_wall_only()
 
 ## kills the player and reloads the scene
 func die() -> void:
