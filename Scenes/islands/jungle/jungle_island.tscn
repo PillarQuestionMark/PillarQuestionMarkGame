@@ -51,10 +51,13 @@ shadow_enabled = true
 [node name="jungle" parent="." instance=ExtResource("1_2e48r")]
 
 [node name="BouncyMushroom" parent="jungle" instance=ExtResource("4_lu4s8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 46, 79)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 51, 78)
 
 [node name="BouncyMushroom2" parent="jungle" instance=ExtResource("4_lu4s8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26, 53)
+
+[node name="BouncyMushroom3" parent="jungle" instance=ExtResource("4_lu4s8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38, 46)
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_xy8xx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.2907, 1.14213, -9.81445)
