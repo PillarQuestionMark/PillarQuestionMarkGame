@@ -1,0 +1,69 @@
+[gd_scene load_steps=13 format=3 uid="uid://c5vhpdwuc7upw"]
+
+[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_0qdb0"]
+[ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="1_5a5w0"]
+[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="1_6yinu"]
+[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="2_1c70o"]
+[ext_resource type="PackedScene" uid="uid://khi3iwtx6nts" path="res://Scenes/islands/volcano/volcano-dungeon/VolcanoDungeon.blend" id="5_yq8t0"]
+[ext_resource type="Script" path="res://Components/checkpoint.gd" id="6_2x37u"]
+[ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="6_cvtaa"]
+[ext_resource type="Environment" uid="uid://bhpuf5nuk7duo" path="res://Scenes/islands/volcano/volcano-dungeon/volcano_environment.tres" id="7_6ubbv"]
+[ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="8_5mv10"]
+
+[sub_resource type="Curve" id="Curve_qdhwp"]
+resource_local_to_scene = true
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jlg4q"]
+size = Vector3(6, 3, 6)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_oa630"]
+
+[node name="VolcanoIsland" type="Node3D"]
+script = ExtResource("1_0qdb0")
+island_id = 10
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.907777, -0.367215, 0.202714, 0, 0.483282, 0.875464, -0.419452, -0.794727, 0.438713, 0, 0, 0)
+shadow_enabled = true
+
+[node name="GameplayUI" parent="." instance=ExtResource("1_5a5w0")]
+
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("1_6yinu")]
+Transparency_Curve = SubResource("Curve_qdhwp")
+Camera = NodePath("FollowCamera")
+
+[node name="FollowCamera" parent="Player" instance=ExtResource("2_1c70o")]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2, 0)
+max_pitch = 80.0
+min_pitch = -80.0
+
+[node name="Geo" type="Node3D" parent="."]
+
+[node name="VolcanoDungeon" parent="Geo" instance=ExtResource("5_yq8t0")]
+
+[node name="Checkpoints" type="Node3D" parent="Geo"]
+
+[node name="Checkpoint0" type="Area3D" parent="Geo/Checkpoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("6_2x37u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geo/Checkpoints/Checkpoint0"]
+shape = SubResource("BoxShape3D_jlg4q")
+
+[node name="KillPlane" parent="." instance=ExtResource("6_cvtaa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillPlane"]
+shape = SubResource("WorldBoundaryShape3D_oa630")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("7_6ubbv")
+
+[node name="Ability Mural" parent="." instance=ExtResource("8_5mv10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.18234, -36.5466)
+dialogue = Array[String](["grapple unlocked!", "Use Q to grapple to highlighted points!"])
+unlock = "grapple"
