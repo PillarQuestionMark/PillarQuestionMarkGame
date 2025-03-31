@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b0a6ifjctwbqj"]
+[gd_scene load_steps=22 format=3 uid="uid://b0a6ifjctwbqj"]
 
 [ext_resource type="PackedScene" uid="uid://co1p57wfy7aj0" path="res://Scenes/islands/jungle/jungle.blend" id="1_2e48r"]
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_frwy3"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://pjsdnytstg65" path="res://Scenes/islands/jungle/sundial.tscn" id="9_bg47i"]
 [ext_resource type="PackedScene" uid="uid://ud6x3emfmcnt" path="res://Components/trigger_animation.tscn" id="9_n60wo"]
 [ext_resource type="PackedScene" uid="uid://ch0xma4bou77p" path="res://Entities/Flame/flame.tscn" id="9_tei3l"]
+[ext_resource type="PackedScene" uid="uid://cdwnjdsfrrav5" path="res://Components/sign.tscn" id="10_68wsm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5dsaw"]
 sky_top_color = Color(0.929412, 0.666667, 0.639216, 1)
@@ -356,7 +357,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 6, 77)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 17, 86)
 
 [node name="BouncyMushroom3" parent="jungle" instance=ExtResource("4_lu4s8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 38, 44)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 36, 44)
 
 [node name="Sea" type="MeshInstance3D" parent="jungle"]
 mesh = SubResource("PlaneMesh_m1w0t")
@@ -381,8 +382,12 @@ color = Color(0.764706, 0.235294, 0.25098, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7, 70)
 flame_name = "That doesn't look good...."
 
+[node name="Sign" parent="jungle" instance=ExtResource("10_68wsm")]
+transform = Transform3D(-0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, -0.939693, 8.0081, 21, -15.1541)
+dialogue = Array[String](["sign: you can bounce on small mushrooms by holding jump as you land on them.", "sign: when in doubt, mushroom it out!"])
+
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_xy8xx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.2907, 91.142, 188.186)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2907, 2.142, -12.814)
 Camera = NodePath("FollowCamera")
 
 [node name="FollowCamera" parent="Player" instance=ExtResource("3_fceu4")]
