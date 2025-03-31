@@ -2,8 +2,8 @@ class_name BouncyMushroom extends Node3D
 ## Bouncy Mushrooms will bounce the player who lands on them, with height depending on player movement.
 
 @export var bounce_height : float = 10 ## Default bounce without any input.
-@export var jump_height : float = 20 ## Bounce height when pressing jump.
-@export var slam_height : float = 40 ## Bounce height when slamming.
+@export var jump_height : float = 30 ## Bounce height when pressing jump.
+@export var slam_height : float = 50 ## Bounce height when slamming.
 @export var slam_only : bool = false ## Slam only means a mushroom will not bounce player unless they slam.
 
 # Called when the node enters the scene tree for the first time.

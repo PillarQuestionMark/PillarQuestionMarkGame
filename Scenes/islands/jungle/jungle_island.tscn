@@ -51,13 +51,25 @@ shadow_enabled = true
 [node name="jungle" parent="." instance=ExtResource("1_2e48r")]
 
 [node name="BouncyMushroom" parent="jungle" instance=ExtResource("4_lu4s8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 51, 78)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 53, 78)
 
 [node name="BouncyMushroom2" parent="jungle" instance=ExtResource("4_lu4s8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26, 53)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 26, 50)
+
+[node name="BouncyMushroom5" parent="jungle" instance=ExtResource("4_lu4s8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 19, -16)
+
+[node name="BouncyMushroom4" parent="jungle" instance=ExtResource("4_lu4s8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 6, 83)
+
+[node name="BouncyMushroom7" parent="jungle" instance=ExtResource("4_lu4s8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 6, 77)
+
+[node name="BouncyMushroom6" parent="jungle" instance=ExtResource("4_lu4s8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 17, 86)
 
 [node name="BouncyMushroom3" parent="jungle" instance=ExtResource("4_lu4s8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38, 46)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 38, 44)
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_xy8xx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.2907, 1.14213, -9.81445)
