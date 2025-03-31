@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dmwlaf2f3cmd4"]
+[gd_scene load_steps=39 format=3 uid="uid://dmwlaf2f3cmd4"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_wbxxr"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_4qj5t"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="4_c2hl0"]
 [ext_resource type="PackedScene" uid="uid://daqo3a6ove7qf" path="res://Components/flame_lever.tscn" id="5_d0sa3"]
 [ext_resource type="PackedScene" uid="uid://dc1evxye2jpsn" path="res://Entities/Boat.tscn" id="5_kogkr"]
+[ext_resource type="PackedScene" uid="uid://cptp7rk873w5s" path="res://Entities/turtle_npc.tscn" id="5_og27u"]
 [ext_resource type="PackedScene" uid="uid://dbwr3lokvosdn" path="res://Scenes/props/lantern/square_lantern.tscn" id="8_55b45"]
 [ext_resource type="PackedScene" uid="uid://btmje4fgwjpmy" path="res://Scenes/islands/ruins/ruins.blend" id="8_kouu0"]
 [ext_resource type="PackedScene" uid="uid://ch0xma4bou77p" path="res://Entities/Flame/flame.tscn" id="9_8qidy"]
@@ -149,7 +150,10 @@ shadow_enabled = true
 [node name="Terrain" type="Node3D" parent="."]
 
 [node name="ruins" parent="." instance=ExtResource("8_kouu0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.52806, -3.95094, 5.69067)
+
+[node name="TurtleNPC" parent="ruins" instance=ExtResource("5_og27u")]
+transform = Transform3D(0.746174, 0, -0.665751, 0, 1, 0, 0.665751, 0, 0.746174, 31.079, 11.9804, -10.6444)
 
 [node name="Boat" parent="ruins" instance=ExtResource("5_kogkr")]
 transform = Transform3D(0.678724, -0.0308532, -0.733745, -0.0260723, 0.997475, -0.0660599, 0.733931, 0.0639668, 0.676205, 14.3987, 1.4, -0.362618)

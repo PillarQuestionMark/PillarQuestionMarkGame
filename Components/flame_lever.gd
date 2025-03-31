@@ -26,8 +26,9 @@ func _on_interactable_on_interacting() -> void:
 			animator.play("flip_on")
 			
 		is_on = not is_on
-	
+		
 		EventBus.trigger.emit(trigger)
+		AudioManager.play_fx("lever")
 	else:
 		EventBus.dialogue.emit(fail_dialogue)
 	
