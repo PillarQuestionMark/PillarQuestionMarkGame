@@ -46,12 +46,7 @@ var can_dash : bool = true
 
 var wall_slide_unlocked : bool = true
 
-var jumps_left : int = 0 : # how many jumps left
-	set(value):
-		jumps_left = value
-		print("rn:", jumps_left)
-	get:
-		return jumps_left
+var jumps_left : int = 0 # how many jumps left
 
 var slamjump_unlocked : bool = true
 

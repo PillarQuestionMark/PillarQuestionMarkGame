@@ -18,7 +18,6 @@ func update(_delta: float) -> void:
 func physics_update(_delta: float) -> void:
 	## jump held mechanic
 	if (jump_held && Input.is_action_pressed("jump")):
-		print("rn held")
 		player.velocity += held_boost
 		held_boost *= player.Jump_Held_Decay ## diminishing returns for holding jump boost
 	else:
