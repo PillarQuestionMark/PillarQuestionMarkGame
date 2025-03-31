@@ -16,7 +16,7 @@ func physics_update(_delta: float) -> void:
 ## Called by the state machine upon changing the active state. The `data` parameter
 ## is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(previous_state_path: String, data := {}) -> void:
-	player.jump_sound.play()
+	AudioManager.play_fx("jump")
 	player.velocity.y = player.Slam_Jump_Impulse
 	finished.emit(FALLING)
 
