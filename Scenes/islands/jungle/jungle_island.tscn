@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b0a6ifjctwbqj"]
+[gd_scene load_steps=21 format=3 uid="uid://b0a6ifjctwbqj"]
 
 [ext_resource type="PackedScene" uid="uid://co1p57wfy7aj0" path="res://Scenes/islands/jungle/jungle.blend" id="1_2e48r"]
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_frwy3"]
@@ -7,34 +7,313 @@
 [ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="3_fceu4"]
 [ext_resource type="PackedScene" uid="uid://kqx2i4sjvw3d" path="res://Obstacles/BouncyMushroom.tscn" id="4_lu4s8"]
 [ext_resource type="PackedScene" uid="uid://dc1evxye2jpsn" path="res://Entities/Boat.tscn" id="6_w83nn"]
+[ext_resource type="Material" uid="uid://b3jkbbiy1o5ug" path="res://Scenes/islands/jungle/sea_material.tres" id="7_g4wqb"]
+[ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="8_n2abm"]
+[ext_resource type="PackedScene" uid="uid://pjsdnytstg65" path="res://Scenes/islands/jungle/sundial.tscn" id="9_bg47i"]
+[ext_resource type="PackedScene" uid="uid://ud6x3emfmcnt" path="res://Components/trigger_animation.tscn" id="9_n60wo"]
+[ext_resource type="PackedScene" uid="uid://ch0xma4bou77p" path="res://Entities/Flame/flame.tscn" id="9_tei3l"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7pmkp"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5dsaw"]
 sky_top_color = Color(0.929412, 0.666667, 0.639216, 1)
 sky_horizon_color = Color(0.929412, 0.666667, 0.639216, 1)
 ground_bottom_color = Color(0.239216, 0.501961, 0.639216, 1)
-ground_horizon_color = Color(0.239216, 0.501961, 0.639216, 1)
+ground_horizon_color = Color(0.552941, 0.6, 0.643137, 1)
 
-[sub_resource type="Sky" id="Sky_8d7fk"]
-sky_material = SubResource("ProceduralSkyMaterial_7pmkp")
+[sub_resource type="Sky" id="Sky_odc2v"]
+sky_material = SubResource("ProceduralSkyMaterial_5dsaw")
 
-[sub_resource type="Environment" id="Environment_p6coe"]
+[sub_resource type="Environment" id="Environment_056qj"]
 background_mode = 2
-sky = SubResource("Sky_8d7fk")
+sky = SubResource("Sky_odc2v")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.25
 tonemap_mode = 2
 ssao_enabled = true
-glow_enabled = true
-fog_enabled = true
-fog_mode = 1
-fog_light_color = Color(0.239216, 0.501961, 0.639216, 1)
-fog_density = 0.7
-fog_sky_affect = 0.0
-fog_height = -1.0
-fog_height_density = 0.1
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0
+
+[sub_resource type="Animation" id="Animation_cwfr6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("jungle/Sea:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WorldEnvironment:environment:ambient_light_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DirectionalLight3D:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DirectionalLight3D:light_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WorldEnvironment:environment:ambient_light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.25]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DirectionalLight3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.785398, 1.8326, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("jungle/Sea:mesh:material:albedo_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.239216, 0.501961, 0.639216, 0.870588)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_top_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.929412, 0.666667, 0.639216, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_horizon_color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.929412, 0.666667, 0.639216, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WorldEnvironment:environment:sky:sky_material:ground_bottom_color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.239216, 0.501961, 0.639216, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("WorldEnvironment:environment:sky:sky_material:ground_horizon_color")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.552941, 0.6, 0.643137, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3ute6"]
+resource_name = "change_time"
+length = 10.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("jungle/Sea:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -20, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WorldEnvironment:environment:ambient_light_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DirectionalLight3D:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DirectionalLight3D:light_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.882353, 0.658824, 0.270588, 1), Color(0.894118, 0.447059, 0.34902, 1), Color(0.764706, 0.235294, 0.25098, 1), Color(0.360784, 0.227451, 0.435294, 1), Color(0.101961, 0.121569, 0.180392, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WorldEnvironment:environment:ambient_light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.25, 0.1]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DirectionalLight3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.785398, 1.8326, 0), Vector3(-0.0277412, 2.87548, -0.0753156)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("jungle/Sea:mesh:material:albedo_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.239216, 0.501961, 0.639216, 0.870588), Color(0.184314, 0.298039, 0.423529, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_top_color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.929412, 0.666667, 0.639216, 1), Color(0.882353, 0.658824, 0.270588, 1), Color(0.894118, 0.447059, 0.34902, 1), Color(0.764706, 0.235294, 0.25098, 1), Color(0.360784, 0.227451, 0.435294, 1), Color(0.101961, 0.121569, 0.180392, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WorldEnvironment:environment:sky:sky_material:sky_horizon_color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 5, 8, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.929412, 0.666667, 0.639216, 1), Color(0.882353, 0.658824, 0.270588, 1), Color(0.894118, 0.447059, 0.34902, 1), Color(0.101961, 0.121569, 0.180392, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WorldEnvironment:environment:sky:sky_material:ground_bottom_color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.239216, 0.501961, 0.639216, 1), Color(0.101961, 0.121569, 0.180392, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("WorldEnvironment:environment:sky:sky_material:ground_horizon_color")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.552941, 0.6, 0.643137, 1), Color(0.101961, 0.121569, 0.180392, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_20eme"]
+_data = {
+"RESET": SubResource("Animation_cwfr6"),
+"change_time": SubResource("Animation_3ute6")
+}
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_m1w0t"]
+material = ExtResource("7_g4wqb")
+size = Vector2(100000, 100000)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_qxi7j"]
 
 [node name="JungleIsland" type="Node3D"]
 script = ExtResource("1_frwy3")
@@ -42,11 +321,19 @@ script = ExtResource("1_frwy3")
 [node name="GameplayUI" parent="." instance=ExtResource("2_6hyr4")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_p6coe")
+environment = SubResource("Environment_056qj")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.720684, -0.681256, 0.128476, 0.118781, 0.30392, 0.945264, -0.683013, -0.665976, 0.29995, 5, 5, 5)
+transform = Transform3D(-0.258823, -0.683012, 0.683012, 0, 0.707107, 0.707107, -0.965925, 0.183016, -0.183016, 5, 63, 5)
 shadow_enabled = true
+sky_mode = 1
+
+[node name="SundialTriggerAnimation" parent="." instance=ExtResource("9_n60wo")]
+libraries = {
+"": SubResource("AnimationLibrary_20eme")
+}
+trigger = "sundial"
+animation = "change_time"
 
 [node name="jungle" parent="." instance=ExtResource("1_2e48r")]
 
@@ -71,8 +358,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 17, 86)
 [node name="BouncyMushroom3" parent="jungle" instance=ExtResource("4_lu4s8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 38, 44)
 
+[node name="Sea" type="MeshInstance3D" parent="jungle"]
+mesh = SubResource("PlaneMesh_m1w0t")
+skeleton = NodePath("../..")
+
+[node name="KillPlane" parent="jungle/Sea" instance=ExtResource("8_n2abm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="jungle/Sea/KillPlane"]
+shape = SubResource("WorldBoundaryShape3D_qxi7j")
+
+[node name="Sundial" parent="jungle" instance=ExtResource("9_bg47i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 86, 195)
+trigger = "sundial"
+
+[node name="Flame" parent="jungle" instance=ExtResource("9_tei3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 103, 195)
+flame_name = "Awesome!!"
+color = Color(0.764706, 0.235294, 0.25098, 1)
+
+[node name="Flame2" parent="jungle" instance=ExtResource("9_tei3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7, 70)
+flame_name = "That doesn't look good...."
+
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_xy8xx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.2907, 104.142, 188.186)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.2907, 91.142, 188.186)
 Camera = NodePath("FollowCamera")
 
 [node name="FollowCamera" parent="Player" instance=ExtResource("3_fceu4")]

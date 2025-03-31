@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bwx2ehvpyfw7x"
-path="res://.godot/imported/lighthouse.blend-04b66fc64bca04101729d0416ef1b86f.scn"
+uid="uid://x1wynaxku77h"
+path="res://.godot/imported/sundial.blend-48485c8b893d2801bbbf994150142220.scn"
 
 [deps]
 
-source_file="res://Scenes/islands/lighthouse/lighthouse.blend"
-dest_files=["res://.godot/imported/lighthouse.blend-04b66fc64bca04101729d0416ef1b86f.scn"]
+source_file="res://Scenes/islands/jungle/sundial.blend"
+dest_files=["res://.godot/imported/sundial.blend-48485c8b893d2801bbbf994150142220.scn"]
 
 [params]
 
