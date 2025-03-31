@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwrgyw4a4tqca"]
+
+[ext_resource type="Script" path="res://Entities/Flame/spark.gd" id="1_p2hqt"]
+[ext_resource type="PackedScene" uid="uid://4pteeb4dmacl" path="res://Entities/Flame/spark_model.tscn" id="2_3chlk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_40345"]
+
+[sub_resource type="Animation" id="Animation_vh6ki"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_genww"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_54ina"]
+_data = {
+"RESET": SubResource("Animation_vh6ki"),
+"idle": SubResource("Animation_genww")
+}
+
+[node name="Spark" type="Area3D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_p2hqt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_40345")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.882353, 0.658824, 0.270588, 1)
+
+[node name="FlameModel" parent="." instance=ExtResource("2_3chlk")]
+skeleton = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_54ina")
+}
+autoplay = "idle"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

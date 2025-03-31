@@ -14,13 +14,15 @@ func update(_delta: float) -> void:
 ## Called by the state machine on the engine's physics update tick.
 func physics_update(_delta: float) -> void:
 	player.velocity = _direction * player.Dash_Speed
-		
+	
 	if (Input.is_action_just_pressed("jump") and player.jumps_left > 0):
 		player.jumps_left -= 1
 		if player.can_slamjump():
 			finished.emit(SLAMJUMPING)
 		else:
 			finished.emit(JUMPING)
+	elif (Input.is_action_just_pressed("grapple")):
+		finished.emit(GRAPPLING)
 	elif (Input.is_action_just_pressed("slam") && PlayerData.data["slam_unlocked"]):
 		finished.emit(SLAMMING)
 	elif (Input.is_action_just_pressed("interact")):

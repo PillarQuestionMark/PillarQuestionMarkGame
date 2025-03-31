@@ -6,6 +6,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	get_tree().paused = true
+	AudioManager.play_fx("flame_collect")
 	%FlameName.text = flame_name
 	(%FlameName.label_settings as LabelSettings).font_color = flame_color
 	%FlameModel.color = flame_color

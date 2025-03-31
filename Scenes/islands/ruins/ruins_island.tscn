@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dmwlaf2f3cmd4"]
+[gd_scene load_steps=46 format=3 uid="uid://dmwlaf2f3cmd4"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_wbxxr"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_4qj5t"]
@@ -27,6 +27,8 @@
 [ext_resource type="Material" uid="uid://dj7nono3qn7hb" path="res://Scenes/props/lantern/lantern_material_on_e47259.tres" id="16_khp1a"]
 [ext_resource type="Material" uid="uid://7m66o5pyoqe" path="res://Scenes/props/lantern/lantern_material_on_b49d7e.tres" id="17_g5ihq"]
 [ext_resource type="Material" uid="uid://cp1us0nug7k3m" path="res://Scenes/props/lantern/lantern_material_on_7e659b.tres" id="19_djfiq"]
+[ext_resource type="PackedScene" uid="uid://cj3ku0n0t8fw5" path="res://Components/grappleablePoint.tscn" id="28_4p48d"]
+[ext_resource type="Material" uid="uid://b4cigyte4lppr" path="res://Assets/Materials/GrappleInactive.tres" id="28_jcvbb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o1wxf"]
 sky_top_color = Color(0.929412, 0.666667, 0.639216, 1)
@@ -131,8 +133,29 @@ albedo = Color(0.101961, 0.121569, 0.180392, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_i3wrv"]
 size = Vector3(6, 3, 2)
 
+[sub_resource type="SphereMesh" id="SphereMesh_lfg2b"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mw07j"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_levhq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iyjme"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_uwljf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t1ah8"]
+
 [node name="RuinsIsland" type="Node3D"]
 script = ExtResource("1_wbxxr")
+
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_4qj5t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3, 1)
+Camera = NodePath("FollowCamera")
+
+[node name="FollowCamera" parent="Player" instance=ExtResource("3_qrmmi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+max_pitch = 80.0
+min_pitch = -80.0
 
 [node name="GameplayUI" parent="." instance=ExtResource("4_c2hl0")]
 
@@ -369,9 +392,34 @@ scene = "res://Scenes/islands/island0/Dungeon0.tscn"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_i3wrv")
 
-[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_4qj5t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3, 1)
-Camera = NodePath("FollowCamera")
+[node name="GrapplePointTest" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5758, 37.8197, -9.10109)
+material_override = ExtResource("28_jcvbb")
+mesh = SubResource("SphereMesh_lfg2b")
 
-[node name="FollowCamera" parent="Player" instance=ExtResource("3_qrmmi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+[node name="GrappleablePoint1" parent="GrapplePointTest" instance=ExtResource("28_4p48d")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrapplePointTest/GrappleablePoint1"]
+shape = SubResource("SphereShape3D_mw07j")
+
+[node name="GrapplePointTest2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0192804, 29.8239, -30.9651)
+material_override = ExtResource("28_jcvbb")
+ignore_occlusion_culling = true
+mesh = SubResource("SphereMesh_levhq")
+
+[node name="GrappleablePoint2" parent="GrapplePointTest2" instance=ExtResource("28_4p48d")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrapplePointTest2/GrappleablePoint2"]
+shape = SubResource("SphereShape3D_iyjme")
+
+[node name="GrapplePointTest3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1859, 22.2111, -27.4008)
+material_override = ExtResource("28_jcvbb")
+mesh = SubResource("SphereMesh_uwljf")
+
+[node name="GrappleablePoint3" parent="GrapplePointTest3" instance=ExtResource("28_4p48d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00100321, -1.90735e-06, 0.00414601)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrapplePointTest3/GrappleablePoint3"]
+shape = SubResource("SphereShape3D_t1ah8")
