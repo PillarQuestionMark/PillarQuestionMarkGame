@@ -72,7 +72,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 17, 86)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 38, 44)
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_xy8xx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.2907, 1.14213, -9.81445)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.2907, 104.142, 188.186)
 Camera = NodePath("FollowCamera")
 
 [node name="FollowCamera" parent="Player" instance=ExtResource("3_fceu4")]
