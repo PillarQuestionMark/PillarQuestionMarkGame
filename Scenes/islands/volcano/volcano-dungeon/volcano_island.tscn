@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c5vhpdwuc7upw"]
+[gd_scene load_steps=16 format=3 uid="uid://c5vhpdwuc7upw"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_0qdb0"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="1_5a5w0"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="6_cvtaa"]
 [ext_resource type="Environment" uid="uid://bhpuf5nuk7duo" path="res://Scenes/islands/volcano/volcano-dungeon/volcano_environment.tres" id="7_6ubbv"]
 [ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="8_5mv10"]
+[ext_resource type="Script" path="res://Scenes/islands/volcano/volcano-dungeon/riser/lava_riser.gd" id="11_y46vl"]
 
 [sub_resource type="Curve" id="Curve_qdhwp"]
 resource_local_to_scene = true
@@ -22,9 +23,15 @@ size = Vector3(6, 3, 6)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_oa630"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_e5a7i"]
+radius = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3n8v1"]
+top_radius = 2.0
+bottom_radius = 2.2
+
 [node name="VolcanoIsland" type="Node3D"]
 script = ExtResource("1_0qdb0")
-island_id = 10
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.907777, -0.367215, 0.202714, 0, 0.483282, 0.875464, -0.419452, -0.794727, 0.438713, 0, 0, 0)
@@ -67,3 +74,15 @@ environment = ExtResource("7_6ubbv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.18234, -36.5466)
 dialogue = Array[String](["grapple unlocked!", "Use Q to grapple to highlighted points!"])
 unlock = "grapple"
+
+[node name="LavaRiser1" type="AnimatableBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+script = ExtResource("11_y46vl")
+maxHeight = 30.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LavaRiser1"]
+shape = SubResource("CylinderShape3D_e5a7i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LavaRiser1"]
+mesh = SubResource("CylinderMesh_3n8v1")
+skeleton = NodePath("../CollisionShape3D")

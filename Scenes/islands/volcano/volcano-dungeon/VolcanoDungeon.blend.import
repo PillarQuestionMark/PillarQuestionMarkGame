@@ -49,8 +49,7 @@ _subresources={
 "generate/physics": true
 },
 "PATH:Cylinder": {
-"generate/physics": true,
-"import/skip_import": true
+"generate/physics": true
 },
 "PATH:Sphere": {
 "import/skip_import": true
