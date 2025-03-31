@@ -1,20 +1,43 @@
 class_name Player extends CharacterBody3D
 @export_group("Movement")
-@export_range(0.0, 100.0, 0.1) var Jump_Impulse : float = 25.0
-@export_range(0.0, 100.0, 0.1) var Slam_Jump_Impulse : float = 40.0
+
+@export_subgroup("Jumping")
+@export_range(0.0, 100.0, 0.1) var Jump_Impulse : float = 2.0
+@export_range(0.0, 1.0, 0.05) var Jump_Held_Decay : float = 0.6
+@export_range(0.0, 100.0, 0.1) var Jump_Held_Strength : float = 10.0
+@export_range(0.0, 100.0, 0.1) var Slam_Jump_Impulse : float = 15.0
+
+@export_subgroup("Falling")
+@export_range(0.0, 1.0, 0.05) var Coyote_Time : float = 0.1
+@export_range(-100.0, 0.0, 0.5) var Gravity : float = -50.0
+
+@export_subgroup("Speed")
 @export_range(0.0, 100.0, 0.1) var Air_Speed : float = 10.0
 @export_range(0.0, 100.0, 0.1) var Walk_Speed : float = 10.0
 @export_range(0.0, 100.0, 0.1) var Sprint_Speed : float = 20.0
+
+@export_subgroup("Drag")
 @export_range(0.0, 1.0, 0.01) var Ground_Drag : float = 0.4
 @export_range(0.0, 1.0, 0.01) var Air_Drag : float = 0.04
-@export_range(-100.0, 0.0, 0.5) var Gravity : float = -50.0
+
+@export_subgroup("Rotation")
 @export_range(0.0, 100) var Rotation_Speed : float = 10.0
 @export_range(0.0, 5) var Rotation_Flux : float = 2.0
+
+@export_subgroup("Dash")
 @export_range(0.0, 2.0, 0.05) var Dash_Length : float = 0.1
 @export_range(0.0, 100, 1) var Dash_Speed : float = 50
+
+@export_subgroup("Slam")
 @export_range(0.0, 100, 1) var Slam_Gravity_Factor : float = 20
+
+@export_subgroup("Slide")
 @export_range(0.0, 100, 1) var Slide_Gravity_Factor : float = 10
 @export_range(0.0, 100, 1) var Wall_Kick : float = 20
+
+@export_subgroup("Grapple")
+@export_range(0.1, 100.0, 0.1) var Grapple_Speed : float = 25.0
+
 @export_group("Camera")
 @export var Transparency_Curve : Curve
 @export var Camera : SpringArm3D
@@ -27,7 +50,8 @@ var jumps_left : int = 0 # how many jumps left
 
 var slamjump_unlocked : bool = true
 
-@onready var jump_sound: AudioStreamPlayer = %AudioStreamPlayer
+@onready var state_machine : StateMachine = $StateMachine
+
 @onready var wall_slide_particles: GPUParticles3D = %WallSlideParticles
 @onready var mesh : MeshInstance3D = $Pivot/MeshInstance3D
 
@@ -37,6 +61,7 @@ var slamjump_unlocked : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(Camera != null, "The Player Node requires a Camera of type Node3D to find its bearings")
+	@warning_ignore("unused_parameter")
 	EventBus.dialogue.connect(func(dialogue: Array[String]):
 		$StateMachine.state.finished.emit("Dialogue")
 	)
@@ -55,12 +80,24 @@ func _ready():
 		$StateMachine.state.finished.emit("Idle")
 	)
 
-func _process(delta : float) -> void:
+func _process(_delta : float) -> void:
 	mesh.transparency = Transparency_Curve.sample(Camera.get_hit_length() / Camera.spring_length)
-	
 	## REMOVE LATER. FOR NOW, JUST TO TEST DEATH
 	if Input.is_action_just_pressed("kys"):
 		die()
+	if Input.is_action_just_pressed("flames"):
+		list_flames()
+		
+func list_flames() -> void:
+	print("signaling glorp... flames list:")
+	for island in [0, -1]:
+		var collected_flames = PlayerData.get_island_flames(island)
+		print("Island " + str(island) + " ... " + str(collected_flames.size()) + "/" + str(FlameIndex.island_total_flames(island)))
+		for flame in FlameIndex.get_flame_ids(island):
+			if (collected_flames.has(float(flame))):
+				print("- " + FlameIndex.get_flame_name(island, flame))
+			else:
+				print("- ???")
 
 
 func get_move_direction() -> Vector3:
@@ -82,6 +119,11 @@ func apply_speed_and_drag(speed : float, drag : float):
 func apply_gravity(delta : float, gravity : float = Gravity):
 	velocity.y += gravity * delta
 	
+## Returns the player's inventory instance
+func get_inventory() -> Node3D:
+	return $Inventory
+	
+## Returns the player's pivot instance
 func get_pivot() -> Node3D:
 	return $Pivot
 

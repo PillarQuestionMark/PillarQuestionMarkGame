@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3aeddxreoudm"]
+
+[ext_resource type="Texture2D" uid="uid://fnigmegxcqqy" path="res://Assets/aseprite/islandmap_boat.png" id="1_a5asa"]
+[ext_resource type="Script" path="res://Scenes/screens/change_island_screen/boat_icon.gd" id="1_tk6lf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1r1pe"]
+atlas = ExtResource("1_a5asa")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di4bt"]
+atlas = ExtResource("1_a5asa")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nh0qi"]
+atlas = ExtResource("1_a5asa")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0pjqd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1r1pe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di4bt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nh0qi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sjykp"]
+radius = 6.0
+height = 28.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_go8t8"]
+radius = 26.0768
+
+[node name="BoatIcon" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_tk6lf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_0pjqd")
+autoplay = "default"
+frame_progress = 0.257196
+offset = Vector2(0, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_sjykp")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_go8t8")

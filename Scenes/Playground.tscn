@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dgw6sfwqiwerc"]
+[gd_scene load_steps=35 format=3 uid="uid://dgw6sfwqiwerc"]
 
 [ext_resource type="PackedScene" uid="uid://ud6x3emfmcnt" path="res://Components/trigger_animation.tscn" id="1_l8skm"]
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_yxky3"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="6_rtf4h"]
 [ext_resource type="PackedScene" uid="uid://b5qmrt8ec1cjv" path="res://Entities/example_npc.tscn" id="8_ynql4"]
 [ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="9_hll6e"]
+[ext_resource type="ArrayMesh" uid="uid://d1u6ugp6do72w" path="res://Assets/Meshes/SpikeMesh.tres" id="13_8dx5g"]
 [ext_resource type="PackedScene" uid="uid://dc1evxye2jpsn" path="res://Entities/Boat.tscn" id="15_ggb0t"]
 [ext_resource type="PackedScene" uid="uid://cftk8sgcrsuv0" path="res://Obstacles/SpikeFloor.tscn" id="15_twh6u"]
 
@@ -34,7 +35,7 @@ ssao_enabled = true
 glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3ejr"]
-albedo_color = Color(0.898039, 0.937255, 0.937255, 1)
+albedo_color = Color(0.542982, 0.667354, 0.739045, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yait4"]
 size = Vector3(4, 7, 4)
@@ -373,6 +374,12 @@ albedo_color = Color(0.239216, 0.501961, 0.639216, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dc2v7"]
 size = Vector3(8.30118, 4.58887, 9.11023)
 
+[sub_resource type="MultiMesh" id="MultiMesh_i60p5"]
+transform_format = 1
+instance_count = 16
+mesh = ExtResource("13_8dx5g")
+buffer = PackedFloat32Array(1, 0, 0, 0.5, 0, 1, 0, 0, 0, 0, 1, 0.5, 1, 0, 0, 0.5, 0, 1, 0, 0, 0, 0, 1, 1.5, 1, 0, 0, 0.5, 0, 1, 0, 0, 0, 0, 1, 2.5, 1, 0, 0, 0.5, 0, 1, 0, 0, 0, 0, 1, 3.5, 1, 0, 0, 1.5, 0, 1, 0, 0, 0, 0, 1, 0.5, 1, 0, 0, 1.5, 0, 1, 0, 0, 0, 0, 1, 1.5, 1, 0, 0, 1.5, 0, 1, 0, 0, 0, 0, 1, 2.5, 1, 0, 0, 1.5, 0, 1, 0, 0, 0, 0, 1, 3.5, 1, 0, 0, 2.5, 0, 1, 0, 0, 0, 0, 1, 0.5, 1, 0, 0, 2.5, 0, 1, 0, 0, 0, 0, 1, 1.5, 1, 0, 0, 2.5, 0, 1, 0, 0, 0, 0, 1, 2.5, 1, 0, 0, 2.5, 0, 1, 0, 0, 0, 0, 1, 3.5, 1, 0, 0, 3.5, 0, 1, 0, 0, 0, 0, 1, 0.5, 1, 0, 0, 3.5, 0, 1, 0, 0, 0, 0, 1, 1.5, 1, 0, 0, 3.5, 0, 1, 0, 0, 0, 0, 1, 2.5, 1, 0, 0, 3.5, 0, 1, 0, 0, 0, 0, 1, 3.5)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g5f1x"]
 albedo_color = Color(0.898039, 0.937255, 0.937255, 1)
 
@@ -414,7 +421,7 @@ size = Vector3(4, 5, 4)
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.51953, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.52, 4)
 use_collision = true
 size = Vector3(4, 9, 4)
 material = SubResource("StandardMaterial3D_x3ejr")
@@ -695,7 +702,7 @@ depth = 8.0
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="Fragment" type="AnimatableBody3D" parent="Geometry"]
-transform = Transform3D(-0.00675595, 0.0689383, -0.997598, -0.999394, 0.0336087, 0.00909062, 0.0341546, 0.997055, 0.0686694, -6.43581, 37.4142, -85.9073)
+transform = Transform3D(-0.00675595, 0.0689383, -0.997598, -0.999394, 0.0336087, 0.00909061, 0.0341546, 0.997055, 0.0686694, -6.43581, 37.4142, -85.9073)
 sync_to_physics = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Geometry/Fragment"]
@@ -963,23 +970,17 @@ shape = SubResource("BoxShape3D_dc2v7")
 
 [node name="Flame" parent="." groups=["flames"] instance=ExtResource("4_4gtea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51791, 25.3908, -108.287)
-collision_layer = 8
-collision_mask = 2
 flame_name = "Aqueduct"
 color = Color(0, 0.788936, 0.893223, 1)
 
 [node name="Flame2" parent="." groups=["flames"] instance=ExtResource("4_4gtea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51791, 42.173, -21.7444)
-collision_layer = 8
-collision_mask = 2
 id = 1
 flame_name = "Cubes"
 color = Color(0.837957, 0.616061, 0.83013, 1)
 
 [node name="Flame3" parent="." groups=["flames"] instance=ExtResource("4_4gtea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.919, 21.9953, 17.9254)
-collision_layer = 8
-collision_mask = 2
 id = 2.0
 flame_name = "Castle Walls"
 color = Color(0.505449, 0.802076, 0, 1)
@@ -991,10 +992,10 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17, 21
 dialogue = Array[String](["stranger: the lawn is looking extra green today!", "you: ...", "stranger: don't wander too far! you'll fall off the edge."])
 
 [node name="SpikeFloor" parent="." instance=ExtResource("15_twh6u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
-spikeScale = 0.5
-spikeRows = 4
-spikeColumns = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.03, 6)
+multimesh = SubResource("MultiMesh_i60p5")
+xSize = 4.0
+zSize = 4.0
 
 [node name="Ability Mural" parent="." instance=ExtResource("6_rtf4h")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -15, 3, -10)
@@ -1005,7 +1006,7 @@ unlock = "double_jump"
 transform = Transform3D(0.932014, -0.0297404, 0.361199, 0, 0.996627, 0.0820603, -0.362422, -0.0764813, 0.928871, -4.59106, -12.6479, 50.2878)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(0.856644, 0.229408, -0.462097, -0.475451, 0.698751, -0.534504, 0.200271, 0.677583, 0.707653, 0.391769, -14.0383, 77.5182)
+transform = Transform3D(-0.0871331, 0.428159, -0.899494, 0, 0.902927, 0.429794, 0.996197, 0.0374492, -0.0786749, 0.391769, -14.0383, 77.5182)
 size = Vector3(4, 4, 4)
 material = SubResource("StandardMaterial3D_g5f1x")
 

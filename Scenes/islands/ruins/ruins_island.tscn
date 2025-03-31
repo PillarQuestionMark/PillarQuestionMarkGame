@@ -1,0 +1,425 @@
+[gd_scene load_steps=46 format=3 uid="uid://dmwlaf2f3cmd4"]
+
+[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_wbxxr"]
+[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_4qj5t"]
+[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="3_qrmmi"]
+[ext_resource type="PackedScene" uid="uid://ud6x3emfmcnt" path="res://Components/trigger_animation.tscn" id="4_1uusq"]
+[ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="4_c2hl0"]
+[ext_resource type="PackedScene" uid="uid://daqo3a6ove7qf" path="res://Components/flame_lever.tscn" id="5_d0sa3"]
+[ext_resource type="PackedScene" uid="uid://dc1evxye2jpsn" path="res://Entities/Boat.tscn" id="5_kogkr"]
+[ext_resource type="PackedScene" uid="uid://dbwr3lokvosdn" path="res://Scenes/props/lantern/square_lantern.tscn" id="8_55b45"]
+[ext_resource type="PackedScene" uid="uid://btmje4fgwjpmy" path="res://Scenes/islands/ruins/ruins.blend" id="8_kouu0"]
+[ext_resource type="PackedScene" uid="uid://ch0xma4bou77p" path="res://Entities/Flame/flame.tscn" id="9_8qidy"]
+[ext_resource type="PackedScene" uid="uid://hhfqxwync0f2" path="res://Scenes/props/lantern/round_lantern.tscn" id="9_kopx0"]
+[ext_resource type="Material" uid="uid://dhuoe0ubbi6ku" path="res://Scenes/props/lantern/lantern_material_off_63c4cc.tres" id="10_xhuas"]
+[ext_resource type="Material" uid="uid://chmqd3xotty5j" path="res://Scenes/props/lantern/lantern_material_off_c33c40.tres" id="11_6qxph"]
+[ext_resource type="Material" uid="uid://bohrgao1qymp1" path="res://Scenes/props/lantern/lantern_material_on_c33c40.tres" id="11_kbx3r"]
+[ext_resource type="PackedScene" uid="uid://bfnog8bl0a8ej" path="res://Scenes/props/lantern/floor_lantern.tscn" id="11_xgfhs"]
+[ext_resource type="Material" uid="uid://b76b2cj57fqe7" path="res://Scenes/props/lantern/lantern_material_off_e1a845.tres" id="12_6mrf8"]
+[ext_resource type="PackedScene" uid="uid://dql4b8bulv1vi" path="res://Components/loading-zone.tscn" id="12_u475q"]
+[ext_resource type="LightmapGIData" uid="uid://bokhqwwpmemug" path="res://Scenes/islands/ruins/ruins_island.lmbake" id="12_w5b05"]
+[ext_resource type="Material" uid="uid://c81y8f6r4j56g" path="res://Scenes/props/lantern/lantern_material_on_e1a845.tres" id="13_mr3ie"]
+[ext_resource type="Material" uid="uid://dlcsckm6dkfud" path="res://Scenes/props/lantern/lantern_material_on_b23657.tres" id="13_tl4x8"]
+[ext_resource type="Material" uid="uid://nyf6ir4c8nyd" path="res://Scenes/props/lantern/lantern_material_off_94ad39.tres" id="14_upmg4"]
+[ext_resource type="Material" uid="uid://48xykaovfh8f" path="res://Scenes/props/lantern/lantern_material_on_63c4cc.tres" id="14_xadis"]
+[ext_resource type="Material" uid="uid://cj6x6vkwlwphw" path="res://Scenes/props/lantern/lantern_material_on_94ad39.tres" id="15_wossf"]
+[ext_resource type="Material" uid="uid://bwba7yyhtwxo6" path="res://Scenes/props/lantern/lantern_material_on_d16974.tres" id="16_68ie1"]
+[ext_resource type="Material" uid="uid://dj7nono3qn7hb" path="res://Scenes/props/lantern/lantern_material_on_e47259.tres" id="16_khp1a"]
+[ext_resource type="Material" uid="uid://7m66o5pyoqe" path="res://Scenes/props/lantern/lantern_material_on_b49d7e.tres" id="17_g5ihq"]
+[ext_resource type="Material" uid="uid://cp1us0nug7k3m" path="res://Scenes/props/lantern/lantern_material_on_7e659b.tres" id="19_djfiq"]
+[ext_resource type="PackedScene" uid="uid://cj3ku0n0t8fw5" path="res://Components/grappleablePoint.tscn" id="28_4p48d"]
+[ext_resource type="Material" uid="uid://b4cigyte4lppr" path="res://Assets/Materials/GrappleInactive.tres" id="28_jcvbb"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o1wxf"]
+sky_top_color = Color(0.929412, 0.666667, 0.639216, 1)
+sky_horizon_color = Color(0.929412, 0.666667, 0.639216, 1)
+ground_bottom_color = Color(0.239216, 0.501961, 0.639216, 1)
+ground_horizon_color = Color(0.239216, 0.501961, 0.639216, 1)
+
+[sub_resource type="Sky" id="Sky_8d7fk"]
+sky_material = SubResource("ProceduralSkyMaterial_o1wxf")
+
+[sub_resource type="Environment" id="Environment_2o6d4"]
+background_mode = 2
+sky = SubResource("Sky_8d7fk")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.25
+tonemap_mode = 2
+ssao_enabled = true
+glow_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.239216, 0.501961, 0.639216, 1)
+fog_density = 0.7
+fog_sky_affect = 0.0
+fog_height = -1.0
+fog_height_density = 0.1
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[sub_resource type="Animation" id="Animation_2lmvs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatableBody3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-11, 14, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatableBody3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vqvbg"]
+resource_name = "gate"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatableBody3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-11, 14, 1), Vector3(-11, 27, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatableBody3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.785398, 0, 0.785398)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_34hmx"]
+_data = {
+"RESET": SubResource("Animation_2lmvs"),
+"gate": SubResource("Animation_vqvbg")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_225ld"]
+albedo_color = Color(0.764706, 0.235294, 0.25098, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w6afg"]
+size = Vector3(6, 6, 6)
+
+[sub_resource type="FogMaterial" id="FogMaterial_v641q"]
+density = 2.0
+albedo = Color(0.101961, 0.121569, 0.180392, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i3wrv"]
+size = Vector3(6, 3, 2)
+
+[sub_resource type="SphereMesh" id="SphereMesh_lfg2b"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mw07j"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_levhq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iyjme"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_uwljf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t1ah8"]
+
+[node name="RuinsIsland" type="Node3D"]
+script = ExtResource("1_wbxxr")
+
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_4qj5t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 3, 1)
+Camera = NodePath("FollowCamera")
+
+[node name="FollowCamera" parent="Player" instance=ExtResource("3_qrmmi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+max_pitch = 80.0
+min_pitch = -80.0
+
+[node name="GameplayUI" parent="." instance=ExtResource("4_c2hl0")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2o6d4")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+light_data = ExtResource("12_w5b05")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.720684, -0.681256, 0.128476, 0.118781, 0.30392, 0.945264, -0.683013, -0.665976, 0.29995, 5, 5, 5)
+shadow_enabled = true
+
+[node name="Terrain" type="Node3D" parent="."]
+
+[node name="ruins" parent="." instance=ExtResource("8_kouu0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Boat" parent="ruins" instance=ExtResource("5_kogkr")]
+transform = Transform3D(0.678724, -0.0308532, -0.733745, -0.0260723, 0.997475, -0.0660599, 0.733931, 0.0639668, 0.676205, 14.3987, 1.4, -0.362618)
+
+[node name="Flame" parent="ruins" instance=ExtResource("9_8qidy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 9, 11)
+flame_name = "Arch-eologist"
+
+[node name="Flame2" parent="ruins" instance=ExtResource("9_8qidy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 13, 11)
+id = 1.0
+flame_name = "It's Beautiful Up Here"
+color = Color(0.894118, 0.447059, 0.34902, 1)
+
+[node name="Flame3" parent="ruins" instance=ExtResource("9_8qidy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 15, 1)
+id = 2.0
+color = Color(0.721569, 0.631373, 0.760784, 1)
+
+[node name="Flame4" parent="ruins" instance=ExtResource("9_8qidy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 35, 1)
+id = 3.0
+flame_name = "Sea Lord"
+color = Color(0.388235, 0.768627, 0.8, 1)
+
+[node name="Gate" type="Node3D" parent="ruins"]
+
+[node name="FlameLever" parent="ruins/Gate" instance=ExtResource("5_d0sa3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 1)
+trigger = "gate"
+flames_required = 3
+fail_dialogue = Array[String](["3 flames are required to raise the gate!"])
+
+[node name="TriggerAnimation" parent="ruins/Gate" instance=ExtResource("4_1uusq")]
+libraries = {
+"": SubResource("AnimationLibrary_34hmx")
+}
+trigger = "gate"
+animation = "gate"
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="ruins/Gate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 14, 1)
+sync_to_physics = false
+
+[node name="CSGBox3D" type="CSGBox3D" parent="ruins/Gate/AnimatableBody3D"]
+size = Vector3(6, 6, 6)
+material = SubResource("StandardMaterial3D_225ld")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ruins/Gate/AnimatableBody3D"]
+shape = SubResource("BoxShape3D_w6afg")
+
+[node name="PressFToInteract" type="Label3D" parent="ruins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 7, 1)
+billboard = 2
+text = "press [f] to interact"
+
+[node name="FishingHut" type="Node3D" parent="ruins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4, 18, -27.2)
+
+[node name="SquareLantern" parent="ruins/FishingHut" instance=ExtResource("8_55b45")]
+transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, -7.4, 0, -1.90735e-06)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = ExtResource("10_xhuas")
+material = ExtResource("10_xhuas")
+
+[node name="SquareLantern2" parent="ruins/FishingHut" instance=ExtResource("8_55b45")]
+transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 0, 0, -1.90735e-06)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = ExtResource("11_6qxph")
+material = ExtResource("11_6qxph")
+
+[node name="SquareLantern3" parent="ruins/FishingHut" instance=ExtResource("8_55b45")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -0.927494, 0, -1.90735e-06)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = ExtResource("12_6mrf8")
+material = ExtResource("12_6mrf8")
+
+[node name="RoundLantern" parent="ruins/FishingHut" instance=ExtResource("9_kopx0")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.2, 0, -1.90735e-06)
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("14_upmg4")
+surface_material_override/1 = null
+material = ExtResource("14_upmg4")
+
+[node name="Dungeon" type="Node3D" parent="ruins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 14, 1)
+
+[node name="SquareLantern4" parent="ruins/Dungeon" instance=ExtResource("8_55b45")]
+transform = Transform3D(0.642787, 0, 0.766045, 0, 1, 0, -0.766045, 0, 0.642787, -0.799999, 6, -10.1)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = ExtResource("11_kbx3r")
+on = true
+material = ExtResource("11_kbx3r")
+
+[node name="SquareLantern5" parent="ruins/Dungeon" instance=ExtResource("8_55b45")]
+transform = Transform3D(-0.0871561, 0, 0.996195, 0, 1, 0, -0.996195, 0, -0.0871561, -0.799999, 6, 4)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = ExtResource("13_tl4x8")
+on = true
+material = ExtResource("13_tl4x8")
+
+[node name="SquareLantern10" parent="ruins/Dungeon" instance=ExtResource("8_55b45")]
+transform = Transform3D(0.573576, 0, 0.819153, 0, 1, 0, -0.819153, 0, 0.573576, -1.3, 6, 5.5)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = ExtResource("11_kbx3r")
+on = true
+material = ExtResource("11_kbx3r")
+
+[node name="SquareLantern11" parent="ruins/Dungeon" instance=ExtResource("8_55b45")]
+transform = Transform3D(-0.173649, 0, 0.984808, 0, 1, 0, -0.984808, 0, -0.173649, -0.958155, 6, 12.0145)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = ExtResource("13_mr3ie")
+on = true
+material = ExtResource("13_mr3ie")
+
+[node name="SquareLantern6" parent="ruins/Dungeon" instance=ExtResource("8_55b45")]
+transform = Transform3D(-0.34202, 0, 0.939692, 0, 1, 0, -0.939692, 0, -0.34202, -0.299999, 6, -6.2)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = ExtResource("13_mr3ie")
+on = true
+material = ExtResource("13_mr3ie")
+
+[node name="SquareLantern7" parent="ruins/Dungeon" instance=ExtResource("8_55b45")]
+transform = Transform3D(-0.34202, 0, 0.939692, 0, 1, 0, -0.939692, 0, -0.34202, -9, 6, -12.5)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = ExtResource("14_xadis")
+on = true
+material = ExtResource("14_xadis")
+
+[node name="SquareLantern8" parent="ruins/Dungeon" instance=ExtResource("8_55b45")]
+transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, -8, 6, -12)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = ExtResource("16_68ie1")
+on = true
+material = ExtResource("16_68ie1")
+
+[node name="SquareLantern9" parent="ruins/Dungeon" instance=ExtResource("8_55b45")]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -1, 6, 3.1)
+skeleton = NodePath("../..")
+surface_material_override/0 = null
+surface_material_override/1 = ExtResource("16_khp1a")
+on = true
+material = ExtResource("16_khp1a")
+
+[node name="RoundLantern2" parent="ruins/Dungeon" instance=ExtResource("9_kopx0")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -1, 6, -5.33188)
+skeleton = NodePath("../../FishingHut/RoundLantern")
+surface_material_override/0 = ExtResource("14_xadis")
+surface_material_override/1 = null
+on = true
+material = ExtResource("14_xadis")
+
+[node name="RoundLantern5" parent="ruins/Dungeon" instance=ExtResource("9_kopx0")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -0.700001, 6, 4.86812)
+skeleton = NodePath("../../FishingHut/RoundLantern")
+surface_material_override/0 = ExtResource("15_wossf")
+surface_material_override/1 = null
+on = true
+material = ExtResource("15_wossf")
+
+[node name="RoundLantern6" parent="ruins/Dungeon" instance=ExtResource("9_kopx0")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -1.6, 6, 12.3681)
+skeleton = NodePath("../../FishingHut/RoundLantern")
+surface_material_override/0 = ExtResource("19_djfiq")
+surface_material_override/1 = null
+on = true
+material = ExtResource("19_djfiq")
+
+[node name="RoundLantern3" parent="ruins/Dungeon" instance=ExtResource("9_kopx0")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -1, 6, -12.3319)
+skeleton = NodePath("../../FishingHut/RoundLantern")
+surface_material_override/0 = ExtResource("15_wossf")
+surface_material_override/1 = null
+on = true
+material = ExtResource("15_wossf")
+
+[node name="RoundLantern4" parent="ruins/Dungeon" instance=ExtResource("9_kopx0")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -2, 6, -12)
+skeleton = NodePath("../../FishingHut/RoundLantern")
+surface_material_override/0 = ExtResource("17_g5ihq")
+surface_material_override/1 = null
+on = true
+material = ExtResource("17_g5ihq")
+
+[node name="FloorLantern" parent="ruins/Dungeon" instance=ExtResource("11_xgfhs")]
+transform = Transform3D(0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, -1.6, 0, -1.2)
+surface_material_override/1 = ExtResource("15_wossf")
+on = true
+material = ExtResource("15_wossf")
+
+[node name="FloorLantern2" parent="ruins/Dungeon" instance=ExtResource("11_xgfhs")]
+transform = Transform3D(0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -1.6, 0, -2)
+surface_material_override/1 = ExtResource("19_djfiq")
+on = true
+material = ExtResource("19_djfiq")
+
+[node name="FogVolume" type="FogVolume" parent="ruins/Dungeon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 2, 0)
+size = Vector3(7, 4, 2)
+material = SubResource("FogMaterial_v641q")
+
+[node name="Loading-zone" parent="ruins/Dungeon" instance=ExtResource("12_u475q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
+scene = "res://Scenes/islands/island0/Dungeon0.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ruins/Dungeon/Loading-zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_i3wrv")
+
+[node name="GrapplePointTest" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5758, 37.8197, -9.10109)
+material_override = ExtResource("28_jcvbb")
+mesh = SubResource("SphereMesh_lfg2b")
+
+[node name="GrappleablePoint1" parent="GrapplePointTest" instance=ExtResource("28_4p48d")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrapplePointTest/GrappleablePoint1"]
+shape = SubResource("SphereShape3D_mw07j")
+
+[node name="GrapplePointTest2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0192804, 29.8239, -30.9651)
+material_override = ExtResource("28_jcvbb")
+ignore_occlusion_culling = true
+mesh = SubResource("SphereMesh_levhq")
+
+[node name="GrappleablePoint2" parent="GrapplePointTest2" instance=ExtResource("28_4p48d")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrapplePointTest2/GrappleablePoint2"]
+shape = SubResource("SphereShape3D_iyjme")
+
+[node name="GrapplePointTest3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1859, 22.2111, -27.4008)
+material_override = ExtResource("28_jcvbb")
+mesh = SubResource("SphereMesh_uwljf")
+
+[node name="GrappleablePoint3" parent="GrapplePointTest3" instance=ExtResource("28_4p48d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00100321, -1.90735e-06, 0.00414601)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrapplePointTest3/GrappleablePoint3"]
+shape = SubResource("SphereShape3D_t1ah8")

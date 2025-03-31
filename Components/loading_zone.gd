@@ -9,4 +9,6 @@ func _on_body_entered(body: Node3D) -> void:
 	if not body is Player:
 		return
 	
+	Logger.info("loadingzone: player entered zone, loading scene \"%s\"" % scene)
+	
 	PlayerData.call_deferred("load_scene", scene, checkpoint)

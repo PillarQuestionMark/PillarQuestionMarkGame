@@ -2,6 +2,10 @@ extends PlayerState
 
 var canDoubleJump : bool
 
+var coyote_timer : Timer
+var jump_held : bool = false
+var held_boost : Vector3 
+
 ## Called by the state machine when receiving unhandled input events.
 func handle_input(_event: InputEvent) -> void:
 	pass
@@ -12,10 +16,19 @@ func update(_delta: float) -> void:
 
 ## Called by the state machine on the engine's physics update tick.
 func physics_update(_delta: float) -> void:
+	## jump held mechanic
+	if (jump_held && Input.is_action_pressed("jump")):
+		player.velocity += held_boost
+		held_boost *= player.Jump_Held_Decay ## diminishing returns for holding jump boost
+	else:
+		jump_held = false
+	
 	#Transition states
 	if(Input.is_action_just_pressed("jump") and player.jumps_left > 0):
 		player.jumps_left -= 1
 		finished.emit(JUMPING)
+	elif(Input.is_action_just_pressed("grapple")):
+		finished.emit(GRAPPLING)
 	elif(player.can_wall_slide && player.velocity.y < 0 && player.is_on_wall_only()):
 		finished.emit(WALL_SLIDING)
 	elif(Input.is_action_just_pressed("dash") && player.can_dash):
@@ -41,9 +54,25 @@ func physics_update(_delta: float) -> void:
 ## Called by the state machine upon changing the active state. The `data` parameter
 ## is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(previous_state_path: String, data := {}) -> void:
-	pass
+	if (previous_state_path == "Jumping" or previous_state_path == "Slamjumping"):
+		jump_held = true
+		held_boost = Vector3(0, player.Jump_Held_Strength, 0)
+	else:
+		## adds a timer to keep track of the dash duration
+		coyote_timer = Timer.new()
+		player.add_child(coyote_timer)
+		coyote_timer.wait_time = player.Coyote_Time
+		coyote_timer.one_shot = true
+		coyote_timer.timeout.connect(_end_coyote_timer)
+		coyote_timer.start()
 
 ## Called by the state machine before changing the active state. Use this function
 ## to clean up the state.
 func exit() -> void:
-	pass
+	## not sure if required. but probably safer...
+	if (coyote_timer != null):
+		coyote_timer.queue_free()
+	
+func _end_coyote_timer() -> void:
+	player.jumps_left -= 1
+	coyote_timer.queue_free()

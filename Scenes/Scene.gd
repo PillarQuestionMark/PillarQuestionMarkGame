@@ -13,24 +13,25 @@ func _ready() -> void:
 	
 	Logger.info("flames collected on current island: " + str(PlayerData.get_island_flames(island_id).size()))
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 ## Takes save data and applies it to the scene.
 func _load_data() -> void:
 	## find the checkpoint to load the player at
 	for checkpoint in get_tree().get_nodes_in_group("checkpoint"):
 		if checkpoint.id == PlayerData.data["checkpoint"]:
 			checkpoint.set_player($Player)
-			
+	
 	## find the dungeon doors and open them if previously opened
 	for door in get_tree().get_nodes_in_group("flame_door"):
 		if PlayerData.data["open_dungeons"].has(float(door.island_id)): ## cast as float to avoid issues
 			door.queue_free()
-			
+	
 	## delete the flames that have already been collected
 	for flame in get_tree().get_nodes_in_group("flames"):
 		if PlayerData.get_island_flames(island_id).has(flame.id):
 			flame.queue_free()
+			
+	## set flame challenges as completed if the flame they hold is collected
+	for challenge in get_tree().get_nodes_in_group("challenge_flame"):
+		if PlayerData.get_island_flames(island_id).has(challenge.id):
+			challenge.collected()
+			
