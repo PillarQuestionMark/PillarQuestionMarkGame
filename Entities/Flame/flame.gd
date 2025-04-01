@@ -16,7 +16,7 @@ func _on_body_entered(body: Node3D) -> void:
 ## Handle the event signal and saving data portion of flames.
 func pickup() -> void:
 	PlayerData.flame_collected(id, island)
-	EventBus.flame_found.emit(flame_name, color)
+	EventBus.flame_found.emit(flame_name, color, id)
 	queue_free()
 
 ## Called on loading the scene. Sets the color.

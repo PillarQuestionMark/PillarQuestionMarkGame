@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtl6gv0ngms67"]
+
+[ext_resource type="Script" path="res://Entities/Flame/timer_challenge.gd" id="1_cpi2o"]
+[ext_resource type="PackedScene" uid="uid://nd1s7aeat6mx" path="res://Components/interactable.tscn" id="2_4ecp2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ol45n"]
+size = Vector3(1, 2, 1)
+
+[node name="TimerChallenge" type="CSGBox3D"]
+use_collision = true
+collision_mask = 2
+size = Vector3(0.5, 1, 0.5)
+script = ExtResource("1_cpi2o")
+
+[node name="Clock" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
+height = 0.1
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visibility_range_end = 20.0
+pixel_size = 0.001
+billboard = 1
+no_depth_test = true
+fixed_size = true
+text = "?"
+
+[node name="Interactable" parent="." instance=ExtResource("2_4ecp2")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_ol45n")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="on_interacting" from="Interactable" to="." method="on_interacted"]
+[connection signal="timeout" from="Timer" to="." method="_time_out"]

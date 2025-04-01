@@ -10,22 +10,20 @@ func update(_delta: float) -> void:
 
 ## Called by the state machine on the engine's physics update tick.
 func physics_update(_delta: float) -> void:
-	## friction, otherwise stores momentum until next jump
-	player.velocity *= Vector3(0.8, 1, 0.8)
-	
 	#Transition States
 	#if player.in_dialogue:
 		#finished.emit(DIALOGUE)
 	if(!player.is_on_floor()):
 		finished.emit(FALLING)
 	elif(Input.is_action_just_pressed("jump") and player.jumps_left > 0):
-		player.jumps_left -= 1
 		if player.can_slamjump():
 			finished.emit(SLAMJUMPING)
 		else:
 			finished.emit(JUMPING)
 	elif(Input.is_action_just_pressed("dash") && player.can_dash):
 		finished.emit(DASHING)
+	elif(Input.is_action_just_pressed("grapple") && PlayerData.data["grapple_unlocked"]):
+		finished.emit(GRAPPLING)
 	elif(player.get_move_direction() != Vector3.ZERO):
 		if(Input.is_action_pressed("sprint") && PlayerData.data["sprint_unlocked"]):
 			finished.emit(SPRINTING)
@@ -34,6 +32,7 @@ func physics_update(_delta: float) -> void:
 	elif (Input.is_action_just_pressed("interact")):
 		player.try_interact()
 	
+	player.apply_speed_and_drag(0, player.Ground_Drag)
 	player.apply_gravity(_delta)
 	player.move_and_slide()
 

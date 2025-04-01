@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://de4v1dwr7hpx1"]
+[gd_scene load_steps=33 format=3 uid="uid://de4v1dwr7hpx1"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_3tqia"]
 [ext_resource type="Script" path="res://Scripts/PlayerBehavior/StateMachines/StateMachine.gd" id="3_6ta2n"]
@@ -17,12 +17,15 @@
 [ext_resource type="Script" path="res://Entities/Player/WallSliding.gd" id="11_j1x64"]
 [ext_resource type="Script" path="res://Entities/Player/SlamJumping.gd" id="11_tywix"]
 [ext_resource type="Script" path="res://Entities/Player/Slamming.gd" id="12_c7jxc"]
-[ext_resource type="AudioStream" uid="uid://c6ichm6woikfd" path="res://Assets/Audio/Sound Effects/jumpsfx.wav" id="18_6b8vf"]
 [ext_resource type="Script" path="res://Entities/Player/Dialogue.gd" id="18_b8em8"]
+[ext_resource type="Script" path="res://Entities/Player/Grappling.gd" id="19_3aadc"]
 [ext_resource type="PackedScene" uid="uid://cij0oovbuoki5" path="res://Components/shadow.tscn" id="19_5nhyd"]
 [ext_resource type="PackedScene" uid="uid://dmhwfbc05xhsb" path="res://Components/interactor.tscn" id="19_dm15w"]
+[ext_resource type="Script" path="res://Entities/Player/inventory.gd" id="22_q8h2y"]
+[ext_resource type="Script" path="res://Entities/Player/range_finder.gd" id="23_m208i"]
 
 [sub_resource type="Curve" id="Curve_e4jrd"]
+resource_local_to_scene = true
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 metadata/_snap_enabled = true
@@ -35,7 +38,7 @@ height = 2.4
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.230769), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_gfjck"]
+[sub_resource type="CurveTexture" id="CurveTexture_gvx4e"]
 curve = SubResource("Curve_xn4ut")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lxvkg"]
@@ -46,18 +49,21 @@ initial_velocity_max = 3.0
 gravity = Vector3(0, -5, 0)
 scale_min = 0.1
 scale_max = 2.0
-scale_curve = SubResource("CurveTexture_gfjck")
+scale_curve = SubResource("CurveTexture_gvx4e")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_56dw8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqnrt"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_dl5kc"]
-material = SubResource("StandardMaterial3D_56dw8")
+material = SubResource("StandardMaterial3D_vqnrt")
 radial_segments = 8
 rings = 4
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ajont"]
 height = 3.0
 radius = 2.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dgi6d"]
+radius = 40.0
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 2
@@ -69,6 +75,7 @@ Transparency_Curve = SubResource("Curve_e4jrd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+cast_shadow = 0
 mesh = ExtResource("3_vgho5")
 surface_material_override/0 = ExtResource("3_u05m2")
 surface_material_override/1 = ExtResource("4_3t3rr")
@@ -119,10 +126,8 @@ script = ExtResource("12_c7jxc")
 [node name="Dialogue" type="Node" parent="StateMachine"]
 script = ExtResource("18_b8em8")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("18_6b8vf")
-max_polyphony = 16
+[node name="Grappling" type="Node" parent="StateMachine"]
+script = ExtResource("19_3aadc")
 
 [node name="WallSlideParticles" type="GPUParticles3D" parent="."]
 unique_name_in_owner = true
@@ -146,3 +151,22 @@ radius = 1.0
 unique_name_in_owner = true
 wait_time = 0.25
 one_shot = true
+
+[node name="GrappleTargetLocator" type="Area3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+collision_layer = 16
+collision_mask = 32
+monitorable = false
+script = ExtResource("23_m208i")
+
+[node name="Range" type="CollisionShape3D" parent="GrappleTargetLocator"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("SphereShape3D_dgi6d")
+
+[node name="Inventory" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("22_q8h2y")
+
+[connection signal="area_entered" from="GrappleTargetLocator" to="GrappleTargetLocator" method="_on_area_entered"]
+[connection signal="area_exited" from="GrappleTargetLocator" to="GrappleTargetLocator" method="_on_area_exited"]

@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 		var s := PAUSE_SCREEN.instantiate()
 		_show_screen(s)
 
-func _on_flame_collected(name: String, color: Color) -> void:
+func _on_flame_collected(name: String, color: Color, id : float) -> void:
 	const FLAME_COLLECTED_SCREEN := preload("res://Scenes/screens/flame_collected_screen/flame_collected_screen.tscn")
 	var s := FLAME_COLLECTED_SCREEN.instantiate()
 	s.flame_name = name
