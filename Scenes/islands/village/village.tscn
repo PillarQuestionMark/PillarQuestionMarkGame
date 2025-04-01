@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://dlaqp26mq7tcs"]
+
+[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_r7j4q"]
+[ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="2_4um41"]
+[ext_resource type="LightmapGIData" uid="uid://bokhqwwpmemug" path="res://Scenes/islands/ruins/ruins_island.lmbake" id="3_mhp38"]
+[ext_resource type="PackedScene" uid="uid://2txxvjhki5vw" path="res://Scenes/islands/village/test2.blend" id="4_nua4q"]
+[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="27_73q6m"]
+[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="28_68jy1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o1wxf"]
+sky_top_color = Color(0.929412, 0.666667, 0.639216, 1)
+sky_horizon_color = Color(0.929412, 0.666667, 0.639216, 1)
+ground_bottom_color = Color(0.239216, 0.501961, 0.639216, 1)
+ground_horizon_color = Color(0.239216, 0.501961, 0.639216, 1)
+
+[sub_resource type="Sky" id="Sky_8d7fk"]
+sky_material = SubResource("ProceduralSkyMaterial_o1wxf")
+
+[sub_resource type="Environment" id="Environment_2o6d4"]
+background_mode = 2
+sky = SubResource("Sky_8d7fk")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.25
+tonemap_mode = 2
+ssao_enabled = true
+glow_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.239216, 0.501961, 0.639216, 1)
+fog_density = 0.7
+fog_sky_affect = 0.0
+fog_height = -1.0
+fog_height_density = 0.1
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[node name="RuinsIsland" type="Node3D"]
+script = ExtResource("1_r7j4q")
+
+[node name="GameplayUI" parent="." instance=ExtResource("2_4um41")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2o6d4")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+light_data = ExtResource("3_mhp38")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.720684, -0.681256, 0.128476, 0.118781, 0.30392, 0.945264, -0.683013, -0.665976, 0.29995, 5, 5, 5)
+shadow_enabled = true
+
+[node name="Terrain" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 92.344, 0)
+
+[node name="test2" parent="." instance=ExtResource("4_nua4q")]
+transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 2.39328, 51.5061, -3.39157)
+
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("27_73q6m")]
+transform = Transform3D(1.00154, 0, 0, 0, 1.00154, 0, 0, 0, 1.00154, 22.1348, 114.327, 83.6487)
+Camera = NodePath("FollowCamera")
+
+[node name="FollowCamera" parent="Player" instance=ExtResource("28_68jy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
