@@ -19,10 +19,10 @@ func _on_flame_collected(name: String, color: Color, id : float) -> void:
 	s.flame_color = color
 	_show_screen(s)
 	
-func _on_island_switch(current_island: IslandData.Islands) -> void:
+func _on_island_switch(current_island_id: int) -> void:
 	const ISLAND_SWITCH_SCREEN := preload("res://Scenes/screens/change_island_screen/change_island_screen.tscn")
 	var s := ISLAND_SWITCH_SCREEN.instantiate()
-	s.current_island = current_island
+	s.current_island_id = current_island_id
 	
 	# manually change current_scene
 	get_tree().current_scene.queue_free()
