@@ -18,6 +18,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_tkrur")
 
 [node name="Interact" type="Label" parent="."]
+visible = false
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
