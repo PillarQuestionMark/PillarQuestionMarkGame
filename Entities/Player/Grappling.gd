@@ -19,7 +19,6 @@ func physics_update(_delta: float) -> void:
 	if(!player.is_on_floor()):
 		finished.emit(FALLING)
 	elif(Input.is_action_just_pressed("jump") and player.jumps_left > 0):
-		player.jumps_left -= 1
 		if player.can_slamjump():
 			finished.emit(SLAMJUMPING)
 		else:
@@ -39,14 +38,13 @@ func physics_update(_delta: float) -> void:
 ## Called by the state machine upon changing the active state. The `data` parameter
 ## is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(_previous_state_path: String, _data := {}) -> void:
-	var bestDest : GrappleablePoint = %GrappleTargetLocator.get_best_target()
+	var bestDest : GrappleablePoint = %GrappleTargetLocator.bestTarget
 	if bestDest == null:
 		# TODO: This works for now, but it could have unexpected consequences.
 		# Should probably just switch out here.
 		targetPosition = player.global_position
 		return
 	targetPosition = bestDest.global_position
-	
 
 ## Called by the state machine before changing the active state. Use this function
 ## to clean up the state.

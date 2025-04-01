@@ -1,0 +1,8 @@
+[gd_resource type="CylinderMesh" load_steps=2 format=3 uid="uid://djjv6vs3duv51"]
+
+[ext_resource type="Material" uid="uid://dmfeymrpm283i" path="res://Scenes/islands/volcano/volcano-dungeon/lavaMat.tres" id="1_8pki4"]
+
+[resource]
+material = ExtResource("1_8pki4")
+top_radius = 0.8
+bottom_radius = 1.0

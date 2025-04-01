@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://Entities/Player/range_finder.gd" id="23_m208i"]
 
 [sub_resource type="Curve" id="Curve_e4jrd"]
+resource_local_to_scene = true
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 metadata/_snap_enabled = true
@@ -74,6 +75,7 @@ Transparency_Curve = SubResource("Curve_e4jrd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+cast_shadow = 0
 mesh = ExtResource("3_vgho5")
 surface_material_override/0 = ExtResource("3_u05m2")
 surface_material_override/1 = ExtResource("4_3t3rr")
