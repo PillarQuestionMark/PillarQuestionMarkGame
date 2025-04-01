@@ -10,7 +10,7 @@ extends Node3D
 ]
 
 @onready var animator: AnimationPlayer = %AnimationPlayer
-@onready var island : int = get_tree().current_scene.island_id
+@onready var island : int = get_tree().current_scene.island
 
 func _on_interactable_on_interacting() -> void:
 	# disallow interacting too fast

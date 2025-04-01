@@ -6,7 +6,7 @@ class_name Flame extends Area3D
 @export var flame_name := "Humble Beginnings" ## The display name of the flame.
 @export var color := Color("#e1a845") ## The color of the flame.
 
-@onready var island : int = get_tree().current_scene.island_id ## An id used to identify which island this flame belongs to.
+@onready var island : int = get_tree().current_scene.island ## which island this flame belongs to.
 
 ## Runs when a collision happens with the flame, checks if the player touched it, if so, it is picked up.
 func _on_body_entered(body: Node3D) -> void:

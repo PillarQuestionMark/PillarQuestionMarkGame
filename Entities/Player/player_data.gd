@@ -89,7 +89,14 @@ func load_scene(next_scene : String = data["current_scene"], checkpoint : int = 
 	data["current_scene"] = next_scene
 	data["checkpoint"] = checkpoint
 	get_tree().change_scene_to_file(next_scene) ## load the scene
-	
+
+## load_scene() but it uses the IslandData.Islands enum
+func load_island(island: IslandData.Islands, checkpoint: int) -> void:
+	var island_scene_path := IslandData.get_scene_path_from_island(island)
+	data["current_scene"] = island_scene_path
+	data["checkpoint"] = checkpoint
+	get_tree().change_scene_to_file(island_scene_path) ## load the scene
+
 ## Sets the checkpoint to spawn at in player data. 
 ## Separate from [method load_scene] for collecting checkpoints without loading a scene.
 ## If you also want to load a scene, use [method load_scene].

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dql4b8bulv1vi" path="res://Components/loading-zone.tscn" id="4_to0s7"]
 [ext_resource type="PackedScene" uid="uid://ch0xma4bou77p" path="res://Entities/Flame/flame.tscn" id="5_reynx"]
 [ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="6_ftc75"]
-[ext_resource type="PackedScene" path="res://Components/flame_lever.tscn" id="8_n7jxr"]
+[ext_resource type="PackedScene" uid="uid://daqo3a6ove7qf" path="res://Components/flame_lever.tscn" id="8_n7jxr"]
 [ext_resource type="PackedScene" uid="uid://dc1evxye2jpsn" path="res://Entities/Boat.tscn" id="9_qfby2"]
 [ext_resource type="PackedScene" uid="uid://bw4ak8fk223nn" path="res://Components/mover.tscn" id="12_6wsbu"]
 
@@ -55,6 +55,7 @@ size = Vector3(4, 4, 1)
 
 [node name="Island0" type="Node3D"]
 script = ExtResource("1_8lv5b")
+island = 0
 
 [node name="Geometry" type="Node3D" parent="."]
 

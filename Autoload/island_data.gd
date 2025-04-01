@@ -21,7 +21,7 @@ var _scenes: Dictionary = {
 	Islands.Volcano: "res://Scenes/islands/island0/Island0.tscn", # TODO: update when volcano island is done
 }
 
-func get_scene_path(island: Islands) -> String:
+func get_scene_path_from_island(island: Islands) -> String:
 	return _scenes[island]
 
 func get_island_from_scene_path(island_scene_path: String) -> Islands:

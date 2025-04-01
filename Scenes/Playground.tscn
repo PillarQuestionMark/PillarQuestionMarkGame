@@ -378,7 +378,7 @@ albedo_color = Color(0.898039, 0.937255, 0.937255, 1)
 
 [node name="Playground" type="Node3D"]
 script = ExtResource("1_yxky3")
-island_id = -1
+island = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fvsiw")
@@ -695,7 +695,7 @@ depth = 8.0
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="Fragment" type="AnimatableBody3D" parent="Geometry"]
-transform = Transform3D(-0.00675595, 0.0689383, -0.997598, -0.999394, 0.0336087, 0.00909061, 0.0341546, 0.997055, 0.0686694, -6.43581, 37.4142, -85.9073)
+transform = Transform3D(-0.00675595, 0.0689383, -0.997598, -0.999394, 0.0336087, 0.00909062, 0.0341546, 0.997055, 0.0686694, -6.43581, 37.4142, -85.9073)
 sync_to_physics = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Geometry/Fragment"]
@@ -968,7 +968,6 @@ color = Color(0, 0.788936, 0.893223, 1)
 
 [node name="Flame2" parent="." groups=["flames"] instance=ExtResource("4_4gtea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51791, 42.173, -21.7444)
-id = 1
 flame_name = "Cubes"
 color = Color(0.837957, 0.616061, 0.83013, 1)
 

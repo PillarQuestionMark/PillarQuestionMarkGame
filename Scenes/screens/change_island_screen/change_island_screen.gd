@@ -1,28 +1,22 @@
 extends CanvasLayer
 
-@export var current_island_id := 0 # where the boat should start at
+@export var current_island := IslandData.Islands.Ruins # where the boat should start at
 
 @onready var _boat := %BoatIcon
-
-@onready var _islands: Array[IslandIcon] = [
-	%TutorialIsland,
-	%SeaCastle,
-]
-
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
-	_init_boat(current_island_id)
+	_init_boat(current_island)
 
-func _init_boat(island_id: int) -> void:
+func _init_boat(island: IslandData.Islands) -> void:
 	# find island with corresponding id
 	# and put the boat there, + a random offset
-	for i in _islands:
-		if i.island_id == island_id:
+	for i: IslandIcon in get_tree().get_nodes_in_group("island_icon"):
+		if i.island == island:
 			_boat.global_position = i.global_position + Vector2.RIGHT.rotated(randf() * TAU) * 32.0
 			return
-	assert(false, "no island icon exists with id %d" % island_id)
+	assert(false, "no island icon exists for island IslandData.Islands.%d" % IslandData.Islands.keys()[island])
 
 
 func _process(delta: float) -> void:

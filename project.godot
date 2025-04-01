@@ -36,6 +36,7 @@ checkpoint=""
 flames="flames"
 player=""
 flame_door=""
+island_icon=""
 
 [input]
 

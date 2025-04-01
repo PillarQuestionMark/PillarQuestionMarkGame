@@ -10,8 +10,9 @@ height = 44.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_5gnk3"]
 radius = 41.0122
 
-[node name="IslandIcon" type="StaticBody2D"]
+[node name="IslandIcon" type="StaticBody2D" groups=["island_icon"]]
 script = ExtResource("1_m86nt")
+island = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
