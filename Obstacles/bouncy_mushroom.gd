@@ -20,6 +20,8 @@ func _process(delta: float) -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	print("EEEEEE")
 	if not body is Player: return
+	print(body.is_on_floor())
+	##if !body.is_on_floor(): return
 	var player := body as Player
 	
 	#if player.is_on_floor(): return
@@ -31,6 +33,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		print("AAAAAA")
 		print("a: %d" % player.jumps_left)
 		player.touched_ground()
+		player.state_machine.state.force_state("Falling")
+		body.jumps_left -= 1
 		print("b: %d" % player.jumps_left)
 		player.velocity.y = slam_height
 		#player.move_and_slide()
@@ -42,6 +46,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		print("BBBBB")
 		print("a: %d" % player.jumps_left)
 		player.touched_ground()
+		player.state_machine.state.force_state("Falling")
+		body.jumps_left -= 1
 		print("b: %d" % player.jumps_left)
 		player.velocity.y = jump_height
 		#player.move_and_slide()
@@ -51,6 +57,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	
 	else:
 		player.touched_ground()
+		player.state_machine.state.force_state("Falling")
+		body.jumps_left -= 1
 		player.velocity.y = bounce_height
 	
 	#if !slam_only or _check_slam(body): ## if slam only check slam, else do nothing
