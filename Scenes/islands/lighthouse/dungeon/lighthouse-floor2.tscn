@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cje1u86jpqaom"]
+[gd_scene load_steps=31 format=3 uid="uid://cje1u86jpqaom"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_okn7n"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_0gep0"]
@@ -13,6 +13,13 @@
 [ext_resource type="PackedScene" uid="uid://dqcei7yuxodc" path="res://Obstacles/Laser/laser_emitter.tscn" id="10_sb8bm"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="11_tgin2"]
 [ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="13_63e5k"]
+
+[sub_resource type="Curve" id="Curve_78r28"]
+resource_local_to_scene = true
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_14dxd"]
 size = Vector3(6, 7, 3)
@@ -82,6 +89,7 @@ island_id = 2
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_0gep0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.484077, 15.8152)
+Transparency_Curve = SubResource("Curve_78r28")
 Camera = NodePath("FollowCamera")
 
 [node name="FollowCamera" parent="Player" instance=ExtResource("3_g5l3p")]

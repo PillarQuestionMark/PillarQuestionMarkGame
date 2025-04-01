@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b0a6ifjctwbqj"]
+[gd_scene load_steps=29 format=3 uid="uid://b0a6ifjctwbqj"]
 
 [ext_resource type="PackedScene" uid="uid://co1p57wfy7aj0" path="res://Scenes/islands/jungle/jungle.blend" id="1_2e48r"]
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_frwy3"]
@@ -335,6 +335,13 @@ radius = 4.0
 height = 10.0
 radius = 8.0
 
+[sub_resource type="Curve" id="Curve_mf0bg"]
+resource_local_to_scene = true
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
 [node name="JungleIsland" type="Node3D"]
 script = ExtResource("1_frwy3")
 
@@ -442,6 +449,7 @@ shape = SubResource("CylinderShape3D_twasg")
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_xy8xx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2907, 2.142, -12.814)
+Transparency_Curve = SubResource("Curve_mf0bg")
 Camera = NodePath("FollowCamera")
 
 [node name="FollowCamera" parent="Player" instance=ExtResource("3_fceu4")]

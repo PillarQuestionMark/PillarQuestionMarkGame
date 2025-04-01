@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c02m0rbfoqagf"]
+[gd_scene load_steps=21 format=3 uid="uid://c02m0rbfoqagf"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_t734c"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_s0qah"]
@@ -10,6 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://dqcei7yuxodc" path="res://Obstacles/Laser/laser_emitter.tscn" id="7_n5avh"]
 [ext_resource type="PackedScene" uid="uid://bwnc53uc4nle3" path="res://Obstacles/Laser/laser_receiver.tscn" id="8_6ggi7"]
 [ext_resource type="PackedScene" uid="uid://cqh1ir8nb0cfn" path="res://Obstacles/Laser/laser_reflector.tscn" id="9_k7w03"]
+
+[sub_resource type="Curve" id="Curve_r5ef4"]
+resource_local_to_scene = true
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_el6vq"]
 albedo_color = Color(0.470588, 0.32549, 0, 1)
@@ -57,6 +64,7 @@ island_id = 2
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_s0qah")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 16)
+Transparency_Curve = SubResource("Curve_r5ef4")
 Camera = NodePath("FollowCamera")
 
 [node name="FollowCamera" parent="Player" instance=ExtResource("3_sbe0h")]
