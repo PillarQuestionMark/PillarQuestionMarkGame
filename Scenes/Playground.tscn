@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dgw6sfwqiwerc"]
+[gd_scene load_steps=36 format=3 uid="uid://dgw6sfwqiwerc"]
 
 [ext_resource type="PackedScene" uid="uid://ud6x3emfmcnt" path="res://Components/trigger_animation.tscn" id="1_l8skm"]
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_yxky3"]
@@ -374,7 +374,14 @@ albedo_color = Color(0.239216, 0.501961, 0.639216, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dc2v7"]
 size = Vector3(8.30118, 4.58887, 9.11023)
 
-[sub_resource type="MultiMesh" id="MultiMesh_owph2"]
+[sub_resource type="Curve" id="Curve_f844l"]
+resource_local_to_scene = true
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="MultiMesh" id="MultiMesh_0knyh"]
 transform_format = 1
 instance_count = 16
 mesh = ExtResource("13_8dx5g")
@@ -952,6 +959,7 @@ shape = SubResource("BoxShape3D_dc2v7")
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_n32rs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21929, -11.2942, 50.9885)
+Transparency_Curve = SubResource("Curve_f844l")
 Camera = NodePath("FollowCamera")
 
 [node name="FollowCamera" parent="Player" instance=ExtResource("3_y86nc")]
@@ -968,18 +976,18 @@ id = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.191971, 1.79443, 0.545349)
 shape = SubResource("BoxShape3D_dc2v7")
 
-[node name="Flame" parent="." groups=["flames"] instance=ExtResource("4_4gtea")]
+[node name="Flame" parent="." instance=ExtResource("4_4gtea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51791, 25.3908, -108.287)
 flame_name = "Aqueduct"
 color = Color(0, 0.788936, 0.893223, 1)
 
-[node name="Flame2" parent="." groups=["flames"] instance=ExtResource("4_4gtea")]
+[node name="Flame2" parent="." instance=ExtResource("4_4gtea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51791, 42.173, -21.7444)
 id = 1
 flame_name = "Cubes"
 color = Color(0.837957, 0.616061, 0.83013, 1)
 
-[node name="Flame3" parent="." groups=["flames"] instance=ExtResource("4_4gtea")]
+[node name="Flame3" parent="." instance=ExtResource("4_4gtea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.919, 21.9953, 17.9254)
 id = 2.0
 flame_name = "Castle Walls"
@@ -993,7 +1001,7 @@ dialogue = Array[String](["stranger: the lawn is looking extra green today!", "y
 
 [node name="SpikeFloor" parent="." instance=ExtResource("15_twh6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.03, 6)
-multimesh = SubResource("MultiMesh_owph2")
+multimesh = SubResource("MultiMesh_0knyh")
 xSize = 4.0
 zSize = 4.0
 

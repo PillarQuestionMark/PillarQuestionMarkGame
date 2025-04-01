@@ -44,7 +44,7 @@ class_name Player extends CharacterBody3D
 
 var can_dash : bool = true
 
-var can_wall_slide : bool = true
+var wall_slide_unlocked : bool = true
 
 var jumps_left : int = 0 # how many jumps left
 
@@ -113,8 +113,9 @@ func get_move_direction() -> Vector3:
 
 func apply_speed_and_drag(speed : float, drag : float):
 	var move_direction := get_move_direction()
-	velocity.x = lerpf(velocity.x, move_direction.x * speed, drag)
-	velocity.z = lerpf(velocity.z, move_direction.z * speed, drag)
+	velocity.x += (speed * move_direction.x - velocity.x) * drag
+	velocity.z += (speed * move_direction.z - velocity.z) * drag
+	
 
 func apply_gravity(delta : float, gravity : float = Gravity):
 	velocity.y += gravity * delta
@@ -147,7 +148,7 @@ func restore_dash() -> void:
 
 ## Since the ground states are spread out, this code is repeated multiple times. Safer to be in one place
 func touched_ground() -> void:
-	can_wall_slide = PlayerData.data["wall_slide_unlocked"]
+	wall_slide_unlocked = PlayerData.data["wall_slide_unlocked"]
 	can_dash = PlayerData.data["dash_unlocked"]
 	jumps_left = PlayerData.data["max_jumps"]
 
@@ -161,6 +162,9 @@ func can_slamjump() -> bool:
 
 func start_slamjump_window() -> void:
 	slamjump_window.start()
+
+func can_wall_slide() -> bool:
+	return wall_slide_unlocked and velocity.y < 0 and is_on_wall_only()
 
 ## kills the player and reloads the scene
 func die() -> void:
