@@ -69,7 +69,6 @@ Camera = NodePath("FollowCamera")
 
 [node name="FollowCamera" parent="Player" instance=ExtResource("3_sbe0h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0349903, 1.54822, 0.00927925)
-mouse_sensitivity = 0.04
 
 [node name="Rotating Room" type="Node3D" parent="."]
 script = ExtResource("4_orcll")

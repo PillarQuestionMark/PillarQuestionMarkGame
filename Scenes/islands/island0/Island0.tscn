@@ -70,7 +70,7 @@ size = Vector3(4, 4, 1)
 
 [node name="Island0" type="Node3D"]
 script = ExtResource("1_8lv5b")
-island = 0
+island_id = 10
 
 [node name="Geometry" type="Node3D" parent="."]
 
@@ -125,7 +125,6 @@ Camera = NodePath("FollowCamera")
 
 [node name="FollowCamera" parent="Player" instance=ExtResource("3_b30gx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-mouse_sensitivity = 0.04
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 100, 0)

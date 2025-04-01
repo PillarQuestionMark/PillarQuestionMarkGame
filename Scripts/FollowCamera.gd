@@ -5,15 +5,15 @@ extends SpringArm3D
 #Mouse settings.
 @export_subgroup("Mouse settings")
 #mouse sensitivity.
-@export_range(0.0, 1.0, 0.01) var mouse_sensitivity: float = 0.01
+var mouse_sensitivity: float = 0.05
 #controller sensitivity.
-@export_range(0.0, 5.0, 0.1) var controller_sensitivity: float = 1
+var controller_sensitivity: float = 1
 #pitch clamp settings.
 @export_subgroup("Clamp settings")
 #max pitch in degrees.
-@export var max_pitch : float = 60
+var max_pitch : float = 80
 #min pitch in degrees.
-@export var min_pitch : float = -60
+var min_pitch : float = -80
 #Camera settings.
 @export_subgroup("Camera settings")
 #Camera distance.
