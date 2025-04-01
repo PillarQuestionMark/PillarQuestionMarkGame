@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b0a6ifjctwbqj"]
+[gd_scene load_steps=25 format=3 uid="uid://b0a6ifjctwbqj"]
 
 [ext_resource type="PackedScene" uid="uid://co1p57wfy7aj0" path="res://Scenes/islands/jungle/jungle.blend" id="1_2e48r"]
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_frwy3"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ud6x3emfmcnt" path="res://Components/trigger_animation.tscn" id="9_n60wo"]
 [ext_resource type="PackedScene" uid="uid://ch0xma4bou77p" path="res://Entities/Flame/flame.tscn" id="9_tei3l"]
 [ext_resource type="PackedScene" uid="uid://cdwnjdsfrrav5" path="res://Components/sign.tscn" id="10_68wsm"]
+[ext_resource type="PackedScene" uid="uid://dql4b8bulv1vi" path="res://Components/loading-zone.tscn" id="11_4yfnp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5dsaw"]
 sky_top_color = Color(0.929412, 0.666667, 0.639216, 1)
@@ -31,6 +32,8 @@ ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.25
 tonemap_mode = 2
 ssao_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
 
 [sub_resource type="Animation" id="Animation_cwfr6"]
 length = 0.001
@@ -316,6 +319,13 @@ size = Vector2(100000, 100000)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_qxi7j"]
 
+[sub_resource type="FogMaterial" id="FogMaterial_0247v"]
+density = 2.0
+albedo = Color(0.101961, 0.121569, 0.180392, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_allgu"]
+size = Vector3(11, 10, 4)
+
 [node name="JungleIsland" type="Node3D"]
 script = ExtResource("1_frwy3")
 
@@ -367,7 +377,7 @@ mesh = SubResource("PlaneMesh_m1w0t")
 skeleton = NodePath("../..")
 
 [node name="KillPlane" parent="jungle/Sea" instance=ExtResource("8_n2abm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="jungle/Sea/KillPlane"]
 shape = SubResource("WorldBoundaryShape3D_qxi7j")
@@ -392,6 +402,19 @@ dialogue = Array[String](["sign: you can bounce on small mushrooms by holding ju
 [node name="Sign2" parent="jungle" instance=ExtResource("10_68wsm")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.8, 28, 54)
 dialogue = Array[String](["sign: try slamming onto small mushrooms!"])
+
+[node name="FogVolume" type="FogVolume" parent="jungle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61, 44.2, 195)
+size = Vector3(16, 8.4, 4)
+material = SubResource("FogMaterial_0247v")
+
+[node name="Loading-zone" parent="jungle" instance=ExtResource("11_4yfnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61, 45, 195)
+scene = "res://Scenes/islands/island0/Dungeon0.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="jungle/Loading-zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -1.5, 0)
+shape = SubResource("BoxShape3D_allgu")
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_xy8xx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2907, 2.142, -12.814)
