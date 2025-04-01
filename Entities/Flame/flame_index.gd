@@ -19,6 +19,16 @@ const flames : Dictionary = {
 		1: "It's Beautiful Up Here",
 		2: "Humble Beginnings",
 		3: "Sea Lord"
+	},
+	2: {
+		0: "Mushrooms <3",
+		1: "Rocks Can Have Secrets",
+		2: "What a View!",
+		3: "That doesn't look good....",
+		4: "Awesome!!",
+		5: "Sparks: Jungle",
+		6: "Timer: Jungle",
+		7: "Order: Jungle"
 	}
 }
 

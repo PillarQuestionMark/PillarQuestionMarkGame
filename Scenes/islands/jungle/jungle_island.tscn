@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b0a6ifjctwbqj"]
+[gd_scene load_steps=34 format=3 uid="uid://b0a6ifjctwbqj"]
 
 [ext_resource type="PackedScene" uid="uid://co1p57wfy7aj0" path="res://Scenes/islands/jungle/jungle.blend" id="1_2e48r"]
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_frwy3"]
@@ -15,6 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://cdwnjdsfrrav5" path="res://Components/sign.tscn" id="10_68wsm"]
 [ext_resource type="PackedScene" uid="uid://dql4b8bulv1vi" path="res://Components/loading-zone.tscn" id="11_4yfnp"]
 [ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="12_trqkk"]
+[ext_resource type="PackedScene" uid="uid://bfm4of4cyc7xd" path="res://Entities/Flame/flame_challenge.tscn" id="13_tkl5f"]
+[ext_resource type="PackedScene" uid="uid://dwrgyw4a4tqca" path="res://Entities/Flame/spark.tscn" id="14_ms33e"]
+[ext_resource type="PackedScene" uid="uid://dtl6gv0ngms67" path="res://Entities/Flame/timer_challenge.tscn" id="15_3yy4e"]
+[ext_resource type="PackedScene" uid="uid://cojfaw2pshswd" path="res://Entities/Flame/order_challenge.tscn" id="16_vrgsw"]
+[ext_resource type="PackedScene" uid="uid://d0bdwuhoxbd2" path="res://Entities/Flame/order_pylon.tscn" id="17_2u73w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5dsaw"]
 sky_top_color = Color(0.929412, 0.666667, 0.639216, 1)
@@ -335,8 +340,16 @@ radius = 4.0
 height = 10.0
 radius = 8.0
 
+[sub_resource type="Curve" id="Curve_5byew"]
+resource_local_to_scene = true
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
 [node name="JungleIsland" type="Node3D"]
 script = ExtResource("1_frwy3")
+island_id = 2
 
 [node name="GameplayUI" parent="." instance=ExtResource("2_6hyr4")]
 
@@ -358,13 +371,16 @@ animation = "change_time"
 [node name="jungle" parent="." instance=ExtResource("1_2e48r")]
 
 [node name="BouncyMushroom" parent="jungle" instance=ExtResource("4_lu4s8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 53, 78)
-
-[node name="BouncyMushroom2" parent="jungle" instance=ExtResource("4_lu4s8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 26, 50)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 26, 140)
 
 [node name="BouncyMushroom8" parent="jungle" instance=ExtResource("4_lu4s8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 40, 176)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 38.9, 176)
+
+[node name="BouncyMushroom9" parent="jungle" instance=ExtResource("4_lu4s8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 60.9, 160)
+
+[node name="BouncyMushroom10" parent="jungle" instance=ExtResource("4_lu4s8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.9, 157)
 
 [node name="BouncyMushroom5" parent="jungle" instance=ExtResource("4_lu4s8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 19, -16)
@@ -379,7 +395,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 6, 77)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 17, 86)
 
 [node name="BouncyMushroom3" parent="jungle" instance=ExtResource("4_lu4s8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 36, 44)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 31, 41)
 
 [node name="Sea" type="MeshInstance3D" parent="jungle"]
 mesh = SubResource("PlaneMesh_m1w0t")
@@ -395,21 +411,40 @@ shape = SubResource("WorldBoundaryShape3D_qxi7j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 86, 195)
 trigger = "sundial"
 
-[node name="Flame" parent="jungle" instance=ExtResource("9_tei3l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 103, 195)
-flame_name = "Awesome!!"
-color = Color(0.764706, 0.235294, 0.25098, 1)
+[node name="Flame0" parent="jungle" instance=ExtResource("9_tei3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.2, 55, 0)
+flame_name = "Mushrooms <3"
+color = Color(0.933333, 0.796078, 0.564706, 1)
+
+[node name="Flame1" parent="jungle" instance=ExtResource("9_tei3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.2, 39, 41.2)
+id = 1.0
+flame_name = "Rocks Can Have Secrets"
+color = Color(0.721569, 0.631373, 0.760784, 1)
 
 [node name="Flame2" parent="jungle" instance=ExtResource("9_tei3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 54, 80)
+id = 2.0
+flame_name = "What a View!"
+color = Color(0.760784, 0.839216, 0.309804, 1)
+
+[node name="Flame3" parent="jungle" instance=ExtResource("9_tei3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7, 70)
+id = 3.0
 flame_name = "That doesn't look good...."
+
+[node name="Flame4" parent="jungle" instance=ExtResource("9_tei3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 103, 195)
+id = 4.0
+flame_name = "Awesome!!"
+color = Color(0.764706, 0.235294, 0.25098, 1)
 
 [node name="Sign" parent="jungle" instance=ExtResource("10_68wsm")]
 transform = Transform3D(-0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, -0.939693, 8.0081, 21, -15.1541)
 dialogue = Array[String](["sign: you can bounce on small mushrooms by holding jump as you land on them.", "sign: when in doubt, mushroom it out!"])
 
 [node name="Sign2" parent="jungle" instance=ExtResource("10_68wsm")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.8, 28, 54)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.8, 33, 45)
 dialogue = Array[String](["sign: try slamming onto small mushrooms!"])
 
 [node name="FogVolume" type="FogVolume" parent="jungle"]
@@ -440,8 +475,98 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -13)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 shape = SubResource("CylinderShape3D_twasg")
 
+[node name="Challenge Flames" type="Node3D" parent="jungle"]
+
+[node name="Sparks" parent="jungle/Challenge Flames" node_paths=PackedStringArray("toggle") instance=ExtResource("13_tkl5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 57, 178)
+id = 5.0
+toggle = NodePath("Flame5")
+
+[node name="Flame5" parent="jungle/Challenge Flames/Sparks" instance=ExtResource("9_tei3l")]
+id = 5.0
+
+[node name="Spark" parent="jungle/Challenge Flames/Sparks" instance=ExtResource("14_ms33e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1261, 0, 0)
+id = 5.0
+
+[node name="Spark2" parent="jungle/Challenge Flames/Sparks" instance=ExtResource("14_ms33e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17.6126)
+id = 5.0
+
+[node name="Spark3" parent="jungle/Challenge Flames/Sparks" instance=ExtResource("14_ms33e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4447, 0, 0)
+id = 5.0
+
+[node name="Timer" parent="jungle/Challenge Flames" node_paths=PackedStringArray("toggle") instance=ExtResource("13_tkl5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8435, 51.5462, 114.618)
+id = 6.0
+toggle = NodePath("Timed")
+
+[node name="TimerChallenge" parent="jungle/Challenge Flames/Timer" instance=ExtResource("15_3yy4e")]
+time = 10.0
+
+[node name="Timed" type="Node3D" parent="jungle/Challenge Flames/Timer"]
+
+[node name="Flame" parent="jungle/Challenge Flames/Timer/Timed" instance=ExtResource("9_tei3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -36)
+id = 6.0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="jungle/Challenge Flames/Timer/Timed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+use_collision = true
+collision_mask = 2
+size = Vector3(3, 0.5, 3)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="jungle/Challenge Flames/Timer/Timed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13)
+use_collision = true
+collision_mask = 2
+size = Vector3(3, 0.5, 3)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="jungle/Challenge Flames/Timer/Timed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19)
+use_collision = true
+collision_mask = 2
+size = Vector3(3, 0.5, 3)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="jungle/Challenge Flames/Timer/Timed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
+use_collision = true
+collision_mask = 2
+size = Vector3(3, 0.5, 3)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="jungle/Challenge Flames/Timer/Timed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -31)
+use_collision = true
+collision_mask = 2
+size = Vector3(3, 0.5, 3)
+
+[node name="Order" parent="jungle/Challenge Flames" node_paths=PackedStringArray("toggle") instance=ExtResource("13_tkl5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54, 36.5, 155)
+id = 7.0
+toggle = NodePath("Flame")
+
+[node name="OrderChallenge" parent="jungle/Challenge Flames/Order" instance=ExtResource("16_vrgsw")]
+correct_order = Array[int]([1, 0, 2])
+
+[node name="OrderPylon" parent="jungle/Challenge Flames/Order/OrderChallenge" instance=ExtResource("17_2u73w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="OrderPylon2" parent="jungle/Challenge Flames/Order/OrderChallenge" instance=ExtResource("17_2u73w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5)
+id = 1
+
+[node name="OrderPylon3" parent="jungle/Challenge Flames/Order/OrderChallenge" instance=ExtResource("17_2u73w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
+id = 2
+
+[node name="Flame" parent="jungle/Challenge Flames/Order" instance=ExtResource("9_tei3l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+id = 7.0
+
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_xy8xx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2907, 2.142, -12.814)
+Transparency_Curve = SubResource("Curve_5byew")
 Camera = NodePath("FollowCamera")
 
 [node name="FollowCamera" parent="Player" instance=ExtResource("3_fceu4")]
