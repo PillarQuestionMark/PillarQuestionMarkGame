@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b0a6ifjctwbqj"]
+[gd_scene load_steps=28 format=3 uid="uid://b0a6ifjctwbqj"]
 
 [ext_resource type="PackedScene" uid="uid://co1p57wfy7aj0" path="res://Scenes/islands/jungle/jungle.blend" id="1_2e48r"]
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_frwy3"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://ch0xma4bou77p" path="res://Entities/Flame/flame.tscn" id="9_tei3l"]
 [ext_resource type="PackedScene" uid="uid://cdwnjdsfrrav5" path="res://Components/sign.tscn" id="10_68wsm"]
 [ext_resource type="PackedScene" uid="uid://dql4b8bulv1vi" path="res://Components/loading-zone.tscn" id="11_4yfnp"]
+[ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="12_trqkk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5dsaw"]
 sky_top_color = Color(0.929412, 0.666667, 0.639216, 1)
@@ -326,6 +327,14 @@ albedo = Color(0.101961, 0.121569, 0.180392, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_allgu"]
 size = Vector3(11, 10, 4)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_784gg"]
+height = 10.0
+radius = 4.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_twasg"]
+height = 10.0
+radius = 8.0
+
 [node name="JungleIsland" type="Node3D"]
 script = ExtResource("1_frwy3")
 
@@ -410,11 +419,26 @@ material = SubResource("FogMaterial_0247v")
 
 [node name="Loading-zone" parent="jungle" instance=ExtResource("11_4yfnp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61, 45, 195)
-scene = "res://Scenes/islands/island0/Dungeon0.tscn"
+scene = "res://Scenes/islands/lighthouse/dungeon/lighthouse-floor0.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="jungle/Loading-zone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -1.5, 0)
 shape = SubResource("BoxShape3D_allgu")
+
+[node name="Checkpoint1" parent="jungle" instance=ExtResource("12_trqkk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 86, 191)
+id = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="jungle/Checkpoint1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+shape = SubResource("CylinderShape3D_784gg")
+
+[node name="Checkpoint0" parent="jungle" instance=ExtResource("12_trqkk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -13)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="jungle/Checkpoint0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+shape = SubResource("CylinderShape3D_twasg")
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_xy8xx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2907, 2.142, -12.814)

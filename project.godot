@@ -184,3 +184,4 @@ grapple={
 3d_physics/layer_4="Collectables"
 3d_physics/layer_5="GrappleHook"
 3d_physics/layer_6="Grappleable"
+3d_physics/layer_7="Laser"

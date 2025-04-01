@@ -374,7 +374,7 @@ albedo_color = Color(0.239216, 0.501961, 0.639216, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dc2v7"]
 size = Vector3(8.30118, 4.58887, 9.11023)
 
-[sub_resource type="MultiMesh" id="MultiMesh_2hpx1"]
+[sub_resource type="MultiMesh" id="MultiMesh_15h5u"]
 transform_format = 1
 instance_count = 16
 mesh = ExtResource("13_8dx5g")
@@ -993,7 +993,7 @@ dialogue = Array[String](["stranger: the lawn is looking extra green today!", "y
 
 [node name="SpikeFloor" parent="." instance=ExtResource("15_twh6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.03, 6)
-multimesh = SubResource("MultiMesh_2hpx1")
+multimesh = SubResource("MultiMesh_15h5u")
 xSize = 4.0
 zSize = 4.0
 

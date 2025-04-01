@@ -38,13 +38,13 @@ material = SubResource("StandardMaterial3D_si735")
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_a48ir"]
+[sub_resource type="Sky" id="Sky_lwivm"]
 sky_material = SubResource("ProceduralSkyMaterial_sd3yn")
 
 [sub_resource type="Environment" id="Environment_wcdn7"]
 background_mode = 1
 background_color = Color(0.929412, 0.666667, 0.639216, 1)
-sky = SubResource("Sky_a48ir")
+sky = SubResource("Sky_lwivm")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.25
@@ -289,5 +289,5 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 [node name="LaserReflector7" parent="Lasers" instance=ExtResource("17_77qyn")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -16, 2, -1)
 
-[node name="LaserReceiver" parent="Lasers" instance=ExtResource("18_a0dk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, 10)
+[node name="LaserEmitter2" parent="Lasers" instance=ExtResource("18_a0dk6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 1, 10)
