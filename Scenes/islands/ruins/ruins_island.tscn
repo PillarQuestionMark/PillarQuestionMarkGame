@@ -177,22 +177,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 [node name="Boat" parent="ruins" instance=ExtResource("5_kogkr")]
 transform = Transform3D(0.678724, -0.0308532, -0.733745, -0.0260723, 0.997475, -0.0660599, 0.733931, 0.0639668, 0.676205, 14.3987, 1.4, -0.362618)
 
-[node name="Flame" parent="ruins" instance=ExtResource("9_8qidy")]
+[node name="Flame" parent="ruins" groups=["flames"] instance=ExtResource("9_8qidy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 9, 11)
 flame_name = "Arch-eologist"
 
-[node name="Flame2" parent="ruins" instance=ExtResource("9_8qidy")]
+[node name="Flame2" parent="ruins" groups=["flames"] instance=ExtResource("9_8qidy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 13, 11)
 id = 1.0
 flame_name = "It's Beautiful Up Here"
 color = Color(0.894118, 0.447059, 0.34902, 1)
 
-[node name="Flame3" parent="ruins" instance=ExtResource("9_8qidy")]
+[node name="Flame3" parent="ruins" groups=["flames"] instance=ExtResource("9_8qidy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 15, 1)
 id = 2.0
 color = Color(0.721569, 0.631373, 0.760784, 1)
 
-[node name="Flame4" parent="ruins" instance=ExtResource("9_8qidy")]
+[node name="Flame4" parent="ruins" groups=["flames"] instance=ExtResource("9_8qidy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 35, 1)
 id = 3.0
 flame_name = "Sea Lord"
