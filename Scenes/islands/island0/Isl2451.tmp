@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dgdn3s520cve5"]
+[gd_scene load_steps=29 format=3 uid="uid://dgdn3s520cve5"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_8lv5b"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_e5326"]
@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://bfm4of4cyc7xd" path="res://Entities/Flame/flame_challenge.tscn" id="16_a5if5"]
 [ext_resource type="PackedScene" uid="uid://dqcei7yuxodc" path="res://Obstacles/Laser/laser_emitter.tscn" id="16_rroee"]
 [ext_resource type="PackedScene" uid="uid://cqh1ir8nb0cfn" path="res://Obstacles/Laser/laser_reflector.tscn" id="17_77qyn"]
-[ext_resource type="PackedScene" uid="uid://bwnc53uc4nle3" path="res://Obstacles/Laser/laser_receiver.tscn" id="18_a0dk6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4c74y"]
 albedo_color = Color(0.151365, 0.532748, 0, 1)
@@ -38,13 +37,13 @@ material = SubResource("StandardMaterial3D_si735")
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_a48ir"]
+[sub_resource type="Sky" id="Sky_lwivm"]
 sky_material = SubResource("ProceduralSkyMaterial_sd3yn")
 
 [sub_resource type="Environment" id="Environment_wcdn7"]
 background_mode = 1
 background_color = Color(0.929412, 0.666667, 0.639216, 1)
-sky = SubResource("Sky_a48ir")
+sky = SubResource("Sky_lwivm")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.25
@@ -265,7 +264,7 @@ id = 2
 id = 9.0
 
 [node name="Lasers" type="Node3D" parent="."]
-transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0, 0)
 
 [node name="LaserEmitter" parent="Lasers" instance=ExtResource("16_rroee")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 2, 1)
@@ -273,21 +272,24 @@ laser_distance = 10.0
 
 [node name="LaserReflector3" parent="Lasers" instance=ExtResource("17_77qyn")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -17, 2, -4)
+laser_distance = 10.0
 
 [node name="LaserReflector2" parent="Lasers" instance=ExtResource("17_77qyn")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -14, 2, -4)
+laser_distance = 10.0
 
 [node name="LaserReflector4" parent="Lasers" instance=ExtResource("17_77qyn")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -14, 2, 1)
+laser_distance = 10.0
 
 [node name="LaserReflector5" parent="Lasers" instance=ExtResource("17_77qyn")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -10, 2, 1)
+laser_distance = 10.0
 
 [node name="LaserReflector6" parent="Lasers" instance=ExtResource("17_77qyn")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -10, 2, -1)
+laser_distance = 10.0
 
 [node name="LaserReflector7" parent="Lasers" instance=ExtResource("17_77qyn")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -16, 2, -1)
-
-[node name="LaserReceiver" parent="Lasers" instance=ExtResource("18_a0dk6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, 10)
+laser_distance = 10.0

@@ -12,7 +12,7 @@ config_version=5
 
 config/name="CSE5902_Game"
 run/main_scene="res://Scenes/screens/photo_splash_screen/photo_splash_screen.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -184,6 +184,7 @@ grapple={
 3d_physics/layer_4="Collectables"
 3d_physics/layer_5="GrappleHook"
 3d_physics/layer_6="Grappleable"
+3d_physics/layer_7="Laser"
 
 [rendering]
 
@@ -191,3 +192,4 @@ anti_aliasing/quality/msaa_2d=1
 anti_aliasing/quality/msaa_3d=1
 anti_aliasing/quality/screen_space_aa=1
 anti_aliasing/quality/use_debanding=true
+

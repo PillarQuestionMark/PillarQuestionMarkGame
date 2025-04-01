@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://pjsdnytstg65"]
+
+[ext_resource type="Script" path="res://Scenes/islands/jungle/sundial.gd" id="1_kvmhx"]
+[ext_resource type="PackedScene" uid="uid://nd1s7aeat6mx" path="res://Components/interactable.tscn" id="1_xhvav"]
+[ext_resource type="PackedScene" uid="uid://x1wynaxku77h" path="res://Scenes/islands/jungle/sundial.blend" id="2_jou1j"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_f8fmu"]
+height = 4.0
+radius = 3.0
+
+[node name="Sundial" type="Node3D"]
+script = ExtResource("1_kvmhx")
+
+[node name="Interactable" parent="." instance=ExtResource("1_xhvav")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CylinderShape3D_f8fmu")
+
+[node name="sundial" parent="." instance=ExtResource("2_jou1j")]
+
+[connection signal="on_interacting" from="Interactable" to="." method="_on_interactable_on_interacting"]

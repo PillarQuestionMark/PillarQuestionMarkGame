@@ -38,7 +38,7 @@ height = 2.4
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.230769), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_gfjck"]
+[sub_resource type="CurveTexture" id="CurveTexture_gvx4e"]
 curve = SubResource("Curve_xn4ut")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lxvkg"]
@@ -49,12 +49,12 @@ initial_velocity_max = 3.0
 gravity = Vector3(0, -5, 0)
 scale_min = 0.1
 scale_max = 2.0
-scale_curve = SubResource("CurveTexture_gfjck")
+scale_curve = SubResource("CurveTexture_gvx4e")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_56dw8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vqnrt"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_dl5kc"]
-material = SubResource("StandardMaterial3D_56dw8")
+material = SubResource("StandardMaterial3D_vqnrt")
 radial_segments = 8
 rings = 4
 
