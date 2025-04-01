@@ -2,7 +2,7 @@ class_name GameScene extends Node3D
 ## A playable scene within the game. This class handles a lot of setting up the scene.
 
 ## The island id, should be unique for each island. Each scene that is part of an island should have the same island id.
-@export var island_id : int = 0 
+@export var island_id : int = 0
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:

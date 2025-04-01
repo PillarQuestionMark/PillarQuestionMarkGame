@@ -5,8 +5,9 @@ extends CanvasLayer
 @onready var _boat := %BoatIcon
 
 @onready var _islands: Array[IslandIcon] = [
-	%TutorialIsland,
-	%SeaCastle,
+	%RuinsIsland,
+	%VolcanoIsland,
+	%JungleIsland
 ]
 
 

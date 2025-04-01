@@ -146,25 +146,37 @@ texture = ExtResource("2_jxuc3")
 [node name="YSort" type="Node2D" parent="PanelContainer/CenterContainer/Control/Map"]
 y_sort_enabled = true
 
-[node name="TutorialIsland" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("3_g12fm")]
+[node name="RuinsIsland" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("3_g12fm")]
 unique_name_in_owner = true
 position = Vector2(-9, 17)
 island_id = 0
 island_scene = "res://Scenes/islands/ruins/ruins_island.tscn"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/CenterContainer/Control/Map/YSort/TutorialIsland"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/CenterContainer/Control/Map/YSort/RuinsIsland"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_hs5ou")
 autoplay = "default"
 offset = Vector2(0, -17)
 
-[node name="SeaCastle" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("3_g12fm")]
+[node name="JungleIsland" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("3_g12fm")]
+unique_name_in_owner = true
+position = Vector2(-226, -93)
+island_id = 2
+island_scene = "res://Scenes/islands/jungle/jungle_island.tscn"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/CenterContainer/Control/Map/YSort/JungleIsland"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_8p8ak")
+autoplay = "default"
+offset = Vector2(0, -17)
+
+[node name="VolcanoIsland" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("3_g12fm")]
 unique_name_in_owner = true
 position = Vector2(152, -93)
-island_id = -1
-island_scene = "res://Scenes/Playground.tscn"
+island_id = 10
+island_scene = "res://Scenes/islands/island0/Island0.tscn"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/CenterContainer/Control/Map/YSort/SeaCastle"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/CenterContainer/Control/Map/YSort/VolcanoIsland"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_8p8ak")
 autoplay = "default"
