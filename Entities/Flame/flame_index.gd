@@ -25,7 +25,10 @@ const flames : Dictionary = {
 		1: "Rocks Can Have Secrets",
 		2: "What a View!",
 		3: "That doesn't look good....",
-		4: "Awesome!!"
+		4: "Awesome!!",
+		5: "Sparks: Jungle",
+		6: "Timer: Jungle",
+		7: "Order: Jungle"
 	}
 }
 
