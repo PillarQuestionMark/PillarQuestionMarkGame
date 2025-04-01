@@ -18,14 +18,46 @@ func _process(delta: float) -> void:
 
 ## Called when the player lands on the mushroom.
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if !(body is Player) or !body.is_on_floor(): ## avoid checks on non-players
-		return
+	print("EEEEEE")
+	if not body is Player: return
+	var player := body as Player
+	
+	#if player.is_on_floor(): return
+	
+	print(player.state_machine.state.name)
+	
 	## is check on ground needed?
-	if !slam_only or _check_slam(body): ## if slam only check slam, else do nothing
-		body.touched_ground() ## reset jumps (for double jumping)
-		body.velocity.y += _check_height(body) ## give bounce impulse
-		body.move_and_slide() ## this is needed to avoid being able to normal jump after bounce
-		body.jumps_left -= 1 ## bounce counts as an initial jump
+	if player.state_machine.state.name == "Slamming" or player.can_slamjump():
+		print("AAAAAA")
+		print("a: %d" % player.jumps_left)
+		player.touched_ground()
+		print("b: %d" % player.jumps_left)
+		player.velocity.y = slam_height
+		#player.move_and_slide()
+		#player.jumps_left += 100
+		print("c: %d" % player.jumps_left)
+		print(player.state_machine.state.name)
+	
+	elif !slam_only and Input.is_action_pressed("jump"):
+		print("BBBBB")
+		print("a: %d" % player.jumps_left)
+		player.touched_ground()
+		print("b: %d" % player.jumps_left)
+		player.velocity.y = jump_height
+		#player.move_and_slide()
+		#player.jumps_left += 100
+		print("c: %d" % player.jumps_left)
+		print(player.state_machine.state.name)
+	
+	else:
+		player.touched_ground()
+		player.velocity.y = bounce_height
+	
+	#if !slam_only or _check_slam(body): ## if slam only check slam, else do nothing
+		#body.touched_ground() ## reset jumps (for double jumping)
+		#body.velocity.y += _check_height(body) ## give bounce impulse
+		#body.move_and_slide() ## this is needed to avoid being able to normal jump after bounce
+		#body.jumps_left -= 1 ## bounce counts as an initial jump
 	
 ## Function used to check dynamic bounce height based on player input.
 func _check_height(player : Player) -> float:
