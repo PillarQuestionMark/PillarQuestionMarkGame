@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cje1u86jpqaom"]
+[gd_scene load_steps=30 format=3 uid="uid://cje1u86jpqaom"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_okn7n"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_0gep0"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://nd1s7aeat6mx" path="res://Components/interactable.tscn" id="9_wknmd"]
 [ext_resource type="PackedScene" uid="uid://dqcei7yuxodc" path="res://Obstacles/Laser/laser_emitter.tscn" id="10_sb8bm"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="11_tgin2"]
+[ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="13_63e5k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_14dxd"]
 size = Vector3(6, 7, 3)
@@ -72,6 +73,8 @@ albedo = Color(0.374139, 0.374139, 0.374139, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ulr6"]
 transparency = 1
 albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_k7ya4"]
 
 [node name="Lighthousedungeontest" type="Node3D"]
 script = ExtResource("1_okn7n")
@@ -352,5 +355,11 @@ material = SubResource("FogMaterial_4tebh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18, 0)
 radius = 25.0
 material = SubResource("StandardMaterial3D_6ulr6")
+
+[node name="Obstacle" parent="." instance=ExtResource("13_63e5k")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15.03, 0)
+shape = SubResource("WorldBoundaryShape3D_k7ya4")
 
 [connection signal="on_interacting" from="Non-Rotating Room/Compass/CSGCylinder3D/Interactable" to="Non-Rotating Room/Compass" method="_on_interactable_on_interacting"]
