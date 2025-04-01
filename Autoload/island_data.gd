@@ -17,7 +17,7 @@ var _scenes: Dictionary = {
 	Islands.Dev1: "res://Scenes/Playground.tscn",
 	Islands.Ruins: "res://Scenes/islands/ruins/ruins_island.tscn",
 	Islands.Village: "res://Scenes/islands/island0/Island0.tscn", # TODO: update when village island is done
-	Islands.Lighthouse: "res://Scenes/islands/island0/Island0.tscn", # TODO: update when lighthouse island is done
+	Islands.Lighthouse: "res://Scenes/islands/jungle/jungle_island.tscn", # it's called jungle_island.tscn but it is the lighthouse island i promise
 	Islands.Volcano: "res://Scenes/islands/island0/Island0.tscn", # TODO: update when volcano island is done
 }
 
