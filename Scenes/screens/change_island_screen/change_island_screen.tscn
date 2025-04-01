@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bso6p3yjhh7gw"]
+[gd_scene load_steps=38 format=3 uid="uid://bso6p3yjhh7gw"]
 
 [ext_resource type="PackedScene" uid="uid://6wkokjqa4tnv" path="res://Entities/boat_model.tscn" id="2_66k23"]
 [ext_resource type="Texture2D" uid="uid://v87a2ty7kmn3" path="res://Assets/aseprite/islandmap_bg.png" id="2_jxuc3"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://b3aeddxreoudm" path="res://Scenes/screens/change_island_screen/boat_icon.tscn" id="4_uulgi"]
 [ext_resource type="Texture2D" uid="uid://chih3dctolq7l" path="res://Assets/aseprite/islandmap_island_ruins.png" id="5_hfejx"]
 [ext_resource type="Texture2D" uid="uid://8axsdj03bsno" path="res://Assets/aseprite/islandmap_island.png" id="5_jjhgc"]
+[ext_resource type="Texture2D" uid="uid://djd2vfr28njbh" path="res://Assets/aseprite/islandmap_island_lighthouse.png" id="6_1b6f5"]
+[ext_resource type="Texture2D" uid="uid://bg301mfd4epyi" path="res://Assets/aseprite/islandmap_island_village.png" id="8_2glr2"]
+[ext_resource type="Texture2D" uid="uid://15aqi3o40ssw" path="res://Assets/aseprite/islandmap_island_volcano.png" id="10_286yo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fjbn6"]
 albedo_color = Color(0.239216, 0.501961, 0.639216, 1)
@@ -33,35 +36,6 @@ tonemap_mode = 2
 ssao_enabled = true
 glow_enabled = true
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_444qm"]
-atlas = ExtResource("5_hfejx")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_khork"]
-atlas = ExtResource("5_hfejx")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1rwg6"]
-atlas = ExtResource("5_hfejx")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_hs5ou"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_444qm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_khork")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1rwg6")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_8e82g"]
 atlas = ExtResource("5_jjhgc")
 region = Rect2(0, 0, 64, 64)
@@ -85,6 +59,139 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sflcg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1kfv6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e82g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gr7ap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sflcg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_444qm"]
+atlas = ExtResource("5_hfejx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khork"]
+atlas = ExtResource("5_hfejx")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rwg6"]
+atlas = ExtResource("5_hfejx")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hcpkn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_444qm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khork")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rwg6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nsle"]
+atlas = ExtResource("8_2glr2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs6o1"]
+atlas = ExtResource("8_2glr2")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vsws"]
+atlas = ExtResource("8_2glr2")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f1yeu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nsle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hs6o1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vsws")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p18dc"]
+atlas = ExtResource("6_1b6f5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2ilg"]
+atlas = ExtResource("6_1b6f5")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssc0s"]
+atlas = ExtResource("6_1b6f5")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w216g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p18dc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2ilg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssc0s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkpia"]
+atlas = ExtResource("10_286yo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58rlj"]
+atlas = ExtResource("10_286yo")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehm86"]
+atlas = ExtResource("10_286yo")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fr6hu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkpia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58rlj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehm86")
 }],
 "loop": true,
 "name": &"default",
@@ -146,44 +253,71 @@ texture = ExtResource("2_jxuc3")
 [node name="YSort" type="Node2D" parent="PanelContainer/CenterContainer/Control/Map"]
 y_sort_enabled = true
 
-[node name="RuinsIsland" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("3_g12fm")]
+[node name="BoatIcon" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("4_uulgi")]
 unique_name_in_owner = true
-position = Vector2(-9, 17)
-island_id = 0
-island_scene = "res://Scenes/islands/ruins/ruins_island.tscn"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/CenterContainer/Control/Map/YSort/RuinsIsland"]
+[node name="Dev0Island" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("3_g12fm")]
+unique_name_in_owner = true
+position = Vector2(-406, -163)
+island = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/CenterContainer/Control/Map/YSort/Dev0Island"]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_hs5ou")
+sprite_frames = SubResource("SpriteFrames_8p8ak")
 autoplay = "default"
 offset = Vector2(0, -17)
 
-[node name="JungleIsland" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("3_g12fm")]
+[node name="Dev1Island" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("3_g12fm")]
 unique_name_in_owner = true
-position = Vector2(-226, -93)
-island_id = 2
-island_scene = "res://Scenes/islands/jungle/jungle_island.tscn"
+position = Vector2(-306, -162)
+island = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/CenterContainer/Control/Map/YSort/JungleIsland"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/CenterContainer/Control/Map/YSort/Dev1Island"]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_8p8ak")
+sprite_frames = SubResource("SpriteFrames_1kfv6")
+autoplay = "default"
+offset = Vector2(0, -17)
+
+[node name="RuinsIsland" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("3_g12fm")]
+unique_name_in_owner = true
+position = Vector2(-157, 52)
+island = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/CenterContainer/Control/Map/YSort/RuinsIsland"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_hcpkn")
+autoplay = "default"
+offset = Vector2(0, -17)
+
+[node name="VillageIsland" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("3_g12fm")]
+position = Vector2(-44, -86)
+island = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/CenterContainer/Control/Map/YSort/VillageIsland"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_f1yeu")
+autoplay = "default"
+offset = Vector2(0, -17)
+
+[node name="LighthouseIsland" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("3_g12fm")]
+position = Vector2(50, 108)
+island = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/CenterContainer/Control/Map/YSort/LighthouseIsland"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_w216g")
 autoplay = "default"
 offset = Vector2(0, -17)
 
 [node name="VolcanoIsland" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("3_g12fm")]
-unique_name_in_owner = true
-position = Vector2(152, -93)
-island_id = 10
-island_scene = "res://Scenes/islands/island0/Island0.tscn"
+position = Vector2(178, -32)
+island = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/CenterContainer/Control/Map/YSort/VolcanoIsland"]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_8p8ak")
+sprite_frames = SubResource("SpriteFrames_fr6hu")
 autoplay = "default"
 offset = Vector2(0, -17)
-
-[node name="BoatIcon" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("4_uulgi")]
-unique_name_in_owner = true
 
 [node name="Border" type="StaticBody2D" parent="PanelContainer/CenterContainer/Control/Map"]
 
