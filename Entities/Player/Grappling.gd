@@ -39,7 +39,7 @@ func physics_update(_delta: float) -> void:
 ## Called by the state machine upon changing the active state. The `data` parameter
 ## is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(_previous_state_path: String, _data := {}) -> void:
-	var bestDest : GrappleablePoint = %GrappleTargetLocator.get_best_target()
+	var bestDest : GrappleablePoint = %GrappleTargetLocator.bestTarget
 	if bestDest == null:
 		# TODO: This works for now, but it could have unexpected consequences.
 		# Should probably just switch out here.

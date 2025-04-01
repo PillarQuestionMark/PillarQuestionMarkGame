@@ -29,6 +29,8 @@ func _on_area_exited(area):
 	if area is not GrappleablePoint:
 		return
 	area.setInactive()
+	if area == bestTarget:
+		bestTarget = null
 	targets.remove_at(targets.find(area))
 
 func get_best_target() -> GrappleablePoint:

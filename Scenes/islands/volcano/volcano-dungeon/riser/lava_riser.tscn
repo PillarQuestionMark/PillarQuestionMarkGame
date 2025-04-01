@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhysjqq3h2p0t"]
+
+[ext_resource type="Script" path="res://Scenes/islands/volcano/volcano-dungeon/riser/lava_riser.gd" id="1_bhdvr"]
+
+[node name="LavaRiser" type="AnimatableBody3D"]
+script = ExtResource("1_bhdvr")

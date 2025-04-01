@@ -1,0 +1,150 @@
+[gd_scene load_steps=22 format=3 uid="uid://c5vhpdwuc7upw"]
+
+[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_0qdb0"]
+[ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="1_5a5w0"]
+[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="1_6yinu"]
+[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="2_1c70o"]
+[ext_resource type="PackedScene" uid="uid://khi3iwtx6nts" path="res://Scenes/islands/volcano/volcano-dungeon/VolcanoDungeon.blend" id="5_yq8t0"]
+[ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="6_4ks7n"]
+[ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="6_cvtaa"]
+[ext_resource type="Environment" uid="uid://bhpuf5nuk7duo" path="res://Scenes/islands/volcano/volcano-dungeon/volcano_environment.tres" id="7_6ubbv"]
+[ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="8_5mv10"]
+[ext_resource type="PackedScene" uid="uid://cj3ku0n0t8fw5" path="res://Components/grappleablePoint.tscn" id="11_xwc1x"]
+[ext_resource type="Script" path="res://Scenes/islands/volcano/volcano-dungeon/riser/lava_riser.gd" id="11_y46vl"]
+[ext_resource type="PackedScene" uid="uid://dql4b8bulv1vi" path="res://Components/loading-zone.tscn" id="12_h1yjq"]
+
+[sub_resource type="Curve" id="Curve_qdhwp"]
+resource_local_to_scene = true
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_da37t"]
+size = Vector3(6, 3, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3envr"]
+size = Vector3(14, 4, 10)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_oa630"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_e5a7i"]
+radius = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3n8v1"]
+top_radius = 2.0
+bottom_radius = 2.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_e2b8t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cu0hx"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mgonk"]
+radius = 13.0
+
+[node name="VolcanoIsland" type="Node3D"]
+script = ExtResource("1_0qdb0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.907777, -0.367215, 0.202714, 0, 0.483282, 0.875464, -0.419452, -0.794727, 0.438713, 0, 0, 0)
+shadow_enabled = true
+
+[node name="GameplayUI" parent="." instance=ExtResource("1_5a5w0")]
+
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("1_6yinu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17)
+Transparency_Curve = SubResource("Curve_qdhwp")
+Camera = NodePath("FollowCamera")
+
+[node name="FollowCamera" parent="Player" instance=ExtResource("2_1c70o")]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2, 0)
+max_pitch = 80.0
+min_pitch = -80.0
+
+[node name="Geo" type="Node3D" parent="."]
+
+[node name="VolcanoDungeon" parent="Geo" instance=ExtResource("5_yq8t0")]
+
+[node name="Checkpoints" type="Node3D" parent="Geo"]
+
+[node name="Checkpoint0" parent="Geo/Checkpoints" instance=ExtResource("6_4ks7n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 17)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geo/Checkpoints/Checkpoint0"]
+shape = SubResource("BoxShape3D_da37t")
+
+[node name="Checkpoint1" parent="Geo/Checkpoints" instance=ExtResource("6_4ks7n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, -15)
+id = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geo/Checkpoints/Checkpoint1"]
+shape = SubResource("BoxShape3D_3envr")
+
+[node name="KillPlane" parent="." instance=ExtResource("6_cvtaa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillPlane"]
+shape = SubResource("WorldBoundaryShape3D_oa630")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("7_6ubbv")
+
+[node name="Ability Mural" parent="." instance=ExtResource("8_5mv10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.5, -20)
+dialogue = Array[String](["grapple unlocked!", "Hold Q to grapple to highlighted points!"])
+unlock = "grapple"
+
+[node name="LavaRiser" type="AnimatableBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.217754, -1, 0)
+script = ExtResource("11_y46vl")
+fullLoopTime = 15.0
+maxHeight = 15.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LavaRiser"]
+shape = SubResource("CylinderShape3D_e5a7i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LavaRiser"]
+mesh = SubResource("CylinderMesh_3n8v1")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="GrapplePoint1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 58, -20)
+mesh = SubResource("BoxMesh_e2b8t")
+
+[node name="GrappleablePoint" parent="GrapplePoint1" instance=ExtResource("11_xwc1x")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrapplePoint1/GrappleablePoint"]
+shape = SubResource("BoxShape3D_cu0hx")
+
+[node name="GrapplePoint2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 88, 5)
+mesh = SubResource("BoxMesh_e2b8t")
+
+[node name="GrappleablePoint" parent="GrapplePoint2" instance=ExtResource("11_xwc1x")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrapplePoint2/GrappleablePoint"]
+shape = SubResource("BoxShape3D_cu0hx")
+
+[node name="GrapplePoint3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 111.272, -9)
+mesh = SubResource("BoxMesh_e2b8t")
+
+[node name="GrappleablePoint" parent="GrapplePoint3" instance=ExtResource("11_xwc1x")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrapplePoint3/GrappleablePoint"]
+shape = SubResource("BoxShape3D_cu0hx")
+
+[node name="GrapplePoint4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 130, 0)
+mesh = SubResource("BoxMesh_e2b8t")
+
+[node name="GrappleablePoint" parent="GrapplePoint4" instance=ExtResource("11_xwc1x")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrapplePoint4/GrappleablePoint"]
+shape = SubResource("BoxShape3D_cu0hx")
+
+[node name="Loading-zone" parent="." instance=ExtResource("12_h1yjq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 125, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Loading-zone"]
+shape = SubResource("CylinderShape3D_mgonk")

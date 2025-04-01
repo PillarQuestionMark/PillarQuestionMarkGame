@@ -26,7 +26,7 @@ var data = {
 	"slam_unlocked" = false,
 	"wall_slide_unlocked" = false,
 	"grapple_unlocked" = false,
-	"version" = 0
+	"version" = 1
 }
 
 ## When loading the game, test if we are using run current scene.
@@ -47,11 +47,14 @@ func load_data(load_scene : bool = true) -> void:
 	## used for writing the default file (DO NOT UNCOMMENT UNLESS YOU KNOW WHAT THIS DOES)
 	## this should not even be needed anymore with file versioning. let me know if it is necessary - Seven
 	##FileUtility.write_file("res://default_save.pillar", data)
-
+	var default_data = FileUtility.read_file(_default_file_path)
 	if (FileAccess.file_exists(_file)):
 		data = FileUtility.read_file(_file)
+		if data["version"] != default_data["version"]:
+			update_data(data)
+			FileUtility.write_file(_file, data)
 	else:
-		data = FileUtility.read_file(_default_file_path)
+		data = default_data
 		FileUtility.write_file(_file, data)
 	
 	if (load_scene): load_scene()
@@ -65,6 +68,10 @@ func save_data() -> void:
 	data["playtime"] += Time.get_unix_time_from_system() - start_time
 	FileUtility.write_file(_file, data)
 	start_time = Time.get_unix_time_from_system()
+
+func update_data(updating_data : Dictionary) -> void:
+	var default_data = FileUtility.read_file(_default_file_path)
+	updating_data.merge(default_data)
 
 func create_default_save() -> void:
 	data["playtime"] = 0

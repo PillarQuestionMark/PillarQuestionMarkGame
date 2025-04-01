@@ -5,7 +5,6 @@ class_name GrappleablePoint extends Area3D
 @export var targettedMat : StandardMaterial3D
 
 func _ready():
-	print(get_parent().get_class())
 	assert(get_parent() is GeometryInstance3D)
 
 func setActive():
