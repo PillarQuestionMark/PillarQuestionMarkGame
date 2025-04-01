@@ -14,14 +14,13 @@ func physics_update(_delta: float) -> void:
 	if(!player.is_on_floor()):
 		finished.emit(FALLING)
 	elif(Input.is_action_just_pressed("jump") and player.jumps_left > 0):
-		player.jumps_left -= 1
 		if player.can_slamjump():
 			finished.emit(SLAMJUMPING)
 		else:
 			finished.emit(JUMPING)
-	elif(Input.is_action_just_pressed("grapple")):
+	elif(Input.is_action_just_pressed("grapple") and PlayerData.data["grapple_unlocked"]):
 		finished.emit(GRAPPLING)
-	elif(Input.is_action_just_pressed("dash") && player.can_dash):
+	elif(Input.is_action_just_pressed("dash") and player.can_dash):
 		finished.emit(DASHING)
 	elif(player.get_move_direction() == Vector3.ZERO):
 		finished.emit(IDLE)

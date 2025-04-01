@@ -10,6 +10,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_1y08l"]
 size = Vector3(2, 3, 1.5)
 
+
 [sub_resource type="Curve" id="Curve_5jfpw"]
 resource_local_to_scene = true
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -83,6 +84,7 @@ shape = SubResource("BoxShape3D_1y08l")
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("1_c4t52")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
 Transparency_Curve = SubResource("Curve_5jfpw")
 Camera = NodePath("FollowCamera")
 

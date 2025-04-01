@@ -10,7 +10,7 @@ func update(_delta: float) -> void:
 
 ## Called by the state machine on the engine's physics update tick.
 func physics_update(_delta: float) -> void:
-	if(Input.is_action_just_pressed("grapple")):
+	if(Input.is_action_just_pressed("grapple") && PlayerData.data["grapple_unlocked"]):
 		finished.emit(GRAPPLING)
 	elif (Input.is_action_just_pressed("dash") && player.can_dash):
 		finished.emit(DASHING)

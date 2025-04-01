@@ -374,6 +374,7 @@ albedo_color = Color(0.239216, 0.501961, 0.639216, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dc2v7"]
 size = Vector3(8.30118, 4.58887, 9.11023)
 
+
 [sub_resource type="Curve" id="Curve_f844l"]
 resource_local_to_scene = true
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
