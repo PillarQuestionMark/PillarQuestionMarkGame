@@ -381,7 +381,7 @@ point_count = 4
 metadata/_snap_enabled = true
 metadata/_snap_count = 20
 
-[sub_resource type="MultiMesh" id="MultiMesh_x04sb"]
+[sub_resource type="MultiMesh" id="MultiMesh_3vrwk"]
 transform_format = 1
 instance_count = 16
 mesh = ExtResource("13_8dx5g")
@@ -709,7 +709,7 @@ depth = 8.0
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="Fragment" type="AnimatableBody3D" parent="Geometry"]
-transform = Transform3D(-0.00675595, 0.0689383, -0.997598, -0.999394, 0.0336087, 0.00909062, 0.0341546, 0.997055, 0.0686694, -6.43581, 37.4142, -85.9073)
+transform = Transform3D(-0.00675595, 0.0689383, -0.997598, -0.999394, 0.0336087, 0.00909061, 0.0341546, 0.997055, 0.0686694, -6.43581, 37.4142, -85.9073)
 sync_to_physics = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Geometry/Fragment"]
@@ -964,7 +964,6 @@ Camera = NodePath("FollowCamera")
 
 [node name="FollowCamera" parent="Player" instance=ExtResource("3_y86nc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-mouse_sensitivity = 0.04
 
 [node name="Interactables" type="Node" parent="."]
 
@@ -1000,7 +999,7 @@ dialogue = Array[String](["stranger: the lawn is looking extra green today!", "y
 
 [node name="SpikeFloor" parent="." instance=ExtResource("15_twh6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.03, 6)
-multimesh = SubResource("MultiMesh_x04sb")
+multimesh = SubResource("MultiMesh_3vrwk")
 xSize = 4.0
 zSize = 4.0
 

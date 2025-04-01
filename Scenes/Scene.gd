@@ -20,7 +20,7 @@ func _load_data() -> void:
 		if checkpoint.id == PlayerData.data["checkpoint"]:
 			checkpoint.set_player($Player)
 	
-	## find the dungeon doors and open them if previously opened
+	## find the dungeon doors and open them a73064eif previously opened
 	for door in get_tree().get_nodes_in_group("flame_door"):
 		if PlayerData.data["open_dungeons"].has(float(door.island_id)): ## cast as float to avoid issues
 			door.queue_free()
