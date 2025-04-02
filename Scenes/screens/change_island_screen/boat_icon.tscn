@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b3aeddxreoudm"]
 
 [ext_resource type="Texture2D" uid="uid://fnigmegxcqqy" path="res://Assets/aseprite/islandmap_boat.png" id="1_a5asa"]
-[ext_resource type="Script" path="res://Scenes/screens/change_island_screen/boat_icon.gd" id="1_tk6lf"]
+[ext_resource type="Script" uid="uid://764nqubl6u6w" path="res://Scenes/screens/change_island_screen/boat_icon.gd" id="1_tk6lf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1r1pe"]
 atlas = ExtResource("1_a5asa")

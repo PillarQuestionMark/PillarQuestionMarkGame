@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://c5vhpdwuc7upw"]
 
-[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_uikhx"]
+[ext_resource type="Script" uid="uid://bkk3s33x83svg" path="res://Scenes/Scene.gd" id="1_uikhx"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="2_g352o"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="3_5xfnv"]
 [ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="4_5482u"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="7_js24h"]
 [ext_resource type="Environment" uid="uid://bhpuf5nuk7duo" path="res://Scenes/islands/volcano/volcano-dungeon/volcano_environment.tres" id="8_2c4ak"]
 [ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="9_spngf"]
-[ext_resource type="Script" path="res://Scenes/islands/volcano/volcano-dungeon/riser/lava_riser.gd" id="10_cp4i2"]
+[ext_resource type="Script" uid="uid://wqcc7pt0f6eg" path="res://Scenes/islands/volcano/volcano-dungeon/riser/lava_riser.gd" id="10_cp4i2"]
 [ext_resource type="PackedScene" uid="uid://cj3ku0n0t8fw5" path="res://Components/grappleablePoint.tscn" id="11_1cxuk"]
 [ext_resource type="PackedScene" uid="uid://dql4b8bulv1vi" path="res://Components/loading-zone.tscn" id="12_s1ggx"]
 

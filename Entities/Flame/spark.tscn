@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dwrgyw4a4tqca"]
 
-[ext_resource type="Script" path="res://Entities/Flame/spark.gd" id="1_p2hqt"]
+[ext_resource type="Script" uid="uid://07cxlq8y31xf" path="res://Entities/Flame/spark.gd" id="1_p2hqt"]
 [ext_resource type="PackedScene" uid="uid://4pteeb4dmacl" path="res://Entities/Flame/spark_model.tscn" id="2_3chlk"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_40345"]
@@ -15,8 +15,8 @@ loop_mode = 1
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_54ina"]
 _data = {
-"RESET": SubResource("Animation_vh6ki"),
-"idle": SubResource("Animation_genww")
+&"RESET": SubResource("Animation_vh6ki"),
+&"idle": SubResource("Animation_genww")
 }
 
 [node name="Spark" type="Area3D"]

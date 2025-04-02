@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://dfq0qv0t85gr3"]
 
-[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_u3kjy"]
+[ext_resource type="Script" uid="uid://bkk3s33x83svg" path="res://Scenes/Scene.gd" id="1_u3kjy"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_0c3ni"]
 [ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="3_6rgrq"]
-[ext_resource type="Script" path="res://Scenes/islands/lighthouse/rotating_room.gd" id="4_c8x4j"]
-[ext_resource type="Script" path="res://Scenes/islands/lighthouse/compass.gd" id="5_oeuym"]
+[ext_resource type="Script" uid="uid://cllnmmiuso2fn" path="res://Scenes/islands/lighthouse/rotating_room.gd" id="4_c8x4j"]
+[ext_resource type="Script" uid="uid://dw7v2wkf8dmuw" path="res://Scenes/islands/lighthouse/compass.gd" id="5_oeuym"]
 [ext_resource type="PackedScene" uid="uid://nd1s7aeat6mx" path="res://Components/interactable.tscn" id="6_wav4w"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="7_3mtwu"]
 

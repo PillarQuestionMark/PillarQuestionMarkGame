@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://808oubkb73yd"]
 
-[ext_resource type="Script" path="res://Scenes/screens/options_screen/options_screen.gd" id="1_w2hik"]
+[ext_resource type="Script" uid="uid://jl1n23p7y7xd" path="res://Scenes/screens/options_screen/options_screen.gd" id="1_w2hik"]
 [ext_resource type="PackedScene" uid="uid://c2o86fyr33pn0" path="res://Scenes/screens/options_screen/input_remapper.tscn" id="2_bv78l"]
-[ext_resource type="Script" path="res://Scenes/screens/options_screen/volume_slider.gd" id="2_m615d"]
-[ext_resource type="Script" path="res://Scenes/screens/options_screen/music_volume_slider.gd" id="3_yyp3o"]
-[ext_resource type="Script" path="res://Scenes/screens/options_screen/effects_volume_slider.gd" id="4_0uyue"]
+[ext_resource type="Script" uid="uid://b0bn0r5n4yoo3" path="res://Scenes/screens/options_screen/volume_slider.gd" id="2_m615d"]
+[ext_resource type="Script" uid="uid://5iwxm4mb34t7" path="res://Scenes/screens/options_screen/music_volume_slider.gd" id="3_yyp3o"]
+[ext_resource type="Script" uid="uid://dasxrpo2ng5tc" path="res://Scenes/screens/options_screen/effects_volume_slider.gd" id="4_0uyue"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7pe0"]
 bg_color = Color(0, 0, 0, 0.784314)

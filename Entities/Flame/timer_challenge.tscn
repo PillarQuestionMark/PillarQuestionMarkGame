@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dtl6gv0ngms67"]
 
-[ext_resource type="Script" path="res://Entities/Flame/timer_challenge.gd" id="1_cpi2o"]
+[ext_resource type="Script" uid="uid://cjg0i68lt3lgo" path="res://Entities/Flame/timer_challenge.gd" id="1_cpi2o"]
 [ext_resource type="PackedScene" uid="uid://nd1s7aeat6mx" path="res://Components/interactable.tscn" id="2_4ecp2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ol45n"]

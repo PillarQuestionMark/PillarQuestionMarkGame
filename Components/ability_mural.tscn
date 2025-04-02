@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://nq872twodk4r"]
 
-[ext_resource type="Script" path="res://Components/ability_mural.gd" id="1_qok22"]
+[ext_resource type="Script" uid="uid://yuexgsp877gs" path="res://Components/ability_mural.gd" id="1_qok22"]
 [ext_resource type="PackedScene" uid="uid://nd1s7aeat6mx" path="res://Components/interactable.tscn" id="2_528nu"]
 [ext_resource type="Texture2D" uid="uid://diupswqxew14q" path="res://Assets/aseprite/mural.png" id="3_ljr7n"]
 
@@ -45,8 +45,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dj6g8"]
 _data = {
-"RESET": SubResource("Animation_thpxu"),
-"animate": SubResource("Animation_4a805")
+&"RESET": SubResource("Animation_thpxu"),
+&"animate": SubResource("Animation_4a805")
 }
 
 [node name="Ability Mural" type="CSGBox3D"]

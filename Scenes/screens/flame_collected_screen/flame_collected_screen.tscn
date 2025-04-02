@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://7y28v036tt0a"]
 
-[ext_resource type="Script" path="res://Scenes/screens/flame_collected_screen/flame_collected_screen.gd" id="1_7sw4e"]
+[ext_resource type="Script" uid="uid://cmxui1iurwncs" path="res://Scenes/screens/flame_collected_screen/flame_collected_screen.gd" id="1_7sw4e"]
 [ext_resource type="PackedScene" uid="uid://cwmkkgjitsi0k" path="res://Entities/Flame/flame_model.tscn" id="2_i2gtt"]
 
 [sub_resource type="Animation" id="Animation_nwagg"]
@@ -59,8 +59,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8p7d5"]
 _data = {
-"RESET": SubResource("Animation_nwagg"),
-"animation": SubResource("Animation_kt0no")
+&"RESET": SubResource("Animation_nwagg"),
+&"animation": SubResource("Animation_kt0no")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qah2"]

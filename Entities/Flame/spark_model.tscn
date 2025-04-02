@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://4pteeb4dmacl"]
 
 [ext_resource type="Material" uid="uid://4brk0ort0js" path="res://Entities/Flame/material_flame.tres" id="1_o0r7b"]
-[ext_resource type="Script" path="res://Entities/Flame/flame_model.gd" id="2_p7rxy"]
+[ext_resource type="Script" uid="uid://symto3k5kd54" path="res://Entities/Flame/flame_model.gd" id="2_p7rxy"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_rracl"]
 material = ExtResource("1_o0r7b")
@@ -72,8 +72,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m30cr"]
 _data = {
-"RESET": SubResource("Animation_kxxhj"),
-"idle": SubResource("Animation_61xjw")
+&"RESET": SubResource("Animation_kxxhj"),
+&"idle": SubResource("Animation_61xjw")
 }
 
 [node name="FlameModel" type="MeshInstance3D"]

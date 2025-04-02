@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c08beqib1fswh"]
 
-[ext_resource type="Script" path="res://Scenes/screens/photo_splash_screen/photo_splash_screen_photo.gd" id="1_1148q"]
+[ext_resource type="Script" uid="uid://bonfwkx54qgm4" path="res://Scenes/screens/photo_splash_screen/photo_splash_screen_photo.gd" id="1_1148q"]
 [ext_resource type="Texture2D" uid="uid://cq8dk06og7488" path="res://Scenes/screens/photo_splash_screen/photo1.png" id="1_w0otc"]
 
 [sub_resource type="Animation" id="Animation_7d6ps"]
@@ -51,9 +51,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ai4od"]
 _data = {
-"RESET": SubResource("Animation_7d6ps"),
-"slide_from_above": SubResource("Animation_31xks"),
-"slide_from_below": SubResource("Animation_ln363")
+&"RESET": SubResource("Animation_7d6ps"),
+&"slide_from_above": SubResource("Animation_31xks"),
+&"slide_from_below": SubResource("Animation_ln363")
 }
 
 [node name="PhotoSplashScreenPhoto" type="TextureRect"]

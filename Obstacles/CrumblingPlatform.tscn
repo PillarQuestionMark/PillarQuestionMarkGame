@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b5bqe4fvpyopq"]
 
-[ext_resource type="Script" path="res://Obstacles/crumbling_platform.gd" id="1_d4skm"]
+[ext_resource type="Script" uid="uid://cyd5y2a7snayk" path="res://Obstacles/crumbling_platform.gd" id="1_d4skm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cptra"]
 size = Vector3(2, 0.5, 2)

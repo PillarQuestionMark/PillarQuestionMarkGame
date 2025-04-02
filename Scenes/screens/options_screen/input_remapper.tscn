@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c2o86fyr33pn0"]
 
-[ext_resource type="Script" path="res://Scenes/screens/options_screen/input_remapper.gd" id="1_xl3pe"]
+[ext_resource type="Script" uid="uid://dvpdse17m3i8v" path="res://Scenes/screens/options_screen/input_remapper.gd" id="1_xl3pe"]
 
 [node name="InputRemapper" type="Button"]
 offset_right = 8.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dnbwgecvlyp7h"]
 
 [ext_resource type="PackedScene" uid="uid://nd1s7aeat6mx" path="res://Components/interactable.tscn" id="1_h8ai1"]
-[ext_resource type="Script" path="res://Entities/Boat/boat.gd" id="1_oavce"]
+[ext_resource type="Script" uid="uid://dudaj305g4dvb" path="res://Entities/Boat/boat.gd" id="1_oavce"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixg3g"]
 albedo_color = Color(0.898039, 0.937255, 0.937255, 1)

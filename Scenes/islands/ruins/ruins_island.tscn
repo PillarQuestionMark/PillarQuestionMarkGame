@@ -1,6 +1,6 @@
 [gd_scene load_steps=45 format=3 uid="uid://dmwlaf2f3cmd4"]
 
-[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_wbxxr"]
+[ext_resource type="Script" uid="uid://bkk3s33x83svg" path="res://Scenes/Scene.gd" id="1_wbxxr"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_4qj5t"]
 [ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="3_qrmmi"]
 [ext_resource type="PackedScene" uid="uid://ud6x3emfmcnt" path="res://Components/trigger_animation.tscn" id="4_1uusq"]
@@ -96,8 +96,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_34hmx"]
 _data = {
-"RESET": SubResource("Animation_2lmvs"),
-"gate": SubResource("Animation_vqvbg")
+&"RESET": SubResource("Animation_2lmvs"),
+&"gate": SubResource("Animation_vqvbg")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_225ld"]
@@ -187,7 +187,7 @@ fail_dialogue = Array[String](["3 flames are required to raise the gate!"])
 
 [node name="TriggerAnimation" parent="ruins/Gate" instance=ExtResource("4_1uusq")]
 libraries = {
-"": SubResource("AnimationLibrary_34hmx")
+&"": SubResource("AnimationLibrary_34hmx")
 }
 trigger = "gate"
 animation = "gate"

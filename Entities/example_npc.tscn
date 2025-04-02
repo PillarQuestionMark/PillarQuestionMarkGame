@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://b5qmrt8ec1cjv"]
 
-[ext_resource type="Script" path="res://Entities/example_npc.gd" id="1_8dbf4"]
+[ext_resource type="Script" uid="uid://deng0ftnfntgx" path="res://Entities/example_npc.gd" id="1_8dbf4"]
 [ext_resource type="ArrayMesh" uid="uid://r21fu3qtohga" path="res://player/feo.obj" id="1_nffkw"]
 [ext_resource type="Material" uid="uid://1ddv7fifegy7" path="res://player/material_head.tres" id="2_dfyti"]
 [ext_resource type="Material" uid="uid://d1hwpmu8cx3fc" path="res://player/material_leg.tres" id="3_c6gr8"]

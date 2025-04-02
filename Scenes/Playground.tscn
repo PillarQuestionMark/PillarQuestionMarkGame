@@ -1,7 +1,7 @@
 [gd_scene load_steps=36 format=3 uid="uid://dgw6sfwqiwerc"]
 
 [ext_resource type="PackedScene" uid="uid://ud6x3emfmcnt" path="res://Components/trigger_animation.tscn" id="1_l8skm"]
-[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_yxky3"]
+[ext_resource type="Script" uid="uid://bkk3s33x83svg" path="res://Scenes/Scene.gd" id="1_yxky3"]
 [ext_resource type="PackedScene" uid="uid://bw4ak8fk223nn" path="res://Components/mover.tscn" id="2_18dog"]
 [ext_resource type="PackedScene" uid="uid://bciwk8ba8ksvr" path="res://Components/lever.tscn" id="2_aubau"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_n32rs"]
@@ -98,8 +98,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_44m4f"]
 _data = {
-"RESET": SubResource("Animation_bkm72"),
-"move_fragment": SubResource("Animation_nwg5j")
+&"RESET": SubResource("Animation_bkm72"),
+&"move_fragment": SubResource("Animation_nwg5j")
 }
 
 [sub_resource type="Animation" id="Animation_wuusi"]
@@ -352,8 +352,8 @@ tracks/9/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w72sr"]
 _data = {
-"RESET": SubResource("Animation_wuusi"),
-"move_cubes": SubResource("Animation_mlf7o")
+&"RESET": SubResource("Animation_wuusi"),
+&"move_cubes": SubResource("Animation_mlf7o")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pi051"]
@@ -381,7 +381,7 @@ point_count = 4
 metadata/_snap_enabled = true
 metadata/_snap_count = 20
 
-[sub_resource type="MultiMesh" id="MultiMesh_3vrwk"]
+[sub_resource type="MultiMesh" id="MultiMesh_eodav"]
 transform_format = 1
 instance_count = 16
 mesh = ExtResource("13_8dx5g")
@@ -721,7 +721,7 @@ shape = SubResource("BoxShape3D_yait4")
 
 [node name="TriggerAnimation" parent="Geometry/Fragment" instance=ExtResource("1_l8skm")]
 libraries = {
-"": SubResource("AnimationLibrary_44m4f")
+&"": SubResource("AnimationLibrary_44m4f")
 }
 trigger = "bridge"
 animation = "move_fragment"
@@ -735,7 +735,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 36, -14)
 
 [node name="TriggerAnimation" parent="Geometry/Cubes" instance=ExtResource("1_l8skm")]
 libraries = {
-"": SubResource("AnimationLibrary_w72sr")
+&"": SubResource("AnimationLibrary_w72sr")
 }
 trigger = "cubes"
 animation = "move_cubes"
@@ -999,7 +999,7 @@ dialogue = Array[String](["stranger: the lawn is looking extra green today!", "y
 
 [node name="SpikeFloor" parent="." instance=ExtResource("15_twh6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.03, 6)
-multimesh = SubResource("MultiMesh_3vrwk")
+multimesh = SubResource("MultiMesh_eodav")
 xSize = 4.0
 zSize = 4.0
 

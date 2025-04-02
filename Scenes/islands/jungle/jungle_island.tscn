@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://b0a6ifjctwbqj"]
 
 [ext_resource type="PackedScene" uid="uid://co1p57wfy7aj0" path="res://Scenes/islands/jungle/jungle.blend" id="1_2e48r"]
-[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_frwy3"]
+[ext_resource type="Script" uid="uid://bkk3s33x83svg" path="res://Scenes/Scene.gd" id="1_frwy3"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="2_6hyr4"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_xy8xx"]
 [ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="3_fceu4"]
@@ -315,8 +315,8 @@ tracks/10/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_20eme"]
 _data = {
-"RESET": SubResource("Animation_cwfr6"),
-"change_time": SubResource("Animation_3ute6")
+&"RESET": SubResource("Animation_cwfr6"),
+&"change_time": SubResource("Animation_3ute6")
 }
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_m1w0t"]
@@ -363,7 +363,7 @@ sky_mode = 1
 
 [node name="SundialTriggerAnimation" parent="." instance=ExtResource("9_n60wo")]
 libraries = {
-"": SubResource("AnimationLibrary_20eme")
+&"": SubResource("AnimationLibrary_20eme")
 }
 trigger = "sundial"
 animation = "change_time"

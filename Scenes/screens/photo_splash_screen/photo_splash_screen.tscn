@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://yy53in46kswg"]
 
-[ext_resource type="Script" path="res://Scenes/screens/photo_splash_screen/photo_splash_screen.gd" id="1_6y58m"]
+[ext_resource type="Script" uid="uid://bfwwv87jvwwd4" path="res://Scenes/screens/photo_splash_screen/photo_splash_screen.gd" id="1_6y58m"]
 [ext_resource type="Texture2D" uid="uid://bhytpdfeak08a" path="res://Scenes/screens/photo_splash_screen/background.jpg" id="2_klajs"]
 [ext_resource type="PackedScene" uid="uid://c08beqib1fswh" path="res://Scenes/screens/photo_splash_screen/photo_splash_screen_photo.tscn" id="3_npw6f"]
 [ext_resource type="Texture2D" uid="uid://v15el2w7g870" path="res://Scenes/screens/photo_splash_screen/photos/teddy.jpg" id="4_1hbja"]
@@ -45,8 +45,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_alnq7"]
 _data = {
-"RESET": SubResource("Animation_oxico"),
-"splash": SubResource("Animation_ytw8f")
+&"RESET": SubResource("Animation_oxico"),
+&"splash": SubResource("Animation_ytw8f")
 }
 
 [node name="PhotoSplashScreen" type="CanvasLayer"]

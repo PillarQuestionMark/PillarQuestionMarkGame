@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dc1evxye2jpsn"]
 
-[ext_resource type="Script" path="res://Entities/Boat/boat.gd" id="1_wder2"]
+[ext_resource type="Script" uid="uid://dudaj305g4dvb" path="res://Entities/Boat/boat.gd" id="1_wder2"]
 [ext_resource type="PackedScene" uid="uid://nd1s7aeat6mx" path="res://Components/interactable.tscn" id="2_xpkc4"]
 [ext_resource type="PackedScene" uid="uid://6wkokjqa4tnv" path="res://Entities/boat_model.tscn" id="3_f1mj3"]
 

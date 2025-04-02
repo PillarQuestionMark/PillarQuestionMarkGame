@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://pjsdnytstg65"]
 
-[ext_resource type="Script" path="res://Scenes/islands/jungle/sundial.gd" id="1_kvmhx"]
+[ext_resource type="Script" uid="uid://bmdtuit0a2eqr" path="res://Scenes/islands/jungle/sundial.gd" id="1_kvmhx"]
 [ext_resource type="PackedScene" uid="uid://nd1s7aeat6mx" path="res://Components/interactable.tscn" id="1_xhvav"]
 [ext_resource type="PackedScene" uid="uid://x1wynaxku77h" path="res://Scenes/islands/jungle/sundial.blend" id="2_jou1j"]
 

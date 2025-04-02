@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://6wkokjqa4tnv" path="res://Entities/boat_model.tscn" id="2_66k23"]
 [ext_resource type="Texture2D" uid="uid://v87a2ty7kmn3" path="res://Assets/aseprite/islandmap_bg.png" id="2_jxuc3"]
-[ext_resource type="Script" path="res://Scenes/screens/change_island_screen/change_island_screen.gd" id="2_tcyaw"]
+[ext_resource type="Script" uid="uid://76p66um33f3n" path="res://Scenes/screens/change_island_screen/change_island_screen.gd" id="2_tcyaw"]
 [ext_resource type="PackedScene" uid="uid://b0sd75bp5hwj4" path="res://Scenes/screens/change_island_screen/island_icon.tscn" id="3_g12fm"]
 [ext_resource type="PackedScene" uid="uid://b3aeddxreoudm" path="res://Scenes/screens/change_island_screen/boat_icon.tscn" id="4_uulgi"]
 [ext_resource type="Texture2D" uid="uid://chih3dctolq7l" path="res://Assets/aseprite/islandmap_island_ruins.png" id="5_hfejx"]

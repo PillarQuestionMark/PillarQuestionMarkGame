@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://c03ynvawg6nr8" path="res://Scenes/props/lantern/round_lantern.obj" id="1_nify0"]
 [ext_resource type="Material" uid="uid://xqjnw071nyjn" path="res://Scenes/props/lantern/lantern_material_default.tres" id="2_6ih04"]
-[ext_resource type="Script" path="res://Scenes/props/lantern/lantern.gd" id="2_rvlw2"]
+[ext_resource type="Script" uid="uid://xarghg8ip0x" path="res://Scenes/props/lantern/lantern.gd" id="2_rvlw2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ww5l0"]
 albedo_color = Color(0.768627, 0.776471, 0.721569, 1)

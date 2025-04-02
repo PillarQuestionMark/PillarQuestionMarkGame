@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://bw6emckixywbp"]
 
-[ext_resource type="Script" path="res://Scenes/screens/dev_console_screen/dev_console_screen.gd" id="1_p651c"]
-[ext_resource type="Script" path="res://Scenes/screens/dev_console_screen/panel_container.gd" id="2_1mi0i"]
+[ext_resource type="Script" uid="uid://cxxlyn41kyk8n" path="res://Scenes/screens/dev_console_screen/dev_console_screen.gd" id="1_p651c"]
+[ext_resource type="Script" uid="uid://yxyo2p63iws6" path="res://Scenes/screens/dev_console_screen/panel_container.gd" id="2_1mi0i"]
 [ext_resource type="FontFile" uid="uid://0emee0kxhisl" path="res://Scenes/screens/dev_console_screen/terminus-ttf-4.49.3/TerminusTTF-4.49.3.ttf" id="3_7c7d2"]
 [ext_resource type="FontFile" uid="uid://dhvev40k8ndad" path="res://Scenes/screens/dev_console_screen/terminus-ttf-4.49.3/TerminusTTF-Italic-4.49.3.ttf" id="4_tq1fu"]
 [ext_resource type="FontFile" uid="uid://cdyxl085r8o0h" path="res://Scenes/screens/dev_console_screen/terminus-ttf-4.49.3/TerminusTTF-Bold-Italic-4.49.3.ttf" id="5_5ucyc"]

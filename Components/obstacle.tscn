@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://sr6b2rc5qsof"]
 
-[ext_resource type="Script" path="res://Components/obstacle.gd" id="1_5r2wj"]
+[ext_resource type="Script" uid="uid://ck8s1nl2dtd1u" path="res://Components/obstacle.gd" id="1_5r2wj"]
 
 [node name="Obstacle" type="Area3D"]
 collision_layer = 4

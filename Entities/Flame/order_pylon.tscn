@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0bdwuhoxbd2"]
 
-[ext_resource type="Script" path="res://Entities/Flame/order_pylon.gd" id="1_ibu4u"]
+[ext_resource type="Script" uid="uid://b5f3agmq7ei6t" path="res://Entities/Flame/order_pylon.gd" id="1_ibu4u"]
 [ext_resource type="PackedScene" uid="uid://nd1s7aeat6mx" path="res://Components/interactable.tscn" id="2_54255"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xp4p3"]

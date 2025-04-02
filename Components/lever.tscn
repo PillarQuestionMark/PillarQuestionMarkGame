@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bciwk8ba8ksvr"]
 
-[ext_resource type="Script" path="res://Components/lever.gd" id="1_g16f5"]
+[ext_resource type="Script" uid="uid://ye2rcgplyrnu" path="res://Components/lever.gd" id="1_g16f5"]
 [ext_resource type="PackedScene" uid="uid://nd1s7aeat6mx" path="res://Components/interactable.tscn" id="2_qpw1e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_37pma"]
@@ -59,9 +59,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_38633"]
 _data = {
-"RESET": SubResource("Animation_qr8ae"),
-"flip_off": SubResource("Animation_2b1yk"),
-"flip_on": SubResource("Animation_i2451")
+&"RESET": SubResource("Animation_qr8ae"),
+&"flip_off": SubResource("Animation_2b1yk"),
+&"flip_on": SubResource("Animation_i2451")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pxj88"]

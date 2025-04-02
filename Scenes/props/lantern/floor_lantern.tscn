@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://cs570d6hpgx0c" path="res://Scenes/props/lantern/floor_lantern.obj" id="1_nkd71"]
 [ext_resource type="Material" uid="uid://xqjnw071nyjn" path="res://Scenes/props/lantern/lantern_material_default.tres" id="2_qryfo"]
-[ext_resource type="Script" path="res://Scenes/props/lantern/lantern.gd" id="4_jxpnc"]
+[ext_resource type="Script" uid="uid://xarghg8ip0x" path="res://Scenes/props/lantern/lantern.gd" id="4_jxpnc"]
 
 [node name="FloorLantern" type="MeshInstance3D"]
 layers = 3

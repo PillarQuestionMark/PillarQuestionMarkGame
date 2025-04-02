@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b0sd75bp5hwj4"]
 
-[ext_resource type="Script" path="res://Scenes/screens/change_island_screen/island_icon.gd" id="1_m86nt"]
+[ext_resource type="Script" uid="uid://dx6jjlp60vw3q" path="res://Scenes/screens/change_island_screen/island_icon.gd" id="1_m86nt"]
 [ext_resource type="PackedScene" uid="uid://bvebbtxnfoh73" path="res://Components/interactable_2d.tscn" id="2_x1gom"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tkrur"]

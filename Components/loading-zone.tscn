@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dql4b8bulv1vi"]
 
-[ext_resource type="Script" path="res://Components/loading_zone.gd" id="1_fqcfc"]
+[ext_resource type="Script" uid="uid://bcgn8lgo1lvu5" path="res://Components/loading_zone.gd" id="1_fqcfc"]
 
 [node name="Loading-zone" type="Area3D"]
 collision_mask = 2
