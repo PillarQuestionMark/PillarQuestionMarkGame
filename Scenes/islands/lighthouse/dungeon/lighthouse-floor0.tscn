@@ -60,7 +60,6 @@ albedo_color = Color(0, 0, 0, 1)
 
 [node name="Lighthousedungeontest" type="Node3D"]
 script = ExtResource("1_t734c")
-island_id = 2
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_s0qah")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 16)

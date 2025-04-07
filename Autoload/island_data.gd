@@ -10,6 +10,7 @@ enum Islands {
 	Village,
 	Lighthouse,
 	Volcano,
+	None
 }
 
 var _scenes: Dictionary = {

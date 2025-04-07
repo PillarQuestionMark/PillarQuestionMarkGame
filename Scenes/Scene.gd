@@ -12,6 +12,8 @@ func _ready() -> void:
 	Logger.info("scene: ready")
 	
 	Logger.info("flames collected on current island: " + str(PlayerData.get_island_flames(island).size()))
+	
+	EventBus.request_island_id.connect(_return_id)
 
 ## Takes save data and applies it to the scene.
 func _load_data() -> void:
@@ -35,3 +37,5 @@ func _load_data() -> void:
 		if PlayerData.get_island_flames(island).has(challenge.id):
 			challenge.collected()
 	
+func _return_id(return_function : Callable) -> void:
+	return_function.call(island)
