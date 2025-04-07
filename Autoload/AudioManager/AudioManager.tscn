@@ -1,16 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2yrjlexgqqvi"]
+[gd_scene load_steps=10 format=3 uid="uid://b2yrjlexgqqvi"]
 
 [ext_resource type="Script" path="res://Autoload/AudioManager/AudioManager.gd" id="1_31ioa"]
 [ext_resource type="AudioStream" uid="uid://cq4r7yft33ly7" path="res://Assets/Audio/Music/main_menu.mp3" id="2_egk6x"]
 [ext_resource type="AudioStream" uid="uid://d0hr3mg0qaice" path="res://Assets/Audio/Sound Effects/jump.mp3" id="3_66pu8"]
 [ext_resource type="AudioStream" uid="uid://cpsh26jtsghcd" path="res://Assets/Audio/Music/feet.mp3" id="3_njj34"]
 [ext_resource type="AudioStream" uid="uid://vuf51ce22c8r" path="res://Assets/Audio/Sound Effects/button.wav" id="4_euy1k"]
-[ext_resource type="AudioStream" uid="uid://7bjo4mgusi2c" path="res://Assets/Audio/Sound Effects/flame_collect.mp3" id="5_lmvtg"]
+[ext_resource type="AudioStream" uid="uid://dbtbw4fdyl4i" path="res://Assets/Audio/Music/Ruins.mp3" id="4_jki7b"]
+[ext_resource type="AudioStream" uid="uid://qtilms3vya7b" path="res://Assets/Audio/Music/LighthouseTheme.mp3" id="5_a8aps"]
+[ext_resource type="AudioStream" uid="uid://bljdrf8axapkp" path="res://Assets/Audio/Music/VillageTheme.mp3" id="6_t8f06"]
+[ext_resource type="AudioStream" uid="uid://cnod5opieg2mf" path="res://Assets/Audio/Music/VolcanoTheme.mp3" id="7_qem1j"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_31ioa")
-music = Array[Resource]([ExtResource("2_egk6x"), ExtResource("3_njj34")])
-effects = Array[Resource]([ExtResource("3_66pu8"), ExtResource("4_euy1k"), ExtResource("5_lmvtg")])
+music = Array[Resource]([ExtResource("2_egk6x"), ExtResource("3_njj34"), ExtResource("4_jki7b"), ExtResource("5_a8aps"), ExtResource("6_t8f06"), ExtResource("7_qem1j")])
+effects = Array[Resource]([ExtResource("3_66pu8"), ExtResource("4_euy1k")])
 
 [node name="Music" type="Node" parent="."]
 
