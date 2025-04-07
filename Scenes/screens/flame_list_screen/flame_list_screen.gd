@@ -32,10 +32,14 @@ func _print_flames() -> void:
 		var lable = Label.new()
 		lable.text = "There seems to be no flames around..."
 		container.add_child(lable)
-		container.move_child(back_button, container.get_child_count() - 1)
 	else:
+		var collected_flames = PlayerData.get_island_flames(current_island)
+		var lable = Label.new()
+		lable.text = str(collected_flames.size()) + "/" + str(FlameIndex.island_total_flames(current_island))
+		lable.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		container.add_child(lable)
+		
 		for flame in FlameIndex.get_flame_ids(current_island):
-			var collected_flames = PlayerData.get_island_flames(current_island)
 			var flame_lable = Label.new()
 			if (collected_flames.has(float(flame))):
 				flame_lable.text = ("- " + FlameIndex.get_flame_name(current_island, flame))
@@ -43,4 +47,4 @@ func _print_flames() -> void:
 				flame_lable.text = ("- ???")
 			container.add_child(flame_lable)
 		
-		container.move_child(back_button, container.get_child_count() - 1)
+	container.move_child(back_button, container.get_child_count() - 1)
