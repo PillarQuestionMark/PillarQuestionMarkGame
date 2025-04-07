@@ -1,7 +1,6 @@
 extends Menu
 
 const OPTIONS_SCREEN := preload("res://Scenes/screens/options_screen/options_screen.tscn")
-##const FLAMES_LIST_SCREEN := preload("res://Scenes/screens/")
 
 @onready var container = get_node("PanelContainer/CenterContainer/VBoxContainer")
 @onready var back_button = get_node("PanelContainer/CenterContainer/VBoxContainer/back")
