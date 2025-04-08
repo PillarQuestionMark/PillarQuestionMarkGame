@@ -31,6 +31,8 @@ func _enter_menu() -> void:
 		Pause_Tree_Options.Run:
 			get_tree().paused = false
 	pauseTree = p
+	
+	_set_focus()
 
 # Called specifically through the escape key (as of now)
 # Override this method for desired function
@@ -57,3 +59,15 @@ func _enter_submenu(submenu) -> void:
 func _exit_submenu() -> void:
 	inSubmenu = false
 	if hideWhileInSubmenus : visible = true
+	_set_focus()
+	
+## Changes the menu focus when a button is hovered over.
+func on_hovered_button(hovered : String) -> void:
+	var button = find_child(hovered)
+	if button != null:
+		button.grab_focus()
+	
+## Sets the controller focus for the menu
+func _set_focus() -> void:
+	pass
+	

@@ -231,24 +231,42 @@ alignment = 1
 [node name="Title" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
-text = "CSE 5912 Game"
+text = "Flotsam"
 horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
 
 [node name="StartButton" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
+focus_next = NodePath("../OptionsButton")
+focus_previous = NodePath("../QuitButton")
 theme_override_font_sizes/font_size = 42
-text = "Start (A)"
+text = "Start"
 
 [node name="OptionsButton" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../StartButton")
 theme_override_font_sizes/font_size = 42
-text = "Options (?)"
+text = "Options"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../StartButton")
+focus_next = NodePath("../StartButton")
+focus_previous = NodePath("../OptionsButton")
 theme_override_font_sizes/font_size = 42
-text = "Quit (B)"
+text = "Quit"
 
+[connection signal="mouse_entered" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="CanvasLayer" method="on_hovered_button" binds= ["StartButton"]]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="CanvasLayer" method="_on_start_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/OptionsButton" to="CanvasLayer" method="on_hovered_button" binds= ["OptionsButton"]]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/OptionsButton" to="CanvasLayer" method="_on_options_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="CanvasLayer" method="on_hovered_button" binds= ["QuitButton"]]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="CanvasLayer" method="_on_quit_button_pressed"]
