@@ -78,7 +78,7 @@ func _process(delta: float) -> void:
 	
 	# show the whole page, or go to next page if the whole page is already
 	# visible
-	if Input.is_action_just_pressed("interact"):
+	if Input.is_action_just_pressed("interact") || Input.is_action_just_pressed("ui_accept"):
 		if dialogue_label.visible_ratio >= 0.99:
 			page_idx += 1
 			if page_idx >= dialogue.size():
