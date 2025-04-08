@@ -9,7 +9,6 @@ enum Profile {
 	set(value):
 		control_scheme = value
 		EventBus.control_switch.emit()
-		print("SCHEME CHANGED")
 
 var base_controller_sensitivity = 0.5
 var base_mouse_sensitivity = 0.05
@@ -25,12 +24,10 @@ func _ready() -> void:
 func update_mouse_sensitivity(multiplier : float) -> void:
 	mouse_sensitivity = base_mouse_sensitivity * multiplier
 	EventBus.sensitivity_update.emit()
-	print(mouse_sensitivity)
 	
 func update_controller_sensitivity(multiplier : float) -> void:
 	controller_sensitivity = base_controller_sensitivity * multiplier
 	EventBus.sensitivity_update.emit()
-	print(str(controller_sensitivity) + " CONTROLLER!")
 	
 func _input(event) -> void:
 	##print("READING AMNDY")

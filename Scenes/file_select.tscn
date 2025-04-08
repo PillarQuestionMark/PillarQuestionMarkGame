@@ -13,7 +13,6 @@ script = ExtResource("1_u4ltf")
 anchors_preset = -1
 anchor_right = 0.251423
 anchor_bottom = 1.0
-offset_right = 2.36041
 offset_bottom = -0.000183105
 grow_vertical = 2
 theme = ExtResource("8_b7aig")
@@ -26,28 +25,33 @@ theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 64
 
-[node name="FileContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="FileContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Title" type="Label" parent="PanelContainer/MarginContainer/FileContainer"]
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/FileContainer"]
 layout_mode = 2
 text = "Select Save File"
 horizontal_alignment = 1
 
-[node name="File1" type="Button" parent="PanelContainer/MarginContainer/FileContainer"]
+[node name="File1" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/FileContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_right = NodePath("../../../../Delete1")
+focus_neighbor_right = NodePath("../../VBoxContainer/Delete1")
 focus_neighbor_bottom = NodePath("../File2")
 theme_override_font_sizes/font_size = 42
 text = "File 1
 
 "
 
-[node name="Time" type="Label" parent="PanelContainer/MarginContainer/FileContainer/File1"]
+[node name="Time" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/FileContainer/File1"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -61,7 +65,7 @@ scale = Vector2(1, 1.00463)
 theme_override_font_sizes/font_size = 18
 text = "Time: 0:00:00"
 
-[node name="Flames" type="Label" parent="PanelContainer/MarginContainer/FileContainer/File1"]
+[node name="Flames" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/FileContainer/File1"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -75,18 +79,18 @@ scale = Vector2(1, 1.00439)
 theme_override_font_sizes/font_size = 18
 text = "Flames: 0"
 
-[node name="File2" type="Button" parent="PanelContainer/MarginContainer/FileContainer"]
+[node name="File2" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/FileContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../File1")
-focus_neighbor_right = NodePath("../../../../Delete2")
+focus_neighbor_right = NodePath("../../VBoxContainer/Delete2")
 focus_neighbor_bottom = NodePath("../File3")
 theme_override_font_sizes/font_size = 42
 text = "File 2
 
 "
 
-[node name="Time" type="Label" parent="PanelContainer/MarginContainer/FileContainer/File2"]
+[node name="Time" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/FileContainer/File2"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -100,7 +104,7 @@ scale = Vector2(1, 1.00463)
 theme_override_font_sizes/font_size = 18
 text = "Time: 0:00:00"
 
-[node name="Flames" type="Label" parent="PanelContainer/MarginContainer/FileContainer/File2"]
+[node name="Flames" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/FileContainer/File2"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -114,17 +118,17 @@ scale = Vector2(1, 0.986076)
 theme_override_font_sizes/font_size = 18
 text = "Flames: 0"
 
-[node name="File3" type="Button" parent="PanelContainer/MarginContainer/FileContainer"]
+[node name="File3" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/FileContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_top = NodePath("../File2")
-focus_neighbor_right = NodePath("../../../../Delete3")
+focus_neighbor_right = NodePath("../../VBoxContainer/Delete3")
 theme_override_font_sizes/font_size = 42
 text = "File 3
 
 "
 
-[node name="Time" type="Label" parent="PanelContainer/MarginContainer/FileContainer/File3"]
+[node name="Time" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/FileContainer/File3"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -138,7 +142,7 @@ scale = Vector2(1, 1.00463)
 theme_override_font_sizes/font_size = 18
 text = "Time: 0:00:00"
 
-[node name="Flames" type="Label" parent="PanelContainer/MarginContainer/FileContainer/File3"]
+[node name="Flames" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/FileContainer/File3"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -152,71 +156,56 @@ scale = Vector2(1, 1.00439)
 theme_override_font_sizes/font_size = 18
 text = "Flames: 0"
 
-[node name="Delete1" type="Button" parent="."]
-anchors_preset = -1
-anchor_left = 0.27
-anchor_right = 0.275
-offset_left = -19.04
-offset_top = 112.0
-offset_right = 120.96
-offset_bottom = 236.0
-scale = Vector2(1, 1.07447)
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Delete1" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_left = NodePath("../PanelContainer/MarginContainer/FileContainer/File1")
+focus_neighbor_left = NodePath("../../FileContainer/File1")
 focus_neighbor_bottom = NodePath("../Delete2")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 24
 text = "Delete
+File
 
 "
 
-[node name="Delete2" type="Button" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -284.0
-offset_top = -42.0
-offset_right = -144.0
-offset_bottom = 82.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1, 1.07447)
+[node name="Delete2" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_left = NodePath("../PanelContainer/MarginContainer/FileContainer/File2")
+focus_neighbor_left = NodePath("../../FileContainer/File2")
 focus_neighbor_top = NodePath("../Delete1")
 focus_neighbor_bottom = NodePath("../Delete3")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 24
 text = "Delete
+File
 
 "
 
-[node name="Delete3" type="Button" parent="."]
-anchors_preset = -1
-anchor_left = 0.27
-anchor_right = 0.275
-offset_left = -19.04
-offset_top = 444.0
-offset_right = 120.96
-offset_bottom = 568.0
-scale = Vector2(1, 1.07447)
+[node name="Delete3" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_left = NodePath("../PanelContainer/MarginContainer/FileContainer/File3")
+focus_neighbor_left = NodePath("../../FileContainer/File3")
 focus_neighbor_top = NodePath("../Delete2")
-theme_override_font_sizes/font_size = 42
+theme_override_font_sizes/font_size = 24
 text = "Delete
+File
 
 "
 
-[connection signal="mouse_entered" from="PanelContainer/MarginContainer/FileContainer/File1" to="." method="on_hovered_button" binds= ["File1"]]
-[connection signal="pressed" from="PanelContainer/MarginContainer/FileContainer/File1" to="." method="_on_file_pressed" binds= [1]]
-[connection signal="mouse_entered" from="PanelContainer/MarginContainer/FileContainer/File2" to="." method="on_hovered_button" binds= ["File2"]]
-[connection signal="pressed" from="PanelContainer/MarginContainer/FileContainer/File2" to="." method="_on_file_pressed" binds= [2]]
-[connection signal="mouse_entered" from="PanelContainer/MarginContainer/FileContainer/File3" to="." method="on_hovered_button" binds= ["File3"]]
-[connection signal="pressed" from="PanelContainer/MarginContainer/FileContainer/File3" to="." method="_on_file_pressed" binds= [3]]
-[connection signal="mouse_entered" from="Delete1" to="." method="on_hovered_button" binds= ["Delete1"]]
-[connection signal="pressed" from="Delete1" to="." method="_on_file_delete" binds= [1]]
-[connection signal="mouse_entered" from="Delete2" to="." method="on_hovered_button" binds= ["Delete2"]]
-[connection signal="pressed" from="Delete2" to="." method="_on_file_delete" binds= [2]]
-[connection signal="mouse_entered" from="Delete3" to="." method="on_hovered_button" binds= ["Delete3"]]
-[connection signal="pressed" from="Delete3" to="." method="_on_file_delete" binds= [3]]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/FileContainer/File1" to="." method="on_hovered_button" binds= ["File1"]]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/FileContainer/File1" to="." method="_on_file_pressed" binds= [1]]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/FileContainer/File2" to="." method="on_hovered_button" binds= ["File2"]]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/FileContainer/File2" to="." method="_on_file_pressed" binds= [2]]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/FileContainer/File3" to="." method="on_hovered_button" binds= ["File3"]]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/FileContainer/File3" to="." method="_on_file_pressed" binds= [3]]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Delete1" to="." method="on_hovered_button" binds= ["Delete1"]]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Delete1" to="." method="_on_file_delete" binds= [1]]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Delete2" to="." method="on_hovered_button" binds= ["Delete2"]]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Delete2" to="." method="_on_file_delete" binds= [2]]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Delete3" to="." method="on_hovered_button" binds= ["Delete3"]]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Delete3" to="." method="_on_file_delete" binds= [3]]
