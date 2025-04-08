@@ -30,6 +30,13 @@ const sensitivity_scale : float = 0.1
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	spring_length = camera_distance
+	update_sensitivity()
+	EventBus.sensitivity_update.connect(update_sensitivity)
+	
+func update_sensitivity() -> void:
+	mouse_sensitivity = Settings.mouse_sensitivity
+	controller_sensitivity = Settings.controller_sensitivity
+	print("CONTROLLER SENSITIVITY: " + str(controller_sensitivity))
  
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

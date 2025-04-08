@@ -27,11 +27,13 @@ func _on_option_button_item_selected(index: int) -> void:
 		%JumpRemapper.profile = InteractRemapper.Profile.KEYBOARD_AND_MOUSE
 		%DashRemapper.profile = InteractRemapper.Profile.KEYBOARD_AND_MOUSE
 		%SlamRemapper.profile = InteractRemapper.Profile.KEYBOARD_AND_MOUSE
+		%SensitivitySlider.profile = InteractRemapper.Profile.KEYBOARD_AND_MOUSE
 	else: # controller
 		%InteractRemapper.profile = InteractRemapper.Profile.CONTROLLER
 		%JumpRemapper.profile = InteractRemapper.Profile.CONTROLLER
 		%DashRemapper.profile = InteractRemapper.Profile.CONTROLLER
 		%SlamRemapper.profile = InteractRemapper.Profile.CONTROLLER
+		%SensitivitySlider.profile = InteractRemapper.Profile.CONTROLLER
 
 func _set_focus() -> void:
 	%Cancel.grab_focus()

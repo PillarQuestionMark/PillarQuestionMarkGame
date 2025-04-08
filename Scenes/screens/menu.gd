@@ -11,7 +11,7 @@ var pauseTree = Pause_Tree_Options.FollowSupermenu
 
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
-	if not inSubmenu and Input.is_action_just_pressed("menu"):
+	if not inSubmenu and (Input.is_action_just_pressed("menu") || Input.is_action_just_pressed("ui_cancel")):
 		_escape_menu()
 
 # Meant to be called by the supermenu when entering

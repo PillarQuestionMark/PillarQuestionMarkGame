@@ -15,5 +15,8 @@ signal dialogue_finished
 ## shows the island map screen.
 signal switch_islands(current_island: IslandData.Islands)
 
+## Used for updating sensitivity
+signal sensitivity_update()
+
 func _ready() -> void:
 	Logger.info("eventbus: ready")
