@@ -40,7 +40,6 @@ horizontal_alignment = 1
 [node name="File1" type="Button" parent="PanelContainer/MarginContainer/FileContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../File3")
 focus_neighbor_right = NodePath("../../../../Delete1")
 focus_neighbor_bottom = NodePath("../File2")
 theme_override_font_sizes/font_size = 42
@@ -79,7 +78,6 @@ text = "Flames: 0"
 [node name="File2" type="Button" parent="PanelContainer/MarginContainer/FileContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_left = NodePath("../../../../Delete2")
 focus_neighbor_top = NodePath("../File1")
 focus_neighbor_right = NodePath("../../../../Delete2")
 focus_neighbor_bottom = NodePath("../File3")
@@ -119,10 +117,8 @@ text = "Flames: 0"
 [node name="File3" type="Button" parent="PanelContainer/MarginContainer/FileContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-focus_neighbor_left = NodePath("../../../../Delete3")
 focus_neighbor_top = NodePath("../File2")
 focus_neighbor_right = NodePath("../../../../Delete3")
-focus_neighbor_bottom = NodePath("../File1")
 theme_override_font_sizes/font_size = 42
 text = "File 3
 
@@ -167,8 +163,6 @@ offset_bottom = 236.0
 scale = Vector2(1, 1.07447)
 size_flags_vertical = 3
 focus_neighbor_left = NodePath("../PanelContainer/MarginContainer/FileContainer/File1")
-focus_neighbor_top = NodePath("../Delete3")
-focus_neighbor_right = NodePath("../PanelContainer/MarginContainer/FileContainer/File1")
 focus_neighbor_bottom = NodePath("../Delete2")
 theme_override_font_sizes/font_size = 42
 text = "Delete
@@ -191,7 +185,6 @@ scale = Vector2(1, 1.07447)
 size_flags_vertical = 3
 focus_neighbor_left = NodePath("../PanelContainer/MarginContainer/FileContainer/File2")
 focus_neighbor_top = NodePath("../Delete1")
-focus_neighbor_right = NodePath("../PanelContainer/MarginContainer/FileContainer/File2")
 focus_neighbor_bottom = NodePath("../Delete3")
 theme_override_font_sizes/font_size = 42
 text = "Delete
@@ -210,8 +203,6 @@ scale = Vector2(1, 1.07447)
 size_flags_vertical = 3
 focus_neighbor_left = NodePath("../PanelContainer/MarginContainer/FileContainer/File3")
 focus_neighbor_top = NodePath("../Delete2")
-focus_neighbor_right = NodePath("../PanelContainer/MarginContainer/FileContainer/File3")
-focus_neighbor_bottom = NodePath("../Delete1")
 theme_override_font_sizes/font_size = 42
 text = "Delete
 

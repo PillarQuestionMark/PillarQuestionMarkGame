@@ -28,3 +28,6 @@ func _on_quit_pressed() -> void:
 	PlayerData.save_data()
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 	_exit_menu()
+	
+func _set_focus() -> void:
+	%Resume.grab_focus()
