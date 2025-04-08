@@ -8,7 +8,6 @@ func _ready() -> void:
 	pauseTree = Pause_Tree_Options.Run
 	mouseMode = Mouse_Mode_Options.Visible
 	AudioManager.play_music("main_menu")
-	##set_focus()
 	_enter_menu()
 	
 func _set_focus() -> void:

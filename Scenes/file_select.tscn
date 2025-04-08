@@ -177,12 +177,16 @@ text = "Delete
 
 [node name="Delete2" type="Button" parent="."]
 anchors_preset = -1
-anchor_left = 0.27
-anchor_right = 0.275
-offset_left = -19.04
-offset_top = 280.0
-offset_right = 120.96
-offset_bottom = 404.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -284.0
+offset_top = -42.0
+offset_right = -144.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(1, 1.07447)
 size_flags_vertical = 3
 focus_neighbor_left = NodePath("../PanelContainer/MarginContainer/FileContainer/File2")
@@ -213,9 +217,15 @@ text = "Delete
 
 "
 
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/FileContainer/File1" to="." method="on_hovered_button" binds= ["File1"]]
 [connection signal="pressed" from="PanelContainer/MarginContainer/FileContainer/File1" to="." method="_on_file_pressed" binds= [1]]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/FileContainer/File2" to="." method="on_hovered_button" binds= ["File2"]]
 [connection signal="pressed" from="PanelContainer/MarginContainer/FileContainer/File2" to="." method="_on_file_pressed" binds= [2]]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/FileContainer/File3" to="." method="on_hovered_button" binds= ["File3"]]
 [connection signal="pressed" from="PanelContainer/MarginContainer/FileContainer/File3" to="." method="_on_file_pressed" binds= [3]]
+[connection signal="mouse_entered" from="Delete1" to="." method="on_hovered_button" binds= ["Delete1"]]
 [connection signal="pressed" from="Delete1" to="." method="_on_file_delete" binds= [1]]
+[connection signal="mouse_entered" from="Delete2" to="." method="on_hovered_button" binds= ["Delete2"]]
 [connection signal="pressed" from="Delete2" to="." method="_on_file_delete" binds= [2]]
+[connection signal="mouse_entered" from="Delete3" to="." method="on_hovered_button" binds= ["Delete3"]]
 [connection signal="pressed" from="Delete3" to="." method="_on_file_delete" binds= [3]]

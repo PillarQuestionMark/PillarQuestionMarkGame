@@ -32,3 +32,6 @@ func _on_option_button_item_selected(index: int) -> void:
 		%JumpRemapper.profile = InteractRemapper.Profile.CONTROLLER
 		%DashRemapper.profile = InteractRemapper.Profile.CONTROLLER
 		%SlamRemapper.profile = InteractRemapper.Profile.CONTROLLER
+
+func _set_focus() -> void:
+	%Cancel.grab_focus()
