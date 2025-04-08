@@ -11,7 +11,8 @@ func _ready() -> void:
 	_enter_menu()
 	
 func _set_focus() -> void:
-	$PanelContainer/MarginContainer/VBoxContainer/StartButton.grab_focus()
+	if (is_inside_tree()):
+		$PanelContainer/MarginContainer/VBoxContainer/StartButton.grab_focus()
 
 func _escape_menu() -> void:
 	_on_quit_button_pressed()
