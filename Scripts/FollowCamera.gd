@@ -7,7 +7,7 @@ extends SpringArm3D
 #mouse sensitivity.
 var mouse_sensitivity: float = 0.05
 #controller sensitivity.
-var controller_sensitivity: float = 1
+var controller_sensitivity: float = 0.5
 #pitch clamp settings.
 @export_subgroup("Clamp settings")
 #max pitch in degrees.
