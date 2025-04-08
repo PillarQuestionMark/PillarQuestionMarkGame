@@ -10,7 +10,7 @@ const deceleration := 300.0 # px/s^2
 
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact"):
+	if Input.is_action_just_pressed("interact") || Input.is_action_just_pressed("ui_accept"):
 		_try_interact()
 	
 	var direction := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
