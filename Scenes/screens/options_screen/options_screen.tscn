@@ -88,6 +88,7 @@ layout_mode = 2
 text = "control scheme"
 
 [node name="OptionButton" type="OptionButton" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 selected = 0
 item_count = 2

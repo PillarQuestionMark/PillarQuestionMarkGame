@@ -18,5 +18,8 @@ signal switch_islands(current_island: IslandData.Islands)
 ## Used for updating sensitivity
 signal sensitivity_update()
 
+## Used for better controls switching
+signal control_switch()
+
 func _ready() -> void:
 	Logger.info("eventbus: ready")

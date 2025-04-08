@@ -3,6 +3,9 @@ extends Menu
 func _ready() -> void:
 	Logger.info(name + ": ready")
 	_enter_menu()
+	if Settings.control_scheme == Settings.Profile.CONTROLLER:
+		_on_option_button_item_selected(1)
+		%OptionButton.selected = 1
 
 func _escape_menu() -> void:
 	Logger.info(name + ": escaped menu")

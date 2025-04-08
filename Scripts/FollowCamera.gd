@@ -53,7 +53,7 @@ func _process(delta):
 			spring_length = camera_distance
 			state = States.THIRD_BACK
 
-func _unhandled_input(event):
+func _input(event):
 	#Actual Camera controls
 	if (not event is InputEventMouseMotion):
 		return

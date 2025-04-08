@@ -8,6 +8,8 @@ var hideWhileInSubmenus : bool = true
 var mouseMode = Mouse_Mode_Options.FollowSupermenu
 var pauseTree = Pause_Tree_Options.FollowSupermenu
 
+var currentMouseMode = Mouse_Mode_Options.FollowSupermenu
+
 
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
@@ -16,13 +18,10 @@ func _process(delta: float) -> void:
 
 # Meant to be called by the supermenu when entering
 func _enter_menu() -> void:
-	var m = Input.mouse_mode
-	match mouseMode:
-		Mouse_Mode_Options.Visible:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		Mouse_Mode_Options.Captured:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	mouseMode = m
+	currentMouseMode = mouseMode
+	
+	set_mouse()
+	EventBus.control_switch.connect(_update_mouse)
 	
 	var p = get_tree().paused
 	match pauseTree:
@@ -33,6 +32,26 @@ func _enter_menu() -> void:
 	pauseTree = p
 	
 	_set_focus()
+	
+func _update_mouse() -> void:
+	if (currentMouseMode == Mouse_Mode_Options.Visible):
+		if (Settings.control_scheme == Settings.Profile.KEYBOARD_AND_MOUSE):
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		
+	
+func set_mouse() -> void:
+	var m = Input.mouse_mode
+	match mouseMode:
+		Mouse_Mode_Options.Visible:
+			if (Settings.control_scheme == Settings.Profile.KEYBOARD_AND_MOUSE):
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			else:
+				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		Mouse_Mode_Options.Captured:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	mouseMode = m
 
 # Called specifically through the escape key (as of now)
 # Override this method for desired function
