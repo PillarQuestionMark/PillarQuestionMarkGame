@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dmwlaf2f3cmd4"]
+[gd_scene load_steps=49 format=3 uid="uid://dmwlaf2f3cmd4"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_wbxxr"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_4qj5t"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://cj3ku0n0t8fw5" path="res://Components/grappleablePoint.tscn" id="28_4p48d"]
 [ext_resource type="Material" uid="uid://b4cigyte4lppr" path="res://Assets/Materials/GrappleInactive.tres" id="28_jcvbb"]
 [ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="31_i4esp"]
+[ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="32_qv1ve"]
 
 [sub_resource type="Curve" id="Curve_6dgbe"]
 resource_local_to_scene = true
@@ -128,6 +129,8 @@ size = Vector3(6, 3, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kjjaj"]
 size = Vector3(3, 1, 3)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_aithv"]
 
 [node name="RuinsIsland" type="Node3D"]
 script = ExtResource("1_wbxxr")
@@ -422,3 +425,9 @@ id = 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/Checkpoint2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19209e-07, 0, 1)
 shape = SubResource("BoxShape3D_kjjaj")
+
+[node name="Obstacle" parent="." instance=ExtResource("32_qv1ve")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
+shape = SubResource("WorldBoundaryShape3D_aithv")
