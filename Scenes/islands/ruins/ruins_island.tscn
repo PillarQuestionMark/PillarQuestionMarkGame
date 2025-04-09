@@ -190,7 +190,7 @@ color = Color(0.388235, 0.768627, 0.8, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 1)
 trigger = "gate"
 flames_required = 3
-fail_dialogue = Array[String](["3 flames are required to raise the gate!"])
+fail_dialogue = Array[String](["3 flames are required to raise the gate!", "Try looking around to find them."])
 
 [node name="TriggerAnimation" parent="ruins/Gate" instance=ExtResource("4_1uusq")]
 libraries = {
