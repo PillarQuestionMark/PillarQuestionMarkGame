@@ -2,7 +2,7 @@ class_name SaveVersioning
 ## Helps assure save files are compatible with the current version.
 
 ## The current version of save file, to which all outdated save files will be updated to.
-const current_version : float = 0
+const current_version : float = 3
 
 ## Updates the save file passed until it is up-to-date.
 static func check_version(save : Dictionary) -> bool:
@@ -34,3 +34,14 @@ static func check_version(save : Dictionary) -> bool:
 static func _convert_new(save : Dictionary) -> void:
 	save["version"] = 0
 	
+static func _convert_0(save : Dictionary) -> void:
+	save["version"] = 1
+	save["grapple_unlocked"] = false
+	
+static func _convert_1(save : Dictionary) -> void:
+	save["version"] = 2
+	save["sprint_unlocked"] = true
+	
+static func _convert_2(save : Dictionary) -> void:
+	save["version"] = 3
+	save["cleared_dungeons"] = []
