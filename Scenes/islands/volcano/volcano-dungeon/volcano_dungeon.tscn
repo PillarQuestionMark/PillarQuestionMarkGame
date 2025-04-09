@@ -44,7 +44,6 @@ radius = 13.0
 
 [node name="VolcanoIsland" type="Node3D"]
 script = ExtResource("1_uikhx")
-island_id = 10
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.907777, -0.367215, 0.202714, 0, 0.483282, 0.875464, -0.419452, -0.794727, 0.438713, 0, 0, 0)
@@ -59,8 +58,6 @@ Camera = NodePath("FollowCamera")
 
 [node name="FollowCamera" parent="Player" instance=ExtResource("4_5482u")]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2, 0)
-max_pitch = 80.0
-min_pitch = -80.0
 
 [node name="Geo" type="Node3D" parent="."]
 
