@@ -20,11 +20,6 @@ func _load_data() -> void:
 		if checkpoint.id == PlayerData.data["checkpoint"]:
 			checkpoint.set_player($Player)
 	
-	## find the dungeon doors and open them a73064eif previously opened
-	for door in get_tree().get_nodes_in_group("flame_door"):
-		if PlayerData.data["open_dungeons"].has(float(door.island_id)): ## cast as float to avoid issues
-			door.queue_free()
-	
 	## delete the flames that have already been collected
 	for flame in get_tree().get_nodes_in_group("flames"):
 		if PlayerData.get_island_flames(island).has(flame.id):
@@ -34,4 +29,12 @@ func _load_data() -> void:
 	for challenge in get_tree().get_nodes_in_group("challenge_flame"):
 		if PlayerData.get_island_flames(island).has(challenge.id):
 			challenge.collected()
+			
+	## delete any post-dungeon objects if pre-dungeon and vice versa
+	if PlayerData.data["cleared_dungeons"].has(island as int as float):
+		for pre in get_tree().get_nodes_in_group("pre-dungeon"):
+			pre.queue_free()
+	else:
+		for post in get_tree().get_nodes_in_group("post-dungeon"):
+			post.queue_free()
 	
