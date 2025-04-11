@@ -37,6 +37,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		#player.jumps_left += 100
 		print("c: %d" % player.jumps_left)
 		print(player.state_machine.state.name)
+		player.get_node("SlamJumpParticles").restart()
 	
 	elif !slam_only and Input.is_action_pressed("jump"):
 		print("BBBBB")
