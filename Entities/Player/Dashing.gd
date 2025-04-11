@@ -54,6 +54,9 @@ func enter(previous_state_path: String, data := {}) -> void:
 	dash_timer.start()
   
 	Logger.debug("player: pikmin 5")
+	
+	%DashParticles.rotation.y = player.get_pivot().rotation.y
+	%DashParticles.restart()
 
 ## Called by the state machine before changing the active state. Use this function
 ## to clean up the state.

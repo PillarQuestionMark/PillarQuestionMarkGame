@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://de4v1dwr7hpx1"]
+[gd_scene load_steps=48 format=3 uid="uid://de4v1dwr7hpx1"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_3tqia"]
 [ext_resource type="Script" path="res://Scripts/PlayerBehavior/StateMachines/StateMachine.gd" id="3_6ta2n"]
@@ -123,6 +123,21 @@ scale_max = 0.5
 
 [sub_resource type="SphereMesh" id="SphereMesh_5yahb"]
 material = SubResource("StandardMaterial3D_qepti")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7o4xy"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.407843)
+
+[sub_resource type="Curve" id="Curve_ikph0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ba607"]
+curve = SubResource("Curve_ikph0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_unxmn"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_ba607")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 2
@@ -255,6 +270,17 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_ut56g")
 draw_pass_1 = SubResource("SphereMesh_5yahb")
+
+[node name="DashParticles" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+material_override = SubResource("StandardMaterial3D_7o4xy")
+emitting = false
+amount = 2
+lifetime = 0.1
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_unxmn")
+draw_pass_1 = ExtResource("3_vgho5")
 
 [connection signal="area_entered" from="GrappleTargetLocator" to="GrappleTargetLocator" method="_on_area_entered"]
 [connection signal="area_exited" from="GrappleTargetLocator" to="GrappleTargetLocator" method="_on_area_exited"]
