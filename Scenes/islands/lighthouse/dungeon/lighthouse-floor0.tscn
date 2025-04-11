@@ -61,6 +61,8 @@ albedo_color = Color(0, 0, 0, 1)
 [node name="Lighthousedungeontest2" type="Node3D"]
 script = ExtResource("1_t734c")
 island = 4
+music = "LighthouseTheme"
+
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_s0qah")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 16)
 Transparency_Curve = SubResource("Curve_4n5se")

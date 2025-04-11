@@ -3,11 +3,13 @@ class_name GameScene extends Node3D
 
 ## The island id, should be unique for each island. Each scene that is part of an island should have the same island id.
 @export var island := IslandData.Islands.Ruins 
+@export var music : String = "Ruins"
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Logger.info("scene: loading save data")
 	_load_data()
+	AudioManager.play_music(music)
 	
 	Logger.info("scene: ready")
 	
