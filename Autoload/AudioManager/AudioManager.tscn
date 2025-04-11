@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://cnod5opieg2mf" path="res://Assets/Audio/Music/VolcanoTheme.mp3" id="7_qem1j"]
 
 [node name="AudioManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_31ioa")
 music = Array[Resource]([ExtResource("2_egk6x"), ExtResource("3_njj34"), ExtResource("4_jki7b"), ExtResource("5_a8aps"), ExtResource("6_t8f06"), ExtResource("7_qem1j")])
 effects = Array[Resource]([ExtResource("3_66pu8"), ExtResource("4_euy1k")])

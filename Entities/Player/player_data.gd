@@ -101,7 +101,13 @@ func get_island_flames(island_id: int) -> Array:
 func load_scene(next_scene : String = data["current_scene"], checkpoint : int = data["checkpoint"]) -> void:
 	data["current_scene"] = next_scene
 	data["checkpoint"] = checkpoint
-	get_tree().change_scene_to_file(next_scene) ## load the scene
+	
+	get_tree().paused = true ## pauses physics... looks nicer
+	const LOADING_SCREEN := preload("res://Scenes/screens/loading_screen/loading_screen.tscn")
+	var s := LOADING_SCREEN.instantiate()
+	s.start_load(next_scene)
+	get_tree().root.add_child(s)
+	##get_tree().change_scene_to_file(next_scene) ## load the scene
 	
 ## Loads up a cutscene and sets up the cutscene.
 func load_cutscene(text : Array[String], scene : String, checkpoint : int) -> void:
@@ -119,9 +125,7 @@ func load_cutscene(text : Array[String], scene : String, checkpoint : int) -> vo
 ## load_scene() but it uses the IslandData.Islands enum
 func load_island(island: IslandData.Islands, checkpoint: int) -> void:
 	var island_scene_path := IslandData.get_scene_path_from_island(island)
-	data["current_scene"] = island_scene_path
-	data["checkpoint"] = checkpoint
-	get_tree().change_scene_to_file(island_scene_path) ## load the scene
+	load_scene(island_scene_path, checkpoint)
 
 ## Sets the checkpoint to spawn at in player data. 
 ## Separate from [method load_scene] for collecting checkpoints without loading a scene.
