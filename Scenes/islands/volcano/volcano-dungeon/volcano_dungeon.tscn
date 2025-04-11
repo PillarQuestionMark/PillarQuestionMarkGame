@@ -45,6 +45,7 @@ radius = 13.0
 [node name="VolcanoIsland" type="Node3D"]
 script = ExtResource("1_uikhx")
 music = "VolcanoTheme"
+island = 5
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.907777, -0.367215, 0.202714, 0, 0.483282, 0.875464, -0.419452, -0.794727, 0.438713, 0, 0, 0)
