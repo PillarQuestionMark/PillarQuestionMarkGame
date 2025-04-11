@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2yrjlexgqqvi"]
+[gd_scene load_steps=14 format=3 uid="uid://b2yrjlexgqqvi"]
 
 [ext_resource type="Script" path="res://Autoload/AudioManager/AudioManager.gd" id="1_31ioa"]
 [ext_resource type="AudioStream" uid="uid://cq4r7yft33ly7" path="res://Assets/Audio/Music/main_menu.mp3" id="2_egk6x"]
@@ -11,11 +11,13 @@
 [ext_resource type="AudioStream" uid="uid://dbuntcxux6kp3" path="res://Assets/Audio/Sound Effects/Chime3.mp3" id="9_5y0a5"]
 [ext_resource type="AudioStream" uid="uid://b0i64r3k8x2ch" path="res://Assets/Audio/Sound Effects/CorrectChime.mp3" id="10_uahkk"]
 [ext_resource type="AudioStream" uid="uid://d3mdcpxtg2p7m" path="res://Assets/Audio/Sound Effects/IncorrectChime.mp3" id="11_wjq2v"]
+[ext_resource type="AudioStream" uid="uid://b7myaf3m76lgr" path="res://Assets/Audio/Sound Effects/ReflectorRotate.mp3" id="12_0gxlv"]
+[ext_resource type="AudioStream" uid="uid://cmi2t753hkvi4" path="res://Assets/Audio/Sound Effects/Laser.mp3" id="13_ni6jq"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_31ioa")
 music = Array[Resource]([ExtResource("2_egk6x"), ExtResource("3_njj34")])
-effects = Array[Resource]([ExtResource("3_66pu8"), ExtResource("4_euy1k"), ExtResource("5_lmvtg"), ExtResource("7_mieqm"), ExtResource("8_dh37x"), ExtResource("9_5y0a5"), ExtResource("10_uahkk"), ExtResource("11_wjq2v")])
+effects = Array[Resource]([ExtResource("3_66pu8"), ExtResource("4_euy1k"), ExtResource("5_lmvtg"), ExtResource("7_mieqm"), ExtResource("8_dh37x"), ExtResource("9_5y0a5"), ExtResource("10_uahkk"), ExtResource("11_wjq2v"), ExtResource("12_0gxlv"), ExtResource("13_ni6jq")])
 
 [node name="Music" type="Node" parent="."]
 

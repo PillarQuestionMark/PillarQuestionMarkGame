@@ -22,4 +22,5 @@ func laser_hit(direction : Vector3, normal : Vector3) -> void:
 	print(str(self) + " RECEIVER HIT!")
 	if (!on):
 		EventBus.trigger.emit(trigger)
+		AudioManager.play_fx("CorrectChime")
 	on = true

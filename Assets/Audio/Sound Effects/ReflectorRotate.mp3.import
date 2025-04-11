@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b7myaf3m76lgr"
+path="res://.godot/imported/ReflectorRotate.mp3-079dd50437c3589a82d68fb8c8189eef.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Sound Effects/ReflectorRotate.mp3"
+dest_files=["res://.godot/imported/ReflectorRotate.mp3-079dd50437c3589a82d68fb8c8189eef.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
