@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dbuntcxux6kp3"
+path="res://.godot/imported/Chime3.mp3-bbff5d3b3a580fe3cc722e064a8c6a38.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Sound Effects/Chime3.mp3"
+dest_files=["res://.godot/imported/Chime3.mp3-bbff5d3b3a580fe3cc722e064a8c6a38.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

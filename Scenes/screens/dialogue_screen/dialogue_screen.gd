@@ -24,6 +24,8 @@ var tween: Tween = null
 
 var _is_ready := false
 
+var play_sfx : bool = false
+
 func _ready() -> void:
 	name_label.text = ""
 	dialogue_label.text = ""
@@ -63,16 +65,22 @@ func _show_page(idx: int) -> void:
 	else: # by default, keep the last speaker name
 		dialogue_label.text = data
 	
+	play_sfx = true
 	tween = create_tween()
 	var duration: float = dialogue_label.get_total_character_count() * 0.02
 	tween.tween_property(dialogue_label, "visible_ratio", 1.0, duration) \
 		.from(0.0)
+	await tween.finished
+	play_sfx = false
 
 func _end_dialogue() -> void:
 	EventBus.dialogue_finished.emit()
 	queue_free()
 
 func _process(delta: float) -> void:
+	if (play_sfx):
+		AudioManager.play_fx("DialogueSFX")
+	
 	if not _is_ready:
 		return
 	
@@ -88,4 +96,5 @@ func _process(delta: float) -> void:
 		else:
 			if tween != null:
 				tween.kill()
+				play_sfx = false
 			dialogue_label.visible_ratio = 1.0

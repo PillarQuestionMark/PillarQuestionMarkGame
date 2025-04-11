@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b0i64r3k8x2ch"
+path="res://.godot/imported/CorrectChime.mp3-27eb4e87f78c4bf27578cb7e8c5238a1.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Sound Effects/CorrectChime.mp3"
+dest_files=["res://.godot/imported/CorrectChime.mp3-27eb4e87f78c4bf27578cb7e8c5238a1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

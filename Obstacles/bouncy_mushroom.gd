@@ -41,6 +41,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		#player.jumps_left += 100
 		print("c: %d" % player.jumps_left)
 		print(player.state_machine.state.name)
+		player.get_node("SlamJumpParticles").restart()
 	
 	elif !slam_only and Input.is_action_pressed("jump"):
 		print("BBBBB")
@@ -61,6 +62,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		body.jumps_left -= 1
 		player.velocity.y = bounce_height
 	
+	AudioManager.play_fx("jump")
 	#if !slam_only or _check_slam(body): ## if slam only check slam, else do nothing
 		#body.touched_ground() ## reset jumps (for double jumping)
 		#body.velocity.y += _check_height(body) ## give bounce impulse

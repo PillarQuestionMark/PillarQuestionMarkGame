@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://de4v1dwr7hpx1"]
+[gd_scene load_steps=56 format=3 uid="uid://de4v1dwr7hpx1"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_3tqia"]
 [ext_resource type="Script" path="res://Scripts/PlayerBehavior/StateMachines/StateMachine.gd" id="3_6ta2n"]
@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://dmhwfbc05xhsb" path="res://Components/interactor.tscn" id="19_dm15w"]
 [ext_resource type="Script" path="res://Entities/Player/inventory.gd" id="22_q8h2y"]
 [ext_resource type="Script" path="res://Entities/Player/range_finder.gd" id="23_m208i"]
-[ext_resource type="Material" uid="uid://5uc70cukixux" path="res://Assets/Materials/GrappleHook.tres" id="24_tuyhe"]
+[ext_resource type="Material" uid="uid://cg5nhvhv6q8kf" path="res://Assets/Materials/GrappleHook.tres" id="24_tuyhe"]
 
 [sub_resource type="Curve" id="Curve_e4jrd"]
 resource_local_to_scene = true
@@ -81,6 +81,102 @@ radius = 0.1
 height = 0.2
 radial_segments = 4
 rings = 4
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_38hd6"]
+emission_shape_scale = Vector3(1, 0, 1)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 6.0
+initial_velocity_max = 7.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_re5ma"]
+albedo_color = Color(1, 1, 0.47451, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8c68t"]
+material = SubResource("StandardMaterial3D_re5ma")
+
+[sub_resource type="Curve" id="Curve_bajdw"]
+_data = [Vector2(0, 0.505494), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gup1n"]
+curve = SubResource("Curve_bajdw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8sl6t"]
+emission_shape_scale = Vector3(1, 0, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 5, 0)
+scale_min = 2.0
+scale_max = 2.5
+scale_curve = SubResource("CurveTexture_gup1n")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a741q"]
+transparency = 1
+albedo_color = Color(1, 1, 0.47451, 0.101961)
+
+[sub_resource type="TorusMesh" id="TorusMesh_43317"]
+material = SubResource("StandardMaterial3D_a741q")
+inner_radius = 0.8
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ut56g"]
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.25
+scale_max = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qepti"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_5yahb"]
+material = SubResource("StandardMaterial3D_qepti")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7o4xy"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.407843)
+
+[sub_resource type="Curve" id="Curve_ikph0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ba607"]
+curve = SubResource("Curve_ikph0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_unxmn"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_ba607")
+
+[sub_resource type="Curve" id="Curve_eh36m"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_h8c8a"]
+curve = SubResource("Curve_eh36m")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1w5p6"]
+emission_shape_scale = Vector3(1, 0, 1)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_h8c8a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7wiwr"]
+transparency = 1
+albedo_color = Color(1, 0.701961, 0.654902, 0.243137)
+
+[sub_resource type="SphereMesh" id="SphereMesh_4g4eq"]
+material = SubResource("StandardMaterial3D_7wiwr")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 2
@@ -191,6 +287,56 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 visible = false
 process_material = SubResource("ParticleProcessMaterial_c5pq8")
 draw_pass_1 = SubResource("SphereMesh_sgh7u")
+
+[node name="SlamParticles" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 24
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_38hd6")
+draw_pass_1 = SubResource("SphereMesh_8c68t")
+
+[node name="SlamJumpParticles" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 4
+lifetime = 0.5
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_8sl6t")
+draw_pass_1 = SubResource("TorusMesh_43317")
+
+[node name="WallKickParticles" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ut56g")
+draw_pass_1 = SubResource("SphereMesh_5yahb")
+
+[node name="DashParticles" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+material_override = SubResource("StandardMaterial3D_7o4xy")
+emitting = false
+amount = 2
+lifetime = 0.1
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_unxmn")
+draw_pass_1 = ExtResource("3_vgho5")
+
+[node name="DoubleJumpParticles" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 16
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_1w5p6")
+draw_pass_1 = SubResource("SphereMesh_4g4eq")
 
 [connection signal="area_entered" from="GrappleTargetLocator" to="GrappleTargetLocator" method="_on_area_entered"]
 [connection signal="area_exited" from="GrappleTargetLocator" to="GrappleTargetLocator" method="_on_area_exited"]

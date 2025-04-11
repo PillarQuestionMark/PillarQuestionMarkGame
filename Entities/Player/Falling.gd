@@ -25,6 +25,7 @@ func physics_update(_delta: float) -> void:
 	
 	#Transition states
 	if(Input.is_action_just_pressed("jump") and player.jumps_left > 0):
+		%DoubleJumpParticles.restart()
 		finished.emit(JUMPING)
 	elif(Input.is_action_just_pressed("grapple") and PlayerData.data["grapple_unlocked"]):
 		finished.emit(GRAPPLING)

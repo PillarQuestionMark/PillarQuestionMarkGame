@@ -28,6 +28,8 @@ func physics_update(_delta: float) -> void:
 		## for some reason, this sometimes gets an error otherwise...
 		if (player.position != player.position + normal):
 			player.get_pivot().look_at_from_position(player.position, player.position + normal, Vector3.UP)
+		%WallKickParticles.rotation.y = player.get_pivot().rotation.y
+		%WallKickParticles.restart()
 	elif(Input.is_action_just_pressed("grapple") and PlayerData.data["grapple_unlocked"]):
 		finished.emit(GRAPPLING)
 	elif (Input.is_action_just_pressed("slam") and PlayerData.data["slam_unlocked"]):

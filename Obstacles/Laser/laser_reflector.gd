@@ -72,6 +72,7 @@ func interacted() -> void:
 	##rotation.y = deg_to_rad(90) if rotation.y == deg_to_rad(0) else 0
 	self.rotate(Vector3.UP, deg_to_rad(90))
 	print(rad_to_deg(rotation.y))
+	AudioManager.play_fx("ReflectorRotate")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
