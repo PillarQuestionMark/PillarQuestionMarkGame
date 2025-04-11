@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://de4v1dwr7hpx1"]
+[gd_scene load_steps=44 format=3 uid="uid://de4v1dwr7hpx1"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_3tqia"]
 [ext_resource type="Script" path="res://Scripts/PlayerBehavior/StateMachines/StateMachine.gd" id="3_6ta2n"]
@@ -108,6 +108,21 @@ albedo_color = Color(1, 1, 0.47451, 0.101961)
 [sub_resource type="TorusMesh" id="TorusMesh_43317"]
 material = SubResource("StandardMaterial3D_a741q")
 inner_radius = 0.8
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ut56g"]
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.25
+scale_max = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qepti"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_5yahb"]
+material = SubResource("StandardMaterial3D_qepti")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 2
@@ -230,6 +245,16 @@ lifetime = 0.5
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_8sl6t")
 draw_pass_1 = SubResource("TorusMesh_43317")
+
+[node name="WallKickParticles" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ut56g")
+draw_pass_1 = SubResource("SphereMesh_5yahb")
 
 [connection signal="area_entered" from="GrappleTargetLocator" to="GrappleTargetLocator" method="_on_area_entered"]
 [connection signal="area_exited" from="GrappleTargetLocator" to="GrappleTargetLocator" method="_on_area_exited"]
