@@ -11,6 +11,7 @@ signal on_hidden # right after the hide animation
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	position.y = -size.y
+	_hide()
 	
 	tween.tween_callback(func():) # do nothing, prevent error about tween starting with no tweeners
 
