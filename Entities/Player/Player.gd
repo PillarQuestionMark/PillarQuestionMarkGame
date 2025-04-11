@@ -168,4 +168,5 @@ func can_wall_slide() -> bool:
 
 ## kills the player and reloads the scene
 func die() -> void:
+	AudioManager.play_fx("Death")
 	PlayerData.load_scene()
