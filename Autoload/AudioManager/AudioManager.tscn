@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b2yrjlexgqqvi"]
+[gd_scene load_steps=18 format=3 uid="uid://b2yrjlexgqqvi"]
 
 [ext_resource type="Script" path="res://Autoload/AudioManager/AudioManager.gd" id="1_31ioa"]
 [ext_resource type="AudioStream" uid="uid://cq4r7yft33ly7" path="res://Assets/Audio/Music/main_menu.mp3" id="2_egk6x"]
@@ -15,11 +15,13 @@
 [ext_resource type="AudioStream" uid="uid://cmi2t753hkvi4" path="res://Assets/Audio/Sound Effects/Laser.mp3" id="13_ni6jq"]
 [ext_resource type="AudioStream" uid="uid://dmyc072gaxk2r" path="res://Assets/Audio/Sound Effects/DialogueSFX.mp3" id="14_dg625"]
 [ext_resource type="AudioStream" uid="uid://b7tnr3fye502d" path="res://Assets/Audio/Sound Effects/Tick.mp3" id="15_f722e"]
+[ext_resource type="AudioStream" uid="uid://djnnwd85u3460" path="res://Assets/Audio/Sound Effects/LeverOn.mp3" id="16_8gh3b"]
+[ext_resource type="AudioStream" uid="uid://dxmgybsflr71v" path="res://Assets/Audio/Sound Effects/LeverOff.mp3" id="17_qrnv5"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_31ioa")
 music = Array[Resource]([ExtResource("2_egk6x"), ExtResource("3_njj34")])
-effects = Array[Resource]([ExtResource("3_66pu8"), ExtResource("4_euy1k"), ExtResource("5_lmvtg"), ExtResource("7_mieqm"), ExtResource("8_dh37x"), ExtResource("9_5y0a5"), ExtResource("10_uahkk"), ExtResource("11_wjq2v"), ExtResource("12_0gxlv"), ExtResource("13_ni6jq"), ExtResource("14_dg625"), ExtResource("15_f722e")])
+effects = Array[Resource]([ExtResource("3_66pu8"), ExtResource("4_euy1k"), ExtResource("5_lmvtg"), ExtResource("7_mieqm"), ExtResource("8_dh37x"), ExtResource("9_5y0a5"), ExtResource("10_uahkk"), ExtResource("11_wjq2v"), ExtResource("12_0gxlv"), ExtResource("13_ni6jq"), ExtResource("14_dg625"), ExtResource("15_f722e"), ExtResource("16_8gh3b"), ExtResource("17_qrnv5")])
 
 [node name="Music" type="Node" parent="."]
 
