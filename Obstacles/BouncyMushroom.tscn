@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cykuutv3qovo3" path="res://Obstacles/mushroom.blend" id="2_8gkpv"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xm0jx"]
-height = 0.4
+height = 0.2
 radius = 1.9
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_jgkc5"]
@@ -20,7 +20,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 shape = SubResource("CylinderShape3D_xm0jx")
 
 [node name="mushroom2" parent="." instance=ExtResource("2_8gkpv")]
