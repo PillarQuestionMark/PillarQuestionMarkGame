@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2yrjlexgqqvi"]
+[gd_scene load_steps=12 format=3 uid="uid://b2yrjlexgqqvi"]
 
 [ext_resource type="Script" path="res://Autoload/AudioManager/AudioManager.gd" id="1_31ioa"]
 [ext_resource type="AudioStream" uid="uid://cq4r7yft33ly7" path="res://Assets/Audio/Music/main_menu.mp3" id="2_egk6x"]
@@ -6,11 +6,16 @@
 [ext_resource type="AudioStream" uid="uid://cpsh26jtsghcd" path="res://Assets/Audio/Music/feet.mp3" id="3_njj34"]
 [ext_resource type="AudioStream" uid="uid://vuf51ce22c8r" path="res://Assets/Audio/Sound Effects/button.wav" id="4_euy1k"]
 [ext_resource type="AudioStream" uid="uid://7bjo4mgusi2c" path="res://Assets/Audio/Sound Effects/flame_collect.mp3" id="5_lmvtg"]
+[ext_resource type="AudioStream" uid="uid://dhu6e8atwg4pb" path="res://Assets/Audio/Sound Effects/Chime1.mp3" id="7_mieqm"]
+[ext_resource type="AudioStream" uid="uid://di2rjg7ggvrpe" path="res://Assets/Audio/Sound Effects/Chime2.mp3" id="8_dh37x"]
+[ext_resource type="AudioStream" uid="uid://dbuntcxux6kp3" path="res://Assets/Audio/Sound Effects/Chime3.mp3" id="9_5y0a5"]
+[ext_resource type="AudioStream" uid="uid://b0i64r3k8x2ch" path="res://Assets/Audio/Sound Effects/CorrectChime.mp3" id="10_uahkk"]
+[ext_resource type="AudioStream" uid="uid://d3mdcpxtg2p7m" path="res://Assets/Audio/Sound Effects/IncorrectChime.mp3" id="11_wjq2v"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_31ioa")
 music = Array[Resource]([ExtResource("2_egk6x"), ExtResource("3_njj34")])
-effects = Array[Resource]([ExtResource("3_66pu8"), ExtResource("4_euy1k"), ExtResource("5_lmvtg")])
+effects = Array[Resource]([ExtResource("3_66pu8"), ExtResource("4_euy1k"), ExtResource("5_lmvtg"), ExtResource("7_mieqm"), ExtResource("8_dh37x"), ExtResource("9_5y0a5"), ExtResource("10_uahkk"), ExtResource("11_wjq2v")])
 
 [node name="Music" type="Node" parent="."]
 
