@@ -2,6 +2,8 @@ extends PlayerState
 
 var targetPosition : Vector3
 
+var sfx_tick : int = 0
+
 ## Called by the state machine when receiving unhandled input events.
 func handle_input(_event: InputEvent) -> void:
 	pass
@@ -14,6 +16,12 @@ func physics_update(_delta: float) -> void:
 		var direction = player.global_position.direction_to(targetPosition)
 		player.velocity = direction * player.Grapple_Speed
 		player.move_and_slide()
+		
+		if (sfx_tick < 4):
+			sfx_tick += 1
+		else:
+			AudioManager.play_fx("Grapple")
+			sfx_tick = 0
 		return
 	
 	if(!player.is_on_floor()):
