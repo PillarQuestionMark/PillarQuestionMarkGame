@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dmyc072gaxk2r"
+path="res://.godot/imported/DialogueSFX.mp3-45c1bad1d96cfc0a14c1508069878255.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Sound Effects/DialogueSFX.mp3"
+dest_files=["res://.godot/imported/DialogueSFX.mp3-45c1bad1d96cfc0a14c1508069878255.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
