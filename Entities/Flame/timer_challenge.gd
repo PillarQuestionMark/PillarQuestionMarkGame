@@ -18,7 +18,6 @@ func _process(delta: float) -> void:
 
 ## Called when the player interacts with the timer.
 func on_interacted() -> void:
-	print("yae > fischl")
 	if !was_collected:
 		$Timer.start()
 		parent.enable()
@@ -35,3 +34,4 @@ func _time_out() -> void:
 	parent.disable()
 	if !was_collected:
 		$Label3D.visible = true
+		AudioManager.play_fx("IncorrectChime")
