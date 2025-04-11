@@ -81,7 +81,7 @@ func _exit_submenu() -> void:
 	_set_focus()
 	
 ## Changes the menu focus when a button is hovered over.
-func on_hovered_button(hovered : String) -> void:
+func _on_hovered_button(hovered : String = "Resume") -> void:
 	var button = find_child(hovered)
 	if button != null:
 		button.grab_focus()

@@ -197,15 +197,11 @@ File
 
 "
 
-[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/FileContainer/File1" to="." method="on_hovered_button" binds= ["File1"]]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/FileContainer/File1" to="." method="_on_hovered_button" binds= ["File1"]]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/FileContainer/File1" to="." method="_on_file_pressed" binds= [1]]
-[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/FileContainer/File2" to="." method="on_hovered_button" binds= ["File2"]]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/FileContainer/File2" to="." method="_on_hovered_button" binds= ["File2"]]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/FileContainer/File2" to="." method="_on_file_pressed" binds= [2]]
-[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/FileContainer/File3" to="." method="on_hovered_button" binds= ["File3"]]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/FileContainer/File3" to="." method="_on_file_pressed" binds= [3]]
-[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Delete1" to="." method="on_hovered_button" binds= ["Delete1"]]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Delete1" to="." method="_on_file_delete" binds= [1]]
-[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Delete2" to="." method="on_hovered_button" binds= ["Delete2"]]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Delete2" to="." method="_on_file_delete" binds= [2]]
-[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Delete3" to="." method="on_hovered_button" binds= ["Delete3"]]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Delete3" to="." method="_on_file_delete" binds= [3]]

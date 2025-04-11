@@ -350,7 +350,6 @@ metadata/_snap_count = 20
 [node name="JungleIsland" type="Node3D"]
 script = ExtResource("1_frwy3")
 island = 4
-music = "LighthouseTheme"
 
 [node name="GameplayUI" parent="." instance=ExtResource("2_6hyr4")]
 

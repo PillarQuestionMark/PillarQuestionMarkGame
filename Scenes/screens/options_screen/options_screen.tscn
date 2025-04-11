@@ -171,19 +171,7 @@ text = "cancel"
 layout_mode = 2
 text = "apply"
 
-[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/VolumeSlider" to="." method="on_hovered_button" binds= ["VolumeSlider"]]
-[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/MusicVolumeSlider" to="." method="on_hovered_button" binds= ["MusicVolumeSlider"]]
-[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/EffectsVolumeSlider" to="." method="on_hovered_button" binds= ["EffectsVolumeSlider"]]
 [connection signal="item_selected" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/OptionButton" to="." method="_on_option_button_item_selected"]
-[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/OptionButton" to="." method="on_hovered_button" binds= ["OptionButton"]]
-[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/SensitivitySlider" to="." method="on_hovered_button" binds= ["SensitivitySlider"]]
 [connection signal="value_changed" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/SensitivitySlider" to="PanelContainer/CenterContainer/VBoxContainer/GridContainer/SensitivitySlider" method="_on_slider_change"]
-[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/InteractRemapper" to="." method="on_hovered_button" binds= ["InteractRemapper"]]
-[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/JumpRemapper" to="." method="on_hovered_button" binds= ["JumpRemapper"]]
-[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/DashRemapper" to="." method="on_hovered_button" binds= ["DashRemapper"]]
-[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/SlamRemapper" to="." method="on_hovered_button" binds= ["SlamRemapper"]]
-[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/Grapple2" to="." method="on_hovered_button" binds= ["Grapple2"]]
-[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/Cancel" to="." method="on_hovered_button" binds= ["Cancel"]]
 [connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
-[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/Apply" to="." method="on_hovered_button" binds= ["Apply"]]
 [connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/Apply" to="." method="_on_apply_pressed"]
