@@ -139,6 +139,9 @@ func _on_slam_unlock_toggled(toggled_on: bool) -> void:
 
 func _on_wall_slide_unlock_toggled(toggled_on: bool) -> void:
 	PlayerData.data["wall_slide_unlocked"] = toggled_on
+	
+func _on_grapple_unlock_toggled(toggled_on: bool) -> void:
+	PlayerData.data["grapple_unlocked"] = toggled_on
 
 func _on_console_input_text_submitted(text: String) -> void:
 	console_input.text = ""

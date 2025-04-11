@@ -160,7 +160,14 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "wallslide"
 
+[node name="Grapple" type="CheckButton" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "grapple
+"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls"]
+visible = false
 layout_mode = 2
 
 [node name="FlamesLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/HBoxContainer"]
@@ -242,6 +249,7 @@ transform = Transform3D(0.765146, -2.98023e-08, 0.643857, -0.514848, 0.60049, 0.
 [connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/DashUnlock" to="." method="_on_dash_unlock_toggled"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/SlamUnlock" to="." method="_on_slam_unlock_toggled"]
 [connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/WallSlideUnlock" to="." method="_on_wall_slide_unlock_toggled"]
+[connection signal="toggled" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/Grapple" to="." method="_on_grapple_unlock_toggled"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/HBoxContainer/Flames" to="." method="_on_flames_value_changed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/HBoxContainer2/LoadSavefile" to="." method="_on_load_savefile_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/PlayerControls/HBoxContainer2/WriteSaveFile" to="." method="_on_write_save_file_pressed"]
