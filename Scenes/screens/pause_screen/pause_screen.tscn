@@ -33,6 +33,11 @@ layout_mode = 2
 text = "resume"
 flat = true
 
+[node name="Flames" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "flames"
+flat = true
+
 [node name="Options" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "options"
@@ -45,5 +50,6 @@ flat = true
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/Flames" to="." method="_on_flames_list_pressed"]
 [connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

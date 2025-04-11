@@ -15,5 +15,8 @@ signal dialogue_finished
 ## shows the island map screen.
 signal switch_islands(current_island: IslandData.Islands)
 
+## used to get current island id without a connection to the Scene
+signal request_island_id(return_function : Callable)
+
 func _ready() -> void:
 	Logger.info("eventbus: ready")
