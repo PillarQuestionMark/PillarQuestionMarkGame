@@ -15,6 +15,8 @@ func physics_update(_delta: float) -> void:
 	elif (Input.is_action_just_pressed("dash") && player.can_dash):
 		finished.emit(DASHING)
 	elif (player.is_on_floor()):
+		AudioManager.play_fx("Slam")
+		%SlamParticles.restart()
 		player.start_slamjump_window()
 		finished.emit(IDLE)
 	elif (Input.is_action_just_pressed("interact")):

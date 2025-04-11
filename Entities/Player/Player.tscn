@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://de4v1dwr7hpx1"]
+[gd_scene load_steps=36 format=3 uid="uid://de4v1dwr7hpx1"]
 
 [ext_resource type="Script" path="res://Entities/Player/Player.gd" id="1_3tqia"]
 [ext_resource type="Script" path="res://Scripts/PlayerBehavior/StateMachines/StateMachine.gd" id="3_6ta2n"]
@@ -66,6 +66,22 @@ radius = 2.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dgi6d"]
 radius = 40.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_38hd6"]
+emission_shape_scale = Vector3(1, 0, 1)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 6.0
+initial_velocity_max = 7.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_re5ma"]
+albedo_color = Color(1, 1, 0.47451, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8c68t"]
+material = SubResource("StandardMaterial3D_re5ma")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_layer = 2
@@ -171,6 +187,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("22_q8h2y")
 
 [node name="SlamParticles" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 24
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_38hd6")
+draw_pass_1 = SubResource("SphereMesh_8c68t")
 
 [connection signal="area_entered" from="GrappleTargetLocator" to="GrappleTargetLocator" method="_on_area_entered"]
 [connection signal="area_exited" from="GrappleTargetLocator" to="GrappleTargetLocator" method="_on_area_exited"]
