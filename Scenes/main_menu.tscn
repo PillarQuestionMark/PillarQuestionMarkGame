@@ -256,9 +256,6 @@ focus_neighbor_top = NodePath("../OptionsButton")
 theme_override_font_sizes/font_size = 42
 text = "Quit"
 
-[connection signal="mouse_entered" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="CanvasLayer" method="on_hovered_button" binds= ["StartButton"]]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="CanvasLayer" method="_on_start_button_pressed"]
-[connection signal="mouse_entered" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/OptionsButton" to="CanvasLayer" method="on_hovered_button" binds= ["OptionsButton"]]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/OptionsButton" to="CanvasLayer" method="_on_options_button_pressed"]
-[connection signal="mouse_entered" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="CanvasLayer" method="on_hovered_button" binds= ["QuitButton"]]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/QuitButton" to="CanvasLayer" method="_on_quit_button_pressed"]

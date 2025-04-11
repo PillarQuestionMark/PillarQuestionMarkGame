@@ -39,7 +39,10 @@ var current_text : int = 0
 func _ready() -> void:
 	text_container.text = "[center]" + text[0] + "[/center]"
 	get_node("Button").grab_focus()
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if (Settings.control_scheme == Settings.Profile.KEYBOARD_AND_MOUSE):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -58,5 +61,6 @@ func _on_continue() -> void:
 	if text.size() > current_text:
 		text_container.text = "[center]" + text[current_text] + "[/center]"
 	else:
-		PlayerData.load_scene(next_scene, next_checkpoint)
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		if (current_text == text.size()):
+			PlayerData.load_scene(next_scene, next_checkpoint)
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
