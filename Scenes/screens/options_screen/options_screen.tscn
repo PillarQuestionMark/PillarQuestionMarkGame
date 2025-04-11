@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://808oubkb73yd"]
+[gd_scene load_steps=8 format=3 uid="uid://808oubkb73yd"]
 
 [ext_resource type="Script" path="res://Scenes/screens/options_screen/options_screen.gd" id="1_w2hik"]
 [ext_resource type="PackedScene" uid="uid://c2o86fyr33pn0" path="res://Scenes/screens/options_screen/input_remapper.tscn" id="2_bv78l"]
 [ext_resource type="Script" path="res://Scenes/screens/options_screen/volume_slider.gd" id="2_m615d"]
 [ext_resource type="Script" path="res://Scenes/screens/options_screen/music_volume_slider.gd" id="3_yyp3o"]
 [ext_resource type="Script" path="res://Scenes/screens/options_screen/effects_volume_slider.gd" id="4_0uyue"]
+[ext_resource type="Script" path="res://Scenes/screens/options_screen/sensitivity_slider.gd" id="5_iihki"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7pe0"]
 bg_color = Color(0, 0, 0, 0.784314)
@@ -87,12 +88,28 @@ layout_mode = 2
 text = "control scheme"
 
 [node name="OptionButton" type="OptionButton" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 selected = 0
 item_count = 2
 popup/item_0/text = "keyboard + mouse"
 popup/item_1/text = "controller"
 popup/item_1/id = 1
+
+[node name="Sensitivity" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "sensitivity"
+
+[node name="SensitivitySlider" type="HSlider" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 2.0
+step = 0.05
+value = 1.0
+scrollable = false
+script = ExtResource("5_iihki")
 
 [node name="Interact" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -129,6 +146,15 @@ unique_name_in_owner = true
 layout_mode = 2
 action = "slam"
 
+[node name="Grapple" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "grapple"
+
+[node name="Grapple2" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer" instance=ExtResource("2_bv78l")]
+unique_name_in_owner = true
+layout_mode = 2
+action = "grapple"
+
 [node name="HSeparator2" type="HSeparator" parent="PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -137,6 +163,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="Cancel" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "cancel"
 
@@ -144,6 +171,19 @@ text = "cancel"
 layout_mode = 2
 text = "apply"
 
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/VolumeSlider" to="." method="on_hovered_button" binds= ["VolumeSlider"]]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/MusicVolumeSlider" to="." method="on_hovered_button" binds= ["MusicVolumeSlider"]]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/EffectsVolumeSlider" to="." method="on_hovered_button" binds= ["EffectsVolumeSlider"]]
 [connection signal="item_selected" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/OptionButton" to="." method="on_hovered_button" binds= ["OptionButton"]]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/SensitivitySlider" to="." method="on_hovered_button" binds= ["SensitivitySlider"]]
+[connection signal="value_changed" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/SensitivitySlider" to="PanelContainer/CenterContainer/VBoxContainer/GridContainer/SensitivitySlider" method="_on_slider_change"]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/InteractRemapper" to="." method="on_hovered_button" binds= ["InteractRemapper"]]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/JumpRemapper" to="." method="on_hovered_button" binds= ["JumpRemapper"]]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/DashRemapper" to="." method="on_hovered_button" binds= ["DashRemapper"]]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/SlamRemapper" to="." method="on_hovered_button" binds= ["SlamRemapper"]]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/Grapple2" to="." method="on_hovered_button" binds= ["Grapple2"]]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/Cancel" to="." method="on_hovered_button" binds= ["Cancel"]]
 [connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="mouse_entered" from="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/Apply" to="." method="on_hovered_button" binds= ["Apply"]]
 [connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/Apply" to="." method="_on_apply_pressed"]

@@ -35,3 +35,5 @@ func _on_flames_list_pressed() -> void:
 	AudioManager.play_fx("button")
 	_enter_submenu(FLAME_LIST_SCREEN)
 	
+func _set_focus() -> void:
+	%Resume.grab_focus()

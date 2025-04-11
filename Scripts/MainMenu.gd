@@ -9,6 +9,10 @@ func _ready() -> void:
 	mouseMode = Mouse_Mode_Options.Visible
 	AudioManager.play_music("main_menu")
 	_enter_menu()
+	
+func _set_focus() -> void:
+	if (is_inside_tree()):
+		$PanelContainer/MarginContainer/VBoxContainer/StartButton.grab_focus()
 
 func _escape_menu() -> void:
 	_on_quit_button_pressed()

@@ -8,7 +8,6 @@ func _ready() -> void:
 	Logger.debug("Entered File Select")
 	_enter_menu()
 	FileContainer = %FileContainer
-	FileContainer.get_node("File1").grab_focus()
 	
 	## this should not happen thanks to file versioning
 	## if it is needed; let me know! - Seven
@@ -19,6 +18,9 @@ func _ready() -> void:
 	
 	for file in [1, 2, 3]:
 		_read_file(FileUtility.save_file_name + String.num_int64(file) + FileUtility.save_file_ending, file)
+
+func _set_focus() -> void:
+	%FileContainer/File1.grab_focus()
 
 ## Reads the given file number and writes the important data onto the given save file slot.
 func _read_file(filePath : String, number : int):
