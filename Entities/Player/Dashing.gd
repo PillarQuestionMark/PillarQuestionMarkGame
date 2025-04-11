@@ -57,6 +57,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 	
 	%DashParticles.rotation.y = player.get_pivot().rotation.y
 	%DashParticles.restart()
+	
+	AudioManager.play_fx("Dash")
 
 ## Called by the state machine before changing the active state. Use this function
 ## to clean up the state.
