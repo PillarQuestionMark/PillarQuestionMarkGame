@@ -41,13 +41,17 @@ func _ready() -> void:
 			trigger4_on = !trigger4_on
 		elif name == trigger5:
 			trigger5_on = !trigger5_on
+		else:
+			return
 		_attempt_move()		
 	)
 
 func _attempt_move() -> void:
 	var targetpos = _initialpos
 	if trigger1_on and trigger2_on and trigger3_on and trigger4_on and trigger5_on:
+		AudioManager.play_fx("CorrectChime")
 		targetpos = _finalpos
+		print("GATE 5")
 
 	var t := create_tween()
 	t.tween_property(get_parent_node_3d(), "position", targetpos, duration) \
