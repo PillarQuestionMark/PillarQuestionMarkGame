@@ -25,17 +25,18 @@ func physics_update(_delta: float) -> void:
 	
 	#Transition states
 	if(Input.is_action_just_pressed("jump") and player.jumps_left > 0):
-		player.jumps_left -= 1
 		finished.emit(JUMPING)
-	elif(player.can_wall_slide && player.velocity.y < 0 && player.is_on_wall_only()):
+	elif(Input.is_action_just_pressed("grapple") and PlayerData.data["grapple_unlocked"]):
+		finished.emit(GRAPPLING)
+	elif(player.can_wall_slide()):
 		finished.emit(WALL_SLIDING)
-	elif(Input.is_action_just_pressed("dash") && player.can_dash):
+	elif(Input.is_action_just_pressed("dash") and player.can_dash):
 		finished.emit(DASHING)
-	elif (Input.is_action_just_pressed("slam") && PlayerData.data["slam_unlocked"]):
+	elif (Input.is_action_just_pressed("slam") and PlayerData.data["slam_unlocked"]):
 		finished.emit(SLAMMING)
 	elif(player.is_on_floor()):
 		if (player.get_move_direction() != Vector3.ZERO):
-			if(Input.is_action_pressed("sprint") && PlayerData.data["sprint_unlocked"]):
+			if(Input.is_action_pressed("sprint") and PlayerData.data["sprint_unlocked"]):
 				finished.emit(SPRINTING)
 			else:
 				finished.emit(WALKING)
@@ -43,6 +44,7 @@ func physics_update(_delta: float) -> void:
 			finished.emit(IDLE)
 	elif (Input.is_action_just_pressed("interact")):
 		player.try_interact()
+	
 	#Still here, so do movement
 	player.apply_gravity(_delta)
 	player.apply_speed_and_drag(player.Air_Speed, player.Air_Drag)
@@ -52,11 +54,12 @@ func physics_update(_delta: float) -> void:
 ## Called by the state machine upon changing the active state. The `data` parameter
 ## is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(previous_state_path: String, data := {}) -> void:
-	if (previous_state_path == "Jumping" or previous_state_path == "Slamjumping"):
+	if (previous_state_path == JUMPING or previous_state_path == SLAMJUMPING):
 		jump_held = true
 		held_boost = Vector3(0, player.Jump_Held_Strength, 0)
-	else:
+	elif previous_state_path == WALKING or previous_state_path == SPRINTING or previous_state_path == IDLE:
 		## adds a timer to keep track of the dash duration
+		print("made coyote timer")
 		coyote_timer = Timer.new()
 		player.add_child(coyote_timer)
 		coyote_timer.wait_time = player.Coyote_Time

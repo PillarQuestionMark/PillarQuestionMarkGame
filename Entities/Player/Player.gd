@@ -35,13 +35,16 @@ class_name Player extends CharacterBody3D
 @export_range(0.0, 100, 1) var Slide_Gravity_Factor : float = 10
 @export_range(0.0, 100, 1) var Wall_Kick : float = 20
 
+@export_subgroup("Grapple")
+@export_range(0.1, 100.0, 0.1) var Grapple_Speed : float = 25.0
+
 @export_group("Camera")
 @export var Transparency_Curve : Curve
 @export var Camera : SpringArm3D
 
 var can_dash : bool = true
 
-var can_wall_slide : bool = true
+var wall_slide_unlocked : bool = true
 
 var jumps_left : int = 0 # how many jumps left
 
@@ -49,7 +52,6 @@ var slamjump_unlocked : bool = true
 
 @onready var state_machine : StateMachine = $StateMachine
 
-@onready var jump_sound: AudioStreamPlayer = %AudioStreamPlayer
 @onready var wall_slide_particles: GPUParticles3D = %WallSlideParticles
 @onready var mesh : MeshInstance3D = $Pivot/MeshInstance3D
 
@@ -59,6 +61,7 @@ var slamjump_unlocked : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(Camera != null, "The Player Node requires a Camera of type Node3D to find its bearings")
+	@warning_ignore("unused_parameter")
 	EventBus.dialogue.connect(func(dialogue: Array[String]):
 		$StateMachine.state.finished.emit("Dialogue")
 	)
@@ -77,9 +80,8 @@ func _ready():
 		$StateMachine.state.finished.emit("Idle")
 	)
 
-func _process(delta : float) -> void:
+func _process(_delta : float) -> void:
 	mesh.transparency = Transparency_Curve.sample(Camera.get_hit_length() / Camera.spring_length)
-	
 	## REMOVE LATER. FOR NOW, JUST TO TEST DEATH
 	if Input.is_action_just_pressed("kys"):
 		die()
@@ -111,12 +113,18 @@ func get_move_direction() -> Vector3:
 
 func apply_speed_and_drag(speed : float, drag : float):
 	var move_direction := get_move_direction()
-	velocity.x = lerpf(velocity.x, move_direction.x * speed, drag)
-	velocity.z = lerpf(velocity.z, move_direction.z * speed, drag)
+	velocity.x += (speed * move_direction.x - velocity.x) * drag
+	velocity.z += (speed * move_direction.z - velocity.z) * drag
+	
 
 func apply_gravity(delta : float, gravity : float = Gravity):
 	velocity.y += gravity * delta
 	
+## Returns the player's inventory instance
+func get_inventory() -> Node3D:
+	return $Inventory
+	
+## Returns the player's pivot instance
 func get_pivot() -> Node3D:
 	return $Pivot
 
@@ -140,7 +148,7 @@ func restore_dash() -> void:
 
 ## Since the ground states are spread out, this code is repeated multiple times. Safer to be in one place
 func touched_ground() -> void:
-	can_wall_slide = PlayerData.data["wall_slide_unlocked"]
+	wall_slide_unlocked = PlayerData.data["wall_slide_unlocked"]
 	can_dash = PlayerData.data["dash_unlocked"]
 	jumps_left = PlayerData.data["max_jumps"]
 
@@ -155,7 +163,9 @@ func can_slamjump() -> bool:
 func start_slamjump_window() -> void:
 	slamjump_window.start()
 
+func can_wall_slide() -> bool:
+	return wall_slide_unlocked and velocity.y < 0 and is_on_wall_only()
+
 ## kills the player and reloads the scene
 func die() -> void:
 	PlayerData.load_scene()
-	

@@ -5,15 +5,15 @@ extends SpringArm3D
 #Mouse settings.
 @export_subgroup("Mouse settings")
 #mouse sensitivity.
-@export_range(0.0, 1.0, 0.01) var mouse_sensitivity: float = 0.01
+var mouse_sensitivity: float = 0.05
 #controller sensitivity.
-@export_range(0.0, 5.0, 0.1) var controller_sensitivity: float = 1
+var controller_sensitivity: float = 1
 #pitch clamp settings.
 @export_subgroup("Clamp settings")
 #max pitch in degrees.
-@export var max_pitch : float = 60
+var max_pitch : float = 80
 #min pitch in degrees.
-@export var min_pitch : float = -60
+var min_pitch : float = -80
 #Camera settings.
 @export_subgroup("Camera settings")
 #Camera distance.
@@ -38,12 +38,6 @@ func _process(delta):
 	rotation.x -= input.y
 	rotation.x = clamp(rotation.x, deg_to_rad(min_pitch), deg_to_rad(max_pitch))
 	rotation.y -= input.x
-	#This should be moved to UI probably
-	if Input.is_action_just_pressed("ui_cancel"):
-		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		else :
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if Input.is_action_just_pressed("switch_camera"):
 		if state == States.THIRD_BACK:
 			spring_length = 0.0

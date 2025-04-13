@@ -21,3 +21,6 @@ func _process(delta: float) -> void:
 		# shadow basis was recalculated, so its scale has been reset to (1,1,1)
 		shadow.scale.x = radius * 2
 		shadow.scale.z = radius * 2
+		shadow.show()
+	else:
+		shadow.hide()

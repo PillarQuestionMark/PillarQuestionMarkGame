@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://sg5hhq14qrml"]
+[gd_scene load_steps=9 format=3 uid="uid://sg5hhq14qrml"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_4ajsu"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="1_c4t52"]
@@ -9,6 +9,13 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1y08l"]
 size = Vector3(2, 3, 1.5)
+
+[sub_resource type="Curve" id="Curve_5jfpw"]
+resource_local_to_scene = true
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
 
 [node name="Dungeon0" type="Node3D"]
 script = ExtResource("1_4ajsu")
@@ -58,7 +65,7 @@ size = Vector3(20, 10, 1)
 
 [node name="Loading-zone" parent="Geometry" instance=ExtResource("2_60qb3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.8328)
-scene = "res://Scenes/islands/island0/Island0.tscn"
+scene = "res://Scenes/islands/ruins/ruins_island.tscn"
 checkpoint = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Loading-zone"]
@@ -67,7 +74,7 @@ shape = SubResource("BoxShape3D_1y08l")
 
 [node name="Loading-zone2" parent="Geometry" instance=ExtResource("2_60qb3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.90734)
-scene = "res://Scenes/islands/island0/Island0.tscn"
+scene = "res://Scenes/islands/ruins/ruins_island.tscn"
 checkpoint = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Loading-zone2"]
@@ -76,6 +83,7 @@ shape = SubResource("BoxShape3D_1y08l")
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("1_c4t52")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+Transparency_Curve = SubResource("Curve_5jfpw")
 Camera = NodePath("FollowCamera")
 
 [node name="FollowCamera" parent="Player" instance=ExtResource("2_xt7df")]

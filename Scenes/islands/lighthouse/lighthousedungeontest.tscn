@@ -1,0 +1,109 @@
+[gd_scene load_steps=10 format=3 uid="uid://dfq0qv0t85gr3"]
+
+[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_u3kjy"]
+[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_0c3ni"]
+[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="3_6rgrq"]
+[ext_resource type="Script" path="res://Scenes/islands/lighthouse/rotating_room.gd" id="4_c8x4j"]
+[ext_resource type="Script" path="res://Scenes/islands/lighthouse/compass.gd" id="5_oeuym"]
+[ext_resource type="PackedScene" uid="uid://nd1s7aeat6mx" path="res://Components/interactable.tscn" id="6_wav4w"]
+[ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="7_3mtwu"]
+
+[sub_resource type="Curve" id="Curve_8flq2"]
+resource_local_to_scene = true
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_crl53"]
+height = 2.5
+radius = 1.0
+
+[node name="Lighthousedungeontest" type="Node3D"]
+script = ExtResource("1_u3kjy")
+island_id = 2
+
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_0c3ni")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.484077, 15.8152)
+Transparency_Curve = SubResource("Curve_8flq2")
+Camera = NodePath("FollowCamera")
+
+[node name="FollowCamera" parent="Player" instance=ExtResource("3_6rgrq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Rotating Room" type="Node3D" parent="."]
+script = ExtResource("4_c8x4j")
+trigger = "rotating_room"
+
+[node name="Outer Wall" type="CSGCylinder3D" parent="Rotating Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+operation = 2
+use_collision = true
+collision_mask = 2
+radius = 20.0
+height = 20.0
+sides = 16
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Rotating Room/Outer Wall"]
+operation = 2
+radius = 19.0
+height = 20.0
+sides = 16
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Rotating Room/Outer Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.05402, -19.5767)
+operation = 2
+size = Vector3(4, 7, 2)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Rotating Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.6293)
+use_collision = true
+collision_mask = 2
+size = Vector3(10, 1, 5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Rotating Room"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.7504, 0, 0)
+use_collision = true
+collision_mask = 2
+size = Vector3(10, 1, 5)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Rotating Room"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.7504, 0, 0)
+use_collision = true
+collision_mask = 2
+size = Vector3(10, 1, 5)
+
+[node name="Non-Rotating Room" type="Node3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Non-Rotating Room"]
+use_collision = true
+collision_mask = 2
+radius = 5.0
+height = 1.0
+
+[node name="Compass" type="Node3D" parent="Non-Rotating Room"]
+script = ExtResource("5_oeuym")
+trigger = "rotating_room"
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Non-Rotating Room/Compass"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+use_collision = true
+collision_mask = 2
+
+[node name="Interactable" parent="Non-Rotating Room/Compass/CSGCylinder3D" instance=ExtResource("6_wav4w")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Non-Rotating Room/Compass/CSGCylinder3D/Interactable"]
+shape = SubResource("CylinderShape3D_crl53")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Non-Rotating Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.52583)
+use_collision = true
+collision_mask = 2
+size = Vector3(2, 1, 4)
+
+[node name="GameplayUI" parent="." instance=ExtResource("7_3mtwu")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.22352, 0)
+
+[connection signal="on_interacting" from="Non-Rotating Room/Compass/CSGCylinder3D/Interactable" to="Non-Rotating Room/Compass" method="_on_interactable_on_interacting"]

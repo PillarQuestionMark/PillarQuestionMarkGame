@@ -96,6 +96,7 @@ shape = SubResource("BoxShape3D_h26hv")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visibility_range_end = 20.0
 pixel_size = 0.001
 billboard = 1
 no_depth_test = true

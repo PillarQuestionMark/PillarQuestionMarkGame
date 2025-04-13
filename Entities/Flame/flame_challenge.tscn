@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfm4of4cyc7xd"]
+
+[ext_resource type="Script" path="res://Entities/Flame/flame_challenge.gd" id="1_2cr64"]
+
+[node name="FlameChallenge" type="Node3D" groups=["challenge_flame"]]
+script = ExtResource("1_2cr64")
