@@ -40,6 +40,8 @@ player=""
 flame_door=""
 island_icon=""
 challenge_flame="Challenges that spawn flames."
+pre-dungeon="Objects that are only in the scene before the dungeon is cleared"
+post-dungeon="Objects that are only present after the dungeon is cleared"
 
 [input]
 
