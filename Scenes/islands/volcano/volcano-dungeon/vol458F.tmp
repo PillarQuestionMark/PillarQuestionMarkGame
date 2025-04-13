@@ -53,7 +53,6 @@ point_count = 3
 
 [node name="VolcanoIsland" type="Node3D"]
 script = ExtResource("1_uikhx")
-island_id = 10
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.907777, -0.367215, 0.202714, 0, 0.483282, 0.875464, -0.419452, -0.794727, 0.438713, 0, 0, 0)
@@ -68,8 +67,6 @@ Camera = NodePath("FollowCamera")
 
 [node name="FollowCamera" parent="Player" instance=ExtResource("4_5482u")]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2, 0)
-max_pitch = 80.0
-min_pitch = -80.0
 
 [node name="Geo" type="Node3D" parent="."]
 
@@ -166,6 +163,6 @@ shape = SubResource("CylinderShape3D_mgonk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.046, 0, 8.49615)
 
 [node name="WaterSpawner" parent="." instance=ExtResource("14_se8qo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -24)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
 curve = SubResource("Curve3D_6ax7l")
 spawnHeight = 5.0

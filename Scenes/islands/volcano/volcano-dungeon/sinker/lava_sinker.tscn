@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmvrvhmtv0d43"]
+
+[ext_resource type="Script" path="res://Scenes/islands/volcano/volcano-dungeon/sinker/lava_sinker.gd" id="1_53bng"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dlts3"]
+size = Vector3(2, 0.4, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gsegd"]
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h5ljk"]
+size = Vector3(2, 0.4, 2)
+
+[node name="LavaSinker" type="AnimatableBody3D"]
+sync_to_physics = false
+script = ExtResource("1_53bng")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+shape = SubResource("BoxShape3D_dlts3")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("BoxShape3D_gsegd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("BoxMesh_h5ljk")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_player_standing"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_player_left"]

@@ -187,6 +187,8 @@ grapple={
 3d_physics/layer_5="GrappleHook"
 3d_physics/layer_6="Grappleable"
 3d_physics/layer_7="Laser"
+3d_physics/layer_8="Water"
+3d_physics/layer_9="Lava"
 
 [rendering]
 
