@@ -12,7 +12,6 @@ size = Vector3(2, 0.1, 2)
 size = Vector3(2, 0.4, 2)
 
 [node name="LavaSinker" type="AnimatableBody3D"]
-sync_to_physics = false
 script = ExtResource("1_53bng")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
