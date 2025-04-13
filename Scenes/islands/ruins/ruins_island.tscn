@@ -186,7 +186,7 @@ id = 4.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, 6)
 id = 4.0
 
-[node name="Boat" parent="ruins" instance=ExtResource("5_kogkr")]
+[node name="Boat" parent="ruins" groups=["post-dungeon"] instance=ExtResource("5_kogkr")]
 transform = Transform3D(0.678724, -0.0308532, -0.733745, -0.0260723, 0.997475, -0.0660599, 0.733931, 0.0639668, 0.676205, 14.3987, 1.4, -0.362618)
 
 [node name="Flame" parent="ruins" instance=ExtResource("9_8qidy")]
@@ -210,7 +210,7 @@ id = 3.0
 flame_name = "Sea Lord"
 color = Color(0.388235, 0.768627, 0.8, 1)
 
-[node name="Gate" type="Node3D" parent="ruins"]
+[node name="Gate" type="Node3D" parent="ruins" groups=["pre-dungeon"]]
 
 [node name="FlameLever" parent="ruins/Gate" instance=ExtResource("5_d0sa3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 5, 1)
@@ -236,7 +236,7 @@ material = SubResource("StandardMaterial3D_225ld")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ruins/Gate/AnimatableBody3D"]
 shape = SubResource("BoxShape3D_w6afg")
 
-[node name="PressFToInteract" type="Label3D" parent="ruins"]
+[node name="PressFToInteract" type="Label3D" parent="ruins/Gate"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 7, 1)
 billboard = 2
 text = "press [f] to interact"

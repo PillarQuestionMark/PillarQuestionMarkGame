@@ -16,17 +16,18 @@ var data = {
 	"playtime" = 0.0, ## playtime for the save file
 	"total_flames" = 0,
 	"collected_flames" = {}, ## id of all collected flames, sorted by island id
-	"collected_fragments" = [], ## id of collected fragments from dungeons (final prize)
-	"open_dungeons" = [], ## id of dungeons opened already
-	"current_scene" = "res://Scenes/screens/cutscene-screen/cutscene-screen.tscn", ## scene the player is in (or moving to)
+	"collected_fragments" = [], ## id of collected fragments from dungeons (final prize) -- UNUSED CURRENTLY
+	"open_dungeons" = [], ## id of dungeons opened already -- UNUSED CURRENTLY
+	"current_scene" = "res://Scenes/islands/ruins/ruins_island.tscn", ## scene the player is in (or moving to)
 	"checkpoint" = 0, ## checkpoint in current scene
 	"max_jumps" = 0,
 	"dash_unlocked" = false,
-	"sprint_unlocked" = false,
+	"sprint_unlocked" = true,
 	"slam_unlocked" = false,
 	"wall_slide_unlocked" = false,
 	"grapple_unlocked" = false,
-	"version" = 1
+	"version" = 2,
+	"cleared_dungeons" = [] ## id of islands where dungeon has been cleared
 }
 
 ## When loading the game, test if we are using run current scene.
@@ -56,6 +57,8 @@ func load_data(load_scene : bool = true) -> void:
 	else:
 		data = default_data
 		FileUtility.write_file(_file, data)
+		## btw, removing the save versioning here may be dangerous
+		## this now runs into synchronocity issues if versioning and this data is out of sync
 	
 	if (load_scene): load_scene()
 	
