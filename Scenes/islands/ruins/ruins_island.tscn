@@ -365,7 +365,7 @@ material = SubResource("FogMaterial_v641q")
 
 [node name="Loading-zone" parent="ruins/Dungeon" instance=ExtResource("12_u475q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 0)
-scene = "res://Scenes/islands/island0/Dungeon0.tscn"
+scene = "res://Scenes/islands/island0/Dungeon0/dungeon_ruins.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ruins/Dungeon/Loading-zone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)

@@ -1098,7 +1098,7 @@ material_override = ExtResource("4_nhhtq")
 use_collision = true
 
 [node name="Wall3" type="CSGCylinder3D" parent="Rooms/Room5/Geometry/Stationary"]
-transform = Transform3D(11.878, 0, -5.28323, 0, 3, 0, 5.28323, 0, 11.878, 14.8312, 0.977317, -45.1631)
+transform = Transform3D(12.2435, 0, -5.4458, 0, 3, 0, 5.4458, 0, 12.2435, 14.8312, 0.977317, -45.1631)
 material_override = ExtResource("3_4xfrc")
 use_collision = true
 height = 2.02084
@@ -1259,7 +1259,7 @@ material = SubResource("FogMaterial_frb6y")
 
 [node name="Loading-zone2" parent="Rooms/Exit" instance=ExtResource("16_8jbod")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.06319, 4.83267, -53.1499)
-scene = "res://Scenes/islands/island0/Island0.tscn"
+scene = "res://Scenes/islands/ruins/ruins_island.tscn"
 checkpoint = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Exit/Loading-zone2"]
