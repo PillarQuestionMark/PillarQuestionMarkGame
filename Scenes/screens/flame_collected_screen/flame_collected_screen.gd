@@ -12,6 +12,6 @@ func _ready() -> void:
 	%FlameModel.color = flame_color
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("interact"):
+	if Input.is_action_just_pressed("interact") || Input.is_action_just_pressed("ui_accept"):
 		get_tree().paused = false
 		queue_free()

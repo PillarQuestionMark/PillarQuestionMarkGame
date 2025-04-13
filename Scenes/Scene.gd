@@ -3,15 +3,19 @@ class_name GameScene extends Node3D
 
 ## The island id, should be unique for each island. Each scene that is part of an island should have the same island id.
 @export var island := IslandData.Islands.Ruins 
+@export var music : String = "Ruins"
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Logger.info("scene: loading save data")
 	_load_data()
+	AudioManager.play_music(music)
 	
 	Logger.info("scene: ready")
 	
 	Logger.info("flames collected on current island: " + str(PlayerData.get_island_flames(island).size()))
+	
+	EventBus.request_island_id.connect(_return_id)
 
 ## Takes save data and applies it to the scene.
 func _load_data() -> void:
@@ -35,3 +39,5 @@ func _load_data() -> void:
 		if PlayerData.get_island_flames(island).has(challenge.id):
 			challenge.collected()
 	
+func _return_id(return_function : Callable) -> void:
+	return_function.call(island)

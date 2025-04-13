@@ -18,7 +18,10 @@ const flames : Dictionary = {
 		0: "Arch-eologist",
 		1: "It's Beautiful Up Here",
 		2: "Humble Beginnings",
-		3: "Sea Lord"
+		3: "Sea Lord",
+		4: "Sparks: Ruins",
+		5: "Timer: Ruins",
+		6: "Order: Ruins"
 	},
 	IslandData.Islands.Village: {},
 	IslandData.Islands.Lighthouse: {

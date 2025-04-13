@@ -1,16 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2yrjlexgqqvi"]
+[gd_scene load_steps=26 format=3 uid="uid://b2yrjlexgqqvi"]
 
 [ext_resource type="Script" path="res://Autoload/AudioManager/AudioManager.gd" id="1_31ioa"]
 [ext_resource type="AudioStream" uid="uid://cq4r7yft33ly7" path="res://Assets/Audio/Music/main_menu.mp3" id="2_egk6x"]
 [ext_resource type="AudioStream" uid="uid://d0hr3mg0qaice" path="res://Assets/Audio/Sound Effects/jump.mp3" id="3_66pu8"]
 [ext_resource type="AudioStream" uid="uid://cpsh26jtsghcd" path="res://Assets/Audio/Music/feet.mp3" id="3_njj34"]
 [ext_resource type="AudioStream" uid="uid://vuf51ce22c8r" path="res://Assets/Audio/Sound Effects/button.wav" id="4_euy1k"]
+[ext_resource type="AudioStream" uid="uid://dbtbw4fdyl4i" path="res://Assets/Audio/Music/Ruins.mp3" id="4_jki7b"]
+[ext_resource type="AudioStream" uid="uid://qtilms3vya7b" path="res://Assets/Audio/Music/LighthouseTheme.mp3" id="5_a8aps"]
 [ext_resource type="AudioStream" uid="uid://7bjo4mgusi2c" path="res://Assets/Audio/Sound Effects/flame_collect.mp3" id="5_lmvtg"]
+[ext_resource type="AudioStream" uid="uid://bljdrf8axapkp" path="res://Assets/Audio/Music/VillageTheme.mp3" id="6_t8f06"]
+[ext_resource type="AudioStream" uid="uid://dhu6e8atwg4pb" path="res://Assets/Audio/Sound Effects/Chime1.mp3" id="7_mieqm"]
+[ext_resource type="AudioStream" uid="uid://cnod5opieg2mf" path="res://Assets/Audio/Music/VolcanoTheme.mp3" id="7_qem1j"]
+[ext_resource type="AudioStream" uid="uid://di2rjg7ggvrpe" path="res://Assets/Audio/Sound Effects/Chime2.mp3" id="8_dh37x"]
+[ext_resource type="AudioStream" uid="uid://dbuntcxux6kp3" path="res://Assets/Audio/Sound Effects/Chime3.mp3" id="9_5y0a5"]
+[ext_resource type="AudioStream" uid="uid://b0i64r3k8x2ch" path="res://Assets/Audio/Sound Effects/CorrectChime.mp3" id="10_uahkk"]
+[ext_resource type="AudioStream" uid="uid://d3mdcpxtg2p7m" path="res://Assets/Audio/Sound Effects/IncorrectChime.mp3" id="11_wjq2v"]
+[ext_resource type="AudioStream" uid="uid://b7myaf3m76lgr" path="res://Assets/Audio/Sound Effects/ReflectorRotate.mp3" id="12_0gxlv"]
+[ext_resource type="AudioStream" uid="uid://cmi2t753hkvi4" path="res://Assets/Audio/Sound Effects/Laser.mp3" id="13_ni6jq"]
+[ext_resource type="AudioStream" uid="uid://dmyc072gaxk2r" path="res://Assets/Audio/Sound Effects/DialogueSFX.mp3" id="14_dg625"]
+[ext_resource type="AudioStream" uid="uid://b7tnr3fye502d" path="res://Assets/Audio/Sound Effects/Tick.mp3" id="15_f722e"]
+[ext_resource type="AudioStream" uid="uid://djnnwd85u3460" path="res://Assets/Audio/Sound Effects/LeverOn.mp3" id="16_8gh3b"]
+[ext_resource type="AudioStream" uid="uid://dxmgybsflr71v" path="res://Assets/Audio/Sound Effects/LeverOff.mp3" id="17_qrnv5"]
+[ext_resource type="AudioStream" uid="uid://dtil1gl2wdpnm" path="res://Assets/Audio/Sound Effects/Death.mp3" id="18_se14f"]
+[ext_resource type="AudioStream" uid="uid://btbersl5fmkoi" path="res://Assets/Audio/Sound Effects/Slam.mp3" id="19_gxju8"]
+[ext_resource type="AudioStream" uid="uid://b4ely8q5xn76d" path="res://Assets/Audio/Sound Effects/Dash.mp3" id="20_t0nyq"]
+[ext_resource type="AudioStream" uid="uid://bdqx111qk7x6c" path="res://Assets/Audio/Sound Effects/Grapple.mp3" id="21_d16ti"]
 
 [node name="AudioManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_31ioa")
-music = Array[Resource]([ExtResource("2_egk6x"), ExtResource("3_njj34")])
-effects = Array[Resource]([ExtResource("3_66pu8"), ExtResource("4_euy1k"), ExtResource("5_lmvtg")])
+music = Array[Resource]([ExtResource("2_egk6x"), ExtResource("3_njj34"), ExtResource("4_jki7b"), ExtResource("5_a8aps"), ExtResource("6_t8f06"), ExtResource("7_qem1j")])
+effects = Array[Resource]([ExtResource("3_66pu8"), ExtResource("4_euy1k"), ExtResource("5_lmvtg"), ExtResource("7_mieqm"), ExtResource("8_dh37x"), ExtResource("9_5y0a5"), ExtResource("10_uahkk"), ExtResource("11_wjq2v"), ExtResource("12_0gxlv"), ExtResource("13_ni6jq"), ExtResource("14_dg625"), ExtResource("15_f722e"), ExtResource("16_8gh3b"), ExtResource("17_qrnv5"), ExtResource("18_se14f"), ExtResource("19_gxju8"), ExtResource("20_t0nyq"), ExtResource("21_d16ti")])
 
 [node name="Music" type="Node" parent="."]
 

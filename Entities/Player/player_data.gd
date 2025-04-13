@@ -18,7 +18,7 @@ var data = {
 	"collected_flames" = {}, ## id of all collected flames, sorted by island id
 	"collected_fragments" = [], ## id of collected fragments from dungeons (final prize)
 	"open_dungeons" = [], ## id of dungeons opened already
-	"current_scene" = "res://Scenes/islands/ruins/ruins_island.tscn", ## scene the player is in (or moving to)
+	"current_scene" = "res://Scenes/screens/cutscene-screen/cutscene-screen.tscn", ## scene the player is in (or moving to)
 	"checkpoint" = 0, ## checkpoint in current scene
 	"max_jumps" = 0,
 	"dash_unlocked" = false,
@@ -101,14 +101,31 @@ func get_island_flames(island_id: int) -> Array:
 func load_scene(next_scene : String = data["current_scene"], checkpoint : int = data["checkpoint"]) -> void:
 	data["current_scene"] = next_scene
 	data["checkpoint"] = checkpoint
-	get_tree().change_scene_to_file(next_scene) ## load the scene
+	
+	get_tree().paused = true ## pauses physics... looks nicer
+	const LOADING_SCREEN := preload("res://Scenes/screens/loading_screen/loading_screen.tscn")
+	var s := LOADING_SCREEN.instantiate()
+	s.start_load(next_scene)
+	get_tree().root.add_child(s)
+	##get_tree().change_scene_to_file(next_scene) ## load the scene
+	
+## Loads up a cutscene and sets up the cutscene.
+func load_cutscene(text : Array[String], scene : String, checkpoint : int) -> void:
+	const CUTSCENE := preload("res://Scenes/screens/cutscene-screen/cutscene-screen.tscn")
+	var s := CUTSCENE.instantiate()
+	s.text = text
+	s.next_scene = scene
+	s.next_checkpoint = checkpoint
+	
+	# manually change current_scene
+	get_tree().current_scene.queue_free()
+	get_tree().root.add_child(s)
+	get_tree().current_scene = s
 
 ## load_scene() but it uses the IslandData.Islands enum
 func load_island(island: IslandData.Islands, checkpoint: int) -> void:
 	var island_scene_path := IslandData.get_scene_path_from_island(island)
-	data["current_scene"] = island_scene_path
-	data["checkpoint"] = checkpoint
-	get_tree().change_scene_to_file(island_scene_path) ## load the scene
+	load_scene(island_scene_path, checkpoint)
 
 ## Sets the checkpoint to spawn at in player data. 
 ## Separate from [method load_scene] for collecting checkpoints without loading a scene.

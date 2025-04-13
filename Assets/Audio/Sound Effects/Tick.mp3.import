@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b7tnr3fye502d"
+path="res://.godot/imported/Tick.mp3-06eac1e3077fde1ab87acc47e5ac0504.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Sound Effects/Tick.mp3"
+dest_files=["res://.godot/imported/Tick.mp3-06eac1e3077fde1ab87acc47e5ac0504.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -14,4 +14,5 @@ func setInactive():
 	get_parent().material_override = inactiveMat
 
 func setTargetted():
-	get_parent().material_override = targettedMat
+	if (PlayerData.data["grapple_unlocked"]):
+		get_parent().material_override = targettedMat

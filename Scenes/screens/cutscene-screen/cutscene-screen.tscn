@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://krufcqqia6qo"]
+
+[ext_resource type="Script" path="res://Scenes/screens/cutscene-screen/cutscene_screen.gd" id="1_neg3h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7aq4"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_teji0"]
+
+[node name="CutsceneScreen" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_neg3h")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e7aq4")
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
+layout_mode = 2
+theme = SubResource("Theme_teji0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/CenterContainer"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+theme_override_font_sizes/bold_italics_font_size = 721
+theme_override_font_sizes/italics_font_size = 436
+theme_override_font_sizes/mono_font_size = 456
+theme_override_font_sizes/normal_font_size = 27
+theme_override_font_sizes/bold_font_size = 231
+bbcode_enabled = true
+text = "[center] Feo...[/center]
+
+[center] Feo..?[/center]
+
+[center] Wake up... [/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -48.0
+offset_right = 56.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "continue"
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_continue"]

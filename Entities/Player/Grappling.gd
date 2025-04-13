@@ -1,6 +1,9 @@
 extends PlayerState
 
 var targetPosition : Vector3
+@onready var particles : GPUParticles3D
+
+var sfx_tick : int = 0
 
 ## Called by the state machine when receiving unhandled input events.
 func handle_input(_event: InputEvent) -> void:
@@ -9,11 +12,20 @@ func handle_input(_event: InputEvent) -> void:
 ## Called by the state machine on the engine's physics update tick.
 func physics_update(_delta: float) -> void:
 	if(player.global_position.distance_squared_to(targetPosition) > 1.0 and Input.is_action_pressed("grapple")):
+		particles.lifetime = player.global_position.distance_to(targetPosition) / 40
+		
 		# Here is where grapple hook pull happens
 		# Skip all state changes, still in pulling stage
 		var direction = player.global_position.direction_to(targetPosition)
 		player.velocity = direction * player.Grapple_Speed
+		player.rotate_player(Vector3(direction.x, 0, direction.z), _delta)
 		player.move_and_slide()
+		
+		if (sfx_tick < 4):
+			sfx_tick += 1
+		else:
+			AudioManager.play_fx("Grapple")
+			sfx_tick = 0
 		return
 	
 	if(!player.is_on_floor()):
@@ -45,8 +57,16 @@ func enter(_previous_state_path: String, _data := {}) -> void:
 		targetPosition = player.global_position
 		return
 	targetPosition = bestDest.global_position
+	
+	## set up the particles
+	particles = %GrappleParticles.duplicate(0) # duplicated to avoid residual particles
+	player.add_child(particles)
+	particles.look_at(targetPosition)
+	particles.lifetime = player.global_position.distance_to(targetPosition) / 40
+	particles.visible = true
 
 ## Called by the state machine before changing the active state. Use this function
 ## to clean up the state.
 func exit() -> void:
-	pass
+	if (particles != null):
+		particles.queue_free()

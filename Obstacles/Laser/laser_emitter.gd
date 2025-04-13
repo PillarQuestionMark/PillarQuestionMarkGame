@@ -6,6 +6,7 @@ func interacted():
 	
 	##print("haha... there's like... a reference here... XDDD" + str(-global_basis.z))
 	fire(laser, -global_basis.z)
+	AudioManager.play_fx("Laser")
 	##print("angles: " + str(global_basis.get_euler()))
 
 # Called when the node enters the scene tree for the first time.
