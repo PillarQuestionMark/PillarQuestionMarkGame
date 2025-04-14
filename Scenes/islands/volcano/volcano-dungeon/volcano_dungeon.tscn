@@ -1,17 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://c45seyeep3b4u"]
+[gd_scene load_steps=12 format=3 uid="uid://c5vhpdwuc7upw"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_uikhx"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="2_g352o"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="3_5xfnv"]
 [ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="4_5482u"]
 [ext_resource type="PackedScene" uid="uid://khi3iwtx6nts" path="res://Scenes/islands/volcano/volcano-dungeon/VolcanoDungeon.blend" id="5_iav2g"]
-[ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="6_w438a"]
 [ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="7_js24h"]
 [ext_resource type="Environment" uid="uid://bhpuf5nuk7duo" path="res://Scenes/islands/volcano/volcano-dungeon/volcano_environment.tres" id="8_2c4ak"]
+[ext_resource type="PackedScene" path="res://Scenes/islands/volcano/volcano-dungeon/sinker/lava_sinker.tscn" id="9_ne5ms"]
 [ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="9_spngf"]
-[ext_resource type="Script" path="res://Scenes/islands/volcano/volcano-dungeon/riser/lava_riser.gd" id="10_cp4i2"]
-[ext_resource type="PackedScene" uid="uid://cj3ku0n0t8fw5" path="res://Components/grappleablePoint.tscn" id="11_1cxuk"]
-[ext_resource type="PackedScene" uid="uid://dql4b8bulv1vi" path="res://Components/loading-zone.tscn" id="12_s1ggx"]
 
 [sub_resource type="Curve" id="Curve_qdhwp"]
 resource_local_to_scene = true
@@ -20,41 +17,20 @@ point_count = 4
 metadata/_snap_enabled = true
 metadata/_snap_count = 20
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_da37t"]
-size = Vector3(6, 3, 6)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3envr"]
-size = Vector3(14, 4, 10)
-
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_oa630"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_e5a7i"]
-radius = 2.0
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_3n8v1"]
-top_radius = 2.0
-bottom_radius = 2.2
-
-[sub_resource type="BoxMesh" id="BoxMesh_e2b8t"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_cu0hx"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_mgonk"]
-radius = 13.0
 
 [node name="VolcanoIsland" type="Node3D"]
 script = ExtResource("1_uikhx")
-music = "VolcanoTheme"
 island = 5
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.907777, -0.367215, 0.202714, 0, 0.483282, 0.875464, -0.419452, -0.794727, 0.438713, 0, 0, 0)
+transform = Transform3D(0.907788, -0.367315, 0.202488, -0.101289, 0.276496, 0.955662, -0.407016, -0.888048, 0.213795, 0, 42.0694, 0)
 shadow_enabled = true
 
 [node name="GameplayUI" parent="." instance=ExtResource("2_g352o")]
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("3_5xfnv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.53875)
 Transparency_Curve = SubResource("Curve_qdhwp")
 Camera = NodePath("FollowCamera")
 
@@ -62,26 +38,16 @@ Camera = NodePath("FollowCamera")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2, 0)
 
 [node name="Geo" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0875053, 0.134975, 0.0105858)
 
 [node name="VolcanoDungeon" parent="Geo" instance=ExtResource("5_iav2g")]
 
 [node name="Checkpoints" type="Node3D" parent="Geo"]
 
-[node name="Checkpoint0" parent="Geo/Checkpoints" instance=ExtResource("6_w438a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 17)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Geo/Checkpoints/Checkpoint0"]
-shape = SubResource("BoxShape3D_da37t")
-
-[node name="Checkpoint1" parent="Geo/Checkpoints" instance=ExtResource("6_w438a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, -15)
-id = 1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Geo/Checkpoints/Checkpoint1"]
-shape = SubResource("BoxShape3D_3envr")
-
 [node name="KillPlane" parent="." instance=ExtResource("7_js24h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 772
+monitorable = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillPlane"]
 shape = SubResource("WorldBoundaryShape3D_oa630")
@@ -94,58 +60,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.5, -20)
 dialogue = Array[String](["grapple unlocked!", "Hold Q to grapple to highlighted points!"])
 unlock = "grapple"
 
-[node name="LavaRiser" type="AnimatableBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.217754, -1, 0)
-script = ExtResource("10_cp4i2")
-fullLoopTime = 15.0
-maxHeight = 15.0
+[node name="Lava Platforms" type="Node3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LavaRiser"]
-shape = SubResource("CylinderShape3D_e5a7i")
+[node name="LavaSinker2" parent="Lava Platforms" instance=ExtResource("9_ne5ms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40)
+sinkSpeed = 1.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LavaRiser"]
-mesh = SubResource("CylinderMesh_3n8v1")
-skeleton = NodePath("../CollisionShape3D")
-
-[node name="GrapplePoint1" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 58, -20)
-mesh = SubResource("BoxMesh_e2b8t")
-
-[node name="GrappleablePoint" parent="GrapplePoint1" instance=ExtResource("11_1cxuk")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GrapplePoint1/GrappleablePoint"]
-shape = SubResource("BoxShape3D_cu0hx")
-
-[node name="GrapplePoint2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 88, 5)
-mesh = SubResource("BoxMesh_e2b8t")
-
-[node name="GrappleablePoint" parent="GrapplePoint2" instance=ExtResource("11_1cxuk")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GrapplePoint2/GrappleablePoint"]
-shape = SubResource("BoxShape3D_cu0hx")
-
-[node name="GrapplePoint3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 111.272, -9)
-mesh = SubResource("BoxMesh_e2b8t")
-
-[node name="GrappleablePoint" parent="GrapplePoint3" instance=ExtResource("11_1cxuk")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GrapplePoint3/GrappleablePoint"]
-shape = SubResource("BoxShape3D_cu0hx")
-
-[node name="GrapplePoint4" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 130, 0)
-mesh = SubResource("BoxMesh_e2b8t")
-
-[node name="GrappleablePoint" parent="GrapplePoint4" instance=ExtResource("11_1cxuk")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GrapplePoint4/GrappleablePoint"]
-shape = SubResource("BoxShape3D_cu0hx")
-
-[node name="Loading-zone" parent="." instance=ExtResource("12_s1ggx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 125, 0)
-scene = "res://Scenes/islands/island0/Island0.tscn"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Loading-zone"]
-shape = SubResource("CylinderShape3D_mgonk")
+[node name="LavaSinker" parent="Lava Platforms" instance=ExtResource("9_ne5ms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+sinkSpeed = 1.0

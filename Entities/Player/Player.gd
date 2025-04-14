@@ -1,42 +1,32 @@
 class_name Player extends CharacterBody3D
-@export_group("Movement")
 
-@export_subgroup("Jumping")
-@export_range(0.0, 100.0, 0.1) var Jump_Impulse : float = 2.0
-@export_range(0.0, 1.0, 0.05) var Jump_Held_Decay : float = 0.6
-@export_range(0.0, 100.0, 0.1) var Jump_Held_Strength : float = 10.0
-@export_range(0.0, 100.0, 0.1) var Slam_Jump_Impulse : float = 15.0
+const Jump_Impulse : float = 2.0
+const Jump_Held_Decay : float = 0.6
+const Jump_Held_Strength : float = 10.0
+const Slam_Jump_Impulse : float = 15.0
 
-@export_subgroup("Falling")
-@export_range(0.0, 1.0, 0.05) var Coyote_Time : float = 0.1
-@export_range(-100.0, 0.0, 0.5) var Gravity : float = -50.0
+const Coyote_Time : float = 0.1
+const Gravity : float = -50.0
 
-@export_subgroup("Speed")
-@export_range(0.0, 100.0, 0.1) var Air_Speed : float = 10.0
-@export_range(0.0, 100.0, 0.1) var Walk_Speed : float = 10.0
-@export_range(0.0, 100.0, 0.1) var Sprint_Speed : float = 20.0
+const Air_Speed : float = 10.0
+const Walk_Speed : float = 10.0
+const Sprint_Speed : float = 20.0
 
-@export_subgroup("Drag")
-@export_range(0.0, 1.0, 0.01) var Ground_Drag : float = 0.4
-@export_range(0.0, 1.0, 0.01) var Air_Drag : float = 0.04
+const Ground_Drag : float = 0.4
+const Air_Drag : float = 0.04
 
-@export_subgroup("Rotation")
-@export_range(0.0, 100) var Rotation_Speed : float = 10.0
-@export_range(0.0, 5) var Rotation_Flux : float = 2.0
+const Rotation_Speed : float = 10.0
+const Rotation_Flux : float = 2.0
 
-@export_subgroup("Dash")
-@export_range(0.0, 2.0, 0.05) var Dash_Length : float = 0.1
-@export_range(0.0, 100, 1) var Dash_Speed : float = 50
+const Dash_Length : float = 0.1
+const Dash_Speed : float = 50
 
-@export_subgroup("Slam")
-@export_range(0.0, 100, 1) var Slam_Gravity_Factor : float = 20
+const Slam_Gravity_Factor : float = 20
 
-@export_subgroup("Slide")
-@export_range(0.0, 100, 1) var Slide_Gravity_Factor : float = 10
-@export_range(0.0, 100, 1) var Wall_Kick : float = 20
+const Slide_Gravity_Factor : float = 10
+const Wall_Kick : float = 20
 
-@export_subgroup("Grapple")
-@export_range(0.1, 100.0, 0.1) var Grapple_Speed : float = 25.0
+const Grapple_Speed : float = 25.0
 
 @export_group("Camera")
 @export var Transparency_Curve : Curve

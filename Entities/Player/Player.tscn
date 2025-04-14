@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://dmhwfbc05xhsb" path="res://Components/interactor.tscn" id="19_dm15w"]
 [ext_resource type="Script" path="res://Entities/Player/inventory.gd" id="22_q8h2y"]
 [ext_resource type="Script" path="res://Entities/Player/range_finder.gd" id="23_m208i"]
-[ext_resource type="Material" uid="uid://cg5nhvhv6q8kf" path="res://Assets/Materials/GrappleHook.tres" id="24_tuyhe"]
+[ext_resource type="Material" path="res://Assets/Materials/GrappleHook.tres" id="24_tuyhe"]
 
 [sub_resource type="Curve" id="Curve_e4jrd"]
 resource_local_to_scene = true
