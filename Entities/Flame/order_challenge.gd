@@ -18,11 +18,15 @@ func _process(delta: float) -> void:
 ## Called by the order object interacted, with its unique id in the challenge.
 func new_interacted(id : int) -> void:
 	current.append(id)
+	if (current.size() < correct_order.size()):
+		AudioManager.play_fx("Chime" + str(current.size()))
 	if (current == correct_order): # correct order
 		parent.enable()
+		AudioManager.play_fx("CorrectChime")
 	else:
 		if current.size() == correct_order.size(): # incorrect order
 			current.clear()
+			AudioManager.play_fx("IncorrectChime")
 			for pylon in get_children():
 				if (pylon.has_method("off")):
 					pylon.off()

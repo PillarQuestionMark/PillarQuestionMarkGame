@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://djf3y6bd2v3e7"]
+
+[ext_resource type="Script" path="res://Scenes/screens/flame_list_screen/flame_list_screen.gd" id="1_acm4g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7aq4"]
+bg_color = Color(0, 0, 0, 0.784314)
+
+[node name="FlamesListScreen" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_acm4g")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e7aq4")
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "flames"
+horizontal_alignment = 1
+
+[node name="back" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "back"
+flat = true
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/back" to="." method="_on_resume_pressed"]

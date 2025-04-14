@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://du57308ll8v0n"]
+
+[ext_resource type="Script" path="res://Scenes/screens/loading_screen/loading_screen.gd" id="1_tkjox"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s2gai"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="LoadingScreen" type="Node2D"]
+script = ExtResource("1_tkjox")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_right = 1160.0
+offset_bottom = 672.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_s2gai")
+
+[node name="Label" type="Label" parent="PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "loading..."
+horizontal_alignment = 1

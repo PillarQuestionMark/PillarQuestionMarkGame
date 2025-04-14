@@ -18,12 +18,14 @@ func pickup(player : Node3D) -> void:
 	var sparks = inv.get_matching(predicate)
 	
 	if (sparks.size() == 2):
+		AudioManager.play_fx("CorrectChime")
 		parent_challenge.enable()
 		inv.remove_all(sparks)
 		for spark in sparks:
 			spark.queue_free()
 		queue_free()
 	else:
+		AudioManager.play_fx("Chime2")
 		inv.call_deferred("add", self)
 		collision_layer = 0
 		collision_mask = 0

@@ -20,6 +20,8 @@ func _process(delta: float) -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	print("EEEEEE")
 	if not body is Player: return
+	print(body.is_on_floor())
+	##if !body.is_on_floor(): return
 	var player := body as Player
 	
 	#if player.is_on_floor(): return
@@ -31,17 +33,22 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		print("AAAAAA")
 		print("a: %d" % player.jumps_left)
 		player.touched_ground()
+		player.state_machine.state.force_state("Falling")
+		body.jumps_left -= 1
 		print("b: %d" % player.jumps_left)
 		player.velocity.y = slam_height
 		#player.move_and_slide()
 		#player.jumps_left += 100
 		print("c: %d" % player.jumps_left)
 		print(player.state_machine.state.name)
+		player.get_node("SlamJumpParticles").restart()
 	
 	elif !slam_only and Input.is_action_pressed("jump"):
 		print("BBBBB")
 		print("a: %d" % player.jumps_left)
 		player.touched_ground()
+		player.state_machine.state.force_state("Falling")
+		body.jumps_left -= 1
 		print("b: %d" % player.jumps_left)
 		player.velocity.y = jump_height
 		#player.move_and_slide()
@@ -51,8 +58,11 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	
 	else:
 		player.touched_ground()
+		player.state_machine.state.force_state("Falling")
+		body.jumps_left -= 1
 		player.velocity.y = bounce_height
 	
+	AudioManager.play_fx("jump")
 	#if !slam_only or _check_slam(body): ## if slam only check slam, else do nothing
 		#body.touched_ground() ## reset jumps (for double jumping)
 		#body.velocity.y += _check_height(body) ## give bounce impulse

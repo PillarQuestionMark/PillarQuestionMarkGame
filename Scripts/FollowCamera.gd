@@ -7,7 +7,7 @@ extends SpringArm3D
 #mouse sensitivity.
 var mouse_sensitivity: float = 0.05
 #controller sensitivity.
-var controller_sensitivity: float = 1
+var controller_sensitivity: float = 0.5
 #pitch clamp settings.
 @export_subgroup("Clamp settings")
 #max pitch in degrees.
@@ -30,6 +30,13 @@ const sensitivity_scale : float = 0.1
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	spring_length = camera_distance
+	update_sensitivity()
+	EventBus.sensitivity_update.connect(update_sensitivity)
+	
+func update_sensitivity() -> void:
+	mouse_sensitivity = Settings.mouse_sensitivity
+	controller_sensitivity = Settings.controller_sensitivity
+	print("CONTROLLER SENSITIVITY: " + str(controller_sensitivity))
  
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -46,7 +53,7 @@ func _process(delta):
 			spring_length = camera_distance
 			state = States.THIRD_BACK
 
-func _unhandled_input(event):
+func _input(event):
 	#Actual Camera controls
 	if (not event is InputEventMouseMotion):
 		return

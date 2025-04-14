@@ -22,8 +22,10 @@ func _on_interactable_on_interacting() -> void:
 	if flames_collected >= flames_required:
 		if is_on:
 			animator.play("flip_off")
+			AudioManager.play_fx("LeverOff")
 		else:
 			animator.play("flip_on")
+			AudioManager.play_fx("LeverOn")
 			
 		is_on = not is_on
 	

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bdqx111qk7x6c"
+path="res://.godot/imported/Grapple.mp3-27f5db1b6f807905834282cd9870c174.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Sound Effects/Grapple.mp3"
+dest_files=["res://.godot/imported/Grapple.mp3-27f5db1b6f807905834282cd9870c174.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
