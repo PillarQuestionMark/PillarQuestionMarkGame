@@ -1,8 +1,8 @@
 class_name LavaSinker extends AnimatableBody3D
 
-@export var sinkSpeed : float = 5.0
-var playerOnPlatform : bool = false
+@export var sinkSpeed : float = 2.0 
 var startingHeight : float
+var dropping : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,14 +10,15 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if playerOnPlatform:
-		global_position.y -= sinkSpeed * delta
+	if (dropping):
+		move_and_collide(Vector3.DOWN * (sinkSpeed * delta))
 	else:
-		global_position.y = minf(global_position.y + sinkSpeed * delta, startingHeight)
+		if (global_position.y < startingHeight):
+			move_and_collide(Vector3.UP * sinkSpeed * delta)
+	
 
 func _on_player_standing(node : Node3D):
-	playerOnPlatform = true
-	print("player detected")
+	dropping = true
 
 func _on_player_left(node : Node3D):
-	playerOnPlatform = false
+	dropping = false
