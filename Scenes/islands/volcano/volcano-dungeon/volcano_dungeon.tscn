@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c5vhpdwuc7upw"]
+[gd_scene load_steps=17 format=3 uid="uid://c5vhpdwuc7upw"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_uikhx"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="2_g352o"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://gpgl3rhk73xc" path="res://Scenes/islands/volcano/volcano-dungeon/water-spawner/water_spawner.tscn" id="9_h4ilx"]
 [ext_resource type="PackedScene" uid="uid://dmvrvhmtv0d43" path="res://Scenes/islands/volcano/volcano-dungeon/sinker/lava_sinker.tscn" id="9_ne5ms"]
 [ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="9_spngf"]
+[ext_resource type="PackedScene" uid="uid://dql4b8bulv1vi" path="res://Components/loading-zone.tscn" id="10_4ulhp"]
 
 [sub_resource type="Curve" id="Curve_qdhwp"]
 resource_local_to_scene = true
@@ -27,6 +28,12 @@ _data = {
 }
 point_count = 7
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_10rv2"]
+size = Vector3(8, 8, 1)
+
+[sub_resource type="FogMaterial" id="FogMaterial_6txaq"]
+albedo = Color(0, 0, 0, 1)
+
 [node name="VolcanoIsland" type="Node3D"]
 script = ExtResource("1_uikhx")
 island = 5
@@ -38,7 +45,6 @@ shadow_enabled = true
 [node name="GameplayUI" parent="." instance=ExtResource("2_g352o")]
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("3_5xfnv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.53875)
 Transparency_Curve = SubResource("Curve_qdhwp")
 Camera = NodePath("FollowCamera")
 
@@ -46,7 +52,6 @@ Camera = NodePath("FollowCamera")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2, 0)
 
 [node name="Geo" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0875053, 0.134975, 0.0105858)
 
 [node name="VolcanoDungeon" parent="Geo" instance=ExtResource("5_iav2g")]
 
@@ -71,8 +76,24 @@ unlock = "grapple"
 [node name="WaterSpawner" parent="." instance=ExtResource("9_h4ilx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -35)
 curve = SubResource("Curve3D_4r55x")
+spawnRateSeconds = 10.0
 spawnHeight = 15.0
-platformSinkSpeed = 1.0
+
+[node name="ExitOne" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 9)
+
+[node name="Loading-zone" parent="ExitOne" instance=ExtResource("10_4ulhp")]
+scene = "res://Scenes/islands/island0/Island0.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExitOne/Loading-zone"]
+shape = SubResource("BoxShape3D_10rv2")
+
+[node name="FogVolume" type="FogVolume" parent="ExitOne"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+size = Vector3(8, 8, 5)
+material = SubResource("FogMaterial_6txaq")
+
+[node name="CameraBlock" type="StaticBody3D" parent="ExitOne"]
 
 [node name="Lava Platforms" type="Node3D" parent="."]
 
