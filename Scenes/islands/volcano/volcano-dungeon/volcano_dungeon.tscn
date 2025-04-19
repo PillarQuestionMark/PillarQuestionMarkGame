@@ -1,16 +1,19 @@
-[gd_scene load_steps=17 format=3 uid="uid://c5vhpdwuc7upw"]
+[gd_scene load_steps=24 format=3 uid="uid://c5vhpdwuc7upw"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_uikhx"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="2_g352o"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="3_5xfnv"]
 [ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="4_5482u"]
 [ext_resource type="PackedScene" uid="uid://khi3iwtx6nts" path="res://Scenes/islands/volcano/volcano-dungeon/VolcanoDungeon.blend" id="5_iav2g"]
+[ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="6_rfdyf"]
 [ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="7_js24h"]
 [ext_resource type="Environment" uid="uid://bhpuf5nuk7duo" path="res://Scenes/islands/volcano/volcano-dungeon/volcano_environment.tres" id="8_2c4ak"]
 [ext_resource type="PackedScene" uid="uid://gpgl3rhk73xc" path="res://Scenes/islands/volcano/volcano-dungeon/water-spawner/water_spawner.tscn" id="9_h4ilx"]
 [ext_resource type="PackedScene" uid="uid://dmvrvhmtv0d43" path="res://Scenes/islands/volcano/volcano-dungeon/sinker/lava_sinker.tscn" id="9_ne5ms"]
 [ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="9_spngf"]
 [ext_resource type="PackedScene" uid="uid://dql4b8bulv1vi" path="res://Components/loading-zone.tscn" id="10_4ulhp"]
+[ext_resource type="PackedScene" uid="uid://bhysjqq3h2p0t" path="res://Scenes/islands/volcano/volcano-dungeon/riser/lava_riser.tscn" id="11_r30yb"]
+[ext_resource type="CylinderMesh" uid="uid://djjv6vs3duv51" path="res://Scenes/islands/volcano/volcano-dungeon/riser/lava_riser_column.tres" id="12_c2qg8"]
 
 [sub_resource type="Curve" id="Curve_qdhwp"]
 resource_local_to_scene = true
@@ -19,20 +22,33 @@ point_count = 4
 metadata/_snap_enabled = true
 metadata/_snap_count = 20
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_oa630"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_8p7nu"]
+size = Vector3(4, 4, 4)
 
-[sub_resource type="Curve3D" id="Curve3D_4r55x"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -15, 0, 0, 0, 0, 0, 0, -1.25, 0, -20.5, 0, 0, 0, 0, 0, 0, -4.5, 0, -23.75, 0, 0, 0, 0, 0, 0, -9, 0, -25, 0, 0, 0, 0, 0, 0, -15, 0, -25, 0, 0, 0, 0, 0, 0, -15, -5, -25),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 7
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xum3n"]
+radius = 5.0
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_oa630"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_10rv2"]
 size = Vector3(8, 8, 1)
 
 [sub_resource type="FogMaterial" id="FogMaterial_6txaq"]
 albedo = Color(0, 0, 0, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_4r55x"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -15, 0, 0, 0, 0, 0, 0, -1.25, 0, -20.5, 0, 0, 0, 0, 0, 0, -4.5, 0, -23.75, 0, 0, 0, 0, 0, 0, -9, 0, -25, 0, 0, 0, 0, 0, 0, -13, 0, -25, 0, 0, 0, 0, 0, 0, -13, -5, -25),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_blhvs"]
+top_radius = 2.0
+bottom_radius = 2.3
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_uspig"]
+radius = 2.0
 
 [node name="VolcanoIsland" type="Node3D"]
 script = ExtResource("1_uikhx")
@@ -57,6 +73,27 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 
 [node name="Checkpoints" type="Node3D" parent="Geo"]
 
+[node name="Checkpoint0" parent="Geo/Checkpoints" instance=ExtResource("6_rfdyf")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geo/Checkpoints/Checkpoint0"]
+shape = SubResource("BoxShape3D_8p7nu")
+
+[node name="Checkpoint1" parent="Geo/Checkpoints" instance=ExtResource("6_rfdyf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 41, -65)
+id = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geo/Checkpoints/Checkpoint1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5)
+shape = SubResource("CylinderShape3D_xum3n")
+
+[node name="Checkpoint2" parent="Geo/Checkpoints" instance=ExtResource("6_rfdyf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -20)
+id = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geo/Checkpoints/Checkpoint2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 0)
+shape = SubResource("CylinderShape3D_xum3n")
+
 [node name="KillPlane" parent="." instance=ExtResource("7_js24h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 collision_layer = 772
@@ -72,12 +109,6 @@ environment = ExtResource("8_2c4ak")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.5, -20)
 dialogue = Array[String](["grapple unlocked!", "Hold Q to grapple to highlighted points!"])
 unlock = "grapple"
-
-[node name="WaterSpawner" parent="." instance=ExtResource("9_h4ilx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -35)
-curve = SubResource("Curve3D_4r55x")
-spawnRateSeconds = 10.0
-spawnHeight = 15.0
 
 [node name="ExitOne" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 9)
@@ -95,10 +126,48 @@ material = SubResource("FogMaterial_6txaq")
 
 [node name="CameraBlock" type="StaticBody3D" parent="ExitOne"]
 
+[node name="WaterSpawner" parent="." instance=ExtResource("9_h4ilx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -35)
+curve = SubResource("Curve3D_4r55x")
+spawnRateSeconds = 10.0
+spawnHeight = 15.0
+
+[node name="LavaRiser" parent="." instance=ExtResource("11_r30yb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, -60)
+
+[node name="Platform" type="MeshInstance3D" parent="LavaRiser"]
+mesh = SubResource("CylinderMesh_blhvs")
+
+[node name="LavaColumn" type="MeshInstance3D" parent="LavaRiser"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.5, 0)
+mesh = ExtResource("12_c2qg8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LavaRiser"]
+shape = SubResource("CylinderShape3D_uspig")
+
+[node name="LavaRiser2" parent="." instance=ExtResource("11_r30yb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 39, -115)
+
+[node name="Platform" type="MeshInstance3D" parent="LavaRiser2"]
+mesh = SubResource("CylinderMesh_blhvs")
+
+[node name="LavaColumn" type="MeshInstance3D" parent="LavaRiser2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.5, 0)
+mesh = ExtResource("12_c2qg8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LavaRiser2"]
+shape = SubResource("CylinderShape3D_uspig")
+
 [node name="Lava Platforms" type="Node3D" parent="."]
 
-[node name="LavaSinker2" parent="Lava Platforms" instance=ExtResource("9_ne5ms")]
+[node name="LavaSinker1" parent="Lava Platforms" instance=ExtResource("9_ne5ms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
 
-[node name="LavaSinker" parent="Lava Platforms" instance=ExtResource("9_ne5ms")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+[node name="LavaSinker2" parent="Lava Platforms" instance=ExtResource("9_ne5ms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39, -88)
+
+[node name="LavaSinker3" parent="Lava Platforms" instance=ExtResource("9_ne5ms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 39, -88)
+
+[node name="LavaSinker4" parent="Lava Platforms" instance=ExtResource("9_ne5ms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2026, 39, -42.5715)

@@ -1,6 +1,6 @@
 class_name MovingSinkingPlatform extends PathFollow3D
 
-var platformSpeed : float = 2.0
+var platformSpeed : float = 3.0
 var sinkSpeed : float = 0.0 :
 	set(value):
 		%LavaSinker.sinkSpeed = value
