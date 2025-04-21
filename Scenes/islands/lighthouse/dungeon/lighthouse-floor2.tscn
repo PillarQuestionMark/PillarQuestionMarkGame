@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cje1u86jpqaom"]
+[gd_scene load_steps=32 format=3 uid="uid://cje1u86jpqaom"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_okn7n"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_0gep0"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dqcei7yuxodc" path="res://Obstacles/Laser/laser_emitter.tscn" id="10_sb8bm"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="11_tgin2"]
 [ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="13_63e5k"]
+[ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="14_tgjqa"]
 
 [sub_resource type="Curve" id="Curve_4kue7"]
 resource_local_to_scene = true
@@ -78,6 +79,10 @@ transparency = 1
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_k7ya4"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3i7y2"]
+height = 4.0
+radius = 3.0
 
 [node name="Lighthousedungeontest" type="Node3D"]
 script = ExtResource("1_okn7n")
@@ -404,5 +409,22 @@ material = SubResource("StandardMaterial3D_6ulr6")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15.03, 0)
 shape = SubResource("WorldBoundaryShape3D_k7ya4")
+
+[node name="Checkpoints" type="Node3D" parent="."]
+
+[node name="Checkpoint0" parent="Checkpoints" instance=ExtResource("14_tgjqa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 16)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/Checkpoint0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CylinderShape3D_3i7y2")
+
+[node name="Checkpoint1" parent="Checkpoints" instance=ExtResource("14_tgjqa")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, -16)
+id = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/Checkpoint1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CylinderShape3D_3i7y2")
 
 [connection signal="on_interacting" from="Non-Rotating Room/Compass/CSGCylinder3D/Interactable" to="Non-Rotating Room/Compass" method="_on_interactable_on_interacting"]
