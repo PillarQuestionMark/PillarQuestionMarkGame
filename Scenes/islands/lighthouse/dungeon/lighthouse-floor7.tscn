@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://dt3yjbwmsm621"]
+[gd_scene load_steps=24 format=3 uid="uid://dt3yjbwmsm621"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_fmkca"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_5028g"]
 [ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="3_5k2kk"]
 [ext_resource type="Script" path="res://Scenes/islands/lighthouse/rotating_room.gd" id="4_wkbss"]
 [ext_resource type="PackedScene" uid="uid://dql4b8bulv1vi" path="res://Components/loading-zone.tscn" id="5_633vo"]
+[ext_resource type="PackedScene" uid="uid://bryke18wdu25" path="res://Components/standing_sign.tscn" id="9_wlvxj"]
 [ext_resource type="PackedScene" uid="uid://kqx2i4sjvw3d" path="res://Obstacles/BouncyMushroom.tscn" id="9_yduja"]
 [ext_resource type="PackedScene" uid="uid://cdwnjdsfrrav5" path="res://Components/sign.tscn" id="10_rrhof"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="10_u37c0"]
@@ -107,17 +108,17 @@ operation = 2
 size = Vector3(4, 8, 2)
 
 [node name="Platform1" type="CSGBox3D" parent="Rotating Room"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.6293)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 13.6293)
 use_collision = true
 collision_mask = 2
-size = Vector3(32, 1, 11)
+size = Vector3(35, 1, 11)
 material = SubResource("StandardMaterial3D_nvpqj")
 
 [node name="Platform3" type="CSGBox3D" parent="Rotating Room/Platform1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 11.5, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 11.5, -0.5)
 use_collision = true
 collision_mask = 2
-size = Vector3(11, 22, 10)
+size = Vector3(12, 22, 10)
 material = SubResource("StandardMaterial3D_nvpqj")
 
 [node name="Platform2" type="CSGBox3D" parent="Rotating Room"]
@@ -320,7 +321,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("CylinderShape3D_vb367")
 
 [node name="Checkpoint1" parent="Checkpoints" instance=ExtResource("12_cmaw7")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17, 61, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16, 61, 0)
 id = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/Checkpoint1"]
@@ -339,3 +340,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 40, -11)
 [node name="Sign" parent="." instance=ExtResource("10_rrhof")]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 6, 2, 13)
 dialogue = Array[String](["sign: mushrooms seem to like the environment here.", "sign: overall not harmful, so we keep them around.", "sign: they seem to be particularly bouncy when something slams into them.", "sign: perhaps I'll find a use for that someday..."])
+
+[node name="Sign3" parent="." instance=ExtResource("10_rrhof")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -6.5, 2, -14)
+dialogue = Array[String](["sign: the shadows of this lighthouse are said to be haunted.", "sign: scientifically, I never believed in that.", "sign: however...", "sign: I've seen things that prompt me to consider otherwise.", "sign: ...", "sign: working a lighthouse you are always alone.", "sign: but sometimes, you never quite feel alone."])
+
+[node name="Sign2" parent="." instance=ExtResource("9_wlvxj")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -12, 61, 8)
+dialogue = Array[String](["sign: here - at the end of the line - I have only to wish you well.", "sign: may the lighthouse flourish under your watch - much like it once had mine.", "sign: good luck.", "sign: signed, the lightkeeper."])
