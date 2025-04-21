@@ -107,6 +107,14 @@ radius = 23.0
 sides = 16
 material = SubResource("StandardMaterial3D_el6vq")
 
+[node name="Ceiling" type="CSGCylinder3D" parent="Rotating Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 34, 0)
+use_collision = true
+collision_mask = 2
+radius = 23.0
+sides = 16
+material = SubResource("StandardMaterial3D_el6vq")
+
 [node name="ExitDoor" type="Node3D" parent="Rotating Room"]
 
 [node name="Door" type="CSGBox3D" parent="Rotating Room/ExitDoor"]
