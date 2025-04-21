@@ -214,7 +214,8 @@ size = Vector3(4, 1, 9)
 
 [node name="Loading-zone" parent="Rotating Room/LighthouseEntrance" instance=ExtResource("5_iwpxj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-scene = "res://Scenes/islands/lighthouse/dungeon/lighthouse-floor1.tscn"
+scene = "res://Scenes/islands/jungle/jungle_island.tscn"
+checkpoint = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rotating Room/LighthouseEntrance/Loading-zone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.5)
@@ -258,7 +259,7 @@ trigger = "phase_two"
 
 [node name="Sign" parent="Non-Rotating Room" instance=ExtResource("10_fl84j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 6)
-dialogue = Array[String](["sign: the lighthouse functions on lasers", "sign: the device on the left requires light to activate", "sign: try interacting with the device on the right"])
+dialogue = Array[String](["sign: the lighthouse functions on lasers.", "sign: the device on the left requires light to activate.", "sign: try interacting with the device on the right."])
 
 [node name="GameplayUI" parent="." instance=ExtResource("7_6u0ro")]
 
@@ -290,7 +291,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("CylinderShape3D_i7c3h")
 
 [node name="Checkpoint1" parent="Checkpoints" instance=ExtResource("12_lq5uo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -16)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, -16)
 id = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/Checkpoint1"]

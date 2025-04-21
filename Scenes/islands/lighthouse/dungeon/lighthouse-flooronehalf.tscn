@@ -237,6 +237,7 @@ size = Vector3(4, 1, 9)
 [node name="Loading-zone" parent="Rotating Room/StairsDown" instance=ExtResource("6_bf7l0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 scene = "res://Scenes/islands/lighthouse/dungeon/lighthouse-floor0.tscn"
+checkpoint = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rotating Room/StairsDown/Loading-zone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
@@ -278,7 +279,7 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 
 [node name="Sign" parent="Non-Rotating Room" instance=ExtResource("10_k38cm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.5, 10)
-dialogue = Array[String](["sign: this room is a little more complex", "sign: you should be able to figure it out though"])
+dialogue = Array[String](["sign: this room is a little more complex.", "sign: you should be able to figure it out though."])
 
 [node name="GameplayUI" parent="." instance=ExtResource("10_poy5u")]
 
@@ -310,7 +311,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("CylinderShape3D_aj3th")
 
 [node name="Checkpoint1" parent="Checkpoints" instance=ExtResource("11_ghbgd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -16)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, -16)
 id = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/Checkpoint1"]
