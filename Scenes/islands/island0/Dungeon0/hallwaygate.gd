@@ -29,6 +29,8 @@ func _ready() -> void:
 			trigger1_on = !trigger1_on
 		elif name == trigger2:
 			trigger2_on = !trigger2_on
+		else:
+			return
 		_attempt_move()		
 	)
 
@@ -36,7 +38,10 @@ func _attempt_move() -> void:
 	var targetpos = _initialpos
 	if trigger1_on and trigger2_on:
 		targetpos = _finalpos
+		AudioManager.play_fx("CorrectChime")
+		print("HALLWAY GATE")
 
+		
 	var t := create_tween()
 	t.tween_property(get_parent_node_3d(), "position", targetpos, duration) \
 		.set_ease(Tween.EASE_IN_OUT)
