@@ -1,5 +1,6 @@
-[gd_scene load_steps=40 format=3 uid="uid://b85t02nj7v1lw"]
+[gd_scene load_steps=41 format=3 uid="uid://b85t02nj7v1lw"]
 
+[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_sgc7n"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="1_ttkg7"]
 [ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="2_skuil"]
 [ext_resource type="Material" uid="uid://4tuo1or3bdj5" path="res://Scenes/islands/island0/Dungeon0/dungeon_0_floors.tres" id="3_4xfrc"]
@@ -81,6 +82,7 @@ buffer = PackedFloat32Array(1.51746, 0, 0, 2.27619, 0, 1.54433, 0, 0, 0, 0, 1.57
 albedo_color = Color(0.332881, 0.332881, 0.332881, 1)
 
 [sub_resource type="MultiMesh" id="MultiMesh_663xu"]
+
 transform_format = 1
 instance_count = 40
 mesh = ExtResource("15_nnl6n")
@@ -102,6 +104,7 @@ buffer = PackedFloat32Array(-0.269492, 0.000817979, -0.290972, 0.5949, -6.27151e
 size = Vector3(2, 3, 1.5)
 
 [node name="Dungeon1" type="Node3D"]
+script = ExtResource("1_sgc7n")
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("1_ttkg7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.87136, 0.667002, 2.96871)
