@@ -309,6 +309,8 @@ material = SubResource("FogMaterial_m4ar2")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Fogs"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 29, 0)
+use_collision = true
+collision_mask = 2
 radius = 25.0
 material = SubResource("StandardMaterial3D_5h55d")
 
