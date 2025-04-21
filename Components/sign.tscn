@@ -29,12 +29,4 @@ text = "?"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
 shape = SubResource("BoxShape3D_x40r4")
 
-[node name="Leg" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -0.5, 0)
-size = Vector3(0.05, 0.5, 0.05)
-
-[node name="Leg2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, -0.5, 0)
-size = Vector3(0.05, 0.5, 0.05)
-
 [connection signal="on_interacting" from="Interactable" to="." method="_on_interactable_on_interacting"]
