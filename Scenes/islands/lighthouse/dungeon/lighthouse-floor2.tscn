@@ -227,8 +227,7 @@ size = Vector3(4, 1, 9)
 
 [node name="Loading-zone" parent="Rotating Room/StairsUp" instance=ExtResource("5_jkeeg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-scene = "res://Scenes/islands/jungle/jungle_island.tscn"
-checkpoint = 1
+scene = "res://Scenes/islands/lighthouse/dungeon/lighthouse-floor3.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rotating Room/StairsUp/Loading-zone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
