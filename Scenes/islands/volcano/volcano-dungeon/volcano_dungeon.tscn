@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c5vhpdwuc7upw"]
+[gd_scene load_steps=32 format=3 uid="uid://c5vhpdwuc7upw"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_uikhx"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="2_g352o"]
@@ -51,6 +51,9 @@ radius = 2.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ekpue"]
 radius = 5.0
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ke5cs"]
+radius = 4.0
+
 [sub_resource type="Curve3D" id="Curve3D_kf1ws"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30),
@@ -65,15 +68,15 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ke5cs"]
-radius = 4.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_4j127"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8e7dp"]
-
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xum3n"]
 radius = 5.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_l26be"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_eryyu"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_muane"]
+radius = 8.0
 
 [node name="VolcanoIsland" type="Node3D"]
 script = ExtResource("1_uikhx")
@@ -138,8 +141,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 size = Vector3(8, 8, 5)
 material = SubResource("FogMaterial_6txaq")
 
-[node name="CameraBlock" type="StaticBody3D" parent="VolcanoDungeon/Level1/EntranceChamber/ExitOne"]
-
 [node name="LavaRiser" parent="VolcanoDungeon/Level1/EntranceChamber" instance=ExtResource("11_r30yb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, -60)
 
@@ -157,7 +158,7 @@ shape = SubResource("CylinderShape3D_uspig")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25)
 
 [node name="Chamber2" type="Node3D" parent="VolcanoDungeon/Level1"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50, 0, -20)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 50, 0, -100)
 
 [node name="Checkpoint2" parent="VolcanoDungeon/Level1/Chamber2" instance=ExtResource("6_rfdyf")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
@@ -166,6 +167,14 @@ id = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VolcanoDungeon/Level1/Chamber2/Checkpoint2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 0)
 shape = SubResource("CylinderShape3D_ekpue")
+
+[node name="Checkpoint3" parent="VolcanoDungeon/Level1/Chamber2" instance=ExtResource("6_rfdyf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 45, 2, -7.5)
+id = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VolcanoDungeon/Level1/Chamber2/Checkpoint3"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 3, 0)
+shape = SubResource("CylinderShape3D_ke5cs")
 
 [node name="Ability Mural" parent="VolcanoDungeon/Level1/Chamber2" instance=ExtResource("9_spngf")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 50.5, 5.5, 11)
@@ -181,24 +190,6 @@ spawnHeight = 5.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -1, 15)
 curve = SubResource("Curve3D_j8bf2")
 spawnHeight = 5.0
-
-[node name="Checkpoint3" parent="VolcanoDungeon/Level1/Chamber2" instance=ExtResource("6_rfdyf")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 45, 2, -7.5)
-id = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="VolcanoDungeon/Level1/Chamber2/Checkpoint3"]
-transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 3, 0)
-shape = SubResource("CylinderShape3D_ke5cs")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="VolcanoDungeon/Level1/Chamber2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.5315, 4.31075, -5.85414)
-mesh = SubResource("SphereMesh_4j127")
-skeleton = NodePath("GrappleablePoint")
-
-[node name="GrappleablePoint" parent="VolcanoDungeon/Level1/Chamber2/MeshInstance3D" instance=ExtResource("15_avain")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="VolcanoDungeon/Level1/Chamber2/MeshInstance3D/GrappleablePoint"]
-shape = SubResource("BoxShape3D_8e7dp")
 
 [node name="Level2" type="Node3D" parent="VolcanoDungeon"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39, 0)
@@ -232,11 +223,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, -2, -23)
 [node name="LavaSinker3" parent="VolcanoDungeon/Level2/MainChamber" instance=ExtResource("9_ne5ms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -2, -23)
 
-[node name="LavaSinker4" parent="VolcanoDungeon/Level2/MainChamber" instance=ExtResource("9_ne5ms")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, -2, 42)
-
 [node name="LavaSinker5" parent="VolcanoDungeon/Level2/MainChamber" instance=ExtResource("9_ne5ms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -2, 23)
 
 [node name="LavaSinker6" parent="VolcanoDungeon/Level2/MainChamber" instance=ExtResource("9_ne5ms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, -2, 23)
+
+[node name="Grapple" type="MeshInstance3D" parent="VolcanoDungeon/Level2/MainChamber"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69, 10, 50)
+mesh = SubResource("SphereMesh_l26be")
+
+[node name="GrappleablePoint" parent="VolcanoDungeon/Level2/MainChamber/Grapple" instance=ExtResource("15_avain")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VolcanoDungeon/Level2/MainChamber/Grapple/GrappleablePoint"]
+shape = SubResource("SphereShape3D_eryyu")
+
+[node name="LowerChamberExit" type="Node3D" parent="VolcanoDungeon/Level2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 2, -15)
+
+[node name="Checkpoint" parent="VolcanoDungeon/Level2/LowerChamberExit" instance=ExtResource("6_rfdyf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, -2, 0)
+id = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VolcanoDungeon/Level2/LowerChamberExit/Checkpoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 2, 0)
+shape = SubResource("CylinderShape3D_muane")
