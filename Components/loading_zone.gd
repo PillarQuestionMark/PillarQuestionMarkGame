@@ -24,5 +24,5 @@ func _on_body_entered(body: Node3D) -> void:
 	if dungeon_complete != IslandData.Islands.None:
 		PlayerData.data["cleared_dungeons"].append(dungeon_complete as int as float)
 		## i hate the casting done here. i dont know if you need to cast to int before float??
-		## that being said, it needs to be a float for the effects to happen during the same run.
-		## YAY! I love things being only floats in JSON
+ 		## that being said, it needs to be a float for the effects to happen during the same run.
+ 		## YAY! I love things being only floats in JSON

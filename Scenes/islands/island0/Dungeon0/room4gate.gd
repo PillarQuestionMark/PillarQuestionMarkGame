@@ -64,7 +64,7 @@ func _attempt_move() -> void:
 		targetpos = _finalpos
 		AudioManager.play_fx("CorrectChime")
 		print("GATE 4")
-
+		
 	var t := create_tween()
 	t.tween_property(get_parent_node_3d(), "position", targetpos, duration) \
 		.set_ease(Tween.EASE_IN_OUT)

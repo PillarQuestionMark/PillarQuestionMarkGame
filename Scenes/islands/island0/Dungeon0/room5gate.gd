@@ -13,7 +13,7 @@ var trigger2_on := false
 @export var trigger3 := ""
 var trigger3_on := true
 @export var trigger4 := ""
-var trigger4_on := true
+var trigger4_on := false
 @export var trigger5 := ""
 var trigger5_on := false
 
@@ -47,10 +47,11 @@ func _ready() -> void:
 	)
 
 func _attempt_move() -> void:
+	print("ATTEMPTING GATE 5 MOVE")
 	var targetpos = _initialpos
 	if trigger1_on and trigger2_on and trigger3_on and trigger4_on and trigger5_on:
-		AudioManager.play_fx("CorrectChime")
 		targetpos = _finalpos
+		AudioManager.play_fx("CorrectChime")
 		print("GATE 5")
 
 	var t := create_tween()
