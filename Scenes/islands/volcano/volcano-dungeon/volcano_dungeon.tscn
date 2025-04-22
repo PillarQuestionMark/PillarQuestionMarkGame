@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="4_5482u"]
 [ext_resource type="PackedScene" uid="uid://khi3iwtx6nts" path="res://Scenes/islands/volcano/volcano-dungeon/VolcanoDungeon.blend" id="5_iav2g"]
 [ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="6_rfdyf"]
-[ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="7_js24h"]
 [ext_resource type="Environment" uid="uid://bhpuf5nuk7duo" path="res://Scenes/islands/volcano/volcano-dungeon/volcano_environment.tres" id="8_2c4ak"]
 [ext_resource type="PackedScene" uid="uid://gpgl3rhk73xc" path="res://Scenes/islands/volcano/volcano-dungeon/water-spawner/water_spawner.tscn" id="9_h4ilx"]
 [ext_resource type="PackedScene" uid="uid://dmvrvhmtv0d43" path="res://Scenes/islands/volcano/volcano-dungeon/sinker/lava_sinker.tscn" id="9_ne5ms"]
@@ -14,20 +13,20 @@
 [ext_resource type="PackedScene" uid="uid://dql4b8bulv1vi" path="res://Components/loading-zone.tscn" id="10_4ulhp"]
 [ext_resource type="PackedScene" uid="uid://bhysjqq3h2p0t" path="res://Scenes/islands/volcano/volcano-dungeon/riser/lava_riser.tscn" id="11_r30yb"]
 [ext_resource type="CylinderMesh" uid="uid://djjv6vs3duv51" path="res://Scenes/islands/volcano/volcano-dungeon/riser/lava_riser_column.tres" id="12_c2qg8"]
+[ext_resource type="Material" uid="uid://b4cigyte4lppr" path="res://Assets/Materials/GrappleInactive.tres" id="14_w1et3"]
 [ext_resource type="PackedScene" uid="uid://cj3ku0n0t8fw5" path="res://Components/grappleablePoint.tscn" id="15_avain"]
 [ext_resource type="PackedScene" uid="uid://d3ea11u58blgf" path="res://Scenes/islands/volcano/volcano-dungeon/crumbling-wall/crumbling_wall.tscn" id="15_p2g8m"]
+[ext_resource type="PackedScene" uid="uid://bjecaqqjdrcs5" path="res://Scenes/islands/volcano/volcano-dungeon/volcano_dungeon_lava.tscn" id="16_kh6aq"]
 
 [sub_resource type="Curve" id="Curve_qdhwp"]
 resource_local_to_scene = true
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(0.45, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 metadata/_snap_enabled = true
 metadata/_snap_count = 20
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8p7nu"]
 size = Vector3(14, 13, 4)
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_oa630"]
 
 [sub_resource type="Curve3D" id="Curve3D_4r55x"]
 _data = {
@@ -124,14 +123,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.01663)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VolcanoDungeon/Level1/EntranceChamber/Checkpoint0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 0)
 shape = SubResource("BoxShape3D_8p7nu")
-
-[node name="KillPlane" parent="VolcanoDungeon/Level1/EntranceChamber" instance=ExtResource("7_js24h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-collision_layer = 772
-monitorable = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="VolcanoDungeon/Level1/EntranceChamber/KillPlane"]
-shape = SubResource("WorldBoundaryShape3D_oa630")
 
 [node name="WaterSpawner" parent="VolcanoDungeon/Level1/EntranceChamber" instance=ExtResource("9_h4ilx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -35)
@@ -235,8 +226,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 39, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 2, -65)
 
 [node name="Grapple" type="MeshInstance3D" parent="VolcanoDungeon/Level2/MainChamber"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69, 36.1084, -29.0448)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.5242, 43.7765, -62.058)
 mesh = SubResource("SphereMesh_l26be")
+surface_material_override/0 = ExtResource("14_w1et3")
 
 [node name="GrappleablePoint" parent="VolcanoDungeon/Level2/MainChamber/Grapple" instance=ExtResource("15_avain")]
 
@@ -244,7 +236,8 @@ mesh = SubResource("SphereMesh_l26be")
 shape = SubResource("SphereShape3D_eryyu")
 
 [node name="Grapple2" type="MeshInstance3D" parent="VolcanoDungeon/Level2/MainChamber"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.6107, 50.7097, -21.1182)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.902, 49.7159, 16.0259)
+material_override = ExtResource("14_w1et3")
 mesh = SubResource("SphereMesh_l26be")
 skeleton = NodePath("../../MainChamber")
 
@@ -255,6 +248,7 @@ shape = SubResource("SphereShape3D_eryyu")
 
 [node name="Grapple3" type="MeshInstance3D" parent="VolcanoDungeon/Level2/MainChamber"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.4993, 83.3818, -11.8213)
+material_override = ExtResource("14_w1et3")
 mesh = SubResource("SphereMesh_l26be")
 
 [node name="GrappleablePoint" parent="VolcanoDungeon/Level2/MainChamber/Grapple3" instance=ExtResource("15_avain")]
@@ -270,7 +264,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5)
 shape = SubResource("CylinderShape3D_xum3n")
 
 [node name="LavaRiser2" parent="VolcanoDungeon/Level2/MainChamber" instance=ExtResource("11_r30yb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.7892, -2, -0.47583)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.7892, -2, -51.9665)
 
 [node name="Platform" type="MeshInstance3D" parent="VolcanoDungeon/Level2/MainChamber/LavaRiser2"]
 mesh = SubResource("CylinderMesh_blhvs")
@@ -331,6 +325,7 @@ shape = SubResource("CylinderShape3D_7y6yi")
 
 [node name="Grapple" type="MeshInstance3D" parent="VolcanoDungeon/Level2/LowerChamberExit"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+material_override = ExtResource("14_w1et3")
 mesh = SubResource("SphereMesh_l26be")
 skeleton = NodePath("../../MainChamber")
 
@@ -341,6 +336,7 @@ shape = SubResource("SphereShape3D_eryyu")
 
 [node name="Grapple2" type="MeshInstance3D" parent="VolcanoDungeon/Level2/LowerChamberExit"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 14, 6)
+material_override = ExtResource("14_w1et3")
 mesh = SubResource("SphereMesh_l26be")
 skeleton = NodePath("../../MainChamber")
 
@@ -350,7 +346,8 @@ skeleton = NodePath("../../MainChamber")
 shape = SubResource("SphereShape3D_eryyu")
 
 [node name="Grapple3" type="MeshInstance3D" parent="VolcanoDungeon/Level2/LowerChamberExit"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57, 10, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57, 10, -3.3027)
+material_override = ExtResource("14_w1et3")
 mesh = SubResource("SphereMesh_l26be")
 skeleton = NodePath("../../MainChamber")
 
@@ -361,6 +358,7 @@ shape = SubResource("SphereShape3D_eryyu")
 
 [node name="Grapple4" type="MeshInstance3D" parent="VolcanoDungeon/Level2/LowerChamberExit"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78, 17, 4)
+material_override = ExtResource("14_w1et3")
 mesh = SubResource("SphereMesh_l26be")
 skeleton = NodePath("../../MainChamber")
 
@@ -368,3 +366,5 @@ skeleton = NodePath("../../MainChamber")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VolcanoDungeon/Level2/LowerChamberExit/Grapple4/GrappleablePoint"]
 shape = SubResource("SphereShape3D_eryyu")
+
+[node name="VolcanoDungeonLava2" parent="VolcanoDungeon" instance=ExtResource("16_kh6aq")]
