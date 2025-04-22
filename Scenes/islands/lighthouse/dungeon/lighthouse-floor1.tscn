@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://Components/mover.gd" id="6_i051o"]
 [ext_resource type="PackedScene" uid="uid://nd1s7aeat6mx" path="res://Components/interactable.tscn" id="6_jt3l4"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="7_epaey"]
-[ext_resource type="PackedScene" uid="uid://bryke18wdu25" path="res://Components/standing_sign.tscn" id="7_wof3i"]
+[ext_resource type="PackedScene" path="res://Components/standing_sign.tscn" id="7_wof3i"]
 [ext_resource type="PackedScene" uid="uid://dqcei7yuxodc" path="res://Obstacles/Laser/laser_emitter.tscn" id="8_0swlw"]
 [ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="12_vxsx6"]
 [ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="14_y2q0m"]

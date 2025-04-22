@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dqcei7yuxodc" path="res://Obstacles/Laser/laser_emitter.tscn" id="7_n5avh"]
 [ext_resource type="PackedScene" uid="uid://bwnc53uc4nle3" path="res://Obstacles/Laser/laser_receiver.tscn" id="8_6ggi7"]
 [ext_resource type="PackedScene" uid="uid://cqh1ir8nb0cfn" path="res://Obstacles/Laser/laser_reflector.tscn" id="9_k7w03"]
-[ext_resource type="PackedScene" uid="uid://bryke18wdu25" path="res://Components/standing_sign.tscn" id="10_fl84j"]
+[ext_resource type="PackedScene" path="res://Components/standing_sign.tscn" id="10_fl84j"]
 [ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="12_lq5uo"]
 
 [sub_resource type="Curve" id="Curve_4n5se"]
