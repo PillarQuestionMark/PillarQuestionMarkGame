@@ -1,54 +1,342 @@
-[gd_scene load_steps=11 format=3 uid="uid://dw1cxhelh6sgd"]
+[gd_scene load_steps=33 format=3 uid="uid://moyv8scnp8ub"]
 
-[ext_resource type="Material" uid="uid://4yuyv0g0uxg5" path="res://Scenes/islands/volcano/volcano-island/volcano_island_sky.tres" id="1_3fxie"]
-[ext_resource type="PackedScene" uid="uid://cnluw1emsshc8" path="res://Scenes/islands/volcano/volcano-island/volcano_island.blend" id="1_bpfmw"]
-[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="1_xmnhv"]
-[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="2_6lfji"]
-[ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="4_0s06g"]
-[ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="5_rahtj"]
+[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_qq0aa"]
+[ext_resource type="PackedScene" uid="uid://cnluw1emsshc8" path="res://Scenes/islands/volcano/volcano-island/volcano_island.blend" id="2_dxbvy"]
+[ext_resource type="Script" path="res://Scenes/screens/gameplay_ui.gd" id="2_tvdxa"]
+[ext_resource type="Material" uid="uid://b3jkbbiy1o5ug" path="res://Scenes/islands/jungle/sea_material.tres" id="3_eyff1"]
+[ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="5_4tu4k"]
+[ext_resource type="PackedScene" uid="uid://ch0xma4bou77p" path="res://Entities/Flame/flame.tscn" id="6_rwpat"]
+[ext_resource type="PackedScene" uid="uid://cdwnjdsfrrav5" path="res://Components/sign.tscn" id="7_p1mpn"]
+[ext_resource type="PackedScene" uid="uid://bfm4of4cyc7xd" path="res://Entities/Flame/flame_challenge.tscn" id="8_r7dp2"]
+[ext_resource type="PackedScene" uid="uid://dtl6gv0ngms67" path="res://Entities/Flame/timer_challenge.tscn" id="9_4xc5w"]
+[ext_resource type="PackedScene" uid="uid://cojfaw2pshswd" path="res://Entities/Flame/order_challenge.tscn" id="10_5yrlu"]
+[ext_resource type="PackedScene" uid="uid://d0bdwuhoxbd2" path="res://Entities/Flame/order_pylon.tscn" id="11_sojnp"]
+[ext_resource type="PackedScene" uid="uid://dwrgyw4a4tqca" path="res://Entities/Flame/spark.tscn" id="12_y54ye"]
+[ext_resource type="Script" path="res://Scenes/islands/volcano/volcano-dungeon/riser/lava_riser.gd" id="13_xyuvk"]
+[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="13_ywbs8"]
+[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="14_weqoo"]
+[ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="14_y3n7v"]
+[ext_resource type="PackedScene" uid="uid://dql4b8bulv1vi" path="res://Components/loading-zone.tscn" id="15_1ooec"]
+[ext_resource type="PackedScene" uid="uid://dc1evxye2jpsn" path="res://Entities/Boat.tscn" id="15_xxgmt"]
+[ext_resource type="PackedScene" uid="uid://cj3ku0n0t8fw5" path="res://Components/grappleablePoint.tscn" id="16_y8mww"]
+[ext_resource type="Material" uid="uid://4yuyv0g0uxg5" path="res://Scenes/islands/volcano/volcano-island/volcano_island_sky.tres" id="20_lpskc"]
 
-[sub_resource type="Sky" id="Sky_8npu5"]
-sky_material = ExtResource("1_3fxie")
+[sub_resource type="PlaneMesh" id="PlaneMesh_74jeg"]
+material = ExtResource("3_eyff1")
+size = Vector2(10000, 10000)
 
-[sub_resource type="Environment" id="Environment_hbt6s"]
-background_mode = 2
-sky = SubResource("Sky_8npu5")
-ambient_light_source = 3
-ambient_light_color = Color(1, 1, 1, 1)
-volumetric_fog_albedo = Color(0.924166, 0.712605, 0.563304, 1)
-volumetric_fog_temporal_reprojection_enabled = false
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_upirs"]
 
-[sub_resource type="Curve" id="Curve_552bx"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7il5f"]
+radius = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_f7vgn"]
+top_radius = 2.0
+bottom_radius = 2.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sjebp"]
+height = 10.0
+radius = 8.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cxrvu"]
+size = Vector3(11, 10, 4)
+
+[sub_resource type="FogMaterial" id="FogMaterial_eh2ll"]
+density = 2.0
+albedo = Color(0.101961, 0.121569, 0.180392, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y0wu7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sqqah"]
+
+[sub_resource type="Curve" id="Curve_jehtd"]
 resource_local_to_scene = true
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 metadata/_snap_enabled = true
 metadata/_snap_count = 20
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3d64q"]
+[sub_resource type="Sky" id="Sky_8npu5"]
+sky_material = ExtResource("20_lpskc")
+
+[sub_resource type="Environment" id="Environment_5eabi"]
+background_mode = 2
+sky = SubResource("Sky_8npu5")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.03
+volumetric_fog_albedo = Color(0.924166, 0.712605, 0.563304, 1)
+volumetric_fog_temporal_reprojection_enabled = false
 
 [node name="VolcanoIsland" type="Node3D"]
+script = ExtResource("1_qq0aa")
+island = 5
+music = "VolcanoTheme"
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_hbt6s")
+[node name="GameplayUI" type="Node" parent="."]
+script = ExtResource("2_tvdxa")
 
-[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("1_xmnhv")]
-Transparency_Curve = SubResource("Curve_552bx")
+[node name="volcano_island" parent="." instance=ExtResource("2_dxbvy")]
+
+[node name="Sea" type="MeshInstance3D" parent="volcano_island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.158459, 0.389122, -1.86961)
+mesh = SubResource("PlaneMesh_74jeg")
+skeleton = NodePath("../..")
+
+[node name="KillPlane" parent="volcano_island/Sea" instance=ExtResource("5_4tu4k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="volcano_island/Sea/KillPlane"]
+shape = SubResource("WorldBoundaryShape3D_upirs")
+
+[node name="Flame0" parent="volcano_island" instance=ExtResource("6_rwpat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 217.562, 21.5851, 36.7796)
+flame_name = "Crushed Hope"
+color = Color(0, 0.829099, 0.243663, 1)
+
+[node name="Flame1" parent="volcano_island" instance=ExtResource("6_rwpat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.7983, 6.28894, 0)
+id = 1.0
+flame_name = "Overbearing Endings"
+color = Color(0.934454, 0.817696, 0.111477, 1)
+
+[node name="Flame2" parent="volcano_island" instance=ExtResource("6_rwpat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 297.247, 39.7241, -4.20836)
+id = 2.0
+flame_name = "The end..."
+color = Color(0, 0.487643, 0.798536, 1)
+
+[node name="Flame3" parent="volcano_island" instance=ExtResource("6_rwpat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 234.759, 70.9526, -61.9015)
+id = 3.0
+flame_name = "New Toys!"
+color = Color(0.827001, 0.668667, 0.0956839, 1)
+
+[node name="Flame4" parent="volcano_island" instance=ExtResource("6_rwpat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 149.98, 40.5927, -13.5759)
+id = 4.0
+flame_name = "Rock Climbing!"
+color = Color(0.975154, 0.578578, 0, 1)
+
+[node name="Sign" parent="volcano_island" instance=ExtResource("7_p1mpn")]
+transform = Transform3D(-0.669159, 0, -0.751048, 0, 1.00591, 0, 0.751048, 0, -0.669159, 183.084, 26.3526, 67.2174)
+dialogue = Array[String](["The dark rocks showed up first, maybe that means something..."])
+
+[node name="Timer" parent="volcano_island" node_paths=PackedStringArray("toggle") instance=ExtResource("8_r7dp2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 227.01, 70.0997, -59.5593)
+id = 6.0
+toggle = NodePath("Timed")
+
+[node name="TimerChallenge" parent="volcano_island/Timer" instance=ExtResource("9_4xc5w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00915527, 0, -0.0345612)
+time = 20.0
+
+[node name="Timed" type="Node3D" parent="volcano_island/Timer"]
+
+[node name="Flame" parent="volcano_island/Timer/Timed" instance=ExtResource("6_rwpat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55998, 18.3351, -84.3277)
+id = 6.0
+flame_name = "Pressure forms Diamonds"
+color = Color(0.127378, 0.825882, 0.570434, 1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="volcano_island/Timer/Timed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.3553)
+use_collision = true
+collision_mask = 2
+size = Vector3(3, 0.5, 3)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="volcano_island/Timer/Timed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25.6506)
+use_collision = true
+collision_mask = 2
+size = Vector3(3, 0.5, 3)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="volcano_island/Timer/Timed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -34.1669)
+use_collision = true
+collision_mask = 2
+size = Vector3(3, 0.5, 3)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="volcano_island/Timer/Timed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -44.9318)
+use_collision = true
+collision_mask = 2
+size = Vector3(3, 0.5, 3)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="volcano_island/Timer/Timed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -56.1101)
+use_collision = true
+collision_mask = 2
+size = Vector3(3, 0.5, 3)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="volcano_island/Timer/Timed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.48264, -66.0334)
+use_collision = true
+collision_mask = 2
+size = Vector3(3, 0.5, 3)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="volcano_island/Timer/Timed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.5838, -56.4031)
+use_collision = true
+collision_mask = 2
+size = Vector3(3, 0.5, 3)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="volcano_island/Timer/Timed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.03, -48.0394)
+use_collision = true
+collision_mask = 2
+size = Vector3(3, 0.5, 3)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="volcano_island/Timer/Timed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.031868, 17.4694, -62.967)
+use_collision = true
+collision_mask = 2
+size = Vector3(3, 0.5, 3)
+
+[node name="Order" parent="volcano_island" node_paths=PackedStringArray("toggle") instance=ExtResource("8_r7dp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 184.359, 24.6112, 79.5039)
+id = 7.0
+toggle = NodePath("Flame7")
+
+[node name="OrderChallenge" parent="volcano_island/Order" instance=ExtResource("10_5yrlu")]
+correct_order = Array[int]([1, 0, 2])
+
+[node name="OrderPylon" parent="volcano_island/Order/OrderChallenge" instance=ExtResource("11_sojnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.91843, 0, -4.42264)
+
+[node name="OrderPylon2" parent="volcano_island/Order/OrderChallenge" instance=ExtResource("11_sojnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.8967, 0, -6.6319)
+id = 1
+
+[node name="OrderPylon3" parent="volcano_island/Order/OrderChallenge" instance=ExtResource("11_sojnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0851, -1.90735e-06, 2.42496)
+id = 2
+
+[node name="Flame7" parent="volcano_island/Order" instance=ExtResource("6_rwpat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.00546, -0.00937653, -1.10008)
+id = 7.0
+flame_name = "The Rocky Ages"
+color = Color(0.626615, 0.238367, 0, 1)
+
+[node name="Sparks" parent="volcano_island" node_paths=PackedStringArray("toggle") instance=ExtResource("8_r7dp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 280.087, 31.4358, 77.0874)
+id = 5.0
+toggle = NodePath("Flame5")
+
+[node name="Flame5" parent="volcano_island/Sparks" instance=ExtResource("6_rwpat")]
+id = 5.0
+flame_name = "Fire from sparks"
+color = Color(0.970615, 0.601524, 0.302431, 1)
+
+[node name="Spark" parent="volcano_island/Sparks" instance=ExtResource("12_y54ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1261, 0, -20.0677)
+id = 5.0
+
+[node name="Spark2" parent="volcano_island/Sparks" instance=ExtResource("12_y54ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.803, 0, 8.12842)
+id = 5.0
+
+[node name="Spark3" parent="volcano_island/Sparks" instance=ExtResource("12_y54ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4431, 0, -30.9081)
+id = 5.0
+
+[node name="Sparks2" parent="volcano_island" node_paths=PackedStringArray("toggle") instance=ExtResource("8_r7dp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.178, 60.33, -28.3465)
+id = 8.0
+toggle = NodePath("Flame8")
+
+[node name="Flame8" parent="volcano_island/Sparks2" instance=ExtResource("6_rwpat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 188.894, 8.05258, 66.8433)
+id = 8.0
+flame_name = "You're on fire!"
+color = Color(0.952575, 2.88785e-07, 0.491293, 1)
+
+[node name="Spark" parent="volcano_island/Sparks2" instance=ExtResource("12_y54ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.262644, 0, 5.88866)
+id = 8.0
+color = Color(0.952941, 0, 0.490196, 1)
+
+[node name="Spark2" parent="volcano_island/Sparks2" instance=ExtResource("12_y54ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.4822, 8.61144, 4.52364)
+id = 8.0
+color = Color(0.952941, 0, 0.490196, 1)
+
+[node name="Spark3" parent="volcano_island/Sparks2" instance=ExtResource("12_y54ye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.288, 9.49489, 51.0747)
+id = 8.0
+color = Color(0.952941, 0, 0.490196, 1)
+
+[node name="LavaRiser" type="AnimatableBody3D" parent="volcano_island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 258.034, 7.7953, 31.201)
+script = ExtResource("13_xyuvk")
+fullLoopTime = 15.0
+maxHeight = 65.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="volcano_island/LavaRiser"]
+shape = SubResource("CylinderShape3D_7il5f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="volcano_island/LavaRiser"]
+mesh = SubResource("CylinderMesh_f7vgn")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="LavaRiser2" type="AnimatableBody3D" parent="volcano_island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.223, 7.7953, 0.70034)
+script = ExtResource("13_xyuvk")
+fullLoopTime = 15.0
+maxHeight = 65.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="volcano_island/LavaRiser2"]
+shape = SubResource("CylinderShape3D_7il5f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="volcano_island/LavaRiser2"]
+mesh = SubResource("CylinderMesh_f7vgn")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Checkpoint0" parent="volcano_island" instance=ExtResource("14_y3n7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1981, 0.525374, -0.351626)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="volcano_island/Checkpoint0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+shape = SubResource("CylinderShape3D_sjebp")
+
+[node name="Loading-zone" parent="volcano_island" instance=ExtResource("15_1ooec")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 285.131, 41.6162, -16.0648)
+scene = "res://Scenes/islands/volcano/volcano-dungeon/volcano_dungeon.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="volcano_island/Loading-zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, -1.5, 0)
+shape = SubResource("BoxShape3D_cxrvu")
+
+[node name="FogVolume" type="FogVolume" parent="volcano_island"]
+transform = Transform3D(0.756995, 0, -0.653421, 0, 1, 0, 0.653421, 0, 0.756995, 283.955, 41.9452, -15.9985)
+size = Vector3(17.0635, 17.7381, 14.673)
+material = SubResource("FogMaterial_eh2ll")
+
+[node name="GrapplePoint1" type="MeshInstance3D" parent="volcano_island"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228.456, 74.5094, -51.4911)
+mesh = SubResource("BoxMesh_y0wu7")
+
+[node name="GrappleablePoint" parent="volcano_island/GrapplePoint1" instance=ExtResource("16_y8mww")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="volcano_island/GrapplePoint1/GrappleablePoint"]
+shape = SubResource("BoxShape3D_sqqah")
+
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("13_ywbs8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -0.145)
+Transparency_Curve = SubResource("Curve_jehtd")
 Camera = NodePath("FollowCamera")
 
-[node name="FollowCamera" parent="Player" instance=ExtResource("2_6lfji")]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2, 0)
+[node name="FollowCamera" parent="Player" instance=ExtResource("14_weqoo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="KillPlane" parent="." instance=ExtResource("4_0s06g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="KillPlane"]
-shape = SubResource("WorldBoundaryShape3D_3d64q")
-
-[node name="GameplayUI" parent="." instance=ExtResource("5_rahtj")]
+[node name="Boat" parent="." instance=ExtResource("15_xxgmt")]
+transform = Transform3D(0.669131, 0, -0.743145, 0, 1, 0, 0.743145, 0, 0.669131, -20, 0.33, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.907777, -0.367215, 0.202714, 0, 0.483282, 0.875464, -0.419452, -0.794727, 0.438713, 0, 0, 0)
+transform = Transform3D(-0.849893, 0, -0.526956, 0, 1, 0, 0.526956, 0, -0.849893, 745.247, 158.278, -81.9609)
 shadow_enabled = true
+sky_mode = 1
 
-[node name="volcano_island" parent="." instance=ExtResource("1_bpfmw")]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5eabi")
