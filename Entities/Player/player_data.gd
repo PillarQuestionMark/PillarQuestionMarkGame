@@ -26,7 +26,7 @@ var data = {
 	"slam_unlocked" = false,
 	"wall_slide_unlocked" = false,
 	"grapple_unlocked" = false,
-	"version" = 2,
+	"version" = 3,
 	"cleared_dungeons" = [] ## id of islands where dungeon has been cleared
 }
 

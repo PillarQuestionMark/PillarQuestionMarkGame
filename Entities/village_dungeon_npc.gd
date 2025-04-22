@@ -25,3 +25,4 @@ func _on_interactable_on_interacting() -> void:
 			EventBus.dialogue.emit(need_flames_dialogue)
 		else:
 			EventBus.dialogue.emit(complete_dialogue)
+			PlayerData.data["cleared_dungeons"].append(island as float)

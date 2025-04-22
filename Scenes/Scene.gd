@@ -7,6 +7,7 @@ class_name GameScene extends Node3D
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print("cleared dungeons: " + str(PlayerData.data["cleared_dungeons"]))
 	Logger.info("scene: loading save data")
 	_load_data()
 	#Dont want my ears blasted

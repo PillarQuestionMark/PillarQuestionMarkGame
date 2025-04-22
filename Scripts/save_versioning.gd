@@ -17,8 +17,8 @@ static func check_version(save : Dictionary) -> bool:
 	while (save["version"] < current_version):
 		var converter = Callable(SaveVersioning, "_convert_" + str(save["version"]))
 		if (!converter.is_null()): ## make sure converter exists
-			converter.call(save)
 			Logger.info("Converting save from version " + str(save["version"]))
+			converter.call(save)
 			updated = true
 		else:
 			Logger.error("Could not convert from version " + str(save["version"]))

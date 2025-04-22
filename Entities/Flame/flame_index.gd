@@ -9,7 +9,7 @@ const flames : Dictionary = {
 		9: "Order: Volcano",
 		10: "Sparks: Volcano"
 	},
-	IslandData.Islands.Dev1: {
+	IslandData.Islands.Village: {
 		0: "Aqueduct",
 		1: "Cubes",
 		2: "Castle Walls"
@@ -23,7 +23,7 @@ const flames : Dictionary = {
 		5: "Timer: Ruins",
 		6: "Order: Ruins"
 	},
-	IslandData.Islands.Village: {},
+	IslandData.Islands.Dev1: {},
 	IslandData.Islands.Lighthouse: {
 		0: "Mushrooms <3",
 		1: "Rocks Can Have Secrets",
