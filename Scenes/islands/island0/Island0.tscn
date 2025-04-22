@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bfm4of4cyc7xd" path="res://Entities/Flame/flame_challenge.tscn" id="16_a5if5"]
 [ext_resource type="Material" uid="uid://b3jkbbiy1o5ug" path="res://Scenes/islands/jungle/sea_material.tres" id="16_exhoc"]
 [ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="17_eop5p"]
-[ext_resource type="PackedScene" path="res://Components/standing_sign.tscn" id="18_ey2eo"]
+[ext_resource type="PackedScene" uid="uid://bryke18wdu25" path="res://Components/standing_sign.tscn" id="18_ey2eo"]
 [ext_resource type="PackedScene" uid="uid://ud6x3emfmcnt" path="res://Components/trigger_animation.tscn" id="18_jht53"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4c74y"]
