@@ -16,7 +16,7 @@
 [ext_resource type="Material" uid="uid://b4cigyte4lppr" path="res://Assets/Materials/GrappleInactive.tres" id="14_w1et3"]
 [ext_resource type="PackedScene" uid="uid://cj3ku0n0t8fw5" path="res://Components/grappleablePoint.tscn" id="15_avain"]
 [ext_resource type="PackedScene" uid="uid://d3ea11u58blgf" path="res://Scenes/islands/volcano/volcano-dungeon/crumbling-wall/crumbling_wall.tscn" id="15_p2g8m"]
-[ext_resource type="PackedScene" uid="uid://bjecaqqjdrcs5" path="res://Scenes/islands/volcano/volcano-dungeon/volcano_dungeon_lava.tscn" id="16_kh6aq"]
+[ext_resource type="PackedScene" path="res://Scenes/islands/volcano/volcano-dungeon/volcano_dungeon_lava.tscn" id="16_kh6aq"]
 [ext_resource type="PackedScene" uid="uid://cdwnjdsfrrav5" path="res://Components/sign.tscn" id="16_xk5yg"]
 
 [sub_resource type="Curve" id="Curve_qdhwp"]
@@ -309,6 +309,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.1279, -2, -23.3581)
 [node name="Loading-zone" parent="VolcanoDungeon/Level2/MainChamber" instance=ExtResource("10_4ulhp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.4203, 81.8454, -11.8617)
 scene = "res://Scenes/islands/island0/Island0.tscn"
+cutscene = true
+cutscene_text = Array[String](["Climbing out of the volcano gifts elation and pride.", "Now, you have the confidence to sail back home, away from the Flotsam isles.", "Although, there are some places you have yet to explore...", "And at this point... it almost feels like home.", "Maybe you'll stay here for a little longer.", "...", "Dungeon Completed!", "-", "Credits:", "Teddy Anzevino", "Luke Chesney", "Sam Colston", "Alex Dean", "Dawn
+Goorskey", "Seven Rocks", "Caroline Weisgerber", "-", "Thanks for playing!"])
+dungeon_complete = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VolcanoDungeon/Level2/MainChamber/Loading-zone"]
 shape = SubResource("CylinderShape3D_rw0sg")
