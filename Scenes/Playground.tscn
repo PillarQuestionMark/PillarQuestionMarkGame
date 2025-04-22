@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dgw6sfwqiwerc"]
+[gd_scene load_steps=41 format=3 uid="uid://dgw6sfwqiwerc"]
 
 [ext_resource type="PackedScene" uid="uid://ud6x3emfmcnt" path="res://Components/trigger_animation.tscn" id="1_l8skm"]
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_yxky3"]
@@ -16,6 +16,8 @@
 [ext_resource type="ArrayMesh" uid="uid://d1u6ugp6do72w" path="res://Assets/Meshes/SpikeMesh.tres" id="13_8dx5g"]
 [ext_resource type="PackedScene" uid="uid://dc1evxye2jpsn" path="res://Entities/Boat.tscn" id="15_ggb0t"]
 [ext_resource type="PackedScene" uid="uid://cftk8sgcrsuv0" path="res://Obstacles/SpikeFloor.tscn" id="15_twh6u"]
+[ext_resource type="Material" uid="uid://b3jkbbiy1o5ug" path="res://Scenes/islands/jungle/sea_material.tres" id="17_wv4jm"]
+[ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="18_txto7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2hx8a"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -382,7 +384,7 @@ point_count = 4
 metadata/_snap_enabled = true
 metadata/_snap_count = 20
 
-[sub_resource type="MultiMesh" id="MultiMesh_pwnpf"]
+[sub_resource type="MultiMesh" id="MultiMesh_818x6"]
 transform_format = 1
 instance_count = 16
 mesh = ExtResource("13_8dx5g")
@@ -390,6 +392,12 @@ buffer = PackedFloat32Array(1, 0, 0, 0.5, 0, 1, 0, 0, 0, 0, 1, 0.5, 1, 0, 0, 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g5f1x"]
 albedo_color = Color(0.898039, 0.937255, 0.937255, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hrtme"]
+material = ExtResource("17_wv4jm")
+size = Vector2(100000, 100000)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_s8twm"]
 
 [node name="Playground" type="Node3D"]
 script = ExtResource("1_yxky3")
@@ -717,7 +725,7 @@ depth = 8.0
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="Fragment" type="AnimatableBody3D" parent="Geometry"]
-transform = Transform3D(-0.00675595, 0.0689383, -0.997598, -0.999394, 0.0336087, 0.00909061, 0.0341546, 0.997055, 0.0686694, -6.43581, 37.4142, -85.9073)
+transform = Transform3D(-0.00675595, 0.0689383, -0.997598, -0.999394, 0.0336087, 0.00909062, 0.0341546, 0.997055, 0.0686694, -6.43581, 37.4142, -85.9073)
 sync_to_physics = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Geometry/Fragment"]
@@ -1015,7 +1023,7 @@ complete_dialogue = Array[String](["guy: you look like you desire to reach the d
 
 [node name="SpikeFloor" parent="." instance=ExtResource("15_twh6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.03, 6)
-multimesh = SubResource("MultiMesh_pwnpf")
+multimesh = SubResource("MultiMesh_818x6")
 xSize = 4.0
 zSize = 4.0
 
@@ -1051,3 +1059,14 @@ material = SubResource("StandardMaterial3D_g5f1x")
 transform = Transform3D(0.522788, 0.132403, -0.842118, 0.084111, -0.991056, -0.103603, -0.848303, -0.0166685, -0.529249, -33.8957, -12.4497, 92.3677)
 size = Vector3(4, 4, 4)
 material = SubResource("StandardMaterial3D_g5f1x")
+
+[node name="Sea" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -14, 0)
+mesh = SubResource("PlaneMesh_hrtme")
+skeleton = NodePath("../..")
+
+[node name="KillPlane" parent="Sea" instance=ExtResource("18_txto7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sea/KillPlane"]
+shape = SubResource("WorldBoundaryShape3D_s8twm")
