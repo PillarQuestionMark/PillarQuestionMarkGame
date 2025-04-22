@@ -21,7 +21,7 @@ class_name Player extends CharacterBody3D
 @export_range(0.0, 1.0, 0.01) var Air_Drag : float = 0.04
 
 @export_subgroup("Rotation")
-@export_range(0.0, 100) var Rotation_Speed : float = 10.0
+@export_range(0.0, 1.0) var Rotation_Speed : float = 0.5
 @export_range(0.0, 5) var Rotation_Flux : float = 2.0
 
 @export_subgroup("Dash")
@@ -85,20 +85,6 @@ func _process(_delta : float) -> void:
 	## REMOVE LATER. FOR NOW, JUST TO TEST DEATH
 	if Input.is_action_just_pressed("kys"):
 		die()
-	if Input.is_action_just_pressed("flames"):
-		list_flames()
-		
-func list_flames() -> void:
-	print("signaling glorp... flames list:")
-	for island in [0, -1]:
-		var collected_flames = PlayerData.get_island_flames(island)
-		print("Island " + str(island) + " ... " + str(collected_flames.size()) + "/" + str(FlameIndex.island_total_flames(island)))
-		for flame in FlameIndex.get_flame_ids(island):
-			if (collected_flames.has(float(flame))):
-				print("- " + FlameIndex.get_flame_name(island, flame))
-			else:
-				print("- ???")
-
 
 func get_move_direction() -> Vector3:
 	#Determines the movement direction based on the cameras rotation
@@ -136,7 +122,7 @@ func rotate_player(direction : Vector3, delta : float) -> void:
 		var temp = Node3D.new() ## temp to use for smoothing
 		temp.look_at_from_position(position, position + direction, Vector3.UP)
 		## gradually rotate rather than snap to angle
-		pivotChild.rotation.y = lerp_angle(pivotChild.rotation.y, temp.rotation.y, Rotation_Speed * delta)
+		pivotChild.rotation.y = lerp_angle(pivotChild.rotation.y, temp.rotation.y, Rotation_Speed)
 
 ## I tried to make dash cooldown handled at the dash state, but it would not work
 func end_dash() -> void:

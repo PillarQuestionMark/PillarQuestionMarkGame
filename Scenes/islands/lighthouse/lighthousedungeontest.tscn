@@ -21,7 +21,6 @@ radius = 1.0
 
 [node name="Lighthousedungeontest" type="Node3D"]
 script = ExtResource("1_u3kjy")
-island_id = 2
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_0c3ni")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.484077, 15.8152)

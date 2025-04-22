@@ -6,3 +6,4 @@
 material = ExtResource("1_8pki4")
 top_radius = 0.8
 bottom_radius = 1.0
+height = 15.0
