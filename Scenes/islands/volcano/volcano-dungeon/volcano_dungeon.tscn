@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://c5vhpdwuc7upw"]
+[gd_scene load_steps=39 format=3 uid="uid://c5vhpdwuc7upw"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_uikhx"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="2_g352o"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cj3ku0n0t8fw5" path="res://Components/grappleablePoint.tscn" id="15_avain"]
 [ext_resource type="PackedScene" uid="uid://d3ea11u58blgf" path="res://Scenes/islands/volcano/volcano-dungeon/crumbling-wall/crumbling_wall.tscn" id="15_p2g8m"]
 [ext_resource type="PackedScene" uid="uid://bjecaqqjdrcs5" path="res://Scenes/islands/volcano/volcano-dungeon/volcano_dungeon_lava.tscn" id="16_kh6aq"]
+[ext_resource type="PackedScene" uid="uid://cdwnjdsfrrav5" path="res://Components/sign.tscn" id="16_xk5yg"]
 
 [sub_resource type="Curve" id="Curve_qdhwp"]
 resource_local_to_scene = true
@@ -206,6 +207,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92, 0, 10)
 [node name="LavaSinker4" parent="VolcanoDungeon/Level1/Chamber2" instance=ExtResource("9_ne5ms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96, 0, -9)
 
+[node name="Grapple5" type="MeshInstance3D" parent="VolcanoDungeon/Level1/Chamber2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 96, 6, -9)
+material_override = ExtResource("14_w1et3")
+mesh = SubResource("SphereMesh_l26be")
+skeleton = NodePath("../../../Level2/MainChamber")
+
+[node name="GrappleablePoint" parent="VolcanoDungeon/Level1/Chamber2/Grapple5" instance=ExtResource("15_avain")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VolcanoDungeon/Level1/Chamber2/Grapple5/GrappleablePoint"]
+shape = SubResource("SphereShape3D_eryyu")
+
+[node name="Grapple6" type="MeshInstance3D" parent="VolcanoDungeon/Level1/Chamber2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 92, 6, 10)
+material_override = ExtResource("14_w1et3")
+mesh = SubResource("SphereMesh_l26be")
+skeleton = NodePath("../../../Level2/MainChamber")
+
+[node name="GrappleablePoint" parent="VolcanoDungeon/Level1/Chamber2/Grapple6" instance=ExtResource("15_avain")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VolcanoDungeon/Level1/Chamber2/Grapple6/GrappleablePoint"]
+shape = SubResource("SphereShape3D_eryyu")
+
 [node name="LavaRiser1" parent="VolcanoDungeon/Level1/Chamber2" instance=ExtResource("11_r30yb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.7892, 0, -0.475834)
 
@@ -289,6 +312,14 @@ scene = "res://Scenes/islands/island0/Island0.tscn"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VolcanoDungeon/Level2/MainChamber/Loading-zone"]
 shape = SubResource("CylinderShape3D_rw0sg")
 
+[node name="Sign" parent="VolcanoDungeon/Level2/MainChamber" instance=ExtResource("16_xk5yg")]
+transform = Transform3D(0.9463, 0, 0.32329, 0, 1, 0, -0.32329, 0, 0.9463, 29.2191, 46.111, -76.8112)
+dialogue = Array[String](["It looks like you can get out through the top of the volcano...", "But how can you reach it?"])
+
+[node name="Sign2" parent="VolcanoDungeon/Level2/MainChamber" instance=ExtResource("16_xk5yg")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 4, 33.9691)
+dialogue = Array[String](["The top of the volcano is right there!", "But its too high to reach, how can you get up there?"])
+
 [node name="LowerChamberExit" type="Node3D" parent="VolcanoDungeon/Level2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 2, -15)
 
@@ -366,5 +397,9 @@ skeleton = NodePath("../../MainChamber")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VolcanoDungeon/Level2/LowerChamberExit/Grapple4/GrappleablePoint"]
 shape = SubResource("SphereShape3D_eryyu")
+
+[node name="Sign" parent="VolcanoDungeon/Level2/LowerChamberExit" instance=ExtResource("16_xk5yg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.4728, 23.5708, -13.9969)
+dialogue = Array[String](["This wall looks rather fragile...", "Maybe with some speed, you can break through..."])
 
 [node name="VolcanoDungeonLava2" parent="VolcanoDungeon" instance=ExtResource("16_kh6aq")]
