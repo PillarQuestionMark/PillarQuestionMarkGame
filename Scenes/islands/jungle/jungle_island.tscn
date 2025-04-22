@@ -333,7 +333,7 @@ albedo = Color(0.101961, 0.121569, 0.180392, 1)
 size = Vector3(11, 10, 4)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_784gg"]
-height = 10.0
+height = 6.0
 radius = 4.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_twasg"]
@@ -467,6 +467,14 @@ id = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="jungle/Checkpoint1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+shape = SubResource("CylinderShape3D_784gg")
+
+[node name="Checkpoint2" parent="jungle" instance=ExtResource("12_trqkk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -47, 41, 195)
+id = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="jungle/Checkpoint2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_784gg")
 
 [node name="Checkpoint0" parent="jungle" instance=ExtResource("12_trqkk")]
