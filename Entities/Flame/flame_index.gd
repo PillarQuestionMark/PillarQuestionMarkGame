@@ -34,7 +34,17 @@ const flames : Dictionary = {
 		6: "Timer: Jungle",
 		7: "Order: Jungle"
 	},
-	IslandData.Islands.Volcano: {},
+	IslandData.Islands.Volcano: {
+		0: "Crushed Hope",
+		1: "Overbearing Endings",
+		2: "The end...",
+		3: "New Toys!",
+		4: "Rock Climbing!",
+		5: "Fire from sparks",
+		6: "Pressure forms Diamonds",
+		7: "The Rocky Ages",
+		8: "You're on fire!"
+	},
 }
 
 ## Returns the name of a specific flame on a specific island.
