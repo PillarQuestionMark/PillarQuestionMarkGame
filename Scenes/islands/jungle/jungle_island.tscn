@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://b0a6ifjctwbqj"]
+[gd_scene load_steps=42 format=3 uid="uid://b0a6ifjctwbqj"]
 
 [ext_resource type="PackedScene" uid="uid://co1p57wfy7aj0" path="res://Scenes/islands/jungle/jungle.blend" id="1_2e48r"]
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_frwy3"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://d0bdwuhoxbd2" path="res://Entities/Flame/order_pylon.tscn" id="17_2u73w"]
 [ext_resource type="PackedScene" uid="uid://cykuutv3qovo3" path="res://Obstacles/mushroom.blend" id="18_ls6qr"]
 [ext_resource type="PackedScene" uid="uid://daqo3a6ove7qf" path="res://Components/flame_lever.tscn" id="19_d6cyl"]
+[ext_resource type="PackedScene" path="res://Components/standing_sign.tscn" id="20_30de0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5dsaw"]
 sky_top_color = Color(0.929412, 0.666667, 0.639216, 1)
@@ -515,7 +516,8 @@ transform = Transform3D(-0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, -0.939693, 
 dialogue = Array[String](["sign: you can bounce on small mushrooms by holding jump as you land on them.", "sign: when in doubt, mushroom it out!"])
 
 [node name="Sign2" parent="jungle" instance=ExtResource("10_68wsm")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.8, 33, 45)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.8, 33, 45)
+visible = false
 dialogue = Array[String](["sign: try slamming onto small mushrooms!"])
 
 [node name="FogVolume" type="FogVolume" parent="jungle"]
@@ -715,6 +717,10 @@ shape = SubResource("BoxShape3D_l1l8u")
 [node name="CSGBox3D" type="CSGBox3D" parent="jungle/Gate"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7.5, 1)
 size = Vector3(2, 1, 2)
+
+[node name="Sign3" parent="jungle" instance=ExtResource("20_30de0")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 26.75, 65)
+dialogue = Array[String](["sign: warning! the bridge ahead is broken!", "sign: you may have to find some other way around."])
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_xy8xx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2907, 2.142, -12.814)
