@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cnluw1emsshc8"
-path="res://.godot/imported/volcano_island.blend-3d12e3f165a574d61a2d8294e071675e.scn"
+path="res://.godot/imported/volcano_island.blend-d031c02c3deebebb467aab1c5d627cc9.scn"
 
 [deps]
 
-source_file="res://Scenes/islands/volcano/volcano_island.blend"
-dest_files=["res://.godot/imported/volcano_island.blend-3d12e3f165a574d61a2d8294e071675e.scn"]
+source_file="res://Scenes/islands/volcano/volcano-island/volcano_island.blend"
+dest_files=["res://.godot/imported/volcano_island.blend-d031c02c3deebebb467aab1c5d627cc9.scn"]
 
 [params]
 
@@ -31,7 +31,18 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"Lava.001": {
+"use_external/enabled": true,
+"use_external/path": "res://Scenes/islands/volcano/volcano-dungeon/lavaMat.tres"
+},
+"Lava.002": {
+"use_external/enabled": true,
+"use_external/path": "res://Scenes/islands/volcano/volcano-dungeon/lavaMat.tres"
+}
+}
+}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true

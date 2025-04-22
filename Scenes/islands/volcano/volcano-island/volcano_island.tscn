@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=3 uid="uid://dw1cxhelh6sgd"]
+
+[ext_resource type="Material" uid="uid://4yuyv0g0uxg5" path="res://Scenes/islands/volcano/volcano-island/volcano_island_sky.tres" id="1_3fxie"]
+[ext_resource type="PackedScene" uid="uid://cnluw1emsshc8" path="res://Scenes/islands/volcano/volcano-island/volcano_island.blend" id="1_bpfmw"]
+[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="1_xmnhv"]
+[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="2_6lfji"]
+[ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="4_0s06g"]
+[ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="5_rahtj"]
+
+[sub_resource type="Sky" id="Sky_8npu5"]
+sky_material = ExtResource("1_3fxie")
+
+[sub_resource type="Environment" id="Environment_hbt6s"]
+background_mode = 2
+sky = SubResource("Sky_8npu5")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+volumetric_fog_albedo = Color(0.924166, 0.712605, 0.563304, 1)
+volumetric_fog_temporal_reprojection_enabled = false
+
+[sub_resource type="Curve" id="Curve_552bx"]
+resource_local_to_scene = true
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3d64q"]
+
+[node name="VolcanoIsland" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hbt6s")
+
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("1_xmnhv")]
+Transparency_Curve = SubResource("Curve_552bx")
+Camera = NodePath("FollowCamera")
+
+[node name="FollowCamera" parent="Player" instance=ExtResource("2_6lfji")]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2, 0)
+
+[node name="KillPlane" parent="." instance=ExtResource("4_0s06g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillPlane"]
+shape = SubResource("WorldBoundaryShape3D_3d64q")
+
+[node name="GameplayUI" parent="." instance=ExtResource("5_rahtj")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.907777, -0.367215, 0.202714, 0, 0.483282, 0.875464, -0.419452, -0.794727, 0.438713, 0, 0, 0)
+shadow_enabled = true
+
+[node name="volcano_island" parent="." instance=ExtResource("1_bpfmw")]
