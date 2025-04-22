@@ -13,7 +13,7 @@ var trigger2_on := false
 @export var trigger3 := ""
 var trigger3_on := true
 @export var trigger4 := ""
-var trigger4_on := true
+var trigger4_on := false
 @export var trigger5 := ""
 var trigger5_on := false
 
@@ -31,6 +31,7 @@ func _ready() -> void:
 	_attempt_move()
 	
 	EventBus.trigger.connect(func(name: String):
+		print(str(name) + " was triggered!")
 		if name == trigger1:
 			trigger1_on = !trigger1_on
 		elif name == trigger2:

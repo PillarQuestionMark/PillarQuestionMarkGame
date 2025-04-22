@@ -260,6 +260,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 position = Vector2(-406, -163)
 island = 0
+prereqs = Array[int]([5])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/CenterContainer/Control/Map/YSort/Dev0Island"]
 texture_filter = 1
@@ -271,6 +272,7 @@ offset = Vector2(0, -17)
 unique_name_in_owner = true
 position = Vector2(-306, -162)
 island = 1
+prereqs = Array[int]([5])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/CenterContainer/Control/Map/YSort/Dev1Island"]
 texture_filter = 1
@@ -312,6 +314,7 @@ offset = Vector2(0, -17)
 [node name="VolcanoIsland" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("3_g12fm")]
 position = Vector2(178, -32)
 island = 5
+prereqs = Array[int]([3, 4])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/CenterContainer/Control/Map/YSort/VolcanoIsland"]
 texture_filter = 1
