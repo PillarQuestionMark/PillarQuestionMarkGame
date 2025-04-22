@@ -485,6 +485,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -13)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 shape = SubResource("CylinderShape3D_twasg")
 
+[node name="Checkpoint3" parent="jungle" instance=ExtResource("12_trqkk")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7, 27, 65)
+id = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="jungle/Checkpoint3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+shape = SubResource("CylinderShape3D_twasg")
+
+[node name="Checkpoint5" parent="jungle" instance=ExtResource("12_trqkk")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 3, 54, 80)
+id = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="jungle/Checkpoint5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+shape = SubResource("CylinderShape3D_twasg")
+
+[node name="Checkpoint4" parent="jungle" instance=ExtResource("12_trqkk")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7, 27, 116)
+id = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="jungle/Checkpoint4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+shape = SubResource("CylinderShape3D_twasg")
+
 [node name="Challenge Flames" type="Node3D" parent="jungle"]
 
 [node name="Sparks" parent="jungle/Challenge Flames" node_paths=PackedStringArray("toggle") instance=ExtResource("13_tkl5f")]
