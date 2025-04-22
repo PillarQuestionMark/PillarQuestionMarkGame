@@ -13,7 +13,7 @@ var trigger2_on := false
 @export var trigger3 := ""
 var trigger3_on := true
 @export var trigger4 := ""
-var trigger4_on := false
+var trigger4_on := true
 @export var trigger5 := ""
 var trigger5_on := false
 
