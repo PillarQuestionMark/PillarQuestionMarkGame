@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b2yrjlexgqqvi"]
+[gd_scene load_steps=27 format=3 uid="uid://b2yrjlexgqqvi"]
 
 [ext_resource type="Script" path="res://Autoload/AudioManager/AudioManager.gd" id="1_31ioa"]
 [ext_resource type="AudioStream" uid="uid://cq4r7yft33ly7" path="res://Assets/Audio/Music/main_menu.mp3" id="2_egk6x"]
@@ -24,13 +24,14 @@
 [ext_resource type="AudioStream" uid="uid://dtil1gl2wdpnm" path="res://Assets/Audio/Sound Effects/Death.mp3" id="18_se14f"]
 [ext_resource type="AudioStream" uid="uid://btbersl5fmkoi" path="res://Assets/Audio/Sound Effects/Slam.mp3" id="19_gxju8"]
 [ext_resource type="AudioStream" uid="uid://b4ely8q5xn76d" path="res://Assets/Audio/Sound Effects/Dash.mp3" id="20_t0nyq"]
-[ext_resource type="AudioStream" uid="uid://bdqx111qk7x6c" path="res://Assets/Audio/Sound Effects/Grapple.mp3" id="21_d16ti"]
+[ext_resource type="AudioStream" uid="uid://cglbxphggurti" path="res://Assets/Audio/Sound Effects/Thump1.wav" id="25_20fyb"]
+[ext_resource type="AudioStream" uid="uid://ha4hy2s7bdqx" path="res://Assets/Audio/Sound Effects/Thump2.wav" id="26_2k2sy"]
 
 [node name="AudioManager" type="Node"]
 process_mode = 3
 script = ExtResource("1_31ioa")
 music = Array[Resource]([ExtResource("2_egk6x"), ExtResource("3_njj34"), ExtResource("4_jki7b"), ExtResource("5_a8aps"), ExtResource("6_t8f06"), ExtResource("7_qem1j")])
-effects = Array[Resource]([ExtResource("3_66pu8"), ExtResource("4_euy1k"), ExtResource("5_lmvtg"), ExtResource("7_mieqm"), ExtResource("8_dh37x"), ExtResource("9_5y0a5"), ExtResource("10_uahkk"), ExtResource("11_wjq2v"), ExtResource("12_0gxlv"), ExtResource("13_ni6jq"), ExtResource("14_dg625"), ExtResource("15_f722e"), ExtResource("16_8gh3b"), ExtResource("17_qrnv5"), ExtResource("18_se14f"), ExtResource("19_gxju8"), ExtResource("20_t0nyq"), ExtResource("21_d16ti")])
+effects = Array[Resource]([ExtResource("3_66pu8"), ExtResource("4_euy1k"), ExtResource("5_lmvtg"), ExtResource("7_mieqm"), ExtResource("8_dh37x"), ExtResource("9_5y0a5"), ExtResource("10_uahkk"), ExtResource("11_wjq2v"), ExtResource("12_0gxlv"), ExtResource("13_ni6jq"), ExtResource("14_dg625"), ExtResource("15_f722e"), ExtResource("16_8gh3b"), ExtResource("17_qrnv5"), ExtResource("18_se14f"), ExtResource("19_gxju8"), ExtResource("20_t0nyq"), ExtResource("25_20fyb"), ExtResource("26_2k2sy")])
 
 [node name="Music" type="Node" parent="."]
 

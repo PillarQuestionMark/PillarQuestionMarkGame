@@ -170,3 +170,7 @@ func can_wall_slide() -> bool:
 func die() -> void:
 	AudioManager.play_fx("Death")
 	PlayerData.load_scene()
+
+
+func _on_loading_zone_body_entered(body: Node3D) -> void:
+	pass # Replace with function body.
