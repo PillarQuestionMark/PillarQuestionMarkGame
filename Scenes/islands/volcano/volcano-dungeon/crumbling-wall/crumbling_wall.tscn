@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3ea11u58blgf"]
+
+[ext_resource type="Script" path="res://Scenes/islands/volcano/volcano-dungeon/crumbling-wall/crumbling-wall.gd" id="1_rxfah"]
+
+[node name="CrumblingWall" type="Area3D"]
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_rxfah")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

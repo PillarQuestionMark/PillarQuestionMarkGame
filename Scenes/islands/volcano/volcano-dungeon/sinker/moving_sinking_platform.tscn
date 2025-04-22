@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://di7slfjwij664"]
+
+[ext_resource type="Script" path="res://Scenes/islands/volcano/volcano-dungeon/sinker/moving_sinking_platform.gd" id="1_vlbby"]
+[ext_resource type="PackedScene" uid="uid://dmvrvhmtv0d43" path="res://Scenes/islands/volcano/volcano-dungeon/sinker/lava_sinker.tscn" id="2_qcgyr"]
+
+[node name="MovingSinkingPlatform" type="PathFollow3D"]
+rotation_mode = 0
+loop = false
+script = ExtResource("1_vlbby")
+
+[node name="LavaSinker" parent="." instance=ExtResource("2_qcgyr")]
+unique_name_in_owner = true
