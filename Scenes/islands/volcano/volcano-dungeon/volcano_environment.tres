@@ -1,10 +1,17 @@
 [gd_resource type="Environment" load_steps=3 format=3 uid="uid://bhpuf5nuk7duo"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_let4y"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e4el2"]
 
-[sub_resource type="Sky" id="Sky_ec4yp"]
-sky_material = SubResource("ProceduralSkyMaterial_let4y")
+[sub_resource type="Sky" id="Sky_ah2bu"]
+sky_material = SubResource("ProceduralSkyMaterial_e4el2")
 
 [resource]
 background_mode = 2
-sky = SubResource("Sky_ec4yp")
+background_energy_multiplier = 1.5
+sky = SubResource("Sky_ah2bu")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.02
+volumetric_fog_albedo = Color(0.501961, 0.12549, 0, 1)
+volumetric_fog_temporal_reprojection_enabled = false

@@ -63,7 +63,7 @@ func _attempt_move() -> void:
 	if trigger1_on and trigger2_on and trigger3_on and trigger4_on and trigger5_on and trigger6_on and trigger7_on and trigger8_on:
 		targetpos = _finalpos
 		AudioManager.play_fx("CorrectChime")
-		print("GATE 2")
+		print("GATE 2 uh..")
 
 	var t := create_tween()
 	t.tween_property(get_parent_node_3d(), "position", targetpos, duration) \

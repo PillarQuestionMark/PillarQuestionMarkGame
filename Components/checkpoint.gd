@@ -10,9 +10,9 @@ class_name Checkpoint
 
 
 func set_player(player : CharacterBody3D) -> void:
-	player.position = global_position
-	player.get_pivot().rotation = rotation
-	player.Camera.rotation = rotation
+	player.global_position = global_position
+	player.get_pivot().global_rotation = global_rotation
+	player.Camera.global_rotation = global_rotation
 
 
 func _on_body_entered(body: Node3D) -> void:
