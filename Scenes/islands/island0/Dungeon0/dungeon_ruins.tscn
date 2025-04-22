@@ -86,7 +86,6 @@ size = Vector3(2, 3, 1.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8lkqn"]
 size = Vector3(2.63403, 2.7218, 1)
-
 [sub_resource type="MultiMesh" id="MultiMesh_v6p8v"]
 transform_format = 1
 instance_count = 1344
