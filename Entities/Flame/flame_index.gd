@@ -3,11 +3,11 @@ class_name FlameIndex
 
 ## Stores a list of dictionaries from each island, sorted by island id then by flame id.
 const flames : Dictionary = {
-	IslandData.Islands.Dev0: {
-		0: "Humble Beginnings",
-		8: "OUTTA TIME",
-		9: "I WILL HAVE ORDER",
-		10: "Spark Andy"
+	IslandData.Islands.Volcano: {
+		0: "The Beginning of the End",
+		8: "Timer: Volcano",
+		9: "Order: Volcano",
+		10: "Sparks: Volcano"
 	},
 	IslandData.Islands.Dev1: {
 		0: "Aqueduct",
@@ -34,7 +34,7 @@ const flames : Dictionary = {
 		6: "Timer: Jungle",
 		7: "Order: Jungle"
 	},
-	IslandData.Islands.Volcano: {},
+	IslandData.Islands.Dev0: {},
 }
 
 ## Returns the name of a specific flame on a specific island.
