@@ -1,3 +1,205 @@
-[gd_scene format=3 uid="uid://bru3jxfdkxsx0"]
+[gd_scene load_steps=19 format=3 uid="uid://blaqvepptdj6"]
+
+[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_4whqo"]
+[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="1_mngir"]
+[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="2_5r706"]
+[ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="3_b1kow"]
+[ext_resource type="Script" path="res://Scenes/islands/rhythm/whole_notes.gd" id="3_hm3oc"]
+[ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="3_rswk4"]
+[ext_resource type="Script" path="res://Scenes/islands/rhythm/samba_notes.gd" id="4_ey853"]
+[ext_resource type="Material" uid="uid://c12ttxgu1tqes" path="res://Scenes/islands/rhythm/rhythm_room_material.tres" id="4_k0h1v"]
+[ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="4_sfxxn"]
+[ext_resource type="Material" uid="uid://dl4j2y4haump6" path="res://Scenes/islands/rhythm/whole_note_material.tres" id="4_u57qs"]
+[ext_resource type="Script" path="res://Scenes/islands/rhythm/off_notes.gd" id="6_8ii2t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n87wf"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_5jymv"]
+sky_material = SubResource("ProceduralSkyMaterial_n87wf")
+
+[sub_resource type="Environment" id="Environment_xv41c"]
+background_mode = 1
+background_color = Color(0.223103, 0.223103, 0.223103, 1)
+sky = SubResource("Sky_5jymv")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.25
+tonemap_mode = 2
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.015
+
+[sub_resource type="Curve" id="Curve_q1d5y"]
+resource_local_to_scene = true
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_itm2n"]
+size = Vector3(2, 6, 10)
+
+[sub_resource type="FogMaterial" id="FogMaterial_o00f7"]
+emission = Color(0, 1, 1, 1)
+edge_fade = 0.7
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_w2pml"]
 
 [node name="Rhythm-floor1" type="Node3D"]
+script = ExtResource("1_4whqo")
+island = 3
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xv41c")
+
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("1_mngir")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+Transparency_Curve = SubResource("Curve_q1d5y")
+Camera = NodePath("ThirdPersonCamera")
+
+[node name="ThirdPersonCamera" parent="Player" instance=ExtResource("2_5r706")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Stationary" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+
+[node name="Checkpoints" type="Node3D" parent="Stationary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="Checkpoint" parent="Stationary/Checkpoints" instance=ExtResource("3_b1kow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+id = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stationary/Checkpoints/Checkpoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_itm2n")
+
+[node name="Checkpoint2" parent="Stationary/Checkpoints" instance=ExtResource("3_b1kow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
+id = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stationary/Checkpoints/Checkpoint2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+shape = SubResource("BoxShape3D_itm2n")
+
+[node name="Walls" type="Node3D" parent="Stationary"]
+
+[node name="Floor" type="CSGBox3D" parent="Stationary/Walls"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 1, 0, 0)
+material_override = ExtResource("4_k0h1v")
+use_collision = true
+size = Vector3(8, 0.5, 5)
+
+[node name="Floor2" type="CSGBox3D" parent="Stationary/Walls"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 56, 0, 0)
+material_override = ExtResource("4_k0h1v")
+use_collision = true
+size = Vector3(8, 0.5, 25)
+
+[node name="Ceiling" type="CSGBox3D" parent="Stationary/Walls"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -5, 6, 0)
+material_override = ExtResource("4_k0h1v")
+use_collision = true
+size = Vector3(2, 0.5, 5)
+
+[node name="Wall" type="CSGBox3D" parent="Stationary/Walls"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -5, 3, 4.5)
+material_override = ExtResource("4_k0h1v")
+use_collision = true
+size = Vector3(2, 6.5, 0.5)
+
+[node name="Wall2" type="CSGBox3D" parent="Stationary/Walls"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -5, 3, -4.5)
+material_override = ExtResource("4_k0h1v")
+use_collision = true
+size = Vector3(2, 6.5, 0.5)
+
+[node name="Wall3" type="CSGBox3D" parent="Stationary/Walls"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -7.5, 3, 0)
+material_override = ExtResource("4_k0h1v")
+use_collision = true
+size = Vector3(0.5, 6.5, 5)
+
+[node name="FogVolume" type="FogVolume" parent="Stationary/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3, 0)
+size = Vector3(3, 6, 8)
+material = SubResource("FogMaterial_o00f7")
+
+[node name="Lighting" type="Node3D" parent="Stationary"]
+
+[node name="Exit" type="Node3D" parent="Stationary"]
+
+[node name="KillPlane" type="MeshInstance3D" parent="Stationary"]
+visible = false
+
+[node name="KillPlane" parent="Stationary/KillPlane" instance=ExtResource("4_sfxxn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stationary/KillPlane/KillPlane"]
+shape = SubResource("WorldBoundaryShape3D_w2pml")
+
+[node name="RhythmPlatforms" type="Node3D" parent="."]
+
+[node name="WholeNotes" type="Node3D" parent="RhythmPlatforms"]
+script = ExtResource("3_hm3oc")
+
+[node name="Step" type="CSGBox3D" parent="RhythmPlatforms/WholeNotes"]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 20, 0, -10)
+material_override = ExtResource("4_u57qs")
+use_collision = true
+size = Vector3(2, 0.5, 2)
+
+[node name="Step3" type="CSGBox3D" parent="RhythmPlatforms/WholeNotes"]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 32, 0, 0)
+material_override = ExtResource("4_u57qs")
+use_collision = true
+size = Vector3(1.5, 0.5, 1.5)
+
+[node name="Step2" type="CSGBox3D" parent="RhythmPlatforms/WholeNotes"]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 32, 0, 22)
+material_override = ExtResource("4_u57qs")
+use_collision = true
+size = Vector3(1.5, 0.5, 1.5)
+
+[node name="Step5" type="CSGBox3D" parent="RhythmPlatforms/WholeNotes"]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 40, 0, -12)
+material_override = ExtResource("4_u57qs")
+use_collision = true
+size = Vector3(1, 0.5, 1)
+
+[node name="OffNotes" type="Node3D" parent="RhythmPlatforms"]
+script = ExtResource("6_8ii2t")
+
+[node name="Step2" type="CSGBox3D" parent="RhythmPlatforms/OffNotes"]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 20, 0, 10)
+material_override = ExtResource("4_u57qs")
+use_collision = true
+size = Vector3(2, 0.5, 2)
+
+[node name="Step3" type="CSGBox3D" parent="RhythmPlatforms/OffNotes"]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 32, 0, -22)
+material_override = ExtResource("4_u57qs")
+use_collision = true
+size = Vector3(1.5, 0.5, 1.5)
+
+[node name="Step4" type="CSGBox3D" parent="RhythmPlatforms/OffNotes"]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 40, 0, 12)
+material_override = ExtResource("4_u57qs")
+use_collision = true
+size = Vector3(1, 0.5, 1)
+
+[node name="SambaNotes" type="Node3D" parent="RhythmPlatforms"]
+script = ExtResource("4_ey853")
+
+[node name="RhythmTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.25
+autostart = true
+
+[node name="GameplayUI" parent="." instance=ExtResource("3_rswk4")]
+
+[connection signal="timeout" from="RhythmTimer" to="RhythmPlatforms/WholeNotes" method="_on_rhythm_timer_timeout"]
+[connection signal="timeout" from="RhythmTimer" to="RhythmPlatforms/OffNotes" method="_on_rhythm_timer_timeout"]
+[connection signal="timeout" from="RhythmTimer" to="RhythmPlatforms/SambaNotes" method="_on_rhythm_timer_timeout"]

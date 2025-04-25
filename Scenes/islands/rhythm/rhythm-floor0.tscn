@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b3w535m2vp7di"]
+[gd_scene load_steps=15 format=3 uid="uid://b3w535m2vp7di"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_4uc0s"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="1_6s0uu"]
@@ -13,13 +13,13 @@
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_lwivm"]
+[sub_resource type="Sky" id="Sky_aphf3"]
 sky_material = SubResource("ProceduralSkyMaterial_61kar")
 
 [sub_resource type="Environment" id="Environment_jooq2"]
 background_mode = 1
 background_color = Color(0.223103, 0.223103, 0.223103, 1)
-sky = SubResource("Sky_lwivm")
+sky = SubResource("Sky_aphf3")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.25
@@ -35,6 +35,10 @@ point_count = 4
 metadata/_snap_enabled = true
 metadata/_snap_count = 20
 
+[sub_resource type="FogMaterial" id="FogMaterial_7n28h"]
+emission = Color(0, 1, 1, 1)
+edge_fade = 0.7
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_80bqy"]
 size = Vector3(1, 6, 8)
 
@@ -47,7 +51,7 @@ music = ""
 environment = SubResource("Environment_jooq2")
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("1_6s0uu")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.01, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 Transparency_Curve = SubResource("Curve_j72cv")
 Camera = NodePath("ThirdPersonCamera")
 
@@ -56,73 +60,75 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="Stationary" type="Node3D" parent="."]
 
-[node name="Floor" type="CSGBox3D" parent="Stationary"]
+[node name="Walls" type="Node3D" parent="Stationary"]
+
+[node name="Floor" type="CSGBox3D" parent="Stationary/Walls"]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 15, -0.25, 0)
 material_override = ExtResource("4_gfxnj")
 use_collision = true
 size = Vector3(20, 0.5, 5)
 
-[node name="Floor2" type="CSGBox3D" parent="Stationary"]
+[node name="Floor2" type="CSGBox3D" parent="Stationary/Walls"]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 55, 1.75, 0)
 material_override = ExtResource("4_gfxnj")
 use_collision = true
 size = Vector3(20, 0.5, 5)
 
-[node name="Floor3" type="CSGBox3D" parent="Stationary"]
+[node name="Floor3" type="CSGBox3D" parent="Stationary/Walls"]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 95, 5.75, 0)
 material_override = ExtResource("4_gfxnj")
 use_collision = true
 size = Vector3(20, 0.5, 5)
 
-[node name="Floor4" type="CSGBox3D" parent="Stationary"]
+[node name="Floor4" type="CSGBox3D" parent="Stationary/Walls"]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 135, 13.75, 0)
 material_override = ExtResource("4_gfxnj")
 use_collision = true
 size = Vector3(20, 0.5, 5)
 
-[node name="Ceiling" type="CSGBox3D" parent="Stationary"]
+[node name="Ceiling" type="CSGBox3D" parent="Stationary/Walls"]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 75, 19.75, 0)
 material_override = ExtResource("4_gfxnj")
 use_collision = true
 size = Vector3(80, 0.5, 5)
 
-[node name="Wall1" type="CSGBox3D" parent="Stationary"]
+[node name="Wall1" type="CSGBox3D" parent="Stationary/Walls"]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, -4.5, 9.5, 0)
 material_override = ExtResource("4_gfxnj")
 use_collision = true
 size = Vector3(0.5, 20, 5)
 
-[node name="Wall2" type="CSGBox3D" parent="Stationary"]
+[node name="Wall2" type="CSGBox3D" parent="Stationary/Walls"]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 75, 9.5, -4.5)
 material_override = ExtResource("4_gfxnj")
 use_collision = true
 size = Vector3(80, 20, 0.5)
 
-[node name="Wall3" type="CSGBox3D" parent="Stationary"]
+[node name="Wall3" type="CSGBox3D" parent="Stationary/Walls"]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 75, 9.5, 4.5)
 material_override = ExtResource("4_gfxnj")
 use_collision = true
 size = Vector3(80, 20, 0.5)
 
-[node name="Wall4" type="CSGBox3D" parent="Stationary"]
+[node name="Wall4" type="CSGBox3D" parent="Stationary/Walls"]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 35.5, 0.5, 0)
 material_override = ExtResource("4_gfxnj")
 use_collision = true
 size = Vector3(0.5, 2, 5)
 
-[node name="Wall5" type="CSGBox3D" parent="Stationary"]
+[node name="Wall5" type="CSGBox3D" parent="Stationary/Walls"]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 75.5, 3.5, 0)
 material_override = ExtResource("4_gfxnj")
 use_collision = true
 size = Vector3(0.5, 4, 5)
 
-[node name="Wall6" type="CSGBox3D" parent="Stationary"]
+[node name="Wall6" type="CSGBox3D" parent="Stationary/Walls"]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 115.5, 9.5, 0)
 material_override = ExtResource("4_gfxnj")
 use_collision = true
 size = Vector3(0.5, 8, 5)
 
-[node name="Wall7" type="CSGBox3D" parent="Stationary"]
+[node name="Wall7" type="CSGBox3D" parent="Stationary/Walls"]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 155.5, 16.75, 0)
 material_override = ExtResource("4_gfxnj")
 use_collision = true
@@ -299,29 +305,32 @@ light_energy = 2.0
 light_size = 0.25
 omni_range = 20.0
 
-[node name="WholeNotes" type="Node3D" parent="."]
-script = ExtResource("5_kti2u")
+[node name="Exit" type="Node3D" parent="Stationary"]
 
-[node name="Step" type="CSGBox3D" parent="WholeNotes"]
-transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 109, 9, 0)
-material_override = ExtResource("5_8f5fy")
-use_collision = true
-size = Vector3(1, 0.5, 1)
-
-[node name="Exit" type="Node3D" parent="."]
-
-[node name="FogVolume" type="FogVolume" parent="Exit"]
+[node name="FogVolume" type="FogVolume" parent="Stationary/Exit"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154.5, 16.5, 0)
 size = Vector3(3, 6, 8)
+material = SubResource("FogMaterial_7n28h")
 
-[node name="LoadingZone" type="Area3D" parent="Exit"]
+[node name="LoadingZone" type="Area3D" parent="Stationary/Exit"]
 collision_mask = 2
 script = ExtResource("5_nu5p4")
 scene = "res://Scenes/islands/rhythm/rhythm-floor1.tscn"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Exit/LoadingZone"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stationary/Exit/LoadingZone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154, 16.75, 0)
 shape = SubResource("BoxShape3D_80bqy")
+
+[node name="RhythmPlatforms" type="Node3D" parent="."]
+
+[node name="WholeNotes" type="Node3D" parent="RhythmPlatforms"]
+script = ExtResource("5_kti2u")
+
+[node name="Step" type="CSGBox3D" parent="RhythmPlatforms/WholeNotes"]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 109, 9, 0)
+material_override = ExtResource("5_8f5fy")
+use_collision = true
+size = Vector3(1, 0.5, 1)
 
 [node name="RhythmTimer" type="Timer" parent="."]
 process_callback = 0
@@ -330,5 +339,5 @@ autostart = true
 
 [node name="GameplayUI" parent="." instance=ExtResource("3_slbtn")]
 
-[connection signal="body_entered" from="Exit/LoadingZone" to="Exit/LoadingZone" method="_on_body_entered"]
-[connection signal="timeout" from="RhythmTimer" to="WholeNotes" method="_on_rhythm_timer_timeout"]
+[connection signal="body_entered" from="Stationary/Exit/LoadingZone" to="Stationary/Exit/LoadingZone" method="_on_body_entered"]
+[connection signal="timeout" from="RhythmTimer" to="RhythmPlatforms/WholeNotes" method="_on_rhythm_timer_timeout"]

@@ -1,4 +1,4 @@
-class_name WholeNotes extends Node3D
+class_name OffNotes extends Node3D
 
 var count: int
 var platforms: Array[CSGBox3D] = []
@@ -6,10 +6,11 @@ var platform_toggle: bool
 
 func _ready() -> void:
 	count = 0
-	platform_toggle = true
+	platform_toggle = false
 	for child in get_children():
 		if child is CSGBox3D:
 			platforms.append(child)
+			child.transparency = 0.75
 
 func _on_rhythm_timer_timeout() -> void:
 	if not platforms.is_empty():
