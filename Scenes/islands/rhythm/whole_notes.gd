@@ -27,5 +27,5 @@ func _on_rhythm_timer_timeout() -> void:
 			else:
 				set_process(false)
 				for platform in platforms:
-					platform.transparency = 0.75
+					platform.transparency = 0.9
 					platform.set_collision_layer_value(1, false)
