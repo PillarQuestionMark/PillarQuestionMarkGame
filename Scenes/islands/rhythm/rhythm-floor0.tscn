@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3w535m2vp7di"]
+[gd_scene load_steps=18 format=3 uid="uid://b3w535m2vp7di"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_4uc0s"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="1_6s0uu"]
@@ -8,21 +8,22 @@
 [ext_resource type="Material" uid="uid://dl4j2y4haump6" path="res://Scenes/islands/rhythm/whole_note_material.tres" id="5_8f5fy"]
 [ext_resource type="Script" path="res://Scenes/islands/rhythm/whole_notes.gd" id="5_kti2u"]
 [ext_resource type="Script" path="res://Components/loading_zone.gd" id="5_nu5p4"]
+[ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="6_kyvp2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_af6h7"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_5jymv"]
+[sub_resource type="Sky" id="Sky_dp4qm"]
 sky_material = SubResource("ProceduralSkyMaterial_af6h7")
 
 [sub_resource type="Environment" id="Environment_46c0w"]
 background_mode = 1
 background_color = Color(0.000104871, 0.00790084, 0.121108, 1)
-sky = SubResource("Sky_5jymv")
+sky = SubResource("Sky_dp4qm")
 ambient_light_source = 2
 ambient_light_color = Color(0, 1, 1, 1)
-ambient_light_energy = 0.25
+ambient_light_energy = 0.5
 tonemap_mode = 2
 glow_enabled = true
 volumetric_fog_enabled = true
@@ -42,6 +43,11 @@ edge_fade = 0.7
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_80bqy"]
 size = Vector3(1, 6, 8)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_iw23q"]
+size = Vector2(100000, 100000)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_f7yks"]
 
 [node name="Rhythm-floor0" type="Node3D"]
 script = ExtResource("1_4uc0s")
@@ -144,6 +150,18 @@ scene = "res://Scenes/islands/rhythm/rhythm-floor1.tscn"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stationary/Exit/LoadingZone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154, 16.75, 0)
 shape = SubResource("BoxShape3D_80bqy")
+
+[node name="Killplane" type="MeshInstance3D" parent="Stationary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
+transparency = 1.0
+mesh = SubResource("PlaneMesh_iw23q")
+skeleton = NodePath("../..")
+
+[node name="KillPlane" parent="Stationary/Killplane" instance=ExtResource("6_kyvp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stationary/Killplane/KillPlane"]
+shape = SubResource("WorldBoundaryShape3D_f7yks")
 
 [node name="RhythmPlatforms" type="Node3D" parent="."]
 
