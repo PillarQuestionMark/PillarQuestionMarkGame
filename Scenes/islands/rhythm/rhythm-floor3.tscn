@@ -331,7 +331,7 @@ shape = SubResource("BoxShape3D_jpmdu")
 [node name="LoadingZone2" type="Area3D" parent="Stationary/Doors"]
 collision_mask = 2
 script = ExtResource("6_0b6ld")
-scene = "res://Scenes/islands/ruins/ruins_island.tscn"
+scene = "res://Scenes/islands/island0/Island0.tscn"
 checkpoint = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Stationary/Doors/LoadingZone2"]

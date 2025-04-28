@@ -301,3 +301,28 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 
 [node name="LaserReceiver" parent="Lasers" instance=ExtResource("18_a0dk6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 2, 10)
+
+[node name="RhythmTempDoor" type="Node3D" parent="."]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="RhythmTempDoor"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11, 2.7, -11)
+use_collision = true
+size = Vector3(5, 4.4, 5)
+material = SubResource("StandardMaterial3D_3rdwg")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="RhythmTempDoor/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.5)
+operation = 2
+use_collision = true
+size = Vector3(3, 3.4, 4)
+material = SubResource("StandardMaterial3D_3rdwg")
+
+[node name="Loading-zone2" parent="RhythmTempDoor" instance=ExtResource("4_to0s7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11, 1, -11)
+scene = "res://Scenes/islands/rhythm/rhythm-floor0.tscn"
+cutscene = true
+cutscene_text = Array[String](["Feo falls deep into the abyss.", "What was this doing under such a lovely town?", "And what's that sound in the distance?"])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RhythmTempDoor/Loading-zone2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.53674e-07, 1.5, -0.5)
+shape = SubResource("BoxShape3D_f0my5")
