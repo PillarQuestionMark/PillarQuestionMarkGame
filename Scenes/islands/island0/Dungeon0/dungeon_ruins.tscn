@@ -48,13 +48,13 @@ metadata/_snap_count = 20
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_lwivm"]
+[sub_resource type="Sky" id="Sky_fuidw"]
 sky_material = SubResource("ProceduralSkyMaterial_2hx8a")
 
 [sub_resource type="Environment" id="Environment_bhlpx"]
 background_mode = 1
 background_color = Color(0.223103, 0.223103, 0.223103, 1)
-sky = SubResource("Sky_lwivm")
+sky = SubResource("Sky_fuidw")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.25
@@ -1439,6 +1439,7 @@ id = 21
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Rooms/Room5/Checkpoint"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00337696, 0.860901, 0)
 shape = SubResource("BoxShape3D_8lkqn")
+
 
 [node name="Lights" type="Node3D" parent="Rooms/Room5"]
 

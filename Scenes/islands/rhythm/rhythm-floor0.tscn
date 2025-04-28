@@ -1,0 +1,185 @@
+[gd_scene load_steps=18 format=3 uid="uid://b3w535m2vp7di"]
+
+[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_4uc0s"]
+[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="1_6s0uu"]
+[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="2_jl7cj"]
+[ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="3_slbtn"]
+[ext_resource type="Material" uid="uid://c12ttxgu1tqes" path="res://Scenes/islands/rhythm/rhythm_room_material.tres" id="4_gfxnj"]
+[ext_resource type="Material" uid="uid://dl4j2y4haump6" path="res://Scenes/islands/rhythm/whole_note_material.tres" id="5_8f5fy"]
+[ext_resource type="Script" path="res://Scenes/islands/rhythm/whole_notes.gd" id="5_kti2u"]
+[ext_resource type="Script" path="res://Components/loading_zone.gd" id="5_nu5p4"]
+[ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="6_kyvp2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_af6h7"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_dp4qm"]
+sky_material = SubResource("ProceduralSkyMaterial_af6h7")
+
+[sub_resource type="Environment" id="Environment_46c0w"]
+background_mode = 1
+background_color = Color(0.000104871, 0.00790084, 0.121108, 1)
+sky = SubResource("Sky_dp4qm")
+ambient_light_source = 2
+ambient_light_color = Color(0, 1, 1, 1)
+ambient_light_energy = 0.5
+tonemap_mode = 2
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.015
+volumetric_fog_emission = Color(0, 0, 0.152941, 1)
+
+[sub_resource type="Curve" id="Curve_j72cv"]
+resource_local_to_scene = true
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="FogMaterial" id="FogMaterial_7n28h"]
+emission = Color(0, 1, 1, 1)
+edge_fade = 0.7
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_80bqy"]
+size = Vector3(1, 6, 8)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_iw23q"]
+size = Vector2(100000, 100000)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_f7yks"]
+
+[node name="Rhythm-floor0" type="Node3D"]
+script = ExtResource("1_4uc0s")
+island = 3
+music = ""
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_46c0w")
+
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("1_6s0uu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+Transparency_Curve = SubResource("Curve_j72cv")
+Camera = NodePath("ThirdPersonCamera")
+
+[node name="ThirdPersonCamera" parent="Player" instance=ExtResource("2_jl7cj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Stationary" type="Node3D" parent="."]
+
+[node name="Walls" type="Node3D" parent="Stationary"]
+
+[node name="Floor" type="CSGBox3D" parent="Stationary/Walls"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 15, -0.25, 0)
+material_override = ExtResource("4_gfxnj")
+use_collision = true
+size = Vector3(20, 0.5, 5)
+
+[node name="Floor2" type="CSGBox3D" parent="Stationary/Walls"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 55, 1.75, 0)
+material_override = ExtResource("4_gfxnj")
+use_collision = true
+size = Vector3(20, 0.5, 5)
+
+[node name="Floor3" type="CSGBox3D" parent="Stationary/Walls"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 95, 5.75, 0)
+material_override = ExtResource("4_gfxnj")
+use_collision = true
+size = Vector3(20, 0.5, 5)
+
+[node name="Floor4" type="CSGBox3D" parent="Stationary/Walls"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 135, 13.75, 0)
+material_override = ExtResource("4_gfxnj")
+use_collision = true
+size = Vector3(20, 0.5, 5)
+
+[node name="Wall4" type="CSGBox3D" parent="Stationary/Walls"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 35.5, 0.5, 0)
+material_override = ExtResource("4_gfxnj")
+use_collision = true
+size = Vector3(0.5, 2, 5)
+
+[node name="Wall5" type="CSGBox3D" parent="Stationary/Walls"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 75.5, 3.5, 0)
+material_override = ExtResource("4_gfxnj")
+use_collision = true
+size = Vector3(0.5, 4, 5)
+
+[node name="Wall6" type="CSGBox3D" parent="Stationary/Walls"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 115.5, 9.5, 0)
+material_override = ExtResource("4_gfxnj")
+use_collision = true
+size = Vector3(0.5, 8, 5)
+
+[node name="Wall7" type="CSGBox3D" parent="Stationary/Walls"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 155.5, 16.75, 0)
+material_override = ExtResource("4_gfxnj")
+use_collision = true
+size = Vector3(0.5, 6.5, 5)
+
+[node name="Wall8" type="CSGBox3D" parent="Stationary/Walls"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 154, 16.75, 5.5)
+material_override = ExtResource("4_gfxnj")
+use_collision = true
+size = Vector3(2, 6.5, 0.5)
+
+[node name="Wall9" type="CSGBox3D" parent="Stationary/Walls"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 154, 16.75, -5.5)
+material_override = ExtResource("4_gfxnj")
+use_collision = true
+size = Vector3(2, 6.5, 0.5)
+
+[node name="Ceiling" type="CSGBox3D" parent="Stationary/Walls"]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 154, 20, 0)
+material_override = ExtResource("4_gfxnj")
+use_collision = true
+size = Vector3(2, 0.5, 6)
+
+[node name="Exit" type="Node3D" parent="Stationary"]
+
+[node name="FogVolume" type="FogVolume" parent="Stationary/Exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.5, 16.5, 0)
+size = Vector3(4, 6, 9)
+material = SubResource("FogMaterial_7n28h")
+
+[node name="LoadingZone" type="Area3D" parent="Stationary/Exit"]
+collision_mask = 2
+script = ExtResource("5_nu5p4")
+scene = "res://Scenes/islands/rhythm/rhythm-floor1.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stationary/Exit/LoadingZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154, 16.75, 0)
+shape = SubResource("BoxShape3D_80bqy")
+
+[node name="Killplane" type="MeshInstance3D" parent="Stationary"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
+transparency = 1.0
+mesh = SubResource("PlaneMesh_iw23q")
+skeleton = NodePath("../..")
+
+[node name="KillPlane" parent="Stationary/Killplane" instance=ExtResource("6_kyvp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stationary/Killplane/KillPlane"]
+shape = SubResource("WorldBoundaryShape3D_f7yks")
+
+[node name="RhythmPlatforms" type="Node3D" parent="."]
+
+[node name="WholeNotes" type="Node3D" parent="RhythmPlatforms"]
+script = ExtResource("5_kti2u")
+
+[node name="Step" type="CSGBox3D" parent="RhythmPlatforms/WholeNotes"]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 109, 9, 0)
+material_override = ExtResource("5_8f5fy")
+use_collision = true
+size = Vector3(1, 0.5, 1)
+
+[node name="RhythmTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.25
+autostart = true
+
+[node name="GameplayUI" parent="." instance=ExtResource("3_slbtn")]
+
+[connection signal="body_entered" from="Stationary/Exit/LoadingZone" to="Stationary/Exit/LoadingZone" method="_on_body_entered"]
+[connection signal="timeout" from="RhythmTimer" to="RhythmPlatforms/WholeNotes" method="_on_rhythm_timer_timeout"]

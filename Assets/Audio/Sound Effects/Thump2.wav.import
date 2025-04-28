@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ha4hy2s7bdqx"
+path="res://.godot/imported/Thump2.wav-ef51111b551983dc2dafa3d779b4469f.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Sound Effects/Thump2.wav"
+dest_files=["res://.godot/imported/Thump2.wav-ef51111b551983dc2dafa3d779b4469f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
