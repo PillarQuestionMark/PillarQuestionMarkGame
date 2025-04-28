@@ -7,15 +7,9 @@
 extends Node3D
 
 @export var trigger1 := ""
-var trigger1_on := true
+var trigger1_on := false
 @export var trigger2 := ""
-var trigger2_on := false
-@export var trigger3 := ""
-var trigger3_on := true
-@export var trigger4 := ""
-var trigger4_on := false
-@export var trigger5 := ""
-var trigger5_on := false
+var trigger2_on := true
 
 @export var movement := Vector3(0, 0, 0)
 @export var duration := 1.0
@@ -31,17 +25,10 @@ func _ready() -> void:
 	_attempt_move()
 	
 	EventBus.trigger.connect(func(name: String):
-		print(str(name) + " was triggered!")
 		if name == trigger1:
 			trigger1_on = !trigger1_on
 		elif name == trigger2:
 			trigger2_on = !trigger2_on
-		elif name == trigger3:
-			trigger3_on = !trigger3_on
-		elif name == trigger4:
-			trigger4_on = !trigger4_on
-		elif name == trigger5:
-			trigger5_on = !trigger5_on
 		else:
 			return
 		_attempt_move()		
@@ -49,10 +36,10 @@ func _ready() -> void:
 
 func _attempt_move() -> void:
 	var targetpos = _initialpos
-	if trigger1_on and trigger2_on and trigger3_on and trigger4_on and trigger5_on:
-		AudioManager.play_fx("CorrectChime")
+	if trigger1_on and trigger2_on:
 		targetpos = _finalpos
-		print("GATE 5")
+		AudioManager.play_fx("CorrectChime")
+		print("Hallway Gate Opened")
 
 	var t := create_tween()
 	t.tween_property(get_parent_node_3d(), "position", targetpos, duration) \
