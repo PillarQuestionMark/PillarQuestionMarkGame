@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c02m0rbfoqagf"]
+[gd_scene load_steps=26 format=3 uid="uid://c02m0rbfoqagf"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_t734c"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_s0qah"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dqcei7yuxodc" path="res://Obstacles/Laser/laser_emitter.tscn" id="7_n5avh"]
 [ext_resource type="PackedScene" uid="uid://bwnc53uc4nle3" path="res://Obstacles/Laser/laser_receiver.tscn" id="8_6ggi7"]
 [ext_resource type="PackedScene" uid="uid://cqh1ir8nb0cfn" path="res://Obstacles/Laser/laser_reflector.tscn" id="9_k7w03"]
+[ext_resource type="PackedScene" path="res://Components/standing_sign.tscn" id="10_fl84j"]
+[ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="12_lq5uo"]
 
 [sub_resource type="Curve" id="Curve_4n5se"]
 resource_local_to_scene = true
@@ -24,12 +26,18 @@ albedo_color = Color(0.470588, 0.32549, 0, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mlfgl"]
 albedo_color = Color(0.471109, 0.32434, 0, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4s838"]
+albedo_color = Color(0.470588, 0.32549, 0, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_rybok"]
-size = Vector3(6, 7, 3)
+size = Vector3(4, 7, 2)
 
 [sub_resource type="FogMaterial" id="FogMaterial_wngev"]
 density = 2.0
 albedo = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jmac6"]
+albedo_color = Color(0.470588, 0.32549, 0, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yqiut"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -58,13 +66,17 @@ albedo = Color(0.374139, 0.374139, 0.374139, 1)
 transparency = 1
 albedo_color = Color(0, 0, 0, 1)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i7c3h"]
+height = 4.0
+radius = 3.0
+
 [node name="Lighthousedungeontest2" type="Node3D"]
 script = ExtResource("1_t734c")
 island = 4
 music = "LighthouseTheme"
 
 [node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_s0qah")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 16)
 Transparency_Curve = SubResource("Curve_4n5se")
 Camera = NodePath("FollowCamera")
 
@@ -119,101 +131,135 @@ script = ExtResource("6_euw76")
 trigger = "door_open"
 movement = Vector3(0, -8, 0)
 
-[node name="Exit2" type="Node3D" parent="Rotating Room"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+[node name="StairsUp" type="Node3D" parent="Rotating Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21)
 
-[node name="Loading-zone" parent="Rotating Room/Exit2" instance=ExtResource("5_iwpxj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -41)
-scene = "res://Scenes/islands/lighthouse/dungeon/lighthouse-floor1.tscn"
+[node name="Stair" type="CSGBox3D" parent="Rotating Room/StairsUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+size = Vector3(4, 1, 1)
+material = SubResource("StandardMaterial3D_4s838")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotating Room/Exit2/Loading-zone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0.5)
+[node name="Stair2" type="CSGBox3D" parent="Rotating Room/StairsUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -2)
+size = Vector3(4, 1, 1)
+material = SubResource("StandardMaterial3D_4s838")
+
+[node name="Stair3" type="CSGBox3D" parent="Rotating Room/StairsUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3)
+size = Vector3(4, 1, 1)
+material = SubResource("StandardMaterial3D_4s838")
+
+[node name="Stair4" type="CSGBox3D" parent="Rotating Room/StairsUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -4)
+size = Vector3(4, 1, 1)
+material = SubResource("StandardMaterial3D_4s838")
+
+[node name="Stair5" type="CSGBox3D" parent="Rotating Room/StairsUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -6)
+size = Vector3(4, 1, 3)
+material = SubResource("StandardMaterial3D_4s838")
+
+[node name="Wall1" type="CSGBox3D" parent="Rotating Room/StairsUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 6, -3)
+size = Vector3(1, 10, 10)
+
+[node name="Wall2" type="CSGBox3D" parent="Rotating Room/StairsUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 6, -3)
+size = Vector3(1, 10, 10)
+
+[node name="Wall3" type="CSGBox3D" parent="Rotating Room/StairsUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -7.5)
+size = Vector3(4, 10, 1)
+
+[node name="Ceiling" type="CSGBox3D" parent="Rotating Room/StairsUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, -3)
+size = Vector3(4, 1, 9)
+
+[node name="Loading-zone" parent="Rotating Room/StairsUp" instance=ExtResource("5_iwpxj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+scene = "res://Scenes/islands/lighthouse/dungeon/lighthouse-flooronehalf.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotating Room/StairsUp/Loading-zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 shape = SubResource("BoxShape3D_rybok")
 
-[node name="FogVolume" type="FogVolume" parent="Rotating Room/Exit2"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.37114e-08, 4.5, -44)
-size = Vector3(4, 7, 8)
+[node name="FogVolume" type="FogVolume" parent="Rotating Room/StairsUp"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.31134e-07, 4.5, -1.5)
+size = Vector3(4, 7, 5)
 material = SubResource("FogMaterial_wngev")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Rotating Room/Exit2"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.05444e-06, 7.5, -46)
-operation = 2
-use_collision = true
-collision_mask = 2
-size = Vector3(6, 19, 14)
+[node name="LighthouseEntrance" type="Node3D" parent="Rotating Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Rotating Room/Exit2/CSGBox3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27374e-13, -3.5, -1)
-operation = 2
-size = Vector3(4, 7, 15)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Rotating Room/Exit2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09815e-06, 0.5, -47.5)
-size = Vector3(4, 1, 12)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="Rotating Room/Exit2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18557e-06, 1.5, -48.5)
-size = Vector3(4, 1, 10)
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="Rotating Room/Exit2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27299e-06, 2.5, -49.5)
+[node name="CSGBox3D" type="CSGBox3D" parent="Rotating Room/LighthouseEntrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 3.5)
 size = Vector3(4, 1, 8)
+material = SubResource("StandardMaterial3D_jmac6")
 
-[node name="Entrance" type="Node3D" parent="Rotating Room"]
+[node name="Wall1" type="CSGBox3D" parent="Rotating Room/LighthouseEntrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 6, 3)
+size = Vector3(1, 10, 10)
 
-[node name="Loading-zone" parent="Rotating Room/Entrance" instance=ExtResource("5_iwpxj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 21)
-scene = "res://Scenes/islands/lighthouse/dungeon/lighthouse-floor1.tscn"
+[node name="Wall2" type="CSGBox3D" parent="Rotating Room/LighthouseEntrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 6, 3)
+size = Vector3(1, 10, 10)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotating Room/Entrance/Loading-zone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0.5)
+[node name="Wall3" type="CSGBox3D" parent="Rotating Room/LighthouseEntrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 7.5)
+size = Vector3(4, 10, 1)
+
+[node name="Ceiling" type="CSGBox3D" parent="Rotating Room/LighthouseEntrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, 3)
+size = Vector3(4, 1, 9)
+
+[node name="Loading-zone" parent="Rotating Room/LighthouseEntrance" instance=ExtResource("5_iwpxj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+scene = "res://Scenes/islands/jungle/jungle_island.tscn"
+checkpoint = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotating Room/LighthouseEntrance/Loading-zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.5)
 shape = SubResource("BoxShape3D_rybok")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Rotating Room/Entrance"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 26)
-operation = 2
-use_collision = true
-collision_mask = 2
-size = Vector3(6, 10, 14)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Rotating Room/Entrance/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, -0.5)
-operation = 2
-size = Vector3(4, 7, 14)
-
-[node name="FogVolume" type="FogVolume" parent="Rotating Room/Entrance"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 26)
-size = Vector3(4, 6, 6)
+[node name="FogVolume" type="FogVolume" parent="Rotating Room/LighthouseEntrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 4.5)
+size = Vector3(4, 8, 7)
 material = SubResource("FogMaterial_wngev")
 
 [node name="Non-Rotating Room" type="Node3D" parent="."]
 
 [node name="Laser Puzzle" type="Node3D" parent="Non-Rotating Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
-[node name="LaserEmitter" parent="Non-Rotating Room/Laser Puzzle" instance=ExtResource("7_n5avh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 11)
+[node name="Middleman" type="Node3D" parent="Non-Rotating Room/Laser Puzzle"]
 
-[node name="LaserReceiver" parent="Non-Rotating Room/Laser Puzzle" instance=ExtResource("8_6ggi7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -4)
+[node name="Phase2" type="Node3D" parent="Non-Rotating Room/Laser Puzzle/Middleman"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40, 0)
+script = ExtResource("6_euw76")
+trigger = "phase_two"
+movement = Vector3(0, 40, 0)
+duration = 2.0
+
+[node name="LaserReflector" parent="Non-Rotating Room/Laser Puzzle/Middleman/Phase2" instance=ExtResource("9_k7w03")]
+
+[node name="LaserReceiver" parent="Non-Rotating Room/Laser Puzzle/Middleman/Phase2" instance=ExtResource("8_6ggi7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 trigger = "door_open"
 
-[node name="LaserReflector" parent="Non-Rotating Room/Laser Puzzle" instance=ExtResource("9_k7w03")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 1.5, 6)
+[node name="Sign" parent="Non-Rotating Room/Laser Puzzle/Middleman/Phase2" instance=ExtResource("10_fl84j")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, 0)
+dialogue = Array[String](["sign: mirrors have the ability to reflect light", "sign: rotate them as you wish"])
 
-[node name="LaserReflector2" parent="Non-Rotating Room/Laser Puzzle" instance=ExtResource("9_k7w03")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 6, 1.5, 6)
+[node name="LaserEmitter" parent="Non-Rotating Room/Laser Puzzle" instance=ExtResource("7_n5avh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 0, 0)
 
-[node name="LaserReflector3" parent="Non-Rotating Room/Laser Puzzle" instance=ExtResource("9_k7w03")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 6, 1.5, -11)
+[node name="LaserReceiver" parent="Non-Rotating Room/Laser Puzzle" instance=ExtResource("8_6ggi7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+trigger = "phase_two"
 
-[node name="LaserReflector4" parent="Non-Rotating Room/Laser Puzzle" instance=ExtResource("9_k7w03")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -10, 1.5, -11)
-
-[node name="LaserReflector5" parent="Non-Rotating Room/Laser Puzzle" instance=ExtResource("9_k7w03")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -10, 1.5, -4)
-
-[node name="LaserReflector6" parent="Non-Rotating Room/Laser Puzzle" instance=ExtResource("9_k7w03")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -6, 1.5, 6)
+[node name="Sign" parent="Non-Rotating Room" instance=ExtResource("10_fl84j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 6)
+dialogue = Array[String](["sign: the lighthouse functions on lasers.", "sign: the device on the left requires light to activate.", "sign: try interacting with the device on the right."])
 
 [node name="GameplayUI" parent="." instance=ExtResource("7_6u0ro")]
 
@@ -230,5 +276,24 @@ material = SubResource("FogMaterial_1y4ba")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 29, 0)
+use_collision = true
+collision_mask = 2
 radius = 25.0
 material = SubResource("StandardMaterial3D_tafdv")
+
+[node name="Checkpoints" type="Node3D" parent="."]
+
+[node name="Checkpoint0" parent="Checkpoints" instance=ExtResource("12_lq5uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 16)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/Checkpoint0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CylinderShape3D_i7c3h")
+
+[node name="Checkpoint1" parent="Checkpoints" instance=ExtResource("12_lq5uo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, -16)
+id = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/Checkpoint1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CylinderShape3D_i7c3h")

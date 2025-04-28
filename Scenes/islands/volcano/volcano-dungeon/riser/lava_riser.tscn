@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://Scenes/islands/volcano/volcano-dungeon/riser/lava_riser.gd" id="1_bhdvr"]
 
 [node name="LavaRiser" type="AnimatableBody3D"]
+sync_to_physics = false
 script = ExtResource("1_bhdvr")

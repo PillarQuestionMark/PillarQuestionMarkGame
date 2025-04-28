@@ -9,6 +9,7 @@ class_name GameScene extends Node3D
 func _ready() -> void:
 	Logger.info("scene: loading save data")
 	_load_data()
+	#Dont want my ears blasted
 	AudioManager.play_music(music)
 	
 	Logger.info("scene: ready")

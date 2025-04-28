@@ -1,0 +1,321 @@
+[gd_scene load_steps=25 format=3 uid="uid://coka4qdngul2w"]
+
+[ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_0o6se"]
+[ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_fodts"]
+[ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="3_v8n38"]
+[ext_resource type="Script" path="res://Scenes/islands/lighthouse/rotating_room.gd" id="4_aedpm"]
+[ext_resource type="Script" path="res://Components/mover.gd" id="5_33r8f"]
+[ext_resource type="PackedScene" uid="uid://dql4b8bulv1vi" path="res://Components/loading-zone.tscn" id="6_foky5"]
+[ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="7_evikn"]
+[ext_resource type="PackedScene" uid="uid://bryke18wdu25" path="res://Components/standing_sign.tscn" id="10_xkl6p"]
+[ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="11_5cw62"]
+[ext_resource type="PackedScene" uid="uid://cbm3e24nt2vqf" path="res://Components/checkpoint.tscn" id="12_t60ym"]
+[ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="13_wby01"]
+
+[sub_resource type="Curve" id="Curve_4kue7"]
+resource_local_to_scene = true
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nvpqj"]
+albedo_color = Color(0.470588, 0.32549, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xxx8"]
+albedo_color = Color(0.470588, 0.32549, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4f4bf"]
+size = Vector3(4, 7, 2)
+
+[sub_resource type="FogMaterial" id="FogMaterial_80sfr"]
+density = 2.0
+albedo = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_smxts"]
+albedo_color = Color(0.471109, 0.32434, 0, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wk8xc"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_lwivm"]
+sky_material = SubResource("ProceduralSkyMaterial_wk8xc")
+
+[sub_resource type="Environment" id="Environment_ib82c"]
+background_mode = 1
+background_color = Color(0.00625076, 0.31725, 0.347433, 1)
+sky = SubResource("Sky_lwivm")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.25
+tonemap_mode = 2
+ssao_enabled = true
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[sub_resource type="FogMaterial" id="FogMaterial_4tebh"]
+albedo = Color(0.374139, 0.374139, 0.374139, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ulr6"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_k7ya4"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6q1yb"]
+height = 4.0
+radius = 3.0
+
+[node name="Lighthousedungeontest" type="Node3D"]
+script = ExtResource("1_0o6se")
+island = 4
+music = "LighthouseTheme"
+
+[node name="Player" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("2_fodts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.484077, 15.8152)
+Transparency_Curve = SubResource("Curve_4kue7")
+Camera = NodePath("FollowCamera")
+
+[node name="FollowCamera" parent="Player" instance=ExtResource("3_v8n38")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Rotating Room" type="Node3D" parent="."]
+script = ExtResource("4_aedpm")
+trigger = "rotating_room"
+
+[node name="Outer Wall" type="CSGCylinder3D" parent="Rotating Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+operation = 2
+use_collision = true
+collision_mask = 2
+radius = 20.0
+height = 60.0
+sides = 16
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Rotating Room/Outer Wall"]
+operation = 2
+radius = 19.0
+height = 60.0
+sides = 16
+
+[node name="Exit" type="CSGBox3D" parent="Rotating Room/Outer Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.5, -19)
+operation = 2
+size = Vector3(4, 8, 2)
+
+[node name="Entrance2" type="CSGBox3D" parent="Rotating Room/Outer Wall"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -6.5, 19)
+operation = 2
+size = Vector3(4, 8, 2)
+
+[node name="Platform1" type="CSGBox3D" parent="Rotating Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.1293)
+use_collision = true
+collision_mask = 2
+size = Vector3(32, 1, 8)
+material = SubResource("StandardMaterial3D_nvpqj")
+
+[node name="Platform2" type="CSGBox3D" parent="Rotating Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -15.2471)
+use_collision = true
+collision_mask = 2
+size = Vector3(33, 1, 8)
+material = SubResource("StandardMaterial3D_nvpqj")
+
+[node name="StairsUp" type="Node3D" parent="Rotating Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -21)
+
+[node name="Floor" type="CSGBox3D" parent="Rotating Room/StairsUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1)
+size = Vector3(4, 1, 3)
+material = SubResource("StandardMaterial3D_6xxx8")
+
+[node name="Stair" type="CSGBox3D" parent="Rotating Room/StairsUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+size = Vector3(4, 1, 1)
+material = SubResource("StandardMaterial3D_6xxx8")
+
+[node name="Stair2" type="CSGBox3D" parent="Rotating Room/StairsUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -2)
+size = Vector3(4, 1, 1)
+material = SubResource("StandardMaterial3D_6xxx8")
+
+[node name="Stair3" type="CSGBox3D" parent="Rotating Room/StairsUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3)
+size = Vector3(4, 1, 1)
+material = SubResource("StandardMaterial3D_6xxx8")
+
+[node name="Stair4" type="CSGBox3D" parent="Rotating Room/StairsUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -4)
+size = Vector3(4, 1, 1)
+material = SubResource("StandardMaterial3D_6xxx8")
+
+[node name="Stair5" type="CSGBox3D" parent="Rotating Room/StairsUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -6)
+size = Vector3(4, 1, 3)
+material = SubResource("StandardMaterial3D_6xxx8")
+
+[node name="Wall1" type="CSGBox3D" parent="Rotating Room/StairsUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 6, -3)
+size = Vector3(1, 10, 10)
+
+[node name="Wall2" type="CSGBox3D" parent="Rotating Room/StairsUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 6, -3)
+size = Vector3(1, 10, 10)
+
+[node name="Wall3" type="CSGBox3D" parent="Rotating Room/StairsUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -7.5)
+size = Vector3(4, 10, 1)
+
+[node name="Ceiling" type="CSGBox3D" parent="Rotating Room/StairsUp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, -3)
+size = Vector3(4, 1, 9)
+
+[node name="Loading-zone" parent="Rotating Room/StairsUp" instance=ExtResource("6_foky5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+scene = "res://Scenes/islands/lighthouse/dungeon/lighthouse-floor4.tscn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotating Room/StairsUp/Loading-zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("BoxShape3D_4f4bf")
+
+[node name="FogVolume" type="FogVolume" parent="Rotating Room/StairsUp"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.31134e-07, 4.5, -1.5)
+size = Vector3(4, 7, 5)
+material = SubResource("FogMaterial_80sfr")
+
+[node name="StairsDown" type="Node3D" parent="Rotating Room"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -2.5, 21)
+
+[node name="Stair" type="CSGBox3D" parent="Rotating Room/StairsDown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -5.5)
+size = Vector3(4, 1, 4)
+material = SubResource("StandardMaterial3D_6xxx8")
+
+[node name="Stair2" type="CSGBox3D" parent="Rotating Room/StairsDown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3)
+size = Vector3(4, 1, 1)
+material = SubResource("StandardMaterial3D_6xxx8")
+
+[node name="Stair3" type="CSGBox3D" parent="Rotating Room/StairsDown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.74227e-08, 1.5, -2)
+size = Vector3(4, 1, 1)
+material = SubResource("StandardMaterial3D_6xxx8")
+
+[node name="Stair4" type="CSGBox3D" parent="Rotating Room/StairsDown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62268e-07, 2, -1)
+size = Vector3(4, 1, 1)
+material = SubResource("StandardMaterial3D_6xxx8")
+
+[node name="Stair5" type="CSGBox3D" parent="Rotating Room/StairsDown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.37113e-07, 2.5, 1)
+size = Vector3(4, 1, 3)
+material = SubResource("StandardMaterial3D_6xxx8")
+
+[node name="Wall1" type="CSGBox3D" parent="Rotating Room/StairsDown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 6, -3)
+size = Vector3(1, 10, 10)
+
+[node name="Wall2" type="CSGBox3D" parent="Rotating Room/StairsDown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 6, -3)
+size = Vector3(1, 10, 10)
+
+[node name="Wall3" type="CSGBox3D" parent="Rotating Room/StairsDown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -7.5)
+size = Vector3(4, 10, 1)
+
+[node name="Ceiling" type="CSGBox3D" parent="Rotating Room/StairsDown"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, -3)
+size = Vector3(4, 1, 9)
+
+[node name="Loading-zone" parent="Rotating Room/StairsDown" instance=ExtResource("6_foky5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0294495, 2, 0.0311432)
+scene = "res://Scenes/islands/lighthouse/dungeon/lighthouse-floor2.tscn"
+checkpoint = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotating Room/StairsDown/Loading-zone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("BoxShape3D_4f4bf")
+
+[node name="FogVolume" type="FogVolume" parent="Rotating Room/StairsDown"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.37117e-08, 5.5, -3.5)
+size = Vector3(4, 9, 5)
+material = SubResource("FogMaterial_80sfr")
+
+[node name="ExitDoor" type="Node3D" parent="Rotating Room"]
+
+[node name="Door" type="CSGBox3D" parent="Rotating Room/ExitDoor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -19.5)
+use_collision = true
+collision_mask = 2
+size = Vector3(4, 7, 0.5)
+material = SubResource("StandardMaterial3D_smxts")
+script = ExtResource("5_33r8f")
+trigger = "ability_unlock"
+movement = Vector3(0, -8, 0)
+
+[node name="Ability Mural" parent="Rotating Room" instance=ExtResource("7_evikn")]
+transform = Transform3D(-0.829038, 0, 0.559193, 0, 1, 0, -0.559193, 0, -0.829038, -10.2, 4, 15.5)
+dialogue = Array[String](["The mural depicts a woman chasing a bird...", "You unlocked the [color=#00ffff]DASH[/color] ability!!"])
+unlock = "dash"
+
+[node name="Sign" parent="Rotating Room" instance=ExtResource("10_xkl6p")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 1.5, -15)
+dialogue = Array[String](["sign: the floors here are in dire need of repair as of now.", "sign: watch your step, lest you fall to your end.", "sign: we don't need that to happen again..."])
+
+[node name="GameplayUI" parent="." instance=ExtResource("11_5cw62")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.22352, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ib82c")
+
+[node name="Fogs" type="Node3D" parent="."]
+
+[node name="FogVolume" type="FogVolume" parent="Fogs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26, 0)
+size = Vector3(40, 10, 40)
+material = SubResource("FogMaterial_4tebh")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Fogs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 29, 0)
+use_collision = true
+collision_mask = 2
+radius = 25.0
+material = SubResource("StandardMaterial3D_6ulr6")
+
+[node name="FogVolume2" type="FogVolume" parent="Fogs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13, 0)
+size = Vector3(40, 10, 40)
+material = SubResource("FogMaterial_4tebh")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Fogs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18, 0)
+radius = 25.0
+material = SubResource("StandardMaterial3D_6ulr6")
+
+[node name="Obstacle" parent="." instance=ExtResource("13_wby01")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15.03, 0)
+shape = SubResource("WorldBoundaryShape3D_k7ya4")
+
+[node name="Checkpoints" type="Node3D" parent="."]
+
+[node name="Checkpoint0" parent="Checkpoints" instance=ExtResource("12_t60ym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 16)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/Checkpoint0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CylinderShape3D_6q1yb")
+
+[node name="Checkpoint1" parent="Checkpoints" instance=ExtResource("12_t60ym")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1, -16)
+id = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/Checkpoint1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CylinderShape3D_6q1yb")

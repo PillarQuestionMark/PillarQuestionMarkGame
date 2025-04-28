@@ -11,3 +11,4 @@ extends CSGBox3D
 func _on_interactable_on_interacting() -> void:
 	PlayerData.unlock_move(unlock)
 	EventBus.dialogue.emit(dialogue)
+	EventBus.trigger.emit("ability_unlock")
