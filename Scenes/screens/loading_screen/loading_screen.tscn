@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://du57308ll8v0n"]
+[gd_scene load_steps=10 format=3 uid="uid://du57308ll8v0n"]
 
 [ext_resource type="Script" path="res://Scenes/screens/loading_screen/loading_screen.gd" id="1_tkjox"]
 [ext_resource type="Texture2D" uid="uid://bhgtbq3ssd8bs" path="res://Assets/Textures/loadingflotsam.png" id="2_s352i"]
+[ext_resource type="Texture2D" uid="uid://ba68m1cmukhp4" path="res://Assets/Textures/loadingflotsamframe1.png" id="3_s5jc0"]
+[ext_resource type="Texture2D" uid="uid://b25gfg1mj82i4" path="res://Assets/Textures/loadingflotsamframe2.png" id="4_ulxl1"]
+[ext_resource type="Texture2D" uid="uid://cfdjjnhj5ocuv" path="res://Assets/Textures/loadingflotsamframe3.png" id="5_uh53t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyq0x"]
 bg_color = Color(0, 0, 0, 0)
@@ -11,6 +14,23 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ah4q0"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pm8i8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_s5jc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ulxl1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uh53t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="LoadingScreen" type="CanvasLayer"]
 process_mode = 3
@@ -45,15 +65,20 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -213.0
-offset_top = -195.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ah4q0")
 
 [node name="Sprite2D" type="Sprite2D" parent="PanelContainer2"]
+visible = false
 position = Vector2(-75, 35)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_s352i")
 centered = false
 offset = Vector2(200, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer2"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_pm8i8")
+centered = false
+offset = Vector2(-120, -120)

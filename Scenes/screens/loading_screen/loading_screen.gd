@@ -8,7 +8,8 @@ var show_label : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$PanelContainer/details.visible = false
-	$PanelContainer2/Sprite2D.visible = false
+	$PanelContainer2/AnimatedSprite2D.visible = false
+	$PanelContainer2/AnimatedSprite2D.play()
 	$PanelContainer/ColorRect.color.a = 0
 	fade_finished = false
 	load_finished = false
@@ -43,7 +44,7 @@ func _process_load() -> void:
 	else:
 		if (show_label):
 			$PanelContainer/details.visible = true
-			$PanelContainer2/Sprite2D.visible = true
+			$PanelContainer2/AnimatedSprite2D.visible = true
 		
 	## used for avoiding issues
 	if (load_progress == ResourceLoader.THREAD_LOAD_FAILED):
@@ -57,7 +58,7 @@ func _finish_load() -> void:
 	get_tree().paused = false
 	load_finished = true
 	$PanelContainer/details.visible = false
-	$PanelContainer2/Sprite2D.visible = false
+	$PanelContainer2/AnimatedSprite2D.visible = false
 	Logger.info("LOAD FINISHED!")
 	var loaded_scene = ResourceLoader.load_threaded_get(scene_to_load)
 	get_tree().change_scene_to_packed(loaded_scene)
