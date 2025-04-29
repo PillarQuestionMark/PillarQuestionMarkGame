@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bso6p3yjhh7gw"]
+[gd_scene load_steps=32 format=3 uid="uid://bso6p3yjhh7gw"]
 
 [ext_resource type="PackedScene" uid="uid://6wkokjqa4tnv" path="res://Entities/boat_model.tscn" id="2_66k23"]
 [ext_resource type="Texture2D" uid="uid://v87a2ty7kmn3" path="res://Assets/aseprite/islandmap_bg.png" id="2_jxuc3"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://b0sd75bp5hwj4" path="res://Scenes/screens/change_island_screen/island_icon.tscn" id="3_g12fm"]
 [ext_resource type="PackedScene" uid="uid://b3aeddxreoudm" path="res://Scenes/screens/change_island_screen/boat_icon.tscn" id="4_uulgi"]
 [ext_resource type="Texture2D" uid="uid://chih3dctolq7l" path="res://Assets/aseprite/islandmap_island_ruins.png" id="5_hfejx"]
-[ext_resource type="Texture2D" uid="uid://8axsdj03bsno" path="res://Assets/aseprite/islandmap_island.png" id="5_jjhgc"]
 [ext_resource type="Texture2D" uid="uid://djd2vfr28njbh" path="res://Assets/aseprite/islandmap_island_lighthouse.png" id="6_1b6f5"]
 [ext_resource type="Texture2D" uid="uid://bg301mfd4epyi" path="res://Assets/aseprite/islandmap_island_village.png" id="8_2glr2"]
 [ext_resource type="Texture2D" uid="uid://15aqi3o40ssw" path="res://Assets/aseprite/islandmap_island_volcano.png" id="10_286yo"]
@@ -35,52 +34,6 @@ ambient_light_energy = 0.25
 tonemap_mode = 2
 ssao_enabled = true
 glow_enabled = true
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8e82g"]
-atlas = ExtResource("5_jjhgc")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gr7ap"]
-atlas = ExtResource("5_jjhgc")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sflcg"]
-atlas = ExtResource("5_jjhgc")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8p8ak"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8e82g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gr7ap")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sflcg")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_1kfv6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8e82g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gr7ap")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sflcg")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_444qm"]
 atlas = ExtResource("5_hfejx")
@@ -255,30 +208,6 @@ y_sort_enabled = true
 
 [node name="BoatIcon" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("4_uulgi")]
 unique_name_in_owner = true
-
-[node name="Dev0Island" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("3_g12fm")]
-unique_name_in_owner = true
-position = Vector2(-406, -163)
-island = 0
-prereqs = Array[int]([5, 0])
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/CenterContainer/Control/Map/YSort/Dev0Island"]
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_8p8ak")
-autoplay = "default"
-offset = Vector2(0, -17)
-
-[node name="Dev1Island" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("3_g12fm")]
-unique_name_in_owner = true
-position = Vector2(-306, -162)
-island = 1
-prereqs = Array[int]([5, 1])
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PanelContainer/CenterContainer/Control/Map/YSort/Dev1Island"]
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_1kfv6")
-autoplay = "default"
-offset = Vector2(0, -17)
 
 [node name="RuinsIsland" parent="PanelContainer/CenterContainer/Control/Map/YSort" instance=ExtResource("3_g12fm")]
 unique_name_in_owner = true
