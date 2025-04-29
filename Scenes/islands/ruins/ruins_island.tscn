@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dmwlaf2f3cmd4"]
+[gd_scene load_steps=55 format=3 uid="uid://dmwlaf2f3cmd4"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_wbxxr"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_4qj5t"]
@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="32_qv1ve"]
 [ext_resource type="PackedScene" uid="uid://cojfaw2pshswd" path="res://Entities/Flame/order_challenge.tscn" id="32_qx5ga"]
 [ext_resource type="PackedScene" uid="uid://d0bdwuhoxbd2" path="res://Entities/Flame/order_pylon.tscn" id="33_51blx"]
+[ext_resource type="PackedScene" uid="uid://bryke18wdu25" path="res://Components/standing_sign.tscn" id="38_vlo4y"]
 
 [sub_resource type="Curve" id="Curve_6dgbe"]
 resource_local_to_scene = true
@@ -563,3 +564,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle"]
 shape = SubResource("WorldBoundaryShape3D_aithv")
+
+[node name="Sign" parent="." instance=ExtResource("38_vlo4y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 6.75, -11)
+dialogue = Array[String](["sign: wouldn't running be faster?", "sign: try holding SHIFT to sprint!!"])
