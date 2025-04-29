@@ -29,6 +29,8 @@ extends CanvasLayer
 ## The checkpoint to load into in the next scene.
 @export var next_checkpoint : int = 0
 
+@export var return_to_menu : bool = false
+
 ## The label to update text on.
 @onready var text_container = $PanelContainer/CenterContainer/RichTextLabel
 
@@ -49,18 +51,24 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
 		_on_continue()
 	
-func setup(scene_text : Array[String], scene : String, checkpoint : int = 0) -> void:
+func setup(scene_text : Array[String], scene : String, checkpoint : int = 0, end_scene : bool = false) -> void:
 	text = scene_text
 	if text.size() > 0:
 		text_container.text = "[center]" + text[0] + "[/center]"
 	next_scene = scene
 	next_checkpoint = checkpoint
+	return_to_menu = end_scene
 
 func _on_continue() -> void:
 	current_text += 1
 	if text.size() > current_text:
 		text_container.text = "[center]" + text[current_text] + "[/center]"
 	else:
-		if (current_text == text.size()):
+		if (return_to_menu):
+			PlayerData.data["current_scene"] = next_scene
+			PlayerData.data["checkpoint"] = next_checkpoint
+			PlayerData.save_data()
+			get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+		else:
 			PlayerData.load_scene(next_scene, next_checkpoint)
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

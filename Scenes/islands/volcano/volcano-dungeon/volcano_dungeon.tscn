@@ -313,6 +313,7 @@ cutscene = true
 cutscene_text = Array[String](["Climbing out of the volcano gifts elation and pride.", "Now, you have the confidence to sail back home, away from the Flotsam isles.", "Although, there are some places you have yet to explore...", "And at this point... it almost feels like home.", "Maybe you'll stay here for a little longer.", "...", "Dungeon Completed!", "-", "Credits:", "Teddy Anzevino", "Luke Chesney", "Sam Colston", "Alex Dean", "Dawn
 Goorskey", "Seven Rocks", "Caroline Weisgerber", "-", "Thanks for playing!"])
 dungeon_complete = 5
+return_to_menu = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VolcanoDungeon/Level2/MainChamber/Loading-zone"]
 shape = SubResource("CylinderShape3D_rw0sg")

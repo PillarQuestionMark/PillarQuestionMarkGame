@@ -113,12 +113,13 @@ func load_scene(next_scene : String = data["current_scene"], checkpoint : int = 
 	##get_tree().change_scene_to_file(next_scene) ## load the scene
 	
 ## Loads up a cutscene and sets up the cutscene.
-func load_cutscene(text : Array[String], scene : String, checkpoint : int) -> void:
+func load_cutscene(text : Array[String], scene : String, checkpoint : int, return_to_menu : bool = false) -> void:
 	const CUTSCENE := preload("res://Scenes/screens/cutscene-screen/cutscene-screen.tscn")
 	var s := CUTSCENE.instantiate()
 	s.text = text
 	s.next_scene = scene
 	s.next_checkpoint = checkpoint
+	s.return_to_menu = return_to_menu
 	
 	# manually change current_scene
 	get_tree().current_scene.queue_free()

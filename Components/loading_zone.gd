@@ -9,6 +9,8 @@ class_name LoadingZone extends Area3D
 
 @export var dungeon_complete : IslandData.Islands = IslandData.Islands.None
 
+@export var return_to_menu : bool = false
+
 ## When the player enters, loads the given scene and checkpoint.
 func _on_body_entered(body: Node3D) -> void:
 	if not body is Player:
@@ -19,7 +21,7 @@ func _on_body_entered(body: Node3D) -> void:
 	if !cutscene:
 		PlayerData.call_deferred("load_scene", scene, checkpoint)
 	else:
-		PlayerData.call_deferred("load_cutscene", cutscene_text, scene, checkpoint)
+		PlayerData.call_deferred("load_cutscene", cutscene_text, scene, checkpoint, return_to_menu)
 		
 	if dungeon_complete != IslandData.Islands.None:
 		PlayerData.data["cleared_dungeons"].append(dungeon_complete as int as float)
