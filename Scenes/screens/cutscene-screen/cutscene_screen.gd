@@ -64,11 +64,12 @@ func _on_continue() -> void:
 	if text.size() > current_text:
 		text_container.text = "[center]" + text[current_text] + "[/center]"
 	else:
-		if (return_to_menu):
-			PlayerData.data["current_scene"] = next_scene
-			PlayerData.data["checkpoint"] = next_checkpoint
-			PlayerData.save_data()
-			get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
-		else:
-			PlayerData.load_scene(next_scene, next_checkpoint)
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		if (current_text == text.size()): ## avoid multiple loads for same scene
+			if (return_to_menu):
+				PlayerData.data["current_scene"] = next_scene
+				PlayerData.data["checkpoint"] = next_checkpoint
+				PlayerData.save_data()
+				get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+			else:
+				PlayerData.load_scene(next_scene, next_checkpoint)
+				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
