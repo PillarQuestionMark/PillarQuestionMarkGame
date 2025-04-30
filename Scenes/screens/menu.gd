@@ -18,10 +18,7 @@ func _process(delta: float) -> void:
 
 # Meant to be called by the supermenu when entering
 func _enter_menu() -> void:
-	currentMouseMode = mouseMode
-	
-	set_mouse()
-	EventBus.control_switch.connect(_update_mouse)
+	_set_mouse()
 	
 	var p = get_tree().paused
 	match pauseTree:
@@ -33,36 +30,28 @@ func _enter_menu() -> void:
 	
 	_set_focus()
 	
-func _update_mouse() -> void:
-	if (currentMouseMode == Mouse_Mode_Options.Visible):
-		if (Settings.control_scheme == Settings.Profile.KEYBOARD_AND_MOUSE):
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-		else:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		
-	
-func set_mouse() -> void:
-	var m = Input.mouse_mode
-	match mouseMode:
-		Mouse_Mode_Options.Visible:
-			if (Settings.control_scheme == Settings.Profile.KEYBOARD_AND_MOUSE):
-				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-			else:
-				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		Mouse_Mode_Options.Captured:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	mouseMode = m
+func _set_mouse() -> void:
+	var previous_mode = Mouse_Mode_Options.Captured if (Settings.mouse_mode == Input.MOUSE_MODE_CAPTURED and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED) else Mouse_Mode_Options.Visible 
+	print("PREVIOUS: " + str(previous_mode))
+	if (mouseMode == Mouse_Mode_Options.Visible):
+		Settings.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	else:
+		if (mouseMode == Mouse_Mode_Options.Captured):
+			Settings.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	mouseMode = previous_mode
 
 # Called specifically through the escape key (as of now)
 # Override this method for desired function
 func _escape_menu() -> void:
-	Input.mouse_mode = mouseMode
+	##Settings.mouse_mode = mouseMode
+	_set_mouse()
 	get_tree().paused = pauseTree
 	queue_free()
 
 # Used by the menu itself when exiting
 func _exit_menu() -> void:
-	Input.mouse_mode = mouseMode
+	##Settings.mouse_mode = mouseMode
+	_set_mouse()
 	get_tree().paused = pauseTree
 	queue_free()
 

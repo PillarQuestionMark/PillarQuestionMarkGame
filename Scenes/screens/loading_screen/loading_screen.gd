@@ -13,6 +13,8 @@ func _ready() -> void:
 	$PanelContainer/ColorRect.color.a = 0
 	fade_finished = false
 	load_finished = false
+	
+	Settings.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func start_load(next_scene : String) -> void:
 	scene_to_load = next_scene

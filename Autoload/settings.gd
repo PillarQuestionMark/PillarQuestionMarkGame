@@ -9,7 +9,8 @@ enum Profile {
 	set(value):
 		control_scheme = value
 		EventBus.control_switch.emit()
-		print("CONTROL SCHEME CHANGED!")
+		print("CONTROL SCHEME CHANGED! CURRENT MOUSE MODE: " + str(mouse_mode))
+		_set_mouse()
 
 # settings file
 var _file = "user://settings.pillar"
@@ -17,6 +18,13 @@ var _file = "user://settings.pillar"
 # Sensitivity
 var base_controller_sensitivity = 0.5
 var base_mouse_sensitivity = 0.05
+
+# Mouse
+var mouse_mode : Input.MouseMode = Input.MOUSE_MODE_VISIBLE:
+	set(value):
+		mouse_mode = value
+		_set_mouse()
+		print("MOUSE MODE SET TO " + str(value))
 
 # Normal Settings
 var settings = {
@@ -27,6 +35,12 @@ var settings = {
 	"music" = 1,
 	"effects" = 1
 }
+
+func _set_mouse() -> void:
+	if mouse_mode == Input.MOUSE_MODE_VISIBLE && control_scheme == Profile.KEYBOARD_AND_MOUSE:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func load_settings() -> void:
 	_get_data()
@@ -56,6 +70,8 @@ func _ready() -> void:
 		control_scheme = Profile.CONTROLLER
 		
 	load_settings()
+	
+	_set_mouse()
 
 func update_mouse_sensitivity(multiplier : float) -> void:
 	_set_mouse_sensitivity(base_mouse_sensitivity * multiplier)

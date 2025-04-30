@@ -4,6 +4,8 @@ func _ready() -> void:
 	EventBus.flame_found.connect(_on_flame_collected)
 	EventBus.dialogue.connect(_on_dialogue)
 	EventBus.switch_islands.connect(_on_island_switch)
+	
+	Settings.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _process(delta: float) -> void:
