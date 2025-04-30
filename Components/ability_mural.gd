@@ -12,6 +12,6 @@ extends CSGBox3D
 
 func _on_interactable_on_interacting() -> void:
 	PlayerData.unlock_move(unlock)
-	var add : Array[String] = [unlock_text.format({"key": "[color=#FDBEBE]" + Settings.get_single_control(unlock) + "[/color]"})]
+	var add : Array[String] = [unlock_text.format({"key": "[color=#FDBEBE]" + Controls.get_single_control(unlock) + "[/color]"})]
 	EventBus.dialogue.emit(dialogue + add)
 	EventBus.trigger.emit("ability_unlock")

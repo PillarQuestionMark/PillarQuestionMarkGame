@@ -23,6 +23,14 @@ func _on_apply_pressed() -> void:
 	AudioManager.play_fx("button")
 	EventBus.rebind.emit()
 	_exit_menu()
+	
+func _on_reset_pressed() -> void:
+	Settings.reset_settings()
+	for setting in %GridContainer.get_children():
+		if (setting.has_method("_reset")):
+			setting._reset()
+	Logger.info("optionsscreen: reset button pressed")
+	AudioManager.play_fx("button")
 
 func _on_option_button_item_selected(index: int) -> void:
 	Logger.info("optionsscreen: control scheme changed to %s" % index)

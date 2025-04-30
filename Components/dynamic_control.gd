@@ -11,4 +11,4 @@ func _ready() -> void:
 	EventBus.rebind.connect(_switch_control)
 
 func _switch_control() -> void:
-	text = base_text.format({"key": Settings.get_control(action)})
+	text = base_text.format({"key": Controls.get_control(action)})

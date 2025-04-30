@@ -37,6 +37,7 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 64
 columns = 2
@@ -176,6 +177,11 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "cancel"
 
+[node name="Reset" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "reset"
+
 [node name="Apply" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "confirm"
@@ -183,4 +189,5 @@ text = "confirm"
 [connection signal="item_selected" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="value_changed" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/SensitivitySlider" to="PanelContainer/CenterContainer/VBoxContainer/GridContainer/SensitivitySlider" method="_on_slider_change"]
 [connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/Reset" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/Apply" to="." method="_on_apply_pressed"]

@@ -9,6 +9,9 @@ enum Profile {
 	set(value):
 		profile = value
 		_update_slider()
+		
+func _reset() -> void:
+	_update_slider()
 
 func _ready() -> void:
 	_update_slider()

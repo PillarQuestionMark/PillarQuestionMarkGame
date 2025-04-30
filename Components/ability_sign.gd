@@ -11,5 +11,5 @@ extends CSGBox3D
 @export var ability_text : String = "sign: try holding {key} to sprint!!"
 
 func _on_interactable_on_interacting() -> void:
-	var add : Array[String] = [ability_text.format({"key": "[color=#FDBEBE]" + Settings.get_single_control(ability) + "[/color]"})]
+	var add : Array[String] = [ability_text.format({"key": "[color=#FDBEBE]" + Controls.get_single_control(ability) + "[/color]"})]
 	EventBus.dialogue.emit(dialogue + add)

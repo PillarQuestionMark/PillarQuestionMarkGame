@@ -5,6 +5,21 @@ enum Profile {
 	CONTROLLER,
 }
 
+var default_settings = {
+	"fullscreen" = false,
+	"mouse_sensitivity" = 0.05,
+	"controller_sensitivity" = 0.05,
+	"volume" = 1,
+	"music" = 1,
+	"effects" = 1,
+	"interact" = [["InputEventKey", 70], ["InputEventJoypadButton", 3]],
+	"jump" = [["InputEventKey", 32], ["InputEventKey", 4194438], ["InputEventJoypadButton", 0]],
+	"dash" = [["InputEventMouseButton", 2], ["InputEventKey", 4194306], ["InputEventJoypadMotion", 5]],
+	"slam" = [["InputEventKey", 69], ["InputEventJoypadButton", 1]],
+	"grapple" = [["InputEventKey", 81], ["InputEventJoypadMotion", 4]],
+	"sprint" = [["InputEventKey", 4194325], ["InputEventJoypadButton", 2]]
+}
+
 @export var control_scheme := Profile.KEYBOARD_AND_MOUSE:
 	set(value):
 		control_scheme = value
@@ -42,6 +57,80 @@ var settings = {
 }
 
 var action_binds = ["interact", "jump", "dash", "slam", "grapple", "sprint"]
+
+func _set_mouse() -> void:
+	if mouse_mode == Input.MOUSE_MODE_VISIBLE && control_scheme == Profile.KEYBOARD_AND_MOUSE:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func load_settings() -> void:
+	## set audio levels
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(settings["volume"]))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(settings["music"]))
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Effects"), linear_to_db(settings["effects"]))
+	
+	_set_mouse_sensitivity(settings["mouse_sensitivity"])
+	_set_controller_sensitivity(settings["controller_sensitivity"])
+	
+	_set_action_binds()
+	
+func _get_data() -> void:
+	var data = FileUtility.read_file(_file)
+	if (data == null):
+		data = default_settings
+		save() # add the settings file
+	data.merge(default_settings) ## should fix any issues for missing settings
+	settings = data
+	
+func save() -> void:
+	_write_action_binds()
+	FileUtility.write_file(_file, settings)
+
+func _ready() -> void:
+	process_mode = PROCESS_MODE_ALWAYS
+	if (Input.get_connected_joypads().size() > 0):
+		control_scheme = Profile.CONTROLLER
+	
+	if (FileAccess.file_exists(_file)):
+		_get_data()
+		load_settings()
+	else:
+		save()
+	
+	_set_mouse()
+	
+func reset_settings() -> void:
+	settings = default_settings.duplicate(true)
+	load_settings()
+
+func update_mouse_sensitivity(multiplier : float) -> void:
+	_set_mouse_sensitivity(base_mouse_sensitivity * multiplier)
+	
+func _set_mouse_sensitivity(value : float) -> void:
+	settings["mouse_sensitivity"] = value
+	EventBus.sensitivity_update.emit()
+	
+func update_controller_sensitivity(multiplier : float) -> void:
+	_set_controller_sensitivity(base_controller_sensitivity * multiplier)
+	
+func _set_controller_sensitivity(value : float) -> void:
+	settings["controller_sensitivity"] = value
+	EventBus.sensitivity_update.emit()
+	
+## checks if using controller or keyboard
+func _input(event) -> void:
+	##print("READING AMNDY")
+	if control_scheme != Profile.KEYBOARD_AND_MOUSE && (event is InputEventMouse || event is InputEventKey):
+		control_scheme = Profile.KEYBOARD_AND_MOUSE
+	##if control_scheme != Profile.CONTROLLER && (event is InputEventJoypadButton || event is InputEventJoypadMotion):
+	# technically the above if statement is correct, but my controller is broken so the below works better - Seven
+	if !event.is_action("sprint") && (control_scheme != Profile.CONTROLLER && (event is InputEventJoypadButton || event is InputEventJoypadMotion)):
+		if event is InputEventJoypadMotion:
+			if abs((event as InputEventJoypadMotion).axis_value) < 0.1:
+				return
+		control_scheme = Profile.CONTROLLER
+		print(event)
 
 ## Saves current binding into settings
 func _write_action_binds() -> void:
@@ -96,139 +185,3 @@ func _add_action(action : String, type : String, code : int) -> void:
 		InputMap.action_add_event(action, event)
 	else:
 		Logger.debug("ERROR ADDING INPUT ACTION TO MAP")
-
-
-# action:
-# 	type - code
-#	type - code
-
-func _set_mouse() -> void:
-	if mouse_mode == Input.MOUSE_MODE_VISIBLE && control_scheme == Profile.KEYBOARD_AND_MOUSE:
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	else:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
-func load_settings() -> void:
-	_get_data()
-	
-	## set audio levels
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(settings["volume"]))
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(settings["music"]))
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Effects"), linear_to_db(settings["effects"]))
-	
-	_set_mouse_sensitivity(settings["mouse_sensitivity"])
-	_set_controller_sensitivity(settings["controller_sensitivity"])
-	
-	_set_action_binds()
-	
-func _get_data() -> void:
-	var data = FileUtility.read_file(_file)
-	if (data == null):
-		data = settings
-		save() # add the settings file
-	data.merge(settings) ## should fix any issues for missing settings
-	settings = data
-	
-func save() -> void:
-	_write_action_binds()
-	FileUtility.write_file(_file, settings)
-
-func _ready() -> void:
-	process_mode = PROCESS_MODE_ALWAYS
-	if (Input.get_connected_joypads().size() > 0):
-		control_scheme = Profile.CONTROLLER
-	
-	if (FileAccess.file_exists(_file)):
-		load_settings()
-	else:
-		save()
-	
-	_set_mouse()
-	
-	print("INTERACT START:")
-	for e in InputMap.action_get_events("sprint"):
-		print(e)
-	print("INTERACT END.")
-
-func update_mouse_sensitivity(multiplier : float) -> void:
-	_set_mouse_sensitivity(base_mouse_sensitivity * multiplier)
-	
-func _set_mouse_sensitivity(value : float) -> void:
-	settings["mouse_sensitivity"] = value
-	EventBus.sensitivity_update.emit()
-	
-func update_controller_sensitivity(multiplier : float) -> void:
-	_set_controller_sensitivity(base_controller_sensitivity * multiplier)
-	
-func _set_controller_sensitivity(value : float) -> void:
-	settings["controller_sensitivity"] = value
-	EventBus.sensitivity_update.emit()
-	
-## checks if using controller or keyboard
-func _input(event) -> void:
-	##print("READING AMNDY")
-	if control_scheme != Profile.KEYBOARD_AND_MOUSE && (event is InputEventMouse || event is InputEventKey):
-		control_scheme = Profile.KEYBOARD_AND_MOUSE
-	##if control_scheme != Profile.CONTROLLER && (event is InputEventJoypadButton || event is InputEventJoypadMotion):
-	# technically the above if statement is correct, but my controller is broken so the below works better - Seven
-	if !event.is_action("sprint") && (control_scheme != Profile.CONTROLLER && (event is InputEventJoypadButton || event is InputEventJoypadMotion)):
-		if event is InputEventJoypadMotion:
-			if abs((event as InputEventJoypadMotion).axis_value) < 0.1:
-				return
-		control_scheme = Profile.CONTROLLER
-		print(event)
-
-## Converts the long annoying input string to a simple name
-func convert_controller_to_string(event) -> String:
-	var result = event.as_text()
-	result = result.get_slice("(", 1) ## remove parenthesis
-	result = result.get_slice(")", 0)
-	if (event is InputEventJoypadButton):
-		result = result.get_slice(",", 0)
-	elif (event is InputEventJoypadMotion):
-		result = result.get_slice(",", 0 if event.axis < 4 else 1)
-		
-	return result
-	
-func get_single_control(action : String) -> String:
-	return get_control(action).get_slice(",", 0)
-	
-func get_control(action : String) -> String:
-	if (action == "double_jump" || action == "wall_slide"): # double jump, wall jump and jump are the same key
-		action = "jump"
-	print("GET CONTROL")
-	var text = ""
-	var count := 0
-	for e in InputMap.action_get_events(action):
-		
-		if control_scheme == Profile.KEYBOARD_AND_MOUSE and not _is_event_keyboard_and_mouse(e):
-			print("KEYBOARD")
-			continue
-		
-		elif control_scheme == Profile.CONTROLLER and not _is_event_controller(e):
-			print ("CONTROLLER")
-			continue
-	
-		if count > 0:
-			text += ", "
-		
-		text += e.as_text() if control_scheme == Profile.KEYBOARD_AND_MOUSE else convert_controller_to_string(e)
-		
-		count += 1
-		
-	return text
-
-func _is_event_keyboard_and_mouse(event: InputEvent) -> bool:
-	if event is InputEventKey:
-		return true
-	if event is InputEventMouseButton:
-		return true
-	return false
-
-func _is_event_controller(event: InputEvent) -> bool:
-	if event is InputEventJoypadButton:
-		return true
-	if event is InputEventJoypadMotion and (abs((event as InputEventJoypadMotion).axis_value) > 0.1 or abs((event as InputEventJoypadMotion).axis_value) == 0) :
-	##if event is InputEventJoypadMotion:
-		return true
-	return false

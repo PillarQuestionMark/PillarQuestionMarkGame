@@ -8,3 +8,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	AudioServer.set_bus_volume_db(_bus, linear_to_db(value))
+	Settings.settings["effects"] = value
+
+func _reset() -> void:
+	value = Settings.settings["effects"]
