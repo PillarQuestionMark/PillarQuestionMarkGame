@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_fodts"]
 [ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="3_v8n38"]
 [ext_resource type="Script" path="res://Scenes/islands/lighthouse/rotating_room.gd" id="4_aedpm"]
-[ext_resource type="Script" path="res://Components/mover.gd" id="5_33r8f"]
+[ext_resource type="Script" path="res://Components/ability_door.gd" id="6_d5o6d"]
 [ext_resource type="PackedScene" uid="uid://dql4b8bulv1vi" path="res://Components/loading-zone.tscn" id="6_foky5"]
 [ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="7_evikn"]
 [ext_resource type="PackedScene" uid="uid://bryke18wdu25" path="res://Components/standing_sign.tscn" id="10_xkl6p"]
@@ -252,9 +252,7 @@ use_collision = true
 collision_mask = 2
 size = Vector3(4, 7, 0.5)
 material = SubResource("StandardMaterial3D_smxts")
-script = ExtResource("5_33r8f")
-trigger = "ability_unlock"
-movement = Vector3(0, -8, 0)
+script = ExtResource("6_d5o6d")
 
 [node name="Ability Mural" parent="Rotating Room" instance=ExtResource("7_evikn")]
 transform = Transform3D(-0.829038, 0, 0.559193, 0, 1, 0, -0.559193, 0, -0.829038, -10.2, 4, 15.5)

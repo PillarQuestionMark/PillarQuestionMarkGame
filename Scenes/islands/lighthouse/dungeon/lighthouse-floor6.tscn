@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dwje7tkqfvpja" path="res://Entities/FollowCamera.tscn" id="3_m21hb"]
 [ext_resource type="Script" path="res://Scenes/islands/lighthouse/rotating_room.gd" id="4_j2emx"]
 [ext_resource type="PackedScene" uid="uid://dql4b8bulv1vi" path="res://Components/loading-zone.tscn" id="5_ayb8o"]
-[ext_resource type="Script" path="res://Components/mover.gd" id="6_xkh47"]
+[ext_resource type="Script" path="res://Components/ability_door.gd" id="6_7arpn"]
 [ext_resource type="PackedScene" uid="uid://nq872twodk4r" path="res://Components/ability_mural.tscn" id="10_5hpfc"]
 [ext_resource type="PackedScene" uid="uid://bx2k5lvl1aahu" path="res://Scenes/screens/gameplay_ui.tscn" id="10_ie2n2"]
 [ext_resource type="PackedScene" uid="uid://sr6b2rc5qsof" path="res://Components/obstacle.tscn" id="11_trab4"]
@@ -275,9 +275,8 @@ use_collision = true
 collision_mask = 2
 size = Vector3(4, 7, 0.5)
 material = SubResource("StandardMaterial3D_smxts")
-script = ExtResource("6_xkh47")
-trigger = "ability_unlock"
-movement = Vector3(0, -8, 0)
+script = ExtResource("6_7arpn")
+ability = "slam"
 
 [node name="GameplayUI" parent="." instance=ExtResource("10_ie2n2")]
 

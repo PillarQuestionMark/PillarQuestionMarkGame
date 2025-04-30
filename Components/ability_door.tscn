@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccom72pqs18aw"]
+
+[ext_resource type="Script" path="res://Components/ability_door.gd" id="1_c0ibk"]
+
+[node name="Mover" type="Node3D"]
+script = ExtResource("1_c0ibk")

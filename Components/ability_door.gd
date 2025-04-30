@@ -1,0 +1,51 @@
+## moves its parent between its initial position and an offset position.
+##
+## why do we move the parent instead of moving ourselves (and thus our
+## children)? it's because AnimatableBody3D (moving platforms, etc.) will
+## cause jitter when interacting with the player, unless they are moved
+## directly.
+extends Node3D
+## Copied from mover.gd, just adjusted - Seven
+
+@export var trigger := "ability_unlock"
+
+@export var movement := Vector3(0, -8, 0)
+@export var duration := 1.0
+
+@export var ability : String = "dash"
+
+var moving : bool = false
+
+var _initialpos := Vector3.ZERO
+var _finalpos := Vector3.ZERO
+var _is_targeting_initial_pos := false
+
+func _ready() -> void:
+	assert(get_parent_node_3d() != null)
+	
+	var check = ability + "_unlocked"
+	if(PlayerData.data.has(check)):
+		if(PlayerData.data[check]):
+			get_parent_node_3d().queue_free()
+	
+	_initialpos = get_parent_node_3d().position
+	_finalpos = _initialpos + movement
+	
+	EventBus.trigger.connect(func(name: String):
+		if name == trigger and !moving:
+			_move()
+	)
+
+func _move() -> void:
+	moving = true
+	# each call sets targetpos and flips the target position
+	var targetpos := _finalpos
+	if _is_targeting_initial_pos:
+		targetpos = _initialpos
+	_is_targeting_initial_pos = not _is_targeting_initial_pos
+	
+	var t := create_tween()
+	t.tween_property(get_parent_node_3d(), "position", targetpos, duration) \
+		.set_ease(Tween.EASE_IN_OUT)
+	await t.finished
+	get_parent_node_3d().queue_free()
