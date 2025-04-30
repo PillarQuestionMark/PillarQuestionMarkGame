@@ -8,7 +8,10 @@ extends CSGBox3D
 
 @export var unlock : String = "jump"
 
+@export var unlock_text : String = "Press {key} to use it"
+
 func _on_interactable_on_interacting() -> void:
 	PlayerData.unlock_move(unlock)
-	EventBus.dialogue.emit(dialogue)
+	var add : Array[String] = [unlock_text.format({"key": "[color=#FDBEBE]" + Settings.get_single_control(unlock) + "[/color]"})]
+	EventBus.dialogue.emit(dialogue + add)
 	EventBus.trigger.emit("ability_unlock")

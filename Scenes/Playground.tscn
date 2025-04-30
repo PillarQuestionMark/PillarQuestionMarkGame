@@ -384,7 +384,7 @@ point_count = 4
 metadata/_snap_enabled = true
 metadata/_snap_count = 20
 
-[sub_resource type="MultiMesh" id="MultiMesh_4u87m"]
+[sub_resource type="MultiMesh" id="MultiMesh_ja744"]
 transform_format = 1
 instance_count = 16
 mesh = ExtResource("13_8dx5g")
@@ -725,7 +725,7 @@ depth = 8.0
 material = SubResource("StandardMaterial3D_x3ejr")
 
 [node name="Fragment" type="AnimatableBody3D" parent="Geometry"]
-transform = Transform3D(-0.00675595, 0.0689383, -0.997598, -0.999394, 0.0336087, 0.00909061, 0.0341546, 0.997055, 0.0686694, -6.43581, 37.4142, -85.9073)
+transform = Transform3D(-0.00675595, 0.0689383, -0.997598, -0.999394, 0.0336087, 0.00909062, 0.0341546, 0.997055, 0.0686694, -6.43581, 37.4142, -85.9073)
 sync_to_physics = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Geometry/Fragment"]
@@ -1023,19 +1023,21 @@ complete_dialogue = Array[String](["guy: you look like you desire to reach the d
 
 [node name="SpikeFloor" parent="." instance=ExtResource("15_twh6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.03, 6)
-multimesh = SubResource("MultiMesh_4u87m")
+multimesh = SubResource("MultiMesh_ja744")
 xSize = 4.0
 zSize = 4.0
 
 [node name="Ability Mural" parent="." instance=ExtResource("6_rtf4h")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -15, 3, -10)
-dialogue = Array[String](["The mural depicts a man harnessing the clouds from a bottle...", "You unlocked the [color=#ffb3a7]DOUBLE JUMP[/color] ability!!"])
+dialogue = Array[String](["The mural depicts a man harnessing the clouds from a bottle...", "\"You unlocked the [color=#ffb3a7]DOUBLE JUMP[/color] ability!!\""])
 unlock = "double_jump"
+unlock_text = "Press {key} while in the air!"
 
 [node name="Ability Mural2" parent="." instance=ExtResource("6_rtf4h")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.9, 44, -54)
-dialogue = Array[String](["The mural depicts man's plight in an effort to get over it...", "You unlocked the [color=#E7DDFF]WALL SLIDE [/color] ability!!", "Try jumping while sliding for extra fun!"])
+dialogue = Array[String](["The mural depicts man's plight in an effort to get over it...", "You unlocked the [color=#E7DDFF]WALL SLIDE[/color] ability!!"])
 unlock = "wall_slide"
+unlock_text = "Push into walls to slide on them. Try pressing {key} while sliding for extra fun!"
 
 [node name="Boat" parent="." instance=ExtResource("15_ggb0t")]
 transform = Transform3D(0.932014, -0.0297404, 0.361199, 0, 0.996627, 0.0820603, -0.362422, -0.0764813, 0.928871, -4.59106, -12.6479, 50.2878)

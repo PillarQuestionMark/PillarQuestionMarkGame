@@ -21,6 +21,7 @@ func _on_apply_pressed() -> void:
 	Settings.save()
 	Logger.info("optionsscreen: apply button pressed")
 	AudioManager.play_fx("button")
+	EventBus.rebind.emit()
 	_exit_menu()
 
 func _on_option_button_item_selected(index: int) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dmwlaf2f3cmd4"]
+[gd_scene load_steps=56 format=3 uid="uid://dmwlaf2f3cmd4"]
 
 [ext_resource type="Script" path="res://Scenes/Scene.gd" id="1_wbxxr"]
 [ext_resource type="PackedScene" uid="uid://de4v1dwr7hpx1" path="res://Entities/Player/Player.tscn" id="2_4qj5t"]
@@ -23,6 +23,7 @@
 [ext_resource type="LightmapGIData" uid="uid://bokhqwwpmemug" path="res://Scenes/islands/ruins/ruins_island.lmbake" id="12_w5b05"]
 [ext_resource type="Material" uid="uid://c81y8f6r4j56g" path="res://Scenes/props/lantern/lantern_material_on_e1a845.tres" id="13_mr3ie"]
 [ext_resource type="Material" uid="uid://dlcsckm6dkfud" path="res://Scenes/props/lantern/lantern_material_on_b23657.tres" id="13_tl4x8"]
+[ext_resource type="Script" path="res://Components/dynamic_control.gd" id="14_tn702"]
 [ext_resource type="Material" uid="uid://nyf6ir4c8nyd" path="res://Scenes/props/lantern/lantern_material_off_94ad39.tres" id="14_upmg4"]
 [ext_resource type="Material" uid="uid://48xykaovfh8f" path="res://Scenes/props/lantern/lantern_material_on_63c4cc.tres" id="14_xadis"]
 [ext_resource type="Material" uid="uid://cj6x6vkwlwphw" path="res://Scenes/props/lantern/lantern_material_on_94ad39.tres" id="15_wossf"]
@@ -241,6 +242,7 @@ shape = SubResource("BoxShape3D_w6afg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 7, 1)
 billboard = 2
 text = "press [f] to interact"
+script = ExtResource("14_tn702")
 
 [node name="FishingHut" type="Node3D" parent="ruins"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4, 18, -27.2)

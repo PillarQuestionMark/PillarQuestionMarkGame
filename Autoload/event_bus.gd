@@ -24,5 +24,8 @@ signal sensitivity_update()
 ## Used for better controls switching
 signal control_switch()
 
+## Notify when controls are rebound
+signal rebind()
+
 func _ready() -> void:
 	Logger.info("eventbus: ready")

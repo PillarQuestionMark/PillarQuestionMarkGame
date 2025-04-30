@@ -258,6 +258,7 @@ script = ExtResource("6_d5o6d")
 transform = Transform3D(-0.829038, 0, 0.559193, 0, 1, 0, -0.559193, 0, -0.829038, -10.2, 4, 15.5)
 dialogue = Array[String](["The mural depicts a woman chasing a bird...", "You unlocked the [color=#00ffff]DASH[/color] ability!!"])
 unlock = "dash"
+unlock_text = "Press {key} to dash!"
 
 [node name="Sign" parent="Rotating Room" instance=ExtResource("10_xkl6p")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 1.5, -15)

@@ -183,8 +183,9 @@ shape = SubResource("CylinderShape3D_ke5cs")
 
 [node name="Ability Mural" parent="VolcanoDungeon/Level1/Chamber2" instance=ExtResource("9_spngf")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 50.5, 5.5, 11)
-dialogue = Array[String](["The mural depicts several groups all converging on the same thought process...", "You unlocked the [color=#00cba2]GRAPPLE[/color] ability!!", "Hold Q to grapple to highlighted points!"])
+dialogue = Array[String](["The mural depicts several groups all converging on the same thought process...", "You unlocked the [color=#00cba2]GRAPPLE[/color] ability!!"])
 unlock = "grapple"
+unlock_text = "Hold {key} to grapple to highlighted points!"
 
 [node name="Spawner" parent="VolcanoDungeon/Level1/Chamber2" instance=ExtResource("9_h4ilx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -1, -15)

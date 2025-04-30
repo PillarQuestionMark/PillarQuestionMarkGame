@@ -35,7 +35,7 @@ var settings = {
 	"effects" = 1,
 	"interact" = [["InputEventKey", 70], ["InputEventJoypadButton", 3]],
 	"jump" = [["InputEventKey", 32], ["InputEventKey", 4194438], ["InputEventJoypadButton", 0]],
-	"dash" = [["InputEventKey", 4194306], ["InputEventMouseButton", 2], ["InputEventJoypadMotion", 5]],
+	"dash" = [["InputEventMouseButton", 2], ["InputEventKey", 4194306], ["InputEventJoypadMotion", 5]],
 	"slam" = [["InputEventKey", 69], ["InputEventJoypadButton", 1]],
 	"grapple" = [["InputEventKey", 81], ["InputEventJoypadMotion", 4]],
 	"sprint" = [["InputEventKey", 4194325], ["InputEventJoypadButton", 2]]
@@ -189,3 +189,46 @@ func convert_controller_to_string(event) -> String:
 		result = result.get_slice(",", 0 if event.axis < 4 else 1)
 		
 	return result
+	
+func get_single_control(action : String) -> String:
+	return get_control(action).get_slice(",", 0)
+	
+func get_control(action : String) -> String:
+	if (action == "double_jump" || action == "wall_slide"): # double jump, wall jump and jump are the same key
+		action = "jump"
+	print("GET CONTROL")
+	var text = ""
+	var count := 0
+	for e in InputMap.action_get_events(action):
+		
+		if control_scheme == Profile.KEYBOARD_AND_MOUSE and not _is_event_keyboard_and_mouse(e):
+			print("KEYBOARD")
+			continue
+		
+		elif control_scheme == Profile.CONTROLLER and not _is_event_controller(e):
+			print ("CONTROLLER")
+			continue
+	
+		if count > 0:
+			text += ", "
+		
+		text += e.as_text() if control_scheme == Profile.KEYBOARD_AND_MOUSE else convert_controller_to_string(e)
+		
+		count += 1
+		
+	return text
+
+func _is_event_keyboard_and_mouse(event: InputEvent) -> bool:
+	if event is InputEventKey:
+		return true
+	if event is InputEventMouseButton:
+		return true
+	return false
+
+func _is_event_controller(event: InputEvent) -> bool:
+	if event is InputEventJoypadButton:
+		return true
+	if event is InputEventJoypadMotion and (abs((event as InputEventJoypadMotion).axis_value) > 0.1 or abs((event as InputEventJoypadMotion).axis_value) == 0) :
+	##if event is InputEventJoypadMotion:
+		return true
+	return false

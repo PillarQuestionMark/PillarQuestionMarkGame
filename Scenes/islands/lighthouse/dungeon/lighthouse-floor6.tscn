@@ -335,5 +335,6 @@ shape = SubResource("CylinderShape3D_vb367")
 
 [node name="Ability Mural" parent="." instance=ExtResource("10_5hpfc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -4.4)
-dialogue = Array[String](["The mural depicts a masked man with a spear...", "You unlocked the [color=#ffff79]SLAM[/color] ability!!", "Try jumping right after you hit the ground with slam!"])
+dialogue = Array[String](["The mural depicts a masked man with a spear...", "You unlocked the [color=#ffff79]SLAM[/color] ability!!"])
 unlock = "slam"
+unlock_text = "Press {key} in the air to slam. Try jumping after you hit the ground!"
