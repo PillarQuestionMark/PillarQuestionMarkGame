@@ -9,7 +9,6 @@ enum Profile {
 	set(value):
 		control_scheme = value
 		EventBus.control_switch.emit()
-		print("CONTROL SCHEME CHANGED! CURRENT MOUSE MODE: " + str(mouse_mode))
 		_set_mouse()
 
 # settings file
@@ -178,3 +177,15 @@ func _input(event) -> void:
 				return
 		control_scheme = Profile.CONTROLLER
 		print(event)
+
+## Converts the long annoying input string to a simple name
+func convert_controller_to_string(event) -> String:
+	var result = event.as_text()
+	result = result.get_slice("(", 1) ## remove parenthesis
+	result = result.get_slice(")", 0)
+	if (event is InputEventJoypadButton):
+		result = result.get_slice(",", 0)
+	elif (event is InputEventJoypadMotion):
+		result = result.get_slice(",", 0 if event.axis < 4 else 1)
+		
+	return result

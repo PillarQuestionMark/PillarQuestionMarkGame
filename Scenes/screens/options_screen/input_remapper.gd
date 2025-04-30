@@ -35,7 +35,10 @@ func _update_text() -> void:
 		if count > 0:
 			text += ", "
 		
-		text += e.as_text()
+		text += e.as_text() if profile == Profile.KEYBOARD_AND_MOUSE else Settings.convert_controller_to_string(e)
+		
+		#text += e.as_text()
+		##text += added
 		
 		count += 1
 
@@ -80,7 +83,8 @@ func _is_event_keyboard_and_mouse(event: InputEvent) -> bool:
 func _is_event_controller(event: InputEvent) -> bool:
 	if event is InputEventJoypadButton:
 		return true
-	if event is InputEventJoypadMotion and abs((event as InputEventJoypadMotion).axis_value) > 0.1:
+	if event is InputEventJoypadMotion and (abs((event as InputEventJoypadMotion).axis_value) > 0.1 or abs((event as InputEventJoypadMotion).axis_value) == 0) :
+	##if event is InputEventJoypadMotion:
 		return true
 	return false
 
