@@ -46,11 +46,9 @@ var action_binds = ["interact", "jump", "dash", "slam", "grapple", "sprint"]
 
 ## Saves current binding into settings
 func _write_action_binds() -> void:
-	print("WRITING BINDS")
 	for action in action_binds: # save each action
 		settings[action].clear() # avoid stacking
 		for bind in InputMap.action_get_events(action): 
-			print(bind)
 			_save_action(action, bind)
 
 ## Sets the binds from settings to game
@@ -67,7 +65,6 @@ func _set_action_binds() -> void:
 func _save_action(action : String, event : InputEvent) -> void:
 	var bind : Array = []
 	if (event is InputEventKey):
-		print("KEY: " + str(event) + " with keycode: " + str(event.physical_keycode))
 		var keycode = event.keycode if event.keycode != 0 else event.physical_keycode
 		bind = ["InputEventKey", keycode]
 	elif (event is InputEventMouseButton):
