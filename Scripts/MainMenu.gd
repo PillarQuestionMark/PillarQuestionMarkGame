@@ -28,6 +28,7 @@ func _on_options_button_pressed() -> void:
 	_enter_submenu(OPTIONS_SCREEN)
 
 func _on_quit_button_pressed() -> void:
+	Settings.save()
 	Logger.info("mainmenu: quit button pressed")
 	AudioManager.play_fx("button")
 	get_tree().quit()

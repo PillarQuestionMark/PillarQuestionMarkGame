@@ -38,16 +38,19 @@ var settings = {
 	"jump" = [["InputEventKey", 32], ["InputEventKey", 4194438], ["InputEventJoypadButton", 0]],
 	"dash" = [["InputEventKey", 4194306], ["InputEventMouseButton", 2], ["InputEventJoypadMotion", 5]],
 	"slam" = [["InputEventKey", 69], ["InputEventJoypadButton", 1]],
-	"grapple" = [["InputEventKey", 81], ["InputEventJoypadMotion", 4]]
+	"grapple" = [["InputEventKey", 81], ["InputEventJoypadMotion", 4]],
+	"sprint" = [["InputEventKey", 4194325], ["InputEventJoypadButton", 2]]
 }
 
-var action_binds = ["interact", "jump", "dash", "slam", "grapple"]
+var action_binds = ["interact", "jump", "dash", "slam", "grapple", "sprint"]
 
 ## Saves current binding into settings
 func _write_action_binds() -> void:
+	print("WRITING BINDS")
 	for action in action_binds: # save each action
 		settings[action].clear() # avoid stacking
 		for bind in InputMap.action_get_events(action): 
+			print(bind)
 			_save_action(action, bind)
 
 ## Sets the binds from settings to game
@@ -64,7 +67,9 @@ func _set_action_binds() -> void:
 func _save_action(action : String, event : InputEvent) -> void:
 	var bind : Array = []
 	if (event is InputEventKey):
-		bind = ["InputEventKey", event.keycode]
+		print("KEY: " + str(event) + " with keycode: " + str(event.physical_keycode))
+		var keycode = event.keycode if event.keycode != 0 else event.physical_keycode
+		bind = ["InputEventKey", keycode]
 	elif (event is InputEventMouseButton):
 		bind = ["InputEventMouseButton", event.button_index]
 	elif (event is InputEventJoypadButton):
@@ -136,13 +141,16 @@ func _ready() -> void:
 	process_mode = PROCESS_MODE_ALWAYS
 	if (Input.get_connected_joypads().size() > 0):
 		control_scheme = Profile.CONTROLLER
-		
-	load_settings()
+	
+	if (FileAccess.file_exists(_file)):
+		load_settings()
+	else:
+		save()
 	
 	_set_mouse()
 	
 	print("INTERACT START:")
-	for e in InputMap.action_get_events("interact"):
+	for e in InputMap.action_get_events("sprint"):
 		print(e)
 	print("INTERACT END.")
 

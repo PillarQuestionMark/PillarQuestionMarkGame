@@ -119,6 +119,15 @@ text = "interact"
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="Sprint" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "sprint"
+
+[node name="InteractRemapper2" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer" instance=ExtResource("2_bv78l")]
+unique_name_in_owner = true
+layout_mode = 2
+action = "sprint"
+
 [node name="Jump" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "jump"
