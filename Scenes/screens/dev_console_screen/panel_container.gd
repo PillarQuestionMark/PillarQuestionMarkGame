@@ -17,7 +17,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("toggle_dev_console"):
+	if OS.is_debug_build and Input.is_action_just_pressed("toggle_dev_console"):
 		if is_showing:
 			_hide()
 		else:

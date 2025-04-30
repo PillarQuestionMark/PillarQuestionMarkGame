@@ -83,7 +83,7 @@ func _ready():
 func _process(_delta : float) -> void:
 	mesh.transparency = Transparency_Curve.sample(Camera.get_hit_length() / Camera.spring_length)
 	## REMOVE LATER. FOR NOW, JUST TO TEST DEATH
-	if Input.is_action_just_pressed("kys"):
+	if OS.is_debug_build and Input.is_action_just_pressed("kys"):
 		die()
 
 func get_move_direction() -> Vector3:
