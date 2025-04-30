@@ -33,8 +33,73 @@ var settings = {
 	"controller_sensitivity" = 0.05,
 	"volume" = 1,
 	"music" = 1,
-	"effects" = 1
+	"effects" = 1,
+	"interact" = [["InputEventKey", 70], ["InputEventJoypadButton", 3]],
+	"jump" = [["InputEventKey", 32], ["InputEventKey", 4194438], ["InputEventJoypadButton", 0]],
+	"dash" = [["InputEventKey", 4194306], ["InputEventMouseButton", 2], ["InputEventJoypadMotion", 5]],
+	"slam" = [["InputEventKey", 69], ["InputEventJoypadButton", 1]],
+	"grapple" = [["InputEventKey", 81], ["InputEventJoypadMotion", 4]]
 }
+
+var action_binds = ["interact", "jump", "dash", "slam", "grapple"]
+
+## Saves current binding into settings
+func _write_action_binds() -> void:
+	for action in action_binds: # save each action
+		settings[action].clear() # avoid stacking
+		for bind in InputMap.action_get_events(action): 
+			_save_action(action, bind)
+
+## Sets the binds from settings to game
+func _set_action_binds() -> void:
+	## use settings for each remappable action
+	for action in action_binds:
+		InputMap.action_erase_events(action) # clear all default bindings
+		
+		## add all the saved bindings
+		for bind in settings[action]:
+			_add_action(action, bind[0], bind[1]) # add bind
+
+## Saves an action to the settings dictionary
+func _save_action(action : String, event : InputEvent) -> void:
+	var bind : Array = []
+	if (event is InputEventKey):
+		bind = ["InputEventKey", event.keycode]
+	elif (event is InputEventMouseButton):
+		bind = ["InputEventMouseButton", event.button_index]
+	elif (event is InputEventJoypadButton):
+		bind = ["InputEventJoypadButton", event.button_index]
+	elif (event is InputEventJoypadMotion):
+		bind = ["InputEventJoypadMotion", event.axis]
+		
+	settings[action].append(bind)
+
+## Adds an action to the input map
+func _add_action(action : String, type : String, code : int) -> void:
+	var event = null
+	match type:
+		"InputEventKey":
+			event = InputEventKey.new()
+			event.keycode = code
+		"InputEventMouseButton":
+			event = InputEventMouseButton.new()
+			event.button_index = code
+		"InputEventJoypadButton":
+			event = InputEventJoypadButton.new()
+			event.button_index = code
+		"InputEventJoypadMotion":
+			event = InputEventJoypadMotion.new()
+			event.axis = code
+	
+	if (event != null):
+		InputMap.action_add_event(action, event)
+	else:
+		Logger.debug("ERROR ADDING INPUT ACTION TO MAP")
+
+
+# action:
+# 	type - code
+#	type - code
 
 func _set_mouse() -> void:
 	if mouse_mode == Input.MOUSE_MODE_VISIBLE && control_scheme == Profile.KEYBOARD_AND_MOUSE:
@@ -53,6 +118,8 @@ func load_settings() -> void:
 	_set_mouse_sensitivity(settings["mouse_sensitivity"])
 	_set_controller_sensitivity(settings["controller_sensitivity"])
 	
+	_set_action_binds()
+	
 func _get_data() -> void:
 	var data = FileUtility.read_file(_file)
 	if (data == null):
@@ -62,6 +129,7 @@ func _get_data() -> void:
 	settings = data
 	
 func save() -> void:
+	_write_action_binds()
 	FileUtility.write_file(_file, settings)
 
 func _ready() -> void:
@@ -72,6 +140,11 @@ func _ready() -> void:
 	load_settings()
 	
 	_set_mouse()
+	
+	print("INTERACT START:")
+	for e in InputMap.action_get_events("interact"):
+		print(e)
+	print("INTERACT END.")
 
 func update_mouse_sensitivity(multiplier : float) -> void:
 	_set_mouse_sensitivity(base_mouse_sensitivity * multiplier)
