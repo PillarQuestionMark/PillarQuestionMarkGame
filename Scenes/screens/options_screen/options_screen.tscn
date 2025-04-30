@@ -169,7 +169,7 @@ text = "cancel"
 
 [node name="Apply" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "apply"
+text = "confirm"
 
 [connection signal="item_selected" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="value_changed" from="PanelContainer/CenterContainer/VBoxContainer/GridContainer/SensitivitySlider" to="PanelContainer/CenterContainer/VBoxContainer/GridContainer/SensitivitySlider" method="_on_slider_change"]

@@ -34,8 +34,8 @@ func _ready():
 	EventBus.sensitivity_update.connect(update_sensitivity)
 	
 func update_sensitivity() -> void:
-	mouse_sensitivity = Settings.mouse_sensitivity
-	controller_sensitivity = Settings.controller_sensitivity
+	mouse_sensitivity = Settings.settings["mouse_sensitivity"]
+	controller_sensitivity = Settings.settings["controller_sensitivity"]
 	print("CONTROLLER SENSITIVITY: " + str(controller_sensitivity))
  
 # Called every frame. 'delta' is the elapsed time since the previous frame.

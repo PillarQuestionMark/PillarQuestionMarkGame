@@ -12,12 +12,13 @@ func _escape_menu() -> void:
 	super()
 
 func _on_cancel_pressed() -> void:
+	Settings.load_settings()
 	Logger.info("optionsscreen: cancel pressed")
 	AudioManager.play_fx("button")
 	_exit_menu()
 
 func _on_apply_pressed() -> void:
-	# TODO: save settings
+	Settings.save()
 	Logger.info("optionsscreen: apply button pressed")
 	AudioManager.play_fx("button")
 	_exit_menu()

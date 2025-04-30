@@ -56,6 +56,13 @@ func _input(event: InputEvent) -> void:
 			_update_text()
 			return
 	
+	# don't bind cntroller + to anything
+	if event is InputEventJoypadButton:
+		if (event as InputEventJoypadButton).button_index == JOY_BUTTON_START:
+			_is_remapping = false
+			_update_text()
+			return
+	
 	if profile == Profile.KEYBOARD_AND_MOUSE and _is_event_keyboard_and_mouse(event):
 		_input_keyboard_and_mouse(event)
 	
@@ -73,7 +80,7 @@ func _is_event_keyboard_and_mouse(event: InputEvent) -> bool:
 func _is_event_controller(event: InputEvent) -> bool:
 	if event is InputEventJoypadButton:
 		return true
-	if event is InputEventJoypadMotion:
+	if event is InputEventJoypadMotion and abs((event as InputEventJoypadMotion).axis_value) > 0.1:
 		return true
 	return false
 
@@ -91,6 +98,13 @@ func _input_keyboard_and_mouse(event: InputEvent) -> void:
 	get_viewport().set_input_as_handled()
 
 func _input_controller(event: InputEvent) -> void:
+	
+	# erase controller events for the action
+	for e in InputMap.action_get_events(action):
+		if _is_event_controller(e):
+			InputMap.action_erase_event(action, e)
+	
+	InputMap.action_add_event(action, event)
 	
 	_is_remapping = false
 	_update_text()

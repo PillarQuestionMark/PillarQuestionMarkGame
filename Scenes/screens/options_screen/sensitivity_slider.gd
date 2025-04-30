@@ -21,7 +21,7 @@ func _on_slider_change(value : float) -> void:
 		
 func _update_slider() -> void:
 	if profile == Profile.KEYBOARD_AND_MOUSE:
-		value = Settings.mouse_sensitivity / Settings.base_mouse_sensitivity
+		value = Settings.settings["mouse_sensitivity"] / Settings.base_mouse_sensitivity
 	else:
-		value = Settings.controller_sensitivity / Settings.base_controller_sensitivity
+		value = Settings.settings["controller_sensitivity"] / Settings.base_controller_sensitivity
 		

@@ -6,7 +6,7 @@ static var save_file_ending = ".pillar" ## The ending of the save file path.
 
 ## Reads the given JSON file from file_name, and returns the dictionary of data.
 ## Returns null if there is an error reading the file or the file does not exist.
-static func read_file(file_name : String):
+static func read_file(file_name : String): # intentional no return type
 	var file_data
 	var data = null
 	var json = JSON.new() ## created for better error messages
