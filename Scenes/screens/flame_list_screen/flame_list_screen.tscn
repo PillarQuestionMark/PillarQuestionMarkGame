@@ -29,6 +29,7 @@ text = "flames"
 horizontal_alignment = 1
 
 [node name="back" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "back"
 flat = true

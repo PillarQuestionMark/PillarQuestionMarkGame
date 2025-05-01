@@ -45,3 +45,6 @@ func _print_flames() -> void:
 			container.add_child(flame_lable)
 		
 	container.move_child(back_button, container.get_child_count() - 1)
+	
+func _set_focus() -> void:
+	%back.grab_focus()

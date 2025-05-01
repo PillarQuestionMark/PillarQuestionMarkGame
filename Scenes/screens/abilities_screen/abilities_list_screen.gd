@@ -46,3 +46,5 @@ func _print_label(move : String, unlocked : bool) -> void:
 	lable.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	container.add_child(lable)
 	
+func _set_focus() -> void:
+	%back.grab_focus()
